@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="“www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/muniao/sendCode" method="post">
+    电话：<input type="text" name="phone"/>
+    <input type="submit" value="发送验证码"/>
+    <p th:text="${msg}"></p>
+</form>
+
+</body>
+</html>
