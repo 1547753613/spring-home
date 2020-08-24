@@ -6,6 +6,5 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface OrdersService {
-    @Select("select * from orders")
     List<Orders> findAllOrders();
 }

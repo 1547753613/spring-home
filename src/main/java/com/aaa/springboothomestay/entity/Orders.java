@@ -15,5 +15,8 @@ public class Orders {
     private String demo;//	varchar	订单处理结果
     private int aid;//	int	管理员id
     private Date createtime;//	date	订单创建时间
+    private House house;
+    private User user;
+    private OrdersDetails ordersDetails;
 
 }
