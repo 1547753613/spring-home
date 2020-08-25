@@ -1,0 +1,997 @@
+/* 锟斤拷锟斤拷锟斤拷息
+-------------------------------------------------------------------*/
+.forrent{ margin-top:10px;}
+.forrent td input{ border:1px solid #7f9db9; height:20px; line-height:20px; padding-left:2px; width:140px;}
+.forrent span{ color:#f00; margin:0px 5px;}
+.forrentbtn{ width:210px; height:34px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat 0px -161px; color:#fff; font-weight:bold; border:none; margin-left:320px;}
+.forrentS{ border:1px solid #dadde4;}
+.forrentT{ height:32px; background:url(https://assets.muniao.com/assets/2013/image/user/bgfent.jpg) repeat-x 0px 0px; padding-left:20px;}
+.forrentT h4{margin-top:10px; float:left;}
+.forrentT a{ color:#666; text-decoration:none; float:left; margin-top:12px; margin-left:5px;}
+.priceS{ border-bottom:1px solid #fafafa; padding:10px 20px 0px 20px;}
+.priceS a{ float:left; margin:0px 10px; color:#666; text-decoration:none;}
+.priceS a:visited{color:#f4640b; text-decoration:none;}
+.rentnews{ width:1000px; margin-top:12px;}
+.rentnewst{ border-bottom:2px solid #f4640b;}
+.rentnewst h4{ height:33px; color:#f4640b; text-align:center; line-height:33px; width:130px; background:#f9f9f9; border-top:1px solid #dadde4;
+ border-left:1px solid #dadde4;  border-right:1px solid #dadde4;}
+.dltitbg{background:#fff8ec; border:1px solid #f4640b; border-top:none; height:30px; line-height:30px;}
+.dltitbg dd, .dltit dd{ float:left;text-align:center;} 
+.dltit{ border-bottom:1px dashed #dadde4; height:40px; line-height:40px;}
+.width490{ width:490px; }
+.width110{ width:110px; }
+.width178{ width:178px; }
+.upage1{ margin:10px auto 0px auto; width:700px; }
+.upage1 ul li{ float:left; padding:5px 10px; border:1px solid #ccc; margin-right:10px;}
+.upage1 select{ margin-top:5px;}
+.upage1 ul li a:link{color:#1d4fa1; text-decoration:none;}
+.upage1 ul li a:hover{color:#f4650a; text-decoration:none;}
+.rentroom{ margin-top:10px; border:1px solid #e2dedc;}
+.rentroombg{ height:40px; background:url(https://assets.muniao.com/assets/2013/image/user/bgfentroom.jpg) repeat-x 0px 0px; line-height:40px; padding:0px 20px;}
+.rentroomL{ float:left; padding:0px 30px 10px 70px; width:448px; margin-top:20px;}
+.rentroomL p{ line-height:24px;}
+.rentroomR{ float:left; width:350px; border-left:1px dashed #e2dedc;padding:00px 20px 10px 50px; height:140px; margin-top:20px;}
+.rentroomR img{ border:1px solid #f4650a; padding:2px; float:left;}
+.linkman{ float:left; margin-left:20px; width:210px; line-height:28px; padding-top:20px;}
+.linkmanbtn{ background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -483px 0px; width:110px; height:23px; color:#fff; float:left; margin-left:10px; border:none;}
+.messageT{ border-bottom:2px solid #f4640b; margin-top:10px;}
+.messageT h4{ height:33px; color:#f4640b; text-align:center; line-height:33px; width:110px; background:#f9f9f9; border-top:1px solid #dadde4;
+ border-left:1px solid #dadde4;  border-right:1px solid #dadde4;}
+.messagecon textarea{ border:1px solid #7e9db9; width:988px; height:100px; margin-top:10px; padding:5px;}
+.messagediv{ float:right; margin-top:10px;}
+.mesfont{ float:left; line-height:24px; width:205px; color:#f00;}
+.messagebtn{ background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -483px 0px; width:110px; height:23px; color:#fff; float:left; margin-left:10px; border:none;}
+.other{ margin-top:10px; width:1000px;}
+.other ul li{ background:#fbf6f0; }
+.other dl{background:#f7ede0; width:990px; height:34px; padding:0px 5px;}
+.other dl dd{float:left; width:30%; line-height:34px; color:#db4f33;}
+.other dl dd a{color:#db4f33; text-decoration:none;}
+.other li p{ padding:7px 5px; line-height:24px;}
+/* 锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.order{ width:1000px; margin:10px auto;}
+.orderT{ color:#909090;}
+.orderT a{ color:#666; text-decoration:none; line-height:24px;}
+.procedure{ height:30px; margin-top:10px; padding-bottom:15px;}
+.procedure li{float:left; text-align:center; font-size:14px; height:45px;}
+.procedure li a{font-size:14px;color:#666; text-decoration:none;}
+.procedure li a:visited{font-size:14px;color:#f4640b; font-weight:bold; text-decoration:none; }
+.probg{background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -5px 0px; width:200px; height:26px; line-height:26px; text-align:center; margin-top:5px;}
+.probg1{background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -215px 0px; width:200px; height:26px; line-height:26px; text-align:center; color:#fff; margin-top:5px;}
+
+.Procedure{ height:30px; margin-top:10px; padding-bottom:20px;}
+.Procedure li{float:left; text-align:center; font-size:14px;}
+.Procedure li a{font-size:14px;color:#666; text-decoration:none; text-align:center;}
+.Procedure li a:visited{font-size:14px;color:#f4640b; font-weight:bold; text-decoration:none; }
+.Probg{background:url(https://assets.muniao.com/assets/2013/image/user/bgorder.png) no-repeat -43px -32px; width:250px; height:28px; line-height:28px; text-align:center;}
+.Probg1{background:url(https://assets.muniao.com/assets/2013/image/user/bgorder.png) no-repeat -309px -32px; width:250px; height:28px; text-align:center; line-height:28px; color:#fff;}
+
+
+.ordercon{border:1px solid #f0f0f0;border-bottom:3px solid #f0f0f0; margin-top:12px; float:left; padding-bottom:10px;width:756px; background:#fff;}
+.orderconT{width:709px; height:25px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat 0px -27px; font-size:14px;color:#f4640b; font-weight:bold; padding-top:10px;
+padding-left:47px; margin-top:10px;}
+.housing{ margin-top:10px;}
+.bgimg{ float:left; width:175px; height:129px; padding:6px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.housing p{ line-height:24px;}
+.ordernews{position:relative;}
+.bgordernews{ background:#fff8ed; border-bottom:1px solid #f5d0a4;}
+.bgQ{width:60px;height:27px;background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -423px 0px;position:absolute;top:-3px;left:735px;}
+.tdB{ border-bottom:1px solid #eeeeee; border-right:1px solid #eeeeee;}
+.detail{width:517px;position:absolute;background:#fff;left:325px;top:70px;display:none; max-height:300px; _height:300px; overflow-y:scroll;
+ overflow-x:hidden;word-wrap:break-word; border-top:1px solid #ddd;/*2013-9-2*/}
+.detail table{ border-left:1px solid #d2d2d2; border-top:1px solid #d2d2d2; margin-top:10px;}
+.detail table td{border-bottom:1px solid #d2d2d2; border-right:1px solid #d2d2d2;}
+.retreat{ padding:10px 5px 0px 5px;}
+.attention{ padding:10px; background:#fff8ed; border:1px solid #f5d0a6;}
+.retreat ul li{ margin-top:15px; margin-left:30px;}
+.retreat ul li img{ margin-right:5px;}
+.renter ul li{ margin-top:15px; margin-left:20px;}
+.renter ul li span{margin-right:5px;}
+.inputB{ height:20px; width:149px; border:1px solid #dedede; line-height:20px; padding-left:2px;}
+.inputBlue{ height:20px; width:149px; border:2px solid #37a8e2; line-height:20px; padding-left:2px;}
+.cue{ float:left; width:396px; height:32px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat 0px -62px; margin-top:47px; margin-left:10px; padding:5px 5px 5px 15px;line-height:16px;}
+.renterbtn{ width:310px; height:34px; background:url(https://assets.muniao.com/assets/2013/image/user/bgRconRbtn.jpg) no-repeat 0px 0px; color:#fff; font-weight:bold; font-size:14px;
+margin:10px 0px 10px 190px; border:none;}
+.renter p{ margin-left:265px;}
+.rentertext{ width:702px; height:140px; margin:10px 17px 0px 17px; padding:10px; line-height:20px; color:#666;font-size:14px;}
+.orderR{ float:right; width:230px;}
+.orderRtel{ border:1px solid #dedede; padding:10px; color:#2050a4; margin-top:10px; background:#fff;}
+.orderRts{ color:#f00; padding:10px; line-height:24px; width:210px; height:237px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -766px 0px; margin-top:10px;}
+.orderRlc{margin-top:10px; border:1px solid #dedede; padding-bottom:10px; background:#fff; }
+.orderRlct{background:#d8d8d8; height:32px; border-bottom:1px solid #dedede; font-size:14px; font-weight:bold; line-height:32px; padding-left:10px;}
+.orderRlc ul li{margin-top:15px;margin-left:10px;width:209px; font-size:14px; font-weight:bold; color:#333;}
+.bglia{height:51px; line-height:51px; padding-left:49px; background:url(https://assets.muniao.com/assets/2013/image/user/100.jpg) no-repeat 0px 0px;}
+.bglib{height:37px; line-height:37px; padding-left:49px; background:url(https://assets.muniao.com/assets/2013/image/user/101.jpg) no-repeat 0px 0px;}
+.bglic{height:38px; line-height:38px; padding-left:49px; background:url(https://assets.muniao.com/assets/2013/image/user/102.jpg) no-repeat 0px 0px;}
+.bgli{background:#d8d8d8;}
+.bgli1{background:#f4650a; color:#fff;}
+.font{padding:20px 0px; text-align:center; border-bottom:1px solid #f0f0f0;}
+.rent p{background:#fff7eb; line-height:36px;  padding-left:30px; height:36px;}
+.rentp{ border-bottom:1px dashed #dedede;}
+.bank{border-top:2px solid #f46509;}
+.bank h4{ margin:10px 10px 10px 20px; color:#f46509;}
+.bank ul li{ margin-top:15px; margin-left:25px; _height:50px;}
+.bank dl dd{ float:left; width:25%;_width:165px;}
+.bank dl dd input{ margin-right:5px;}
+.bankbtn{  width:110px; height:23px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -483px 0px; font-size:12px; font-weight:bold; color:#fff; border:none;
+margin-bottom:30px;}
+.finish{ background:url(https://assets.muniao.com/assets/2013/image/user/bg2.jpg) no-repeat 300px 160px; height:240px; padding-top:170px; padding-left:370px;}
+.finish1{ background:url(https://assets.muniao.com/assets/2013/image/user/bg21.jpg) no-repeat 300px 160px; height:240px; padding-top:170px; padding-left:370px;}
+.m_0, .m_1, .m_2, .m_3, .m_8, .m_9, .m_10, .m_16, .m_19, .m_20, .m_22, .m_33, .m_34, .m_37, .m_38, .m_40, .m_44, .m_45, .m_46, .m_48 {
+    display: inline-block;
+}
+.m_4, .m_5, .m_6, .m_7, .m_11, .m_12, .m_13, .m_14, .m_15, .m_17, .m_18, .m_21, .m_23, .m_24, .m_25, .m_26, .m_27, .m_28, .m_29, .m_30, .m_31, .m_32, .m_35, .m_36, .m_39, .m_41, .m_42, .m_43, .m_47, .m_49 {
+    display: none;
+}
+
+
+/*锟斤拷锟斤拷锟斤拷台锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.userT{ height:22px; line-height:22px; width:1000px; margin:10px auto; border-bottom:1px solid #eee}
+.usercon{ width:1000px; height:auto; margin:auto;}
+.userL{ float:left; width:219px; background-color:#ffffff; height:auto; padding-bottom:12px;}
+.usernew{ border-top:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; background:#fff; text-align: center;}
+.usernew img{border:1px solid #eee; margin-right:10px; float:left;}
+.usernewbtn{ width:66px; height:22px; line-height:22px; margin:0 auto}
+.usidebar h4{padding-left:24px; margin-top:15px; margin-bottom:5px;}
+.usidebar img{ margin-right:10px; margin-left:20px;}
+.usidebar ul li{width:189px; height:16px; padding:7px 15px;font-size:14px;}
+.usidebar ul li a{ color:#666; text-decoration:none;}
+.usidebarlibg{  background-color:#ffffff;}
+.usidebarlibg1{background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat 0px -104px;}
+.usidebarimg{ margin-left:13px; margin-top:10px;}
+/*锟斤拷迎页锟斤拷
+-------------------------------------------------------------------*/
+.uwelcome{float:right;width:769px;height:auto}
+.users{  padding:15px 5px; position:relative; width:759px;}
+.users img{ border:1px solid #e5e5e5;}
+.mT5{ /*text-align:center;*/}
+.users p{ line-height:24px; }
+.users p a{ color:#1b50a0; text-decoration:none; margin-left:5px;}
+.usersT{ background:#fff8ec; border-top:2px solid #f4650a; border-bottom:1px solid #f4d0a5; height:30px; padding-top:10px; padding-left:10px;}
+.usersT span{ font: 12px/25px "锟斤拷锟斤拷";}
+.usersT h4{ float:left;  color: #333; font: 16px/18px "Microsoft YaHei";}
+.userscon{ width:100%;}
+.userscon li{ padding-left:10px;}
+.userscon dl{height:53px; line-height:53px;}
+.userscon dd{ float:left;}
+/*.userscon dd strong{ margin-right:5px;}*/
+.userscon dd a{ color:#666; text-decoration:none;}
+
+/*锟斤拷锟斤拷锟斤拷锟�
+-------------------------------------------------------------------*/
+.umanagemain{float:right;width:769px;}
+.userR{ float:right; width:769px; height:auto;}
+.no_fav{font: 20px/40px "Microsoft YaHei"; color: #d2d2d2;}
+.no_fav a{ font:12px/22px "锟斤拷锟斤拷"; color:#D2D2D2;}
+.no_fav a:hover{ color:#FF3300;}
+.userRtit{ border-bottom:2px solid #f4650a; height:32px;}
+.userRtit h4{ border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:95px; height:31px; line-height:31px; text-align:center;}
+
+/*.myorder{width:769px; height:auto; float:right;}
+.myordercon{ border-bottom:1px dashed #dadde4; padding-bottom:20px; width:756px;}*/
+
+.userRtit li{border:1px solid #dadde4; border-bottom:none; background:#f9f9f9; width:100px; height:30px; text-align:center; line-height:30px; font-weight:bold;
+font-size:14px; float:left; margin-right:3px;}
+.userRtit li a, .userRtit li a:link{color:#666; text-decoration:none;}
+.userRtit li a:hover{color:#f4650a;text-decoration:none;}
+
+.umanage{ height:auto;}
+.umanagecon{border-top:1px solid #f0f0f0; border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0; border-bottom:3px solid #f0f0f0; padding:10px; margin-bottom:15px; height:auto;background-color: #fff;}
+.ubgimg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.userp{ font-size:14px; margin:10px 0px 0px 20px;}
+.umanageR{ width:528px; border-bottom:1px dashed #efefef; padding-top:5px;}
+.uteam{ height:24px;}
+.uteam p{ color:#1d4fa1; line-height:24px; float:left;}
+.uteambtn{ width:68px; height:24px; line-height:24px; padding-left:30px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -219px -105px; float:left; margin-left:15px;}
+.uteambtn a,.uteambtn1 a,.uteambtn2 a,.umanageRbtn a,.umanageRbtn1 a{ color:#fff; text-decoration:none;}
+.uteambtn1{ width:83px; height:24px; line-height:24px; padding-left:30px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -325px -105px; float:left; 
+margin-left:10px;}
+.uteambtn2{ width:78px; height:24px; line-height:24px; padding-left:35px; background:url(https://assets.muniao.com/assets/2013/image/user/bgyi.jpg) no-repeat 0px 0px; float:left; 
+margin-left:10px;}
+.uprice img{ margin-right:20px;}
+.uprice span{ margin-right:5px;}
+.uprice strong{ color:#f00; font-size:18px;}
+.umanageRbtn{ width:58px; height:15px; line-height:15px; text-align:center; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -671px 0px; margin-top:5px;}
+.umanageRbtn1{ width:58px; height:15px; line-height:15px; text-align:center; background:url(https://assets.muniao.com/assets/2013/image/user/bgyi.jpg) no-repeat 0px -29px; margin-top:5px;}
+.umanagecon ul{ margin:0px;}
+.umanagecon ul li{width:90px; height:28px; text-align:center; line-height:28px; float:left; margin-right:10px; margin-top:5px;}
+.umanageconlibg {
+    position: relative;
+}
+#bitian {
+    display: inline-block;
+    position: absolute;
+    width: 82px;
+    height: 22px;
+    top: 33px;
+    left: 7px;
+    background: #484848;
+    border-radius: 6px;
+    border-top: 1px solid #cfcfcf;
+    color: #fff;
+    font-size: 12px;
+    line-height: 22px;
+}
+    #bitian:hover {
+        cursor: default;
+    }
+    .required:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #484848;
+        position: absolute;
+        top: -10px;
+        left: 15px;
+    }
+.umanagecon ul li a{ color:#666; text-decoration:none;}
+.umanageconlibg{ border:1px solid #e2e2e2; background:#f4f4f4;}
+.umanageconlibg1{ border:1px solid #f4d0a5; background:#fff8ec;}
+
+.upage{ margin:10px auto; }
+.upage ul li{ float:left; padding:5px 10px; border:1px solid #ccc; margin-right:10px;}
+.upage select{ margin-top:5px;}
+.upage ul li a:link{color:#1d4fa1; text-decoration:none;}
+.upage ul li a:hover{color:#f4650a; text-decoration:none;}
+.uhint{border:1px solid #f4d0a5; background:#fff8ec; float:right; width:749px; height:auto; padding:5px 10px 10px 10px; margin:10px auto;}
+.uhint h4{ float:left;}
+.uhintbtn{ float:right; background:#fcfbdd; border:1px solid #a7a7a7; width:41px; height:19px;}
+.uhint p{ margin-left:40px; line-height:24px;}
+
+/*锟斤拷锟斤拷嗉�
+-------------------------------------------------------------------*/
+.uedit{float:right;width:769px; margin-bottom:10px;}
+.ustep1{float:left; height:27px; width:250px; line-height:27px; text-align:center; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat 0px -134px; margin-top:10px;}
+.ustep2{float:left; height:27px; width:250px; line-height:27px; text-align:center; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -250px -134px; margin-top:10px;}
+.ustep3{float:left; height:27px; width:251px; line-height:27px; text-align:center; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -500px -134px; margin-top:10px;}
+.ustep1 a,.ustep2 a,.ustep3 a{ color:#666; text-decoration:none;}
+.ueditcon{ width:749px; padding-right:10px; padding-top:10px;}
+.ueditcon h4{ margin-left:15px;}
+
+.selectbg{border:1px solid #7f9db9;width:85px;height:20px; z-index:1;}
+.select{width:85px;height:20px;*height:auto; border:none;}
+
+
+.textB{border:1px solid #7f9db9; width:60px; height:20px; line-height:20px; padding-left:2px; margin-right:5px;}
+.textB1{border:1px solid #7f9db9; width:150px; height:20px; line-height:20px; padding-left:2px; margin-right:5px;}
+.textB2{border:1px solid #7f9db9; width:350px; height:20px; line-height:20px; padding-left:2px; margin-right:5px;}
+.textareaB{border:1px solid #7f9db9; width:605px; height:150px; margin-right:2px;}
+.textareaB1{border:1px solid #7f9db9; width:605px; height:70px; margin-right:2px;}
+.ueditcon td p{ line-height:24px;}
+.ueditbtn{ width:132px; height:38px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -441px -94px; font-size:14px; color:#fff; font-weight:bold; border:none;}
+.ueditbtn1{ width:132px; height:38px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -573px -94px; font-size:14px; color:#333;font-weight:bold; border:none; margin-left:20px;}
+.upload{ width:58px; height:27px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -533px -162px; line-height:27px; padding-left:27px; float:left; margin-right:5px;}
+.uploadimg{ float:left; width:187px; height:187px; border:1px solid #ddd; padding:1px;}
+.uploadlist{ float:left; width:400px; margin-left:10px;}
+.uploadlist li{ float:left; width:25%; margin-bottom:10px;}
+.uploadlist li img{border:1px solid #ddd; width:90px; height:92px; padding:1px;}
+.uploadlist li p{width:90px; height:20px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -620px -162px; line-height:20px; text-align:center; margin-top:5px;}
+.uploadlist li p a{ color:#666; text-decoration:none;}
+/*锟介看锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.calendar{float:right;width:769px; margin-bottom:10px;}
+.calendarcon{ padding-left:65px; padding-top:15px;}
+.udateL{ width:559px; float:left;}
+.udatetit{ width:559px; height:68px; background:url(../../images/bgrilitit.jpg) no-repeat 0px 0px;}
+.udatetit li{ float:left; margin-top:22px; text-align:center;}
+.udatebor{border-left:#e6e6e6 solid 1px;} 
+.ucondate td{height:60px; width:70px;}
+.ucondate td div{ font-weight:80;}
+.ucondate td span{ color:#ff6600;}
+#udateborweek{border-bottom:#e6e6e6 solid 1px; border-right:none; height:23px; text-align:center; color:#585858;}
+.udateborpast{ background:#f9f9f9; color:#b3b3b3; border-right:#cecece solid 1px;border-bottom:#cecece solid 1px; padding:2px;}
+.udatebornow{ background:#f3ffe3; color:#666; border-right:#cecece solid 1px;border-bottom:#cecece solid 1px; padding:2px;}
+.udatebornow label,.udateborpast label{ font-size:14px;font-weight:bolder;}
+.udateborpromotion{background:url(../images/bgtd.jpg) no-repeat 0px 0px; color:#333333;}
+.udatediv{width:100%;text-align:center;}
+.udateinput{width:35px; height:16px; border:1px solid #63c1f1;text-align:center;}
+.udatediv1{margin-top:2px; text-align:center;}
+.udateinput1{width:30px; height:16px; border:1px solid #cecece;text-align:center;margin:0 1px;}
+.udateR{ float:left;margin-left:20px; margin-top:20px;}
+.udateR li{ margin-bottom:5px;line-height:24px;}
+.udatebookbg{ background:#dedede; width:540px; height:43px; padding:10px;}
+.udatebook{ background:url(https://assets.muniao.com/assets/2013/image/user/bgdateyd.jpg) no-repeat 0px 0px; width:504px; height:43px; line-height:43px; color:#313131; font-size:14px; 
+font-weight:bold; padding:0px 18px;}
+.udatebookbtn{ width:87px; height:26px; margin-left:0px; background:url(https://assets.muniao.com/assets/2013/image/user/bgbtnyd.jpg) no-repeat 0px 0px; border:none;}
+.udatebot{ margin-top:15px; padding-left:30px;  position:relative; height:350px;}
+.udatebot p{ margin-left:90px; color:#f00; font-size:14px; margin-bottom:10px;}
+.udatebot ul li{ float:left; line-height:20px;}
+.uinput1{ width:110px; height:20px; border:2px solid #3f99ce; line-height:20px; background:url(https://assets.muniao.com/assets/2013/image/user/bgtext.jpg) no-repeat 93px center;}
+.uinput{ width:110px; height:20px; border:1px solid #7f9db9; line-height:20px; background:url(https://assets.muniao.com/assets/2013/image/user/bgtext.jpg) no-repeat 93px center;}
+.uinput2{ width:60px; height:20px; border:1px solid #7f9db9; line-height:20px;}
+.div1{width:217px; clear:both; position:absolute; top:10px; left:-378px;}
+
+/*锟斤拷锟斤拷锟截硷拷
+-------------------------------------------------------------------*/
+.userprice{width:769px; height:auto; float:right;}
+.userpricecon{border-top:1px solid #f0f0f0; border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0; border-bottom:3px solid #f0f0f0; 
+padding:15px 0px 10px 25px; margin-bottom:15px; height:auto;}
+.ubgimg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.userp{ font-size:14px; margin:10px 0px 0px 20px;}
+.userpriceR{ width:528px; border-bottom:1px dashed #cbcbcb; padding-top:5px; margin-bottom:8px;}
+.usale{ margin-top:20px;}
+.usale li{ float:left;}
+.usale span{ color:#f00; font-size:20px; font-weight:bold;}
+.usaleinput{ width:50px; height:18px; border:2px solid #6ebae1; line-height:18px; margin-right:5px;}
+.usaleselect{width:65px; height:20px; border:1px solid #dedede; line-height:18px; margin-right:5px; margin-left:5px;}
+
+/*锟揭的讹拷锟斤拷
+-------------------------------------------------------------------*/
+.myorder{width:769px; height:auto; float:right;}
+.myordercon{ border-bottom:1px dashed #dadde4; padding-bottom:20px; width:100%; margin:10px auto;}
+.myordercon li{border:1px solid #dadde4; border-bottom:none; background:#f9f9f9; width:100px; height:30px; text-align:center; line-height:30px; font-weight:bold;
+font-size:14px; float:left; margin-right:3px;}
+.myordercon li a, .myordercon li a:link{color:#666; text-decoration:none;}
+.myordercon li a:hover,.myorderT li a:visited {color:#f4650a;text-decoration:none;}
+.myordercon table{border-left:1px solid #f0f0f0; }
+.myordertd1{border-top:2px solid #f4650a; border-bottom:1px solid #f4d0a5; background:#fff8ec;}
+.myordertd2{border-top:2px solid #f4650a; border-bottom:1px solid #f4d0a5; background:#fff8ec;border-right:1px solid #f0f0f0;}
+.myordertd{border-right:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;}
+.myorderimgbg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.myordercon p{ line-height:24px;}
+.mydetails{width:769px; height:auto; float:right;}
+.mydetailscon{width:756px;}
+.mydetailsT{ border-bottom:2px solid #f4650a; height:32px;}
+.mydetailsT h4{ border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:120px; height:31px; line-height:31px; text-align:center;}
+.mydetailscon table{border-left:1px solid #dcdcdc; margin-bottom:20px;}
+.mydetailscon td{ border-bottom:1px solid #dcdcdc;border-right:1px solid #dcdcdc; padding-left:20px;}
+.mydetailscon p{ line-height:24px;}
+.upage666{ margin:10px auto;height: auto; }
+/*锟揭碉拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.myassess{width:769px; height:auto; float:right;}
+.myassesscon{ border-bottom:1px dashed #dadde4; padding-bottom:20px; width:756px;}
+.myassessT{ border-bottom:2px solid #f4650a; height:32px;}
+.myassessT h4{ border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:120px; height:31px; line-height:31px; text-align:center;}
+.myassesscon table{border-left:1px solid #f0f0f0; }
+.myassesstd1{ border-bottom:1px solid #f4d0a5; background:#fff8ec;}
+.myassesstd2{ border-bottom:1px solid #f4d0a5; background:#fff8ec;border-right:1px solid #f0f0f0;}
+.myassesstd{border-right:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;}
+.myassessimgbg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.myassesscon p{ line-height:24px;}
+.myassesstext{ width:120px; height:131px; border:1px solid #7f9db9; margin-left:10px; margin-bottom:10px; padding:5px;}
+
+/*锟狡硷拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.ugroom{float:right;width:769px;}
+.ugroomcon{border-top:1px solid #f0f0f0; border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0; border-bottom:3px solid #f0f0f0; 
+padding:15px 0px 13px 25px; margin-bottom:15px; height:auto;}
+.ugroombgimg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.ugroomserp{ font-size:14px; margin:10px 0px 0px 20px;}
+.ugroomR{ width:528px; border-bottom:1px dashed #cbcbcb; padding-top:5px; margin-bottom:5px;}
+.ugroomteam{ height:24px;}
+.ugroomteam p{ color:#1d4fa1; line-height:24px; float:left;}
+.ugroombtn a,.ugroombtn1 a,.ugroomRbtn a{ color:#fff; text-decoration:none;}
+.ugroombtn{ width:83px; height:24px; line-height:24px; padding-left:30px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -325px -105px; float:left; 
+margin-right:10px;}
+.ugroombtn1{ width:80px; height:24px; line-height:24px; padding-left:30px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -211px -161px; float:left; 
+margin-right:10px;}
+.ugprice img{ margin-right:72px;}
+.ugprice span{ color:#f00; font-size:18px;}
+
+/*锟狡硷拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.unearby{float:right;width:769px;}
+.unearbyT{border-bottom:2px solid #f4650a; height:32px;}
+.unearbyT h4{ border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:140px; height:31px; line-height:31px; text-align:center;}
+.unearbyR{border-bottom:1px dashed #cbcbcb; padding-bottom:15px;}
+.unearbycon{border-top:1px solid #f0f0f0; border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0; border-bottom:3px solid #f0f0f0; 
+padding:15px 0px 10px 25px; margin-bottom:15px; height:auto;}
+.unearbyconL{ float:left;}
+.unearbybgimg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.unearbyserp{ font-size:14px; margin:10px 0px 0px 20px;}
+.unearbyconR{ float:left; margin-left:20px; border-bottom:1px dashed #cbcbcb; padding-top:5px; width:500px; _width:478px;}
+.unearbysale{ margin-top:20px;}
+.unearbysale li{ float:left; margin-right:20px;}
+.unearbysale span{ color:#f00; font-size:20px; font-weight:bold;}
+/*锟斤拷锟�9.12*/
+.tjbtn{ width:155px; height:23px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) 0px -196px no-repeat; line-height:23px; padding-left:23px; margin-bottom:10px; clear:both;}
+/*锟绞达拷锟斤拷锟�
+-------------------------------------------------------------------*/
+.uAsk{float:right;width:769px;}
+.uAskcon{border-bottom:1px dashed #cbcbcb; padding-bottom:15px;}
+.uAskconbg{border-top:1px solid #f0f0f0; border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0; border-bottom:3px solid #f0f0f0; 
+padding:15px 0px 10px 25px; margin-bottom:15px; height:auto;}
+.uAskconL{ float:left;}
+.uAskconbgimg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.uAskconL p{ font-size:14px; margin-left:30px; margin-top:10px;}
+.uAskconM{ float:left; margin-left:30px; width:325px; padding:15px 0px; line-height:24px;}
+.uAskconR{ float:left; width:110px; margin-left:30px; line-height:24px; padding:35px 0px;}
+
+/*锟绞达拷锟斤拷锟截达拷
+-------------------------------------------------------------------*/
+.uQandA{float:right;width:769px;}
+.uQandAR{border-bottom:1px dashed #cbcbcb; padding-bottom:15px;}
+.uQandAbg{border-top:1px solid #f0f0f0; border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0; border-bottom:3px solid #f0f0f0; 
+padding:15px 0px 10px 25px; margin-bottom:15px; height:auto;}
+.uQandAcon{border-bottom:1px dashed #cbcbcb; padding-bottom:15px;}
+.uQandAconL{ float:left;}
+.uQandAconR{float:left; margin-left:20px;padding-top:5px; width:500px; _width:478px;}
+.uQandAconR strong{ color:#f00;font-size:20px;}
+.uQandAbgimg{ width:175px; height:129px; padding:7px; background:url(https://assets.muniao.com/assets/2013/image/user/bgimg.jpg) no-repeat 0px 0px;}
+.uQandAcon p{ line-height:24px;}
+.uQandAA{border-bottom:1px dashed #cbcbcb; padding-bottom:10px; padding-top:10px; padding-right:5px;}
+.uQandAAL{ float:left; width:635px;}
+.uQandAA p{ line-height:24px;}
+.uQandAtime{ color:#989898;}
+.uQandAApdiv{ margin-left:15px; padding:5px; width:695px; background:#f5f5f5;}
+.uQandAAR{float:right; background:url(https://assets.muniao.com/assets/2013/image/user/bghuifu.jpg) no-repeat 0px 0px; padding-left:21px; height:14px; padding-top:2px;}
+.uQandAQ{ padding-bottom:10px; padding-top:10px; padding-right:5px;}
+.uQandAQL{ float:left; width:635px;}
+.uQandAQ p{ line-height:24px;}
+.uQandAtime{ color:#989898;}
+.uQandAQR{float:right; background:url(https://assets.muniao.com/assets/2013/image/user/bghuifu.jpg) no-repeat 0px 0px; padding-left:21px; height:14px; padding-top:2px;}
+.uQandAQtext{border:1px solid #7f9db9; width:635px; height:50px; padding:5px;}
+.uQandAQbtn{ width:110px; height:23px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -483px 0px; margin-top:10px; margin-left:290px; line-height:23px; 
+text-align:center;}
+
+/*锟斤拷锟斤拷锟斤拷息锟叫憋拷
+-------------------------------------------------------------------*/
+.uforrent{ float:right;width:769px;}
+.uforrentS{ border:1px solid #dadde4; margin-bottom:10px;_width:759px;}
+.uforrentT{ height:32px; padding-left:20px; border-bottom:1px solid #dadde4;}
+.uforrentT h4{margin-top:10px; float:left;}
+.uforrentT a{ color:#666; text-decoration:none; float:left; margin-top:12px; margin-left:5px;}
+.upriceS{ border-bottom:1px solid #fafafa; padding:10px 20px 10px 20px; _padding-bottom:0px;}
+.upriceS a{ float:left; margin:0px 7px; color:#666; text-decoration:none;}
+.upriceS a:visited{color:#f4640b; text-decoration:none;}
+.uforrenttit{ border-bottom:2px solid #f4650a; height:32px;}
+.uforrenttit h4{ border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:120px; height:31px; line-height:31px; text-align:center;}
+.urentnews{_width:759px;}
+.urentnews li{ height:32px;}
+.udlbg{ background:#fff8ec; height:30px; border-bottom:1px solid #f4d0a5;}
+.urentnews dd{ float:left; line-height:32px; text-align:center;}
+.width460{ width:460px;}
+.width70{width:70px;}
+.width80{width:80px;}
+.width140{width:140px;}
+.udlB{ border-bottom:1px dashed #dadde4}
+
+/*锟斤拷锟斤拷锟斤拷息锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.urentcon{ float:right;width:769px;}
+.urentuser{ border:1px solid #eee; background:#fefefe; margin-bottom:10px;_width:757px;}
+.urentuserL{ width:350px; padding:10px; float:left;  border-right:1px dashed #eee; }
+.urentuserL p{ line-height:24px;}
+.urentuserR{float:left; padding:15px 10px;width:355px;}
+.urentuserbg{ width:99px; height:110px; background:url(https://assets.muniao.com/assets/2013/image/user/userbg.jpg) no-repeat 0px 0px; padding:2px 8px 7px 2px; float:left;}
+.urentusernew{ float:left; margin-left:10px; padding-top:5px; width:210px;}
+.urentusernew p{ line-height:26px;}
+.urenttelbtn{ background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -325px -162px; width:83px; height:23px; margin-left:10px; padding-left:30px; float:left; 
+line-height:23px;}
+.urentcontext{ height:80px; width:757px;margin-top:10px; border:1px solid #7f9db9;}
+.urentcontbtn{ float:right; margin-top:10px; width:92px; height:25px; text-align:center; line-height:25px; font-size:14px; font-weight:bold;
+background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -439px -163px;}
+.urentlist{ margin-top:10px; padding-bottom:15px;}
+.urentlistT{height:32px;border-bottom:2px solid #f4650a;}
+.urentlistT h4{ border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:116px; height:31px; line-height:31px; text-align:center;}
+.urentlist ul li{ margin-top:15px; padding:5px 10px;  border-bottom:1px dashed #dadde4;_width:720px;}
+.urentlist li p{ line-height:24px;}
+.urentlist li dd{ float:left; margin-right:20px; line-height:30px;}
+
+/*锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.uranking{ float:right;width:769px;}
+.urankingT{height:32px;border-bottom:2px solid #f4650a;}
+.urankingT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:140px; height:31px; line-height:31px; text-align:center;}
+.urankingcon{ height:250px; padding-bottom:10px; background:url(https://assets.muniao.com/assets/2013/image/user/bgank.jpg) no-repeat 0px 10px; padding-left:66px;}
+.urankingcon ul{ margin-top:10px;}
+.urankingcon li{height:36px; padding-top:15px;}
+:root body .urankingcon li{height:31px; padding-top:20px;}
+
+/*锟斤拷锟劫匡拷通锟斤拷锟斤拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.ushop{ float:right;width:769px;}
+.ushopT{height:32px;border-bottom:2px solid #f4650a;}
+.ushopT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:120px; height:31px; line-height:31px; text-align:center;}
+.ushopcon{margin-top:10px;}
+.ushopconp{font-size:16px;font-weight:bold;font-family:"微锟斤拷锟脚猴拷";color:#f4650a;margin-top:10px;margin-bottom:10px;font-style: italic;}
+.ushopconT{ height:24px; background:url(https://assets.muniao.com/assets/2013/image/user/ubgshopT.jpg) no-repeat 0px 0px; padding-left:18px; line-height:24px;}
+.ushophint{ padding:10px 10px 5px 10px;*padding-bottom:0px; *+padding-bottom:0px; margin-top:10px;border:1px solid #f4d0a5; background:#fff8ec;}
+.ushopcon1{ width:685px; height:63px; background:url(https://assets.muniao.com/assets/2013/image/user/bgshopcon.jpg) no-repeat 0px 0px; margin-top:10px; padding-left:72px; padding-top:21px;}
+.ushopcon1 h4{ margin-bottom:10px;}
+.ushopselB{border:1px solid #7f9db9;width:55px;height:20px;}
+.ushopsel{width:55px;height:20px;*height:auto; border:none;}
+.ushopselB1{border:1px solid #7f9db9;width:65px;height:20px;}
+.ushopsel1{width:85px;height:20px;*height:auto; border:none;}
+.ushopcon2{ width:685px; height:63px; background:url(https://assets.muniao.com/assets/2013/image/user/bgshopcon.jpg) no-repeat 0px -92px; margin-top:10px; padding-left:72px; padding-top:21px;}
+.ushopcon2 h4{ margin-bottom:10px;}
+.ushopcon3{ width:755px; height:auto; background:#fbfbfb; border:1px solid #ddd; margin-top:10px; }
+.ushopcon4{background:url(https://assets.muniao.com/assets/2013/image/user/bgshopcon1.jpg) no-repeat 0px 0px;padding-left:72px; padding-top:21px;}
+.ushopselB{border:1px solid #7f9db9;width:55px;height:20px;}
+.ushopcon3 li{ margin-left:5px; _height:50px; clear:both;}
+.ushopcon3 dd{ float:left; width:23%;_width:165px; margin-top:10px;}
+.ushopcon3 dd input{ margin-right:5px;}
+
+/*锟斤拷锟劫匡拷通锟斤拷锟斤拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.umember{ float:right;width:769px;}
+.umemberT{height:32px;border-bottom:2px solid #f4650a;}
+.umemberT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:140px; height:31px; line-height:31px; text-align:center;}
+.umembercon{ margin-top:10px;}
+.umemberhint{ padding:10px 10px 10px 28px;margin-top:10px;border:1px solid #ff8080; background:#fff2f2;
+background:url(https://assets.muniao.com/assets/2013/image/user/bghint1.jpg) no-repeat 12px 13px; }
+
+/*锟斤拷400锟界话锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.utel{ float:right;width:769px;}
+.utelT{height:32px;border-bottom:2px solid #f4650a;}
+.utelT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:160px; height:31px; line-height:31px; text-align:center;}
+.utelhint{ padding:10px;margin-top:10px;border:1px solid #f4d0a5; background:#fff8ec; margin-bottom:10px;}
+.utelB{border:1px solid #7f9db9;width:120px;height:24px; margin-left:35px;}
+.utelbor1{border-top:1px solid #dadde4; border-left:1px solid #dadde4;}
+.utelbor{border-bottom:1px solid #dadde4; border-right:1px solid #dadde4;}
+.utelhint1{ padding:10px;margin-top:10px;border:1px dashed #f4d0a5; background:#fff8ec; margin-bottom:10px;}
+.utelhint1 p{ margin-left:19px; line-height:24px;}
+
+/*锟揭碉拷锟斤拷锟�
+-------------------------------------------------------------------*/
+.umymoney{width:769px; height:auto; float:right;}
+.umymoneycon{ width:100%;}
+.umymoneyT{ border-bottom:2px solid #f4650a; height:31px;}
+.umymoneyT li{border:1px solid #dadde4; border-bottom:none; background:#f9f9f9; width:100px; height:30px; text-align:center; line-height:30px; font-weight:bold;font-size:14px; float:left; margin-right:3px;}
+.umymoneyT li a, .umymoneyT li a:link {color:#666; text-decoration:none;}
+.umymoneyT li a:hover,.myorderT li a:visited{color:#f4650a;text-decoration:none;}
+.umymoneybg{border-top:1px solid #f0f0f0; border-left:1px solid #f0f0f0; border-right:1px solid #f0f0f0; border-bottom:3px solid #f0f0f0; 
+padding:15px 0px 10px 25px; height:auto;}
+.umymoneyp{ font-size:14px; font-weight:bold; float:left;}
+.umymoneyp span{font-size:20px; color:#f00; }
+.umymoneypbtn{ float:left; margin-left:15px; text-align:center; line-height:24px; width:110px; height:24px; 
+background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -484px 0px;}
+.umymoneyinput{border:1px solid #dedede; margin-right:5px; height:20px; width:80px;}
+.umymoneytext{border:1px solid #dedede; height:50px; width:300px;}
+.umymoneypbtn1{text-align:center; line-height:25px; width:92px; height:25px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -440px -163px; }
+
+/*锟揭碉拷锟斤拷锟斤拷锟较�
+-------------------------------------------------------------------*/
+.udetail{width:769px; height:auto; float:right;}
+.udetailcon{ border-bottom:1px dashed #dadde4; padding-bottom:15px; width:756px;}
+.udetailT{ border-bottom:2px solid #f4650a; height:31px;}
+.udetailT li{border:1px solid #dadde4; border-bottom:none; background:#f9f9f9; width:100px; height:30px; text-align:center; line-height:30px; font-weight:bold;font-size:14px; float:left; margin-right:3px;}
+.udetailT li a, .udetailT li a:link{color:#666; text-decoration:none;}
+.udetailT li a:hover,.myorderT li a:visited {color:#f4650a;text-decoration:none;}
+.udetailbg{border-left:1px solid #d5d5d5;}
+.udetailtr{ border-bottom:1px solid #f4d0a5;}
+.udetailtr1{border-right:1px solid #d5d5d5; border-bottom:1px solid #f4d0a5;}
+.udetailtd{border-right:1px solid #d5d5d5; border-bottom:1px solid #d5d5d5;}
+
+/*锟揭碉拷锟斤拷壹锟铰�
+-------------------------------------------------------------------*/
+.urecord{width:769px; height:auto; float:right;}
+.urecordcon{ border-bottom:1px dashed #dadde4; padding-bottom:15px; width:758px;}
+.urecordT{ border-bottom:2px solid #f4650a; height:31px;}
+.urecordT li{border:1px solid #dadde4; border-bottom:none; background:#f9f9f9; width:100px; height:30px; text-align:center; line-height:30px; font-weight:bold;font-size:14px; float:left; margin-right:3px;}
+.urecordT li a, .urecordT li a:link{color:#666; text-decoration:none;}
+.urecordT li a:hover, .myorderT li a:visited {color:#f4650a;text-decoration:none;}
+.urecordbg{border-left:1px solid #d5d5d5;}
+.urecordtr{ border-bottom:1px solid #f4d0a5;}
+.urecordtr1{border-right:1px solid #d5d5d5; border-bottom:1px solid #f4d0a5;}
+.urecordtd{border-right:1px solid #d5d5d5; border-bottom:1px solid #d5d5d5;}
+
+/*锟斤拷锟狡革拷锟斤拷锟斤拷息
+-------------------------------------------------------------------*/
+.uinfo{ float:right;width:769px;}
+.uinfoT{height:32px;border-bottom:2px solid #f4650a;}
+.uinfoT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:110px; height:31px; line-height:31px; text-align:center;}
+.uinfo table{ border-left:1px solid #dcdcdc; border-top:1px solid #dcdcdc; margin-top:10px;}
+.uinfotd{border-right:1px solid #dcdcdc; border-left:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc; }
+.uinfoimg{ float:left; padding:1px; border:1px solid #dcdcdc;margin-left:5px; display:block;}
+.uinfoinput1{ border:1px solid #dcdcdc; width:150px; height:20px; float:left; margin-left:5px; margin-top:37px;}
+.uinfoinput{ border:1px solid #dcdcdc; width:150px; height:24px;margin-left:5px;}
+.uinfobtn{ float:left; margin-left:5px; margin-top:37px;}
+.uinfop{ margin-top:45px; margin-left:5px; float:left;}
+.uinfobtn1{ margin-left:5px; margin-top:15px; margin-bottom:10px; margin-left:280px; width:132px; height:40px; font-size:14px; font-weight:bold; 
+text-align:center; line-height:40px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -441px -94px;}
+
+
+/*锟睫革拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.upassword{ float:right;width:769px;}
+.upasswordT{height:32px;border-bottom:2px solid #f4650a;}
+.upasswordT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:80px; height:31px; line-height:31px; text-align:center;}
+.upassword table{ margin-top: 10px; border: 1px solid #d2d2d2;}
+.upasswordinput{border:1px solid #dcdcdc; width:230px; height:24px;margin-left:5px; margin-right:5px;} 
+.upasswordinput1{border:1px solid #6ebae1; width:230px; height:24px;margin-left:5px; margin-right:5px;}
+
+/*支锟斤拷锟斤拷式
+-------------------------------------------------------------------*/
+.upay{ float:right;width:769px;}
+.upayT{height:32px;border-bottom:2px solid #f4650a;}
+.upayT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:80px; height:31px; line-height:31px; text-align:center;}
+.upayselB{ width:100%; height:40px; line-height:40px}
+.upayse_title{width: 100px;display: inline-block; text-align: right; float:left; height:26px; line-height:26px;}
+.upayse_phone{height: 80px;}
+.upaysel{width:230px; height:26px; border:1px solid #d2d2d2;}
+.upayinput{border:1px solid #dcdcdc; width:230px; height:24px; line-height:24px; text-indent:5px} 
+.upayinput1{border:2px solid #6ebae1; width:230px; height:24px; text-indent:5px}
+.upaycon{border: 1px solid #d2d2d2;padding: 7px;margin: 10px auto;}
+.upaycon1{ margin-left:50px;}
+.upaycon2{ margin-left:50px;}
+.upaycon3{ margin-left:50px;}
+.upaybtn{ margin-left:5px; margin-top:15px; margin-bottom:10px; margin-left:120px; width:132px; height:40px; font-size:14px; font-weight:bold; 
+text-align:center; line-height:40px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -441px -94px;}
+ 
+/*锟斤拷锟�9.13*/
+.myassessM{ float:left; margin-left:10px; width:280px; line-height:24px;}
+.myassessM ul{ margin-top:5px;}
+.myassessM li{ width:280px; margin-top:5px;}
+.myassessM dd{ float:left; margin-right:5px;}
+.myassessMdd{ cursor:pointer;height:18px; width:19px; background:url(https://assets.muniao.com/assets/2013/image/user/bgico35.jpg) no-repeat 0px 0px;}
+.myassessMdd1{ cursor:pointer;height:18px; width:19px; background:url(https://assets.muniao.com/assets/2013/image/user/bgico36.jpg) no-repeat 0px 0px;}
+.myassessR{ float:left; width:233px;line-height:24px; }
+.masRtext{border:1px solid #7f9db9; width:230px; height:115px; padding:5px;}
+.masRbtn{width:110px; height:23px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -483px 0px; margin-top:10px; margin-left:60px; line-height:23px; 
+text-align:center;}
+.myordertd3{border-bottom:1px solid #f4d0a5; background:#fff8ec;}
+.myordertd4{border-bottom:1px solid #f4d0a5; background:#fff8ec;border-right:1px solid #f0f0f0;}
+.umymoneycon p{ line-height:24px;}
+.upaybtn1{margin-top:15px; margin-bottom:10px; margin-left:290px; width:132px; height:40px; font-size:14px; font-weight:bold; 
+text-align:center; line-height:40px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -441px -94px;}
+/*锟斤拷锟�9.23*/
+.ueditcon dl{ padding-left:70px;}
+.ueditcon dd{ float:left; width:25%; margin:5px 0px;}
+.roomcheckbox{ margin-right:5px;}
+/*锟斤拷锟�9.25*/
+.usercxhd{width:769px; height:auto; float:right;}
+.usercxhdcon{ padding-bottom:15px; width:758px;}
+.usercxhdcon li{height:35px; line-height:35px; border-bottom:1px dashed #ddd; padding:0px 10px;}
+.usercxhdcon li a{ color:#666; text-decoration:none; float:left;}
+.usercxhdcon li span{ float:right;}
+/*锟斤拷锟�9.27锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+-------------------------------------------------------------------*/
+.uweek{ float:right;width:769px;}
+.uweekT{height:32px;border-bottom:2px solid #f4650a;}
+.uweekT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:100px; height:31px; line-height:31px; text-align:center;}
+.uweekcon{ margin-left:20px;}
+.uweekcon ul li{ float:left; height:24px; line-height:24px; margin-top:10px; margin-right:10px;}
+.uwinput{border:1px solid #dadde4; width:150px; height:18px;}
+.uwtext{border:1px solid #dadde4; width:650px; height:100px;}
+.uwtime{ margin-top:15px; position:relative; margin-left:20px;}
+.udiv2{width:217px; clear:both; position:absolute; top:-20px; left:-451px;}
+.month{ border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5; width:204px;}
+.week{border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5; width:216px;}
+.day{border-top:1px solid #e5e5e5; border-left:1px solid #e5e5e5; width:217px;}
+/*锟斤拷锟�10.08*/
+.utop{ float:right;width:769px;}
+.utopT{height:32px;border-bottom:2px solid #f4650a;}
+.utopT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:100px; height:31px; line-height:31px; text-align:center;}
+/*锟斤拷锟�10.10*/
+.bgts3btn{ width:89px; height:34px; background:url(https://assets.muniao.com/assets/2013/image/user/bgts3.jpg) no-repeat 0px 0px; text-align:center; margin-left:10px;cursor:pointer;}
+/*锟斤拷锟�11.04*/
+.over{ border:1px solid #f5eaaa; background:#feffdf; color:#cfa04e; width:440px; padding:5px; margin-left:10px; line-height:20px; margin-top:5px;}
+.over a{display:block;white-space:nowrap;}
+
+/*锟斤拷锟�11.19*/
+.altlist{width:1000px; margin:10px auto;}
+.altlistT{color:#909090; margin-bottom:10px;}
+.altlistT a{ color:#666; text-decoration:none; line-height:24px;}
+.altlistL{ float:left; width:680px;}
+.altlisttit{ width:680px; border-right:1px solid #f3d1a4; border-left:1px solid #f3d1a4; border-top:3px solid #ff6702; height:40px; 
+background:url(https://assets.muniao.com/assets/2013/image/user/bgtit_newslist1.jpg) 0px 0px repeat-x; margin-bottom:10px;}
+.altlisttit li{ float:left; line-height:40px; font-size:14px; width:109px; text-align:center;}
+.titli{width:109px; height:40px; background:url(https://assets.muniao.com/assets/2013/image/user/bgtit_newslist0.jpg) 0px 0px no-repeat;}
+.altlistL dd{ font-size:12px; line-height:30px;}
+.altlistL dd a, .altlistL dd a:link{ color:#666; text-decoration:none;}
+.altlistL dd a:hover, .altlistL dd a:visited , .altlistL dd a:active{ color:#f4650a; text-decoration:underline;}
+.altlistR{ float:right; width:305px; height:100px; border:1px solid #fbd2b7;}
+/*锟斤拷锟�12.25*/
+.name2{width:80px; height:20px; border:1px solid #ddd; float:left; margin-left:10px;}
+.name2btn{width:69px; height:20px; text-align:center; line-height:20px; background:url(https://assets.muniao.com/assets/2013/image/user/bgname.jpg) 0px 0px no-repeat; border:none; margin-left:10px; float:left;}
+.name2btn a{ color:#666; text-decoration:none;}
+/*锟斤拷锟�2014.01.22*/
+#div21{position:absolute; padding-top:13px;}
+#div22{position:absolute; top:70px; left:451px;  width:142px; line-height:24px; border:1px solid #7f9db9; z-index:10; background:#fff;}
+#div22 ul li{width:138px; padding:0px 2px; overflow:hidden; cursor:pointer;}
+#div22 ul li a{ color:#333; text-decoration:none;}
+
+.tuijian{ margin-top:10px; border:1px solid #e2dedc; width:1000px;}
+.tjT{ background:#f5f5f5; height:27px; line-height:27px; padding:0px 15px;}
+.tjcon{width:469px; padding:15px;border-right:1px solid #e2dedc; border-bottom:1px solid #e2dedc;}
+.tjconimg{ float:left; border:1px solid #e2dedc; margin-right:15px; padding:5px; width:112px; height:83px;}
+.tjconp{ float:left; width:320px; line-height:24px;}
+.tjcon1{ width:470px; padding:15px;}
+.tjcon2{ width:469px; padding:15px; border-left:1px solid #e2dedc; border-top:1px solid #e2dedc;}
+.tuijian a{ color:#666; text-decoration:none;}
+
+
+/*锟斤拷锟�2014.07.01*/
+.batch{clear:both; margin:20px; margin-left:30px;}
+.bgbatch{background:#ffeda4; border:1px solid #fe7925;width:90px; height:30px; line-height:30px;text-align:center; margin-right:20px; float:left;}
+.bgbatch a{color:#333; text-decoration:none;}
+.date{ width:320px; border:1px solid #ddd; padding:20px; margin:auto; background:#fff;}
+.date ul li{ margin-left:20px; margin-top:20px; line-height:30px;}
+.Dtext{width:165px; height:30px; border:1px solid #ddd; padding-left:2px; line-height:30px; background:url(https://assets.muniao.com/assets/2013/image/user/bgtext.jpg) no-repeat 140px 7px;}
+.Dtext1{width:80px; height:30px; border:1px solid #ddd; padding-left:2px; line-height:30px; margin-right:5px;}
+.datebtn{width:210px; height:34px; text-align:center; line-height:34px; font-size:14px; font-weight:bold;background:url(https://assets.muniao.com/assets/2013/image/user/bgdatebtn.jpg) no-repeat 0px 0px; margin:20px auto 0px auto;}
+.datebtn a{ color:#fff; text-decoration:none;}
+.roomtit{width:560px; height:24px; padding:2px; margin-bottom:15px; font-size:14px;}
+
+
+/*锟斤拷锟�2014.08.06*/
+.line{ text-decoration:line-through;}
+.change{ border:2px solid #ddd; background:#fff; width:540px; height:300px;}
+.changeT{ background:#fafafa; height:30px; line-height:30px; padding:0px 10px; border-bottom:1px solid #ddd;}
+.changeinput{ width:100px; height:24px; border:1px solid #ddd;}
+.changebtn{ width:142px; height:30px; background:url(https://assets.muniao.com/assets/2013/image/oneselfbtn.jpg) no-repeat 0px 0px; text-align:center; line-height:30px; font-size:14px; margin-top:15px; margin-left:50px; margin-right:15px; float:left;}
+.change table{ border-top:1px solid #d5d5d5; border-left:1px solid #d5d5d5; margin-top:10px; margin-left:10px;}
+.mT30{ margin-top:30px;}
+.urecordtr2{ border-bottom:1px solid #d5d5d5;}
+.urecordtr3{ border-bottom:1px solid #d5d5d5; border-right:1px solid #d5d5d5;}
+
+/*锟斤拷锟�2014.08.19*/
+.absolute{position:absolute;}
+.relative{position:relative;}
+.reltel{ height:auto;}
+.teltext{ float:left; border:1px solid #ddd; height:24px; width:230px; text-indent:5px; color:#666;}
+.teltbtn{ float:left; border:1px solid #ddd; border-left:none; height:24px; width:70px; line-height:24px; text-align:center; background:#eee;}
+.mL30{ margin-left:23px;}
+.uinfobtn12{background: url(https://assets.muniao.com/assets/2013/image/bg1.png) no-repeat -441px -94px; font-size: 14px; height:40px; line-height:40px; margin-left:40px; margin-top: 15px; text-align: center; width: 132px;}
+.mTL5{ margin-left:5px; margin-top:5px;}
+
+
+/*锟斤拷锟�2015.05.20*/
+.userhead{ width:100%;text-align:center;}
+.userhead h3{  color:#f4650a; font:700 14px/25px "锟斤拷锟斤拷";}
+.userhead_pic{ width:100%; margin-bottom:5px;}
+.userhead_pic img{ border:1px solid #ddd;}
+.userheadtxt{ width:100%; height:24px; border-bottom:1px solid #ddd; padding-bottom:10px; margin-top:10px; text-align:center;}
+.userheadtxt a{ color:#1b50a0; text-decoration:none; padding:0 10px; line-height:24px;}
+.userheadtxt .w_border{ border:0 none;}
+.uinfoshz{ width:98%; padding:5px;}
+.uinfoshz li{ width:160px; height:100px; float:left; text-align:center; font:12px/20px "锟斤拷锟斤拷"; color:#333;}
+.uinfoimg{ float:left; padding:1px; border:1px solid #dcdcdc;margin:5px; display:block;}
+
+.uinfo{ float:right;width:769px;}
+.uinfoT{height:32px;border-bottom:2px solid #f4650a;}
+#step01{ margin:10px auto; border: 1px solid #d2d2d2; padding:7px;}
+.uinfoT h4{border-top:1px solid #dadde4; border-left:1px solid #dadde4; border-right:1px solid #dadde4; background:#f9f9f9;color:#f4650a;
+width:110px; height:31px; line-height:31px; text-align:center;}
+.uinfo table{ border-left:1px solid #dcdcdc; border-top:1px solid #dcdcdc; margin-top:10px;}
+.uinfotd{border-right:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc; line-height:40px;}
+.uinfoimg{ float:left; padding:1px; border:1px solid #dcdcdc;margin:5px; display:block;}
+.uinfoinput1{ border:1px solid #dcdcdc; width:150px; height:20px; float:left; margin-left:5px; margin-top:37px;}
+.uinfoinput{ border:1px solid #dcdcdc; width:150px; height:24px;margin-left:5px;}
+.uinfotextarea{ width:450px; height:50px; margin-top:15px;}
+.uinfobtn{ float:left; margin-left:5px; margin-top:37px;}
+.uinfop{ margin-top:45px; margin-left:5px; float:left;}
+.uinfobtn1{ margin-left:5px; margin-top:15px; margin-bottom:10px; margin-left:280px; width:132px; height:40px; font-size:14px; font-weight:bold; 
+text-align:center; line-height:40px; background:url(https://assets.muniao.com/assets/2013/image/user/bg1.png) no-repeat -441px -94px;}
+
+/*锟斤拷锟�2015.05.21*/
+.userbd{ width:100%; height:100px;}
+.userbd li{ width:75px; padding-top:60px; float:left;  display:inline-block; text-align:center; padding-left:0; line-height:30px;}
+/*锟斤拷锟�2015.10.24*/
+.userbd li a{ font:12px/30px "锟斤拷锟斤拷"; color:#666;  text-decoration: none; border: 1px solid #666; padding: 3px;border-radius: 3px;}
+.userbd li a:hover{ color:#ff3300; border-color:#ff3300}
+.userbd1{ background:url(https://assets.muniao.com/assets/2015/images/userthird_icon.png) 18px 20px no-repeat;}
+.userbd2{ background:url(https://assets.muniao.com/assets/2015/images/userthird_icon.png) -40px center no-repeat;}
+.userbd3{ background:url(https://assets.muniao.com/assets/2015/images/userthird_icon.png) -96px 20px no-repeat;}
+.userbd_gray1{ background:url(https://assets.muniao.com/assets/2015/images/userthird_grayicon.png) 22px 20px no-repeat;}
+.userbd_gray2{ background:url(https://assets.muniao.com/assets/2015/images/userthird_grayicon.png) -40px center no-repeat;}
+.userbd_gray3{ background:url(https://assets.muniao.com/assets/2015/images/userthird_grayicon.png) -96px 20px no-repeat;}
+.uinfotd{border-right:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc; line-height:40px;}
+.uinfoimg{ float:left; padding:1px; border:1px solid #dcdcdc;margin:5px; display:block;}
+.uinfotextarea{ width:450px; height:50px; margin-top:15px;}
+
+/*锟脚伙拷券*/
+.uhq{ width:100%; margin:10px 0; font-size:12px;}
+.uhq_title{ width:740px; height:35px; margin:0 auto; line-height:35px; }
+.uhq td{ height:35px; line-height:24px; }
+.w_fborder{border-top:1px solid #f4650a; text-align:center; background-color:#fff5ef; color:#ff3300;}
+.w_je{ width:150px; border-left:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+.w_sy{ width:440px; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+.w_yxq{ width:150px; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+.w_p05{ padding:0 5px; border:1px solid #ccc;  border-top:none; }
+.w_je2{ width:140px;}
+.w_sy2{ width:430px; border-left:none;}
+.w_yxq2{ width:200px; border-left:none;}
+.w_fjmc{ width:220px; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+
+/*锟斤拷锟�*/
+.w_jftt{ width:100%; height:40px; line-height:40px; font-size:14px; font-weight:bold ; color:#666;}
+.w_jftt li{ padding:0 10px; float:left; display:inline;}
+.w_red{ color:#f4650a;}
+
+/*锟斤拷锟斤拷*/
+.w_userbxmx{ border: 1px solid #ccc; line-height: 20px; margin: 10px; border-right: none; }
+.w_userbxmx th{border-bottom: 1px solid #ccc; border-right: 1px solid #ccc; padding:0 10px;}
+.w_userbxmx td{ padding:0 20px;}
+.w_userbxrs{ width:100%; text-align:right; margin-top:10px;}
+.w_usergreen{ color:green;}
+.w_userred{ color:red;}
+.w_pay_bxthimg{ vertical-align:middle; margin: -2px 0 0 2px; width:11px;}
+.w_user_bxrelative{ position:relative; display:block;}
+.w_user_bxtc{ width:150px; padding:10px; border:1px solid #ccc; background-color:#fff; position:absolute; left:0; top:23px; font:12px/20px "锟斤拷锟斤拷"; color:#333; text-align:left;}
+.w_user_bxtc a{ color:#09f; font-weight:bold;}
+
+
+
+
+/*锟斤拷源锟叫憋拷锟斤拷锟酵计�*/
+.examine{width: 100px; height: 45px;}
+.adopt{background: url(images/sh_icon.png) no-repeat 0 2px;}
+.not-adopt{background: url(images/sh_icon.png) no-repeat -100px 2px;}
+
+/*eval-detail*/
+.eval-textDetail {
+    height: auto;
+    padding-right: 25px;
+    margin-top: 38px;
+}
+
+    .eval-textDetail h5 {
+        height: 28px;
+        line-height: 28px;
+        font-size: 14px;
+        color: #666666;
+        font-weight: bolder;
+    }
+
+    .eval-textDetail p {
+        max-height: 48px;
+        line-height: 24px;
+        font-size: 14px;
+        color: #666666;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+.eval-imgList {
+    width: 100%;
+    margin-top: 12px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+    .eval-imgList:after {
+        display: block;
+        content: "";
+        height: 0;
+        clear: both;
+        overflow: hidden;
+    }
+
+    .eval-imgList li {
+        float: left;
+        display: inline;
+        width: 92px;
+        height: 92px;
+        margin: 0 6px 6px 0;
+        padding: 1px;
+        border: 1px solid #dddddd;
+    }
+
+        .eval-imgList li img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+.eval-detail-btnBox {
+    height: 32px;
+    margin-top: 24px;
+    padding-bottom: 12px;
+}
+
+    .eval-detail-btnBox a {
+        display: inline-block;
+        width: 88px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        background: #7acbfe;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        color: #ffffff;
+    }
+
+        .eval-detail-btnBox a.eval-btnDel {
+            margin-left: 20px;
+            background: #ff9180;
+        }
+
+.eval-sureDialog {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(000,000,000,.4);
+    z-index: 999;
+}
+
+.background-mask {
+    width: 100%;
+    height: 100%;
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);
+}
+
+.eval-sureContent {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 294px;
+    height: 150px;
+    margin: -80px 0 0 -215px;
+    padding: 12px 18px 18px;
+    background: #ffffff;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.eval-sureTitle {
+    height: 26px;
+}
+
+    .eval-sureTitle h3 {
+        float: left;
+        display: inline;
+        line-height: 26px;
+        font-size: 16px;
+        color: #4e4e4e;
+        font-weight: inherit;
+    }
+
+.eval-closeBtn {
+    float: right;
+    display: inline;
+    width: 12px;
+    height: 12px;
+    margin-top: 5px;
+    background: url(/Content/Images/newa_close.png) no-repeat left top;
+}
+
+.eval-sureInfo {
+    margin-top: 6px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #555555;
+}
+
+.eval-btnBox {
+    height: 30px;
+    margin-top: 40px;
+    text-align: right;
+}
+
+    .eval-btnBox a {
+        display: inline-block;
+        width: 72px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: #ff9180;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: 12px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+

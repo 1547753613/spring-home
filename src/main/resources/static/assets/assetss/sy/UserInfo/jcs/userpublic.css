@@ -1,0 +1,464 @@
+
+/* CSS Document */
+* { margin: 0px; padding: 0px; }
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { margin: 0; padding: 0; }
+
+html, body { /*height: 100%;*/ color: #666666; background: #fff; font-size: 12px; font-family: "宋体", Arial; }
+
+ol, ul { list-style: none; }
+
+img { border: 0; }
+
+table { border-collapse: collapse; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+
+h1 { font-size: 20px; line-height: 28px; }
+
+h2 { font-size: 18px; line-height: 24px; }
+
+h3 { font-size: 16px; line-height: 18px; }
+
+h4 { font-size: 14px; font-weight: bold; }
+
+h5 { font-size: 12px; font-weight: bold; }
+
+h6 { font-size: 12px; line-height: 16px; font-weight: 400; }
+/* 链接
+-------------------------------------------------------------------*/
+
+/*灰色*/
+.aGray,
+.grayA a:link, .grayA a:visited { color: #333; text-decoration: none; }
+
+.grayA a:hover, .grayA a:active { color: #333; text-decoration: none; }
+
+/*蓝色*/
+.aBlue,
+.blueA a:link, .blueA a:visited { color: #1d4fa1; text-decoration: none; }
+
+.aBlue,
+.blueA a:hover, .blueA a:active { color: #1d4fa1; text-decoration: none; }
+/*红色*/
+.aRed,
+.redA a:link, .redA a:visited { color: #f00; text-decoration: none; }
+
+.aRed,
+.redA a:hover, .redA a:active { color: #f00; text-decoration: none; }
+/*白色*/
+.aWhite,
+.whiteA a:link, .whiteA a:visited { color: #fff; text-decoration: none; }
+
+.aWhite,
+.whiteA a:hover, .whiteA a:active { color: #fff; text-decoration: none; }
+/*黑色*/
+.aBlack,
+.blackA a:link, .blackA a:visited { color: #000; text-decoration: none; }
+
+.aBlack,
+.blackA a:hover, .blackA a:active { color: #000; text-decoration: none; }
+/*黄色*/
+.aOrange,
+.orangeA a:link, .orangeA a:visited { color: #f4650a; text-decoration: none; }
+
+.aOrange,
+.orangeA a:hover, .orangeA a:active { color: #f4650a; text-decoration: none; }
+/*绿色*/
+.aGreen,
+.greenA a:link, .greenA a:visited, .greenA a:hover { color: #385c00; text-decoration: none; }
+
+/* 常用样式
+-------------------------------------------------------------------*/
+.fLeft { float: left; }
+
+.fRight { float: right; }
+
+.invisible { display: none; }
+
+.block { display: block; }
+
+.overflow { overflow: hidden; }
+
+.textCenter { text-align: center; }
+
+.textRight { text-align: right; }
+
+.pointer { cursor: pointer; }
+
+.clear { clear: both; overflow: hidden; height: 0; }
+
+.mTB10 { margin-top: 10px; margin-bottom: 10px; }
+
+.mT10 { margin-top: 10px; }
+
+.mT35 { margin-top: 35px; }
+
+.mT15 { margin-top: 15px; }
+
+.mT5 { margin-top: 5px; }
+
+.mT20 { margin-top: 20px; }
+
+.mB10 { margin-bottom: 10px; }
+
+.mL10 { margin-left: 10px; }
+
+.mL20 { margin-left: 20px; }
+
+.mL40 { margin-left: 40px; }
+
+.mR10 { margin-right: 10px; }
+
+.mR30 { margin-right: 30px; }
+
+.mLT10 { margin-top: 10px; margin-left: 10px; }
+
+.mLT15 { margin-top: 15px; margin-left: 30px; }
+
+.mB5 { margin-bottom: 5px; }
+
+.mB3 { margin-bottom: 3px; }
+
+.mL5 { margin-left: 5px; }
+
+.mLR5 { margin-left: 5px; margin-right: 5px; }
+
+.mLT5 { margin-left: 5px; margin-top: 5px; }
+
+.mLR10 { margin-left: 10px; margin-right: 10px; }
+
+.mR5 { margin-right: 5px; }
+
+.mL50 { margin-left: 50px; }
+
+.mTR10 { margin-top: 10px; margin-right: 10px; }
+
+.mTL10 { margin-top: 10px; margin-left: 15px; }
+
+.pd10 { padding: 10px; }
+
+.pd5 { padding: 5px; }
+
+.pTB10 { padding-top: 10px; padding-bottom: 10px; }
+
+.pTB5 { padding-top: 5px; padding-bottom: 5px; }
+
+.pLBR10 { padding: 10px; padding-top: 0px; }
+
+.pLR10 { padding: 10px; padding-top: 0px; padding-bottom: 0px; }
+
+.pB10 { padding-bottom: 10px; }
+
+.pT8 { padding-top: 8px; }
+
+.pB5 { padding-bottom: 5px; }
+
+.pL5 { padding-left: 5px; }
+
+.mp10 { margin: 10px; padding: 10px; }
+
+.mT50 { margin-top: 50px; }
+
+.display { display: none; }
+
+.f14 { font-size: 14px; }
+
+
+/* 头部样式
+-------------------------------------------------------------------*/
+.header { height: 33px; width: auto; background: url(https://assets.muniao.com/assets/2013/image/user/bgtopnav.jpg) repeat-x 0px 0px; }
+
+.topnav { width: 1000px; height: 23px; margin: auto; color: #326598; padding-top: 10px; }
+
+    .topnav ul li { float: left; margin-left: 10px; }
+
+        .topnav ul li a { color: #326598; text-decoration: none; }
+
+.logo { width: 1000px; height: 50px; margin: auto; margin-top: 10px; }
+
+.bgnav { background: url(https://assets.muniao.com/assets/2013/image/user/bgnav.jpg) repeat-x 0px 0px; width: auto; height: 41px; margin-top: 10px; }
+
+.nav { width: 1000px; margin: auto; height: 38px; position: relative; }
+
+.navhot { position: absolute; width: 17px; height: 21px; background: url(https://assets.muniao.com/assets/2013/image/user/navli.png) no-repeat 0px 0px; left: 295px; top: -10px; }
+
+.nav ul li { float: left; color: #fff; font-weight: bolder; font-size: 14px; padding: 13px 15px 8px 15px; width: 76px; text-align: center; }
+
+.navlibg { width: 76px; height: 17px; background: url(https://assets.muniao.com/assets/2013/image/user/navli.jpg) no-repeat 0px 0px; }
+
+.nav ul li a { color: #fff; text-decoration: none; }
+
+.fabubtn { width: 143px; height: 24px; font-weight: bolder; background: url(https://assets.muniao.com/assets/2013/image/user/fabu.jpg); width: 143px; height: 24px; line-height: 24px; padding-left: 20px; padding-top: 2px; border: none; color: #f4650a; margin-right: 5px; }
+
+
+/* 尾部样式
+-------------------------------------------------------------------*/
+.footer { width: auto; height: 215px; background: url(https://assets.muniao.com/assets/2013/image/user/bgfooter.jpg) repeat-x 0px 0px; margin-top: 10px; }
+
+.footercon { width: 1000px; margin: auto; padding-top: 15px; }
+
+    .footercon a { color: #666; text-decoration: none; }
+
+    .footercon p { line-height: 24px; margin: 10px 0px; }
+
+.bgfooter { width: 338px; height: 128px; background: url(https://assets.muniao.com/assets/2013/image/user/ewm.jpg?2015-8-13) no-repeat 0px 0px; float: right; }
+
+/*日历*/
+.starttime { width: 217px; height: auto; background: #fff; position: absolute; top: 115px; left: 95px; _top: 103px; *+top:102px; z-index: 2; }
+
+.Lstarttime { width: 217px; height: auto; background: #fff; position: absolute; top: 40px; left: 468px; z-index: 2; }
+
+    .starttime .day li, .Lstarttime .day li { cursor: pointer; }
+
+        .starttime .day li.dayli, .Lstarttime .day li.dayli { border: #cbcbcb 1px solid; }
+
+.Lstarttime1 { width: 217px; height: auto; background: #fff; position: absolute; top: 40px; left: 633px; }
+
+.starttimetit { width: 205px; height: 21px; background: #f37800; padding: 6px; color: #fff; }
+
+    .starttimetit span { margin-top: 5px; }
+
+.month { height: 18px; padding: 6px; font-size: 14px; font-weight: bold; color: #333; }
+
+    .month span { width: 180px; text-align: center; }
+
+.week li { float: left; width: 31px; height: 27px; text-align: center; line-height: 27px; color: #333; }
+
+.day { border-top: 1px solid #e5e5e5; }
+
+    .day li { float: left; text-align: center; border-bottom: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5; width: 30px; padding: 8px 0px; text-align: center; }
+
+.dayliG { background: #c6c6c6; color: #9d9d9d; }
+
+.dayliN { background: #f37800; color: #fff; }
+
+.dayliJ { background: #efefef; color: #666; }
+
+.citylistd li { cursor: pointer; }
+
+.searchmain { z-index: 10; }
+
+.num { z-index: 10; }
+
+    .num li { z-index: 10; cursor: pointer; }
+
+.citylist ul li.citylistli { background: #f37800; color: #fff; text-decoration: none; }
+
+.citylist li { cursor: pointer; }
+
+.cityconT li { cursor: pointer; }
+
+.citylistdli { z-index: 11px; overflow: visible; }
+
+.starttime { z-index: 5; }
+
+    .starttime .day li { cursor: pointer; }
+
+        .starttime .day li.dayli { border: #cbcbcb 1px solid; }
+/*2013-10-15*/
+.weixin2 { width: 177px; height: 343px; position: relative; z-index: 300; left: -126px; }
+
+/*2014.07.23
+.Rnav{ float:right; margin-top:15px; font-size:12px;}
+.Rnav li{ float:left; padding-left:5px;}
+.Rnav li a{ color:#333; text-decoration:none; margin-right:5px;}
+.Rnav li a:hover{color:#ff6600;}
+.Rnavbg{ width:60px; background:url(https://assets.muniao.com/assets/2013/image/bgcity.png) no-repeat 50px center; display:inline-block;}
+.Rnavbg1{width:60px; background:url(https://assets.muniao.com/assets/2013/image/bgcity1.png) no-repeat 50px center; display:inline-block;}
+.Rnavcon{border:1px solid #666; border-top:none; width:65px; padding:0px 5px 0px 5px; background:#fff;position: relative; top:15px;  z-index:11; left:-3px;}
+:root body .Rnavcon{border-color:#b8a3a3; top:14px; top:12px\9\0; left:-4px;}
+.Rnavcon dl{ padding-top:5px;}
+.Rnavcon dd{ border-top:1px dashed #ddd; padding:5px;}*/
+
+.Rnav { float: right; margin-top: 15px; font-size: 12px; }
+
+    .Rnav li { float: left; padding-left: 5px; line-height: 20px; }
+
+        .Rnav li a { color: #333; text-decoration: none; }
+
+            .Rnav li a:hover { color: #ff6600; }
+
+.Rnavbg { width: 70px; display: inline-block; background-image: url(https://assets.muniao.com/assets/2013/image/bgrnav1.jpg); background-repeat: no-repeat; background-position: 0px 0px; cursor: pointer; color: #333; }
+
+.Rnavbg1 { width: 65px; background: url(https://assets.muniao.com/assets/2013/image/bgrnav1.jpg) no-repeat 0px 0px; display: inline-block; padding-left: 5px; cursor: pointer; }
+
+.Rnavcon { width: 68px; border: 1px solid #666; border-top: none; background: #fff; position: relative; top: 20px; z-index: 11; left: 0px; }
+
+:root body .Rnavcon { border-color: #b8a3a3; top: 19px; top: 17px\9 \0; left: 0px\9 \0; left: 0px; }
+
+.Rnavbg2 { width: 65px; background: url(https://assets.muniao.com/assets/2013/image/bgrnav1.jpg) no-repeat 0px 0px; display: inline-block; padding-left: 5px; cursor: pointer; }
+
+.Rnavcon dd { border-top: 1px dashed #ddd; padding: 2px 5px; }
+
+.FeedBackBtn { position: fixed; right: 0; top: 40%; z-index: 101; }
+
+* html .FeedBackBtn { position: absolute; top: expression((document.documentElement.scrollTop || document.body.scrollTop)+Math.round(40 *(document.documentElement.offsetHeight || document.body.clientHeight) / 100)+'px'); }
+
+    .FeedBackBtn a { width: 10px; height: 68px; display: block; padding: 10px 8px 0 10px; background-color: #ce4100; border: 1px solid #ce4100; border-right: 0; border-radius: 5px 0 0 5px; color: #fff; font-weight: bold; line-height: 1.2em; text-decoration: none; }
+
+        .FeedBackBtn a:hover { background-color: rgb(179,40,1); border: 1px solid rgb(179,40,1); border-right: 0; color: #fff; text-decoration: none; }
+
+.FeedBackA { width: 569px; padding: 22px 28px; }
+
+.m-gotopbtn { position: fixed; z-index: 99; bottom: 0; left: 0; width: 100%; _position: absolute; _bottom: auto; _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); _left: expression(eval(document.documentElement.scrollLeft)); }
+
+    .m-gotopbtn a { position: absolute; top: 100px; width: 35px; height: 96px; display: block; background: url("https://assets.muniao.com/assets/2014/image/m-gotop.png") 0 0 no-repeat; left: 50%; margin-left: 600px; z-index: 99; }
+
+        .m-gotopbtn a:hover { background-position: -61px 0; }
+
+.bank { }
+
+    .bank ul li { width: 700px; }
+/*房东中心.房客中心*/
+.w_user_xl { width: 160px; position: absolute; right: 0; top: 20px; z-index: 199; box-shadow: 1px 2px 4px 2px #666; background-color: #fff; }
+
+.w_user_xlfd { width: 130px; margin: 0 auto; padding: 20px 0; }
+
+.w_user_xl .w_user_font { font: 12px/25px "microsoft yahei"; color: #333; }
+
+.w_user_xl .w_user_tt { width: 120px; padding-left: 10px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; }
+
+.w_user_xl .w_user_list { width: 100%; height: auto; margin-top: 5px; }
+
+    .w_user_xl .w_user_list li { width: 50%; text-align: center; float: left; padding: 0; }
+
+        .w_user_xl .w_user_list li a { color: #333; }
+
+            .w_user_xl .w_user_list li a:hover { color: #ff3300; }
+
+.w_user_tc { width: 130px; margin: 20px auto 0; border-top: 1px dashed #ccc; font-weight: bold; text-align: center; }
+
+    .w_user_tc a:hover { color: #ff3300; text-decoration: underline; }
+
+/*.s_mn_release {
+    width: 120px;
+    height: 35px;
+    background-color: #f30;
+    border-radius: 3px;
+    border: 1px solid #bb2500;
+    font: 14px/35px "宋体";
+    color: #fff;
+    float: left;
+    text-align: center;
+    margin-left: 10px;
+}*/
+
+.s_mn_release a { color: #fff; text-decoration: none; }
+
+.Rnav { float: right; margin-top: 15px; font-size: 12px; }
+
+.myassesscon table td { word-break: break-all; word-wrap: break-word; }
+
+/**footer begin**/
+.s_mn_footerbox { width: 100%; background: #333; height: 151px; clear: both; margin-top: 20px; }
+
+.s_mn_footer_center { width: 1180px; padding: 0px 10px; margin: 0 auto; }
+
+.s_mn_footer_nav { width: 100%; height: 30px; font: 12px/30px "宋体"; color: #888; text-align: center; padding: 10px 0px; border-bottom: 1px solid #fff; }
+
+    .s_mn_footer_nav a { font: 12px/30px "宋体"; color: #888; text-decoration: none; }
+
+        .s_mn_footer_nav a:hover { color: #f30; }
+
+.s_mn_footer_information { width: 100%; height: 80px; padding: 10px 0px; }
+
+.s_mn_copyright { width: 580px; height: 80px; font: 12px/24px "宋体"; color: #888; float: left; }
+
+    .s_mn_copyright p { margin: 0; }
+
+        .s_mn_copyright p a { color: #888; }
+
+            .s_mn_copyright p a:hover { color: #f30; }
+
+.s_mn_security { width: 580px; float: left; margin-left: 20px; }
+
+.s_mn_security_list { width: 100%; }
+
+    .s_mn_security_list li { width: 145px; float: left; }
+
+        .s_mn_security_list li a { width: 120px; height: 50px; margin: 0 auto; padding: 2px; display: block; }
+/**footer end**/
+.give { -webkit-animation: newdh .8s ease infinite; -ms-animation: newdh .8s ease infinite; -moz- animation: newdh .8s ease infinite; -o-animation: newdh .8s ease infinite; animation: newdh .8s ease infinite; position: absolute; top: 5px; right: -23px; height: 20px; line-height: 20px; }
+
+@keyframes newdh {
+    0% { -webkit-transform: translateY(0); -moz-transform: translateY(0); -ms-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); }
+
+    25% { -webkit-transform: translateY(-2px); -moz-transform: translateY(-2px); -ms-transform: translateY(-2px); -o-transform: translateY(-2px); transform: translateY(-2px); }
+
+    50% { -webkit-transform: translateY(-2px); -moz-transform: translateY(-2px); -ms-transform: translateY(-2px); -o-transform: translateY(-2px); transform: translateY(-2px); }
+
+    100% { -webkit-transform: translateY(0); -moz-transform: translateY(0); -ms-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); }
+}
+
+@-webkit-keyframes newdh {
+    0% { transform: translateY(0); -webkit-transform: translateY(0); }
+
+    25% { transform: translateY(-2px); -webkit-transform: trasnlateY(-2px); }
+
+    50% { transform: translateY(-2px); -webkit-transform: trasnlateY(-2px); }
+
+    100% { transform: translateY(0); -webkit-transform: trasnlateY(0); }
+}
+
+@-moz-keyframes newdh {
+    0% { transform: translateY(0); -moz-transform: translateY(0); }
+
+    25% { transform: translateY(-2px); -moz-transform: trasnlateY(-2px); }
+
+    50% { transform: translateY(-2px); -moz-transform: trasnlateY(-2px); }
+
+    100% { transform: translateY(0); -moz-transform: trasnlateY(0); }
+}
+
+@-o-keyframes newdh {
+    0% { transform: translateY(0); -o-transform: translateY(0); }
+
+    25% { transform: translateY(-2px); -o-transform: trasnlateY(-2px); }
+
+    50% { transform: translateY(-2px); -o-transform: trasnlateY(-2px); }
+
+    100% { transform: translateY(0); -o-transform: trasnlateY(0); }
+}
+
+@-ms-keyframes newdh {
+    0% { transform: translateY(0); -ms-transform: translateY(0); }
+
+    25% { transform: translateY(-2px); -ms-transform: trasnlateY(-2px); }
+
+    50% { transform: translateY(-2px); -ms-transform: trasnlateY(-2px); }
+
+    100% { transform: translateY(0); -ms-transform: trasnlateY(0); }
+}
+
+
+/*框架footer*/
+
+.s_mn_footerbox { width: 100%; background: #333; height: 151px; clear: both; margin-top: 20px; }
+
+.s_mn_footer_center { width: 1180px; padding: 0px 10px; margin: 0 auto; }
+
+.s_mn_footer_nav { width: 100%; height: 30px; font: 12px/30px "宋体"; color: #888; text-align: center; padding: 10px 0px; border-bottom: 1px solid #fff; }
+
+    .s_mn_footer_nav a { font: 12px/30px "宋体"; color: #888; text-decoration: none; }
+
+        .s_mn_footer_nav a:hover { color: #f30; }
+
+.s_mn_footer_information { width: 100%; height: 80px; padding: 10px 0px; }
+
+.s_mn_copyright { width: 580px; height: 80px; font: 12px/24px "宋体"; color: #888; float: left; }
+
+    .s_mn_copyright p { margin: 0; }
+
+        .s_mn_copyright p a { color: #888; }
+
+            .s_mn_copyright p a:hover { color: #f30; }
+
+.s_mn_security { width: 580px; float: left; margin-left: 20px; }
+
+.s_mn_security_list { width: 100%; }
+
+    .s_mn_security_list li { width: 145px; float: left; }
+
+        .s_mn_security_list li a { width: 120px; height: 50px; margin: 0 auto; padding: 2px; display: block; }
+/**footer end**/
