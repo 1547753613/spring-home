@@ -31,13 +31,13 @@ public class SpringBoot2Test1 {
     @Autowired
     MenuService menuService;
 
-    @Autowired
-    AuthorityService authorityService;
+//    @Autowired
+//    AuthorityService authorityService;
 
-    @Test
-    public void t2(){
-         System.out.println(authorityService.QueryAuthority(0));
-    }
+//    @Test
+//    public void t2(){
+//         System.out.println(authorityService.QueryAuthority(0));
+//    }
 
     @Test
     public void t4(){

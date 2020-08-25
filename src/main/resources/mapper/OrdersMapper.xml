@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.springboothomestay.dao.OrderDao">
+    <resultMap id="xx" type="com.aaa.springboothomestay.entity.Orders">
+        <id property="id" column="id"></id>
+        <!--        <result property="hid" column="hid"></result>-->
+        <!--        <result property="uid" column="uid"></result>-->
+        <result property="status" column="status"></result>
+        <result property="cdemo" column="cdemo"></result>
+        <result property="protect" column="protect"></result>
+        <result property="demo" column="demo"></result>
+        <!--        <result property="aid" column="aid"></result>-->
+        <result property="createtime" column="createtime"></result>
+        <collection property="house" javaType="com.aaa.springboothomestay.entity.House">
+            <id property="id" column="id"></id>
+            <result property="hname" column="hname"></result>
+        </collection>
+        <collection property="user" javaType="com.aaa.springboothomestay.entity.User">
+            <id property="uid" column="uid"></id>
+            <result property="uname" column="uname"></result>
+        </collection>
+                <collection property="ordersDetails" javaType="com.aaa.springboothomestay.entity.OrdersDetails">
+                    <id property="id" column="id"></id>
+                    <result property="price" column="price"></result>
+                </collection>
+    </resultMap>
+    <select id="findAllOrders" resultMap="xx">
+            select o.*,h.*,u.*,d.*
+            from orders o
+            join house h
+            on h.id = o.id
+            join user u
+            on u.uid = o.id
+            join orders_details d
+            on d.id = o.id
+
+    </select>
+</mapper>
