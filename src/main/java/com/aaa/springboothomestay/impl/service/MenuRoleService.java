@@ -15,4 +15,19 @@ public interface MenuRoleService {
      * @return 根据角色id查询权限
      */
     public Set<MenuRole> SelectMenuRid(int rid);
+
+    /**
+     * 删除角色下的权限
+     * @param rid 角色id
+     * @return
+     */
+    public Integer DeleteMenuRole(int rid);
+
+
+    /**
+     *
+     * @param menuRoles 权限
+     * @return  添加权限
+     */
+    public Integer AddMenuRole(int[]ints,Integer rid);
 }

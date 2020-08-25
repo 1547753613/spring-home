@@ -1,12 +1,12 @@
 package com.aaa.springboothomestay.controller;
 
 import com.aaa.springboothomestay.entity.Department;
+import com.aaa.springboothomestay.entity.Role;
 import com.aaa.springboothomestay.impl.DepartmentImpl;
+import com.aaa.springboothomestay.impl.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +16,16 @@ import java.util.List;
 public class DepartmentController {
     @Autowired
     DepartmentImpl departmentService;
+
+    @Autowired
+    RoleService roleService;
+
+    @GetMapping("/queryrole")
+    @ResponseBody
+    public List<Role> selectRole(Integer did){
+        return roleService.SelectRoleAll(did);
+    }
+
     @RequestMapping("insert")
     @ResponseBody
     public int insert(Department department)
