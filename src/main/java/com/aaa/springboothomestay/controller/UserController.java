@@ -1,8 +1,13 @@
 package com.aaa.springboothomestay.controller;
 
+import com.aaa.springboothomestay.aliyun.ALiNote;
+import com.aaa.springboothomestay.entity.ResResult;
 import com.aaa.springboothomestay.entity.User;
 import com.aaa.springboothomestay.impl.UserImpl;
 import com.alibaba.fastjson.JSONObject;
+import com.aliyun.oss.ClientException;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -156,6 +162,40 @@ public class UserController {
         int i = userimpl.UpdatePwd(pass);
         System.out.println(userimpl.UpdatePwd(pass));
         return "redirect:findUser";
+    }
+    /**
+     * 注册
+     * @param user
+     * @param session
+     * @return
+     */
+    @PostMapping("register")
+    @ResponseBody
+    public ResResult register(User user, HttpSession session, String yanzheng) {
+        String verifyCode = (String)session.getAttribute("verifyCode");
+        if(!verifyCode.equals(yanzheng)) {
+            return new ResResult(false,"验证码不一致");
+        }
+        userimpl.zhuce(user);
+        return new ResResult();
+    }
+    @PostMapping("getVerification")
+    @ResponseBody
+    public ResResult getVerification(String phone, HttpServletRequest req){
+        if(!StringUtils.isEmpty(phone)){
+            try {
+                SendSmsResponse sendSmsResponse = ALiNote.sendSms(phone,req);
+                String code = sendSmsResponse.getCode();
+                if(!"OK".equals(code)) {
+                    return new ResResult(false,"发送验证码时系统内部异常 : 可能原因  手机号不正确");
+                }
+            } catch (ClientException | com.aliyuncs.exceptions.ClientException e) {
+                e.printStackTrace();
+                return new ResResult(false,"发送验证码时系统内部异常");
+            }
+        }
+        return new ResResult(true,"发送成功");
+
     }
 
 

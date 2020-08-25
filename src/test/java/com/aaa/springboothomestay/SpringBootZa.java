@@ -24,6 +24,8 @@ public class SpringBootZa {
     OtherTypesController otherTypesController;
     @Resource
     SupportingController supportingController;
+    @Resource
+    HouseController houseController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
@@ -91,5 +93,24 @@ public class SpringBootZa {
 //        supporting.setId(3);
 //        System.out.println(supportingController.delete(supporting));
 //        System.out.println(supportingController.query());
+//        House house = new House();
+//        house.setId(null);
+//        house.setHname("天鑫现代城");
+//        house.setSimg("C:\\Users\\Administrator\\Desktop\\图集\\2.jpg");//封面图
+//        house.setHimg("C:\\Users\\Administrator\\Desktop\\图集\\2.jpg");//详情图
+//        house.setLid(1);
+//        house.setRid(1);
+//        house.setFeature("附近有河");
+//        house.setXcoord(4444.4444);
+//        house.setYcoord(7777.7777);
+//        house.setTraffic("漯河市郾襄路口");
+//        house.setState(1);
+//        house.setRim("周围临近高铁，离高铁特近");
+//        System.out.println(houseController.insert(house));
+//        house = null;
+//        house.setId(1);
+//        house.setTraffic("漯河市火车站附近");
+//        System.out.println(houseController.update(house));
+//        System.out.println(houseController.query());
     }
 }

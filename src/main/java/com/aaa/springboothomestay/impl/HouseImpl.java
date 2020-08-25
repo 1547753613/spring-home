@@ -13,8 +13,30 @@ public class HouseImpl implements HouseService {
     @Resource
     HouseDao houseDao;
 
+
     @Override
+    public int insert(House house) {
+        return houseDao.insert(house);
+    }
+
+    @Override
+    public int update(House house) {
+        return houseDao.updateByPrimaryKeySelective(house);
+    }
+
+    @Override
+    public int delete(House house) {
+        return houseDao.delete(house);
+    }
+
+    @Override
+    public List<House> query() {
+        return houseDao.selectAll();
+
+        @Override
     public List<House> findAllHouse() {
         return houseDao.findAllHouse();
     }
+
+
 }
