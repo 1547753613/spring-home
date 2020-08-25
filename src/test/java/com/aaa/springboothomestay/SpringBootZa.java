@@ -1,13 +1,7 @@
 package com.aaa.springboothomestay;
 
-import com.aaa.springboothomestay.controller.BedTypeController;
-import com.aaa.springboothomestay.controller.HouseTypeController;
-import com.aaa.springboothomestay.controller.RentTypeController;
-import com.aaa.springboothomestay.controller.SpecifictypeController;
-import com.aaa.springboothomestay.entity.Bedtype;
-import com.aaa.springboothomestay.entity.Housetype;
-import com.aaa.springboothomestay.entity.Renttype;
-import com.aaa.springboothomestay.entity.Specifictype;
+import com.aaa.springboothomestay.controller.*;
+import com.aaa.springboothomestay.entity.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,13 +20,15 @@ public class SpringBootZa {
     SpecifictypeController specifictypeController;
     @Resource
     BedTypeController bedTypeController;
+    @Resource
+    OtherTypesController otherTypesController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
 //        Renttype renttype  = new Renttype();
-////        renttype.setRid(1);
-////        renttype.setIcon("C:\\Users\\Administrator\\Desktop\\图集\\2.jpg");
-////        renttype.setTname("单间");
+//        renttype.setRid(1);
+//        renttype.setIcon("C:\\Users\\Administrator\\Desktop\\图集\\2.jpg");
+//       renttype.setTname("单间");
 //        //System.out.println(rentTypeController.insert(renttype));
 //        //System.out.println(renttype.getRid());
 //        //System.out.println(rentTypeController.update(renttype));
@@ -65,5 +61,15 @@ public class SpringBootZa {
 //        bedtype.setBid(2);
 //        System.out.println(bedTypeController.delete(bedtype));
 //        System.out.println(bedTypeController.query());
+//        Othertypes othertypes = new Othertypes();
+//        othertypes.setId(null);
+//        othertypes.setOname("押金");
+//        System.out.println(otherTypesController.insert(othertypes));
+//        othertypes.setOname("小费");
+//        othertypes.setId(2);
+//        System.out.println(otherTypesController.update(othertypes));
+//        othertypes.setId(2);
+//        System.out.println(otherTypesController.delete(othertypes));
+//        System.out.println(otherTypesController.query());
     }
 }
