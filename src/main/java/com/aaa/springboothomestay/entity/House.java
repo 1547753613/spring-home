@@ -2,9 +2,12 @@ package com.aaa.springboothomestay.entity;
 
 import lombok.Data;
 
+import javax.persistence.Id;
+
 @Data
 public class House {
-    private int id;//	int 	主键id
+    @Id
+    private Integer id;//	int 	主键id
     private String hname;//	varchar	房源名称
     private String simg;//	varchar	封面图
     private String himg;//	varchar	详情图
