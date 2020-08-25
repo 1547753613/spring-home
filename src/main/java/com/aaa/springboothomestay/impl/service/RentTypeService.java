@@ -9,6 +9,6 @@ import java.util.List;
 public interface RentTypeService {
     public int insert(Renttype renttype);
     public int update(Renttype renttype);
-    public int delete(int id);
+    public int delete(Renttype renttype);
     public List<Renttype> query();
 }

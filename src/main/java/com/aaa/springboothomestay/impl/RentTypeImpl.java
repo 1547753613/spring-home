@@ -22,12 +22,12 @@ public class RentTypeImpl implements RentTypeService {
     }
 
     @Override
-    public int delete(int id) {
-        return rentTypeDao.deleteByPrimaryKey(id);
+    public int delete(Renttype renttype) {
+        return rentTypeDao.delete(renttype);
     }
 
     @Override
     public List<Renttype> query() {
-        return null;
+        return rentTypeDao.selectAll();
     }
 }
