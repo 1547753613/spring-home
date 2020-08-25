@@ -1,0 +1,136 @@
+Index: src/main/java/com/aaa/springboothomestay/controller/SpecifictypeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/aaa/springboothomestay/controller/SpecifictypeController.java	(date 1598322181236)
++++ src/main/java/com/aaa/springboothomestay/controller/SpecifictypeController.java	(date 1598322181236)
+@@ -0,0 +1,43 @@
++package com.aaa.springboothomestay.controller;
++
++import com.aaa.springboothomestay.entity.Specifictype;
++import com.aaa.springboothomestay.impl.SpecifictypeImpl;
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.CrossOrigin;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.ResponseBody;
++
++import javax.annotation.Resource;
++import java.util.List;
++
++@CrossOrigin
++@Controller
++@RequestMapping("Specifictype")
++public class SpecifictypeController {
++    @Resource
++    SpecifictypeImpl specifictypeimp;
++    @RequestMapping("insert")
++    @ResponseBody
++    public int insert(Specifictype specifictype)
++    {
++        return specifictypeimp.insert(specifictype);
++    }
++    @RequestMapping("update")
++    @ResponseBody
++    public int update(Specifictype specifictype)
++    {
++        return specifictypeimp.update(specifictype);
++    }
++    @RequestMapping("delete")
++    @ResponseBody
++    public int delete(Specifictype specifictype)
++    {
++        return specifictypeimp.delete(specifictype);
++    }
++    @RequestMapping("query")
++    @ResponseBody
++    public List<Specifictype> query()
++    {
++        return specifictypeimp.query();
++    }
++}
+Index: src/main/java/com/aaa/springboothomestay/impl/SpecifictypeImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/aaa/springboothomestay/impl/SpecifictypeImpl.java	(date 1598322181241)
++++ src/main/java/com/aaa/springboothomestay/impl/SpecifictypeImpl.java	(date 1598322181241)
+@@ -0,0 +1,33 @@
++package com.aaa.springboothomestay.impl;
++
++import com.aaa.springboothomestay.dao.SpecifictypeDao;
++import com.aaa.springboothomestay.entity.Specifictype;
++import com.aaa.springboothomestay.impl.service.SpecifictypeService;
++import org.springframework.stereotype.Service;
++
++import javax.annotation.Resource;
++import java.util.List;
++@Service
++public class SpecifictypeImpl implements SpecifictypeService {
++    @Resource
++    SpecifictypeDao specifictypeDao;
++    @Override
++    public int insert(Specifictype specifictype) {
++        return specifictypeDao.insert(specifictype);
++    }
++
++    @Override
++    public int update(Specifictype specifictype) {
++        return specifictypeDao.updateByPrimaryKeySelective(specifictype);
++    }
++
++    @Override
++    public int delete(Specifictype specifictype) {
++        return specifictypeDao.delete(specifictype);
++    }
++
++    @Override
++    public List<Specifictype> query() {
++        return specifictypeDao.selectAll();
++    }
++}
+Index: src/main/java/com/aaa/springboothomestay/entity/Specifictype.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/aaa/springboothomestay/entity/Specifictype.java	(date 1598317761000)
++++ src/main/java/com/aaa/springboothomestay/entity/Specifictype.java	(date 1598322181240)
+@@ -2,10 +2,13 @@
+ 
+ import lombok.Data;
+ 
++import javax.persistence.Id;
++
+ @Data
+ public class Specifictype {
+-    private int sid;//	int 	主键id
++    @Id
++    private Integer sid;//	int 	主键id
+     private String sname;//	varchar	房源具体类型
+-    private int id;//	int 	外键房源类型表
++    private Integer id;//	int 	外键房源类型表
+ 
+ }
+Index: src/main/java/com/aaa/springboothomestay/entity/Housetype.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/aaa/springboothomestay/entity/Housetype.java	(date 1598317761000)
++++ src/main/java/com/aaa/springboothomestay/entity/Housetype.java	(date 1598322181240)
+@@ -2,9 +2,12 @@
+ 
+ import lombok.Data;
+ 
++import javax.persistence.Id;
++
+ @Data
+ public class Housetype {
+-    private int id;//	int 	主键id
++    @Id
++    private Integer id;//	int 	主键id
+     private String hname;//	varchar	房源类型(别墅,四合院)
+     private Double commission;//	double	抽成
+     private String icon;//	varchar	图标
