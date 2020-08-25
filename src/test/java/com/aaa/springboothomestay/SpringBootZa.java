@@ -1,8 +1,10 @@
 package com.aaa.springboothomestay;
 
+import com.aaa.springboothomestay.controller.BedTypeController;
 import com.aaa.springboothomestay.controller.HouseTypeController;
 import com.aaa.springboothomestay.controller.RentTypeController;
 import com.aaa.springboothomestay.controller.SpecifictypeController;
+import com.aaa.springboothomestay.entity.Bedtype;
 import com.aaa.springboothomestay.entity.Housetype;
 import com.aaa.springboothomestay.entity.Renttype;
 import com.aaa.springboothomestay.entity.Specifictype;
@@ -22,6 +24,8 @@ public class SpringBootZa {
     RentTypeController rentTypeController;
     @Resource
     SpecifictypeController specifictypeController;
+    @Resource
+    BedTypeController bedTypeController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
@@ -48,5 +52,18 @@ public class SpringBootZa {
 //        specifictype.setSid(2);
 //        System.out.println(specifictypeController.update(specifictype));
 //        System.out.println(specifictypeController.delete(specifictype));
+//        Bedtype bedtype = new Bedtype();
+//        bedtype.setBname("双人床");
+//        bedtype.setBid(null);
+//        bedtype.setParentid(0);
+//        System.out.println(bedTypeController.insert(bedtype));
+//        bedtype.setBid(1);
+//        bedtype.setBname("五人豪华大床");
+//        System.out.println(bedTypeController.update(bedtype));
+//        bedtype.setBid(null);
+//        System.out.println(bedTypeController.insert(bedtype));
+//        bedtype.setBid(2);
+//        System.out.println(bedTypeController.delete(bedtype));
+//        System.out.println(bedTypeController.query());
     }
 }

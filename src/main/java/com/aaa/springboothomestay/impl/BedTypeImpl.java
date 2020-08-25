@@ -25,11 +25,11 @@ public class BedTypeImpl implements BedTypeService {
 
     @Override
     public int delete(Bedtype bedtype) {
-        return 0;
+        return bedTypeDao.delete(bedtype);
     }
 
     @Override
     public List<Bedtype> query() {
-        return null;
+        return bedTypeDao.selectAll();
     }
 }
