@@ -22,6 +22,8 @@ public class SpringBootZa {
     BedTypeController bedTypeController;
     @Resource
     OtherTypesController otherTypesController;
+    @Resource
+    SupportingController supportingController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
@@ -71,5 +73,23 @@ public class SpringBootZa {
 //        othertypes.setId(2);
 //        System.out.println(otherTypesController.delete(othertypes));
 //        System.out.println(otherTypesController.query());
+//        Supporting supporting = new Supporting();
+//        supporting.setId(null);
+//        supporting.setParentid(0);
+//        supporting.setIcon("C:\\Users\\Administrator\\Desktop\\图集\\2.jpg");
+//        supporting.setSname("床上用品");
+//        System.out.println(supportingController.insert(supporting));
+//        supporting.setSname("洗漱用品");
+//        System.out.println(supportingController.insert(supporting));
+//        supporting.setSname("出门用品");
+//        System.out.println(supportingController.insert(supporting));
+//        supporting.setSname("游乐设施");
+//        System.out.println(supportingController.insert(supporting));
+//        supporting.setId(3);
+//        supporting.setSname("向导服务");
+//        System.out.println(supportingController.update(supporting));
+//        supporting.setId(3);
+//        System.out.println(supportingController.delete(supporting));
+//        System.out.println(supportingController.query());
     }
 }
