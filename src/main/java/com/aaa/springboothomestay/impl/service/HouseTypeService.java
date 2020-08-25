@@ -11,5 +11,8 @@ public interface HouseTypeService {
     public int update(Housetype housetype);
     public int insert(Housetype housetype);
     public int delete(int id);
+
+
+
     public List<Housetype> querybyname(Housetype housetype);
 }
