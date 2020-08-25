@@ -55,7 +55,7 @@
 
             <div class="middle">
                 <div class="wp">
-                    <a href="/"><img class="fl" src="/assets/images/logo2.png"/></a>
+<!--                    <a href="/"><img class="fl" src="/assets/images/logo2.png"/></a>-->
                     <h1>我的个人中心</h1>
                 </div>
             </div>
@@ -67,21 +67,21 @@
 
 <!--crumbs start-->
 
-<section>
-    <div class="wp">
-        <ul  class="crumbs">
-            <li><a href="/">首页</a>></li>
-            <li><a href="/user/home/">个人中心</a>></li>
-            <li>个人信息</li>
-        </ul>
-    </div>
-</section>
+<!--<section>-->
+<!--    <div class="wp">-->
+<!--        <ul  class="crumbs">-->
+<!--            <li><a href="/">首页</a>></li>-->
+<!--            <li><a href="/muniao/home">个人中心</a>></li>-->
+<!--            <li>个人信息</li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</section>-->
 
 <section>
     <div class="wp list personal_list">
         <div class="left">
             <ul>
-                <li class="active2"><a href="/user/listuser">个人资料</a></li>
+                <li class="active2"><a href="/muniao/findUser">个人资料</a></li>
                 <li ><a href="/ygm">我的课程</a></li>
                 <li ><a href="/listuc">我的收藏</a></li>
                 <li >
@@ -89,9 +89,9 @@
                         我的订单
                     </a>
                 </li>
-                <li th:if="${session.user.is_teacher} == 0"><a href="/teacher/listTeacher">讲师申请</a></li>
-                <li th:if="${session.user.is_teacher} == 1"><a href="/muke/getVadio2">上传课程</a></li>
-                <li th:if="${session.user.is_teacher} == 1"><a href="/muke/listvadio">上传视频</a></li>
+<!--                <li th:if="${session.user.is_teacher} == 0"><a href="/teacher/listTeacher">讲师申请</a></li>-->
+<!--                <li th:if="${session.user.is_teacher} == 1"><a href="/muke/getVadio2">上传课程</a></li>-->
+<!--                <li th:if="${session.user.is_teacher} == 1"><a href="/muke/listvadio">上传视频</a></li>-->
             </ul>
         </div>
 
@@ -104,10 +104,10 @@
                 <div class="inforcon">
                     <div class="left" style="width:242px;">
                         <iframe id='frameFile' name='frameFile' style='display: none;'></iframe>
-                        <form class="clearfix" id="jsAvatarForm" enctype="multipart/form-data" autocomplete="off" method="post" action="/usersImageUpload" target='frameFile'>
+                        <form class="clearfix" id="jsAvatarForm" enctype="multipart/form-data" autocomplete="off" method="post" action="/muniao/UpdateHead" target='frameFile'>
                             <label class="changearea" for="avatarUp">
                             <span id="avatardiv" class="pic">
-                                <img width="100" height="100" class="js-img-show" id="avatarShow" th:src="@{/Path/{filename}(filename=${u.user_tx})}"/>
+                                <img width="100" height="100" class="js-img-show" id="avatarShow" th:src="@{/Path/{filename}(filename=${userList.head})}"/>
                             </span>
                                 <span class="fl upload-inp-box" style="margin-left:70px;">
                                 <span class="button btn-green btn-w100" id="jsAvatarBtn">修改头像</span>
@@ -120,25 +120,25 @@
                             <a class="button btn-green btn-w100" id="jsUserResetPwd" style="margin:80px auto;width:100px;">修改密码</a>
                         </div>
                     </div>
-                    <form method="post" action="updateusershow" class="perinform" id="jsEditUserForm" autocomplete="off">
+                    <form method="post" action="/muniao/updateusershow" class="perinform" id="jsEditUserForm" autocomplete="off">
 
                         <ul class="right">
                             <li>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：
-                                <span th:text="${u.user_nickname}"></span>
+                                <span th:text="${userList.uname}"></span>
                             </li>
-                            <li>余&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额：
-                                <span th:text="${u.user_money}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <a th:href="">提现</a>
+                            <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：
+                                <span th:text="${userList.phone}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</span>
+<!--                                <a th:href="">提现</a>-->
                             </li>
                             </li>
-                            <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
-                                <span th:text="${u.user_sex} == '未知'?'':${u.user_sex}"></span>
+                            <li>真 实 姓 名：
+                                <span th:text="${userList.learname}"></span>
                             </li>
-                            <li>手&nbsp;&nbsp;机&nbsp;&nbsp;号：
-                                <span th:text="${u.user_phone} == '未知'?'':${u.user_phone}"></span>
+                            <li>身 份 证 号：
+                                <span th:text="${userList.idcard}"></span>
                             </li>
-                            <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
-                                <span th:text="${u.user_mailbox}== '未知'?'':${u.user_mailbox}"></span>
+                            <li>状&nbsp;&nbsp;&nbsp;&nbsp;态：
+                                <span th:text="${userList.state}==1?'正常': '不正常'"></span>
                             </li>
                             <li class="button heibtn">
                                 <input type="submit" id="jsEditUserBtn" value="修改个人信息">
@@ -193,23 +193,22 @@
         <h1>修改密码</h1>
         <div class="close jsCloseDialog"><img src="/assets/images/dig_close.png"/></div>
         <div class="cont">
-            <form id="jsResetPwdForm" autocomplete="off">
+            <form id="jsResetPwdForm" autocomplete="off" method="post" action="/muniao/updatepwd">
                 <div class="box">
                     <span class="word2" >原&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input type="password" id="ypwd" name="password3" placeholder="6-20位非中文字符"/>
+                    <input type="password" id="ypass" name="pass"  placeholder="6-20位非中文字符"/>
                 </div>
                 <div class="box">
                     <span class="word2" >新&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input type="password" id="
-" name="password1" placeholder="6-20位非中文字符"/>
+                    <input type="password" id="xpass" name="pass" placeholder="6-20位非中文字符"/>
                 </div>
                 <div class="box">
                     <span class="word2" >确定密码</span>
-                    <input type="password" id="repwd" name="password2" placeholder="6-20位非中文字符"/>
+                    <input type="password" id="qpass" name="pass" placeholder="6-20位非中文字符"/>
                 </div>
                 <div class="error btns" id="jsResetPwdTips"></div>
                 <div class="button">
-                    <input id="jsResetPwdBtn" type="button" value="提交" />
+                    <input id="jsResetPwdBtn" type="submit" value="提交" />
                 </div>
                 <input type='hidden' name='csrfmiddlewaretoken' value='DaP7IUKm9FA9nELA9YUlYYWpyIDdCiIP' />
                 <input type='hidden' name='csrfmiddlewaretoken' value='799Y6iPeEDNSGvrTu3noBrO4MBLv6enY' />

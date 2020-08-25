@@ -6,6 +6,8 @@ import com.aaa.springboothomestay.impl.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+
 @Service
 public class UserImpl implements UserService {
     @Resource
@@ -18,5 +20,25 @@ public class UserImpl implements UserService {
     @Override
     public Integer zhuce(User user) {
         return userDao.zhuce(user);
+    }
+
+    @Override
+    public List<User> findByIdUser(Integer uid) {
+        return userDao.findByIdUser(uid);
+    }
+
+    @Override
+    public Integer UpdateLead(User user) {
+        return userDao.UpdateLead(user);
+    }
+
+    @Override
+    public Integer UpdateUser(User user) {
+        return userDao.UpdateUser(user);
+    }
+
+    @Override
+    public Integer UpdatePwd(String pass) {
+        return userDao.UpdatePwd(pass);
     }
 }

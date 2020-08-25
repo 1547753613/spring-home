@@ -69,7 +69,7 @@
     <div class="wp list personal_list">
         <div class="left">
             <ul>
-                <li class="active2"><a href="/user/listuser">个人资料</a></li>
+                <li class="active2"><a href="/muniao/findUser">个人资料</a></li>
                 <li ><a href="/ygm">我的课程</a></li>
                 <li ><a href="/listuc">我的收藏</a></li>
                 <li >
@@ -111,7 +111,9 @@
                     <td th:text="${o.house.hname}"></td>
                     <td th:text="${o.user.uname}"></td>
                     <td th:text="${o.ordersDetails.price}"></td>
-                    <td th:text="${o.status}==1?'待付款':'未付款'"></td>
+                    <td th:text="${o.status}==1?'待付款':'未付款'">
+
+                    </td>
                     <td th:text="${o.createtime}"></td>
                     <!--                    <td th:text="${o.orders_orderScore} == 0?0:${o.orders_orderScore} "></td>-->
                     <!--                    <td width="150px;" th:if="${o.orders_status} == 0">-->
