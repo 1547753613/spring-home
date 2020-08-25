@@ -64,21 +64,21 @@ public class Admins implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return this.getIsexpired()==1;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return this.getIslocked()==1;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return this.isCreExpirEd==1;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.getIsenble()==1;
     }
 }
