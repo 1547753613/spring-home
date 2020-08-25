@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.springboothomestay.dao.DepartmentDao">
+    <resultMap id="dept" type="com.aaa.springboothomestay.entity.Department" autoMapping="true">
+    </resultMap>
+    <select id="queryDepartment" resultMap="dept">
+        select did,dname from department
+    </select>
+    <insert id="insertDepartment" keyProperty="eid" useGeneratedKeys="true">
+        insert into department values(null,#{dname})
+    </insert>
+    <update id="update">
+        update department set dname = #{dname}
+    </update>
+    <select id="likequeryDepartment" resultType="java.lang.Integer">
+        select count(dname) from department where dname = #{name}
+    </select>
+</mapper>
