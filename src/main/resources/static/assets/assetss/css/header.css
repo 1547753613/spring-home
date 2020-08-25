@@ -1,0 +1,165 @@
+@charset "utf-8";
+
+.header{
+
+    height: 60px;
+
+    background: #fff;
+
+}
+
+/* logo */
+
+.st-logo{
+
+    float: left;
+
+    width: 200px;
+
+    height: 60px;
+
+}
+
+.st-logo .hd-img{
+
+    display: table-cell;
+
+    width: 200px;
+
+    height: 60px;
+
+    vertical-align: middle;
+
+    text-align: center;
+
+}
+
+.st-logo .hd-img img{
+
+    max-width: 200px;
+
+    max-height: 60px;
+
+    vertical-align: middle;
+
+}
+
+/* 主导航 */
+
+.st-nav{
+
+    float: left;
+
+    width: 600px;
+
+    height: 60px;
+
+    padding-left: 80px;
+
+}
+
+.st-nav li{
+
+    float: left;
+
+}
+
+.st-nav li a{
+
+    display: block;
+
+    height: 60px;
+
+    line-height: 60px;
+
+    padding: 0 15px;
+
+    font-size: 14px;
+
+}
+
+.st-nav li.active a,
+
+.st-nav li a:hover{
+
+    height: 58px;
+
+    border-bottom: 2px solid #fc6000;
+
+}
+
+/* 用户登录 */
+
+.user-login-before,
+
+.user-login-after{
+
+    float: right;
+
+    height: 30px;
+
+    margin-top: 15px;
+
+    font-size: 0;
+
+}
+
+.user-login-before > a,
+
+.user-login-after > a{
+
+    display: inline-block;
+
+    height: 30px;
+
+    line-height: 30px;
+
+    padding: 0 8px;
+
+    vertical-align: top;
+
+    font-size: 12px;
+
+}
+
+.user-login-before > a:hover,
+
+.user-login-after > a:hover{
+
+    color: #f80;
+
+    text-decoration: underline;
+
+}
+
+
+
+.user-login-after .name{
+
+    max-width: 200px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+.user-login-after .name .hg{
+
+    width: 30px;
+
+    height: 30px;
+
+    vertical-align: middle;
+
+    margin: -3px 8px 0 0;
+
+    -webkit-border-radius: 15px;
+
+    -moz-border-radius: 15px;
+
+    border-radius: 15px;
+
+}
