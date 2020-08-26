@@ -50,6 +50,47 @@ public class UserController {
         return "/qiantai/tujia";
     }
 
+
+
+
+    /**
+     * 注册
+     * @param user
+     * @param session
+     * @return
+     */
+    @PostMapping("register")
+    @ResponseBody
+    public ResResult register(User user, HttpSession session, String yanzheng) {
+        String verifyCode = (String)session.getAttribute("verifyCode");
+        if(!verifyCode.equals(yanzheng)) {
+            return new ResResult(false,"验证码不一致");
+        }
+        userimpl.zhuce(user);
+        return new ResResult();
+    }
+    @PostMapping("getVerification")
+    @ResponseBody
+    public ResResult getVerification(String phone, HttpServletRequest req){
+        if(!StringUtils.isEmpty(phone)){
+            try {
+                SendSmsResponse sendSmsResponse = ALiNote.sendSms(phone,req);
+                String code = sendSmsResponse.getCode();
+                if(!"OK".equals(code)) {
+                    return new ResResult(false,"发送验证码时系统内部异常 : 可能原因  手机号不正确");
+                }
+            } catch (ClientException | com.aliyuncs.exceptions.ClientException e) {
+                e.printStackTrace();
+                return new ResResult(false,"发送验证码时系统内部异常");
+            }
+        }
+        return new ResResult(true,"发送成功");
+
+    }
+
+
+
+
     /**
      * 查询用户个人信息
      */
@@ -148,10 +189,9 @@ public class UserController {
     }
 
 
-    //修改用户个人信息
+    //修改密码
     @RequestMapping("/updatepwd")
     public String UpdatePwd(@RequestParam Map map ,HttpSession session,String pass) {
-        System.out.println("进");
         User map1 = (User) session.getAttribute("user");
         int uid = map1.getUid();
         //创建用户对象
@@ -163,39 +203,15 @@ public class UserController {
         System.out.println(userimpl.UpdatePwd(pass));
         return "redirect:findUser";
     }
-    /**
-     * 注册
-     * @param user
-     * @param session
-     * @return
-     */
-    @PostMapping("register")
-    @ResponseBody
-    public ResResult register(User user, HttpSession session, String yanzheng) {
-        String verifyCode = (String)session.getAttribute("verifyCode");
-        if(!verifyCode.equals(yanzheng)) {
-            return new ResResult(false,"验证码不一致");
-        }
-        userimpl.zhuce(user);
-        return new ResResult();
-    }
-    @PostMapping("getVerification")
-    @ResponseBody
-    public ResResult getVerification(String phone, HttpServletRequest req){
-        if(!StringUtils.isEmpty(phone)){
-            try {
-                SendSmsResponse sendSmsResponse = ALiNote.sendSms(phone,req);
-                String code = sendSmsResponse.getCode();
-                if(!"OK".equals(code)) {
-                    return new ResResult(false,"发送验证码时系统内部异常 : 可能原因  手机号不正确");
-                }
-            } catch (ClientException | com.aliyuncs.exceptions.ClientException e) {
-                e.printStackTrace();
-                return new ResResult(false,"发送验证码时系统内部异常");
-            }
-        }
-        return new ResResult(true,"发送成功");
 
+
+    /**
+     * 跳转到首页
+     */
+
+    @RequestMapping("toIndex")
+    public String toIndex(){
+        return "/qiantai/tujia";
     }
 
 

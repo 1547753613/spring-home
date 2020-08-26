@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OrderDao {
 
-    List<Orders> findAllOrders();
+    List<Orders> findAllOrders(Integer uid);
 }

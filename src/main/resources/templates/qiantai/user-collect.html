@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+    <title>个人信息</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/cityLayout.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/lq.datetimepick.css"/>
+
+
+
+    <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+<section>
+    <div class="wp">
+        <ul  class="crumbs">
+            <li><a href="/muniao/toIndex">首页</a>></li>
+            <li><a href="/muniao/findUser">个人中心</a>></li>
+            <li>我的收藏</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <div class="wp list personal_list">
+        <div class="left">
+            <ul>
+                <li class="active2"><a href="/muniao/findUser">个人资料</a></li>
+                <li ><a href="/muniao/findCollect">我的收藏</a></li>
+                <li >
+                    <a href="/muniao/toList">
+                        我的订单
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="right" >
+            <div class="personal_des Releasecont">
+                <div class="head">
+                    <h1>我的收藏</h1>
+                </div>
+            </div>
+            <div class="personal_des permessage">
+
+            </div>
+            <div class="companycenter">
+                <div class="module1_5 box" th:each = "uc : ${list}">
+                    <a th:href="'course?hid='+${uc.house.hname}">
+                        <img width="214" height="190" class="scrollLoading" src="/assets/images/touxiang.jpg"/>
+                    </a>
+                    <div class="des">
+                        <span >用户名称  <i class="key" th:text="${uc.user.uname}"></i></span>
+                        <span >房屋名称  <i class="key" th:text="${uc.house.hname}"></i></span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+</body>
+</html>
