@@ -29,6 +29,8 @@ public class SpringBootZa {
     HouseController houseController;
     @Resource
     HouseGeneralizeController houseGeneralizeController;
+    @Resource
+    HouseBedController houseBedController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
@@ -135,5 +137,12 @@ public class SpringBootZa {
 //        houseGeneralize.setId(2);
 //        System.out.println(houseGeneralizeController.update(houseGeneralize));
 //        System.out.println(houseGeneralizeController.query());
+//        HouseBed houseBed = new HouseBed();
+//        houseBed.setId(null);
+//        houseBed.setBid(1);
+//        houseBed.setHid(1);
+//        houseBed.setCount(2);
+//        System.out.println(houseBedController.insert(houseBed));
+//        System.out.println(houseBedController.query());
     }
 }
