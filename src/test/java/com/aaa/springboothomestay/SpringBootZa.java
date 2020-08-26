@@ -1,6 +1,7 @@
 package com.aaa.springboothomestay;
 
 import com.aaa.springboothomestay.controller.*;
+import com.aaa.springboothomestay.dao.HouseGeneralizeDao;
 import com.aaa.springboothomestay.entity.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,8 @@ public class SpringBootZa {
     SupportingController supportingController;
     @Resource
     HouseController houseController;
+    @Resource
+    HouseGeneralizeController houseGeneralizeController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
@@ -112,5 +115,25 @@ public class SpringBootZa {
 //        house.setTraffic("漯河市火车站附近");
 //        System.out.println(houseController.update(house));
 //        System.out.println(houseController.query());
+//        HouseGeneralize houseGeneralize = new HouseGeneralize();
+//        houseGeneralize.setId(null);
+//        houseGeneralize.setHid(1);
+//        houseGeneralize.setArea(131.0);
+//        houseGeneralize.setRarea(1.0);
+//        houseGeneralize.setCohabit(1);
+//        houseGeneralize.setBedroom(1);
+//        houseGeneralize.setWc(1);
+//        houseGeneralize.setDrawing(1);
+//        houseGeneralize.setKitchen(2);
+//        houseGeneralize.setBalcony(2);
+//        houseGeneralize.setWctype(0);
+//        houseGeneralize.setCount(3);
+//        //System.out.println(houseGeneralizeController.insert(houseGeneralize));
+//        //System.out.println(houseGeneralizeController.query());
+//        System.out.println(houseGeneralize.toString());
+//        //System.out.println(houseGeneralizeController.insert(houseGeneralize));
+//        houseGeneralize.setId(2);
+//        System.out.println(houseGeneralizeController.update(houseGeneralize));
+//        System.out.println(houseGeneralizeController.query());
     }
 }

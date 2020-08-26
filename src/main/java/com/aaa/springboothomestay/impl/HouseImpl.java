@@ -32,6 +32,7 @@ public class HouseImpl implements HouseService {
     @Override
     public List<House> query() {
         return houseDao.selectAll();
+    }
 
         @Override
     public List<House> findAllHouse() {
