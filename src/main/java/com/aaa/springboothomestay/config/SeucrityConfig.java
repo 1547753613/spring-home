@@ -22,6 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.web.cors.CorsUtils;
+import org.springframework.web.multipart.support.MultipartFilter;
 
 import javax.annotation.Resource;
 
@@ -49,6 +50,11 @@ public class SeucrityConfig extends WebSecurityConfigurerAdapter {
     AdminConfig adminConfig;
 
     @Bean
+    public MultipartFilter multipartFilter(){
+        return new MultipartFilter();
+    }
+
+    @Bean
     public HttpSessionEventPublisher httpSessionEventPublisher() {
       return new HttpSessionEventPublisher();
     }
@@ -67,11 +73,12 @@ public class SeucrityConfig extends WebSecurityConfigurerAdapter {
         loginFilter.setAuthenticationManager(authenticationManagerBean());
         loginFilter.setFilterProcessesUrl("/my");
         ConcurrentSessionControlAuthenticationStrategy sessionStrategy = new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry());
-        sessionStrategy.setMaximumSessions(1);
+       // sessionStrategy.setMaximumSessions(1);
         loginFilter.setSessionAuthenticationStrategy(sessionStrategy);
 
         return loginFilter;
     }
+
 
 
     @Override
@@ -127,17 +134,17 @@ public class SeucrityConfig extends WebSecurityConfigurerAdapter {
                .authorizeRequests()
                // 验证跨域请求
 
-               .and()
-               .sessionManagement()
-               .maximumSessions(1)
-               .sessionRegistry(sessionRegistry())
+               //.and()
+               //.sessionManagement()
+              // .maximumSessions(1)
+               //.sessionRegistry(sessionRegistry())
                 ;
 
        http.logout()
              .logoutUrl("/mylogout");//自定义退出url
 
      http.exceptionHandling().accessDeniedHandler(myAccessDeniedHandler); // 无权访问
-
+     //   http.addFilterBefore(multipartFilter(),org.springframework.web.filter.DelegatingFilterProxy.class);
 
     }
     @Override

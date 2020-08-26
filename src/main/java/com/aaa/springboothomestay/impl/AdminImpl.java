@@ -8,6 +8,8 @@ import com.aaa.springboothomestay.impl.service.AdminService;
 import com.aaa.springboothomestay.impl.service.MenuRoleService;
 import com.aaa.springboothomestay.impl.service.MenuService;
 import com.aaa.springboothomestay.impl.service.RoleService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -62,5 +64,65 @@ public class AdminImpl implements AdminService {
             return admin;
         }
         return null;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<Admins> SelectAdminAll() {
+        List<Admins> admins = adminDao.selectAll();
+        for (Admins admin:admins){
+            admin.setRole(roleService.SelectRoleId(admin.getRid()));
+        }
+        return admins;
+    }
+
+    /**
+     *
+     * @param pageNum 第几页
+     * @param pageSize  每页几多少条数据
+     * @return
+     */
+    @Override
+    public PageInfo<Admins> PageAdmin(Integer pageNum, Integer pageSize) {
+        if (null==pageNum){
+            pageNum=1;
+        }
+        if (null==pageSize){
+            pageSize=3;
+        }
+        PageHelper.startPage(pageNum,pageSize);
+        List<Admins> admins = this.SelectAdminAll();
+        PageInfo<Admins> pageInfo= new PageInfo<Admins>(admins);
+
+        return pageInfo;
+    }
+
+    /**
+     *
+     * @param id 锁定的员工id
+     * @return
+     */
+    @Override
+    public Integer LockAdmin(Integer id) {
+        Admins admins=new Admins();
+        admins.setIsenble(0);
+        admins.setId(id);
+        return adminDao.updateByPrimaryKeySelective(admins);
+    }
+
+    /**
+     *
+     * @param id 解封员工的id
+     * @return
+     */
+    @Override
+    public Integer EnLockAdmin(Integer id) {
+        Admins admins=new Admins();
+        admins.setIsenble(1);
+        admins.setId(id);
+        return adminDao.updateByPrimaryKeySelective(admins);
     }
 }
