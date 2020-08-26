@@ -33,6 +33,8 @@ public class SpringBootZa {
     HouseBedController houseBedController;
     @Resource
     HouseSupController houseSupController;
+    @Resource
+    HouseManyController houseManyController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
@@ -159,5 +161,16 @@ public class SpringBootZa {
 //        houseSup.setSid(7);
 //        System.out.println(houseSupController.update(houseSup));
 //        System.out.println(houseSupController.query());
+//        HouseMany houseMany = new HouseMany();
+//        houseMany.setId(null);
+//        houseMany.setHolidays(500.0);
+//        houseMany.setWorkday(500.0);
+//        houseMany.setWeekend(500.0);
+//        houseMany.setHid(1);
+//        System.out.println(houseManyController.insert(houseMany));
+//        houseMany.setId(1);
+//        houseMany.setWeekend(700.0);
+//        System.out.println(houseManyController.update(houseMany));
+//        System.out.println(houseManyController.query());
     }
 }
