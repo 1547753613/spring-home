@@ -31,6 +31,8 @@ public class SpringBootZa {
     HouseGeneralizeController houseGeneralizeController;
     @Resource
     HouseBedController houseBedController;
+    @Resource
+    HouseSupController houseSupController;
     @Test
     public void test(){
         //System.out.println(houseTypeController.query());
@@ -144,5 +146,18 @@ public class SpringBootZa {
 //        houseBed.setCount(2);
 //        System.out.println(houseBedController.insert(houseBed));
 //        System.out.println(houseBedController.query());
+//        HouseSup houseSup = new HouseSup();
+       // @GeneratedValue(strategy = GenerationType.IDENTITY)获取自增的id属性
+//        houseSup.setId(null);
+//        houseSup.setHid(1);
+//        houseSup.setSid(1);
+//        houseSup.setState(1);
+        //System.out.println(houseSupController.insert(houseSup));
+//        System.out.println(houseSup.getId());
+//        houseSupController.insert(houseSup);
+//        houseSup.setId(2);
+//        houseSup.setSid(7);
+//        System.out.println(houseSupController.update(houseSup));
+//        System.out.println(houseSupController.query());
     }
 }
