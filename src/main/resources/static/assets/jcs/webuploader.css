@@ -1,0 +1,42 @@
+.clear{ zoom: 1;}
+.clear:after{ content: ""; display: block; clear: both;}
+.uploader-list{ width: 860px;}
+.uploader-list li{ margin-right: 15px;}
+.file-item{ width: 156px; height: 150px; float: left; position: relative; overflow: hidden; margin-bottom: 20px;}
+.info{ font-size: 12px;}
+.progress{ height: 5px;}
+.progress span{ display: inline-block; width: 0; height: 5px; background: #ff85aa;}
+.setstatus{ width: 100%; position: absolute; bottom: 0; height: 28px; line-height: 28px; background: url("../Images/fmbg.png") no-repeat 0 -28px; color: #fff;}
+.setstatus span{ cursor: pointer; display: inline-block; width: 78px; text-align: center;}
+.fmbg{ background: url("../Images/fmbg.png") no-repeat 0 0;}
+.webuploader-container {
+	width: 158px;
+	height: 150px;
+	position: relative;
+	float: left;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #00b7ee;
+	width: 158px;
+	height: 150px;
+	background: url("../Images/seat.jpg") no-repeat;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.webuploader-pick-hover {
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
