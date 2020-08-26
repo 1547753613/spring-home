@@ -1,7 +1,9 @@
 package com.aaa.springboothomestay.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,8 +30,14 @@ public class Admins implements UserDetails {
     private String address;//	varchar	地址
     private String phone;//	varchar	手机号
     private String email;//	varchar	邮箱
+
+    @JsonFormat(pattern="yyyy-MM-dd ", timezone="GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "beginDate")
     private Date beginDate;//	date	入职日期
+
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd ", timezone="GMT+8")
     @Column(name = "endDate")
     private Date endDate;//	date	离职日期
     @Column(name = "workState")
@@ -44,6 +52,7 @@ public class Admins implements UserDetails {
     private Role role;//获取角色
 
     private List<Menu> menus=new ArrayList<>();
+
 
 
 
