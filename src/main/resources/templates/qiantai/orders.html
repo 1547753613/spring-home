@@ -35,7 +35,7 @@
                 <li class="active2"><a href="/muniao/findUser">个人资料</a></li>
                 <li ><a href="/muniao/findCollect">我的收藏</a></li>
                 <li >
-                    <a href="/muniao/toList">
+                    <a href="/muniao/toList?status=0">
                         我的订单
                     </a>
                 </li>
@@ -50,47 +50,189 @@
                     <h1>我的订单</h1>
                 </div>
             </div>
-            <table class="layui-table" border="1">
-                <colgroup>
-                    <col width="150">
-                    <col width="200">
-                    <col>
-                </colgroup>
-                <thead>
-                <tr>
-                    <th>订单编号</th>
-                    <th>房屋名称</th>
-                    <th>购买用户</th>
-                    <th>订单总价</th>
-                    <th>订单状态</th>
-                    <th>订单创建时间</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="o : ${list}">
-                    <td th:text="${o.id}"></td>
-                    <td th:text="${o.house.hname}"></td>
-                    <td th:text="${o.user.uname}"></td>
-                    <td th:text="${o.ordersDetails.price}"></td>
-                    <td th:text="${o.status}==1?'待付款':'未付款'">
+            <div>
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">网站设置</li>
+                        <li><a href="/muniao/toList?status=1">待付款</a></li>
+                        <li><a href="/muniao/toList?status=2">已付款</a></li>
+                        <li>商品管理</li>
+                        <li>订单管理</li>
+                    </ul>
+                    <div class="layui-tab-content" style="height: 100px;">
+                        <div class="layui-tab-item layui-show">内容不一样是要有，因为你可以监听tab事件（阅读下文档就是了）</div>
+                        <div class="layui-tab-item">
+                            <table class="layui-table" border="1">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="200">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>订单编号</th>
+                                    <th>房屋名称</th>
+                                    <th>购买用户</th>
+                                    <th>订单总价</th>
+                                    <th>订单状态</th>
+                                    <th>订单创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="o : ${list}">
+                                    <td th:text="${o.id}"></td>
+                                    <td th:text="${o.house.hname}"></td>
+                                    <td th:text="${o.user.uname}"></td>
+                                    <td th:text="${o.ordersDetails.price}"></td>
+                                    <td th:text="${o.status}==1?'待付款':'已支付'">
 
-                    </td>
-                    <td th:text="${o.createtime}"></td>
-                    <!--                    <td th:text="${o.orders_orderScore} == 0?0:${o.orders_orderScore} "></td>-->
-                    <!--                    <td width="150px;" th:if="${o.orders_status} == 0">-->
-                    <!--                        <button type="button" class="layui-btn" >-->
-                    <!--                            <a th:href="'/alipay?order_id='+${o.orders_id}+'&vadio_id='+${o.vadio_id}+'&totalMoney='+${o.orders_money}">付款</a>-->
-                    <!--                        </button>-->
+                                    </td>
+                                    <td th:text="${o.createtime}"></td>
+                                    <!--                    <td th:text="${o.orders_orderScore} == 0?0:${o.orders_orderScore} "></td>-->
+                                    <!--                    <td width="150px;" th:if="${o.orders_status} == 0">-->
+                                    <!--                        <button type="button" class="layui-btn" >-->
+                                    <!--                            <a th:href="'/alipay?order_id='+${o.orders_id}+'&vadio_id='+${o.vadio_id}+'&totalMoney='+${o.orders_money}">付款</a>-->
+                                    <!--                        </button>-->
 
-                    <!--                        <button type="button" class="layui-btn">-->
-                    <!--                            <a th:href="'/delOrders?orders_id='+${o.orders_id}">删除</a>-->
-                    <!--                        </button>-->
-                    <!--                    </td>-->
-                </tr>
-                </tbody>
-            </table>
+                                    <!--                        <button type="button" class="layui-btn">-->
+                                    <!--                            <a th:href="'/delOrders?orders_id='+${o.orders_id}">删除</a>-->
+                                    <!--                        </button>-->
+                                    <!--                    </td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-tab-item">
+                            <table class="layui-table" border="1">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="200">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>订单编号</th>
+                                    <th>房屋名称</th>
+                                    <th>购买用户</th>
+                                    <th>订单总价</th>
+                                    <th>订单状态</th>
+                                    <th>订单创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="o : ${list}">
+                                    <td th:text="${o.id}"></td>
+                                    <td th:text="${o.house.hname}"></td>
+                                    <td th:text="${o.user.uname}"></td>
+                                    <td th:text="${o.ordersDetails.price}"></td>
+                                    <td th:text="${o.status}==1?'待付款':'已支付'">
+
+                                    </td>
+                                    <td th:text="${o.createtime}"></td>
+                                    <!--                    <td th:text="${o.orders_orderScore} == 0?0:${o.orders_orderScore} "></td>-->
+                                    <!--                    <td width="150px;" th:if="${o.orders_status} == 0">-->
+                                    <!--                        <button type="button" class="layui-btn" >-->
+                                    <!--                            <a th:href="'/alipay?order_id='+${o.orders_id}+'&vadio_id='+${o.vadio_id}+'&totalMoney='+${o.orders_money}">付款</a>-->
+                                    <!--                        </button>-->
+
+                                    <!--                        <button type="button" class="layui-btn">-->
+                                    <!--                            <a th:href="'/delOrders?orders_id='+${o.orders_id}">删除</a>-->
+                                    <!--                        </button>-->
+                                    <!--                    </td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-tab-item">
+                            <table class="layui-table" border="1">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="200">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>订单编号</th>
+                                    <th>房屋名称</th>
+                                    <th>购买用户</th>
+                                    <th>订单总价</th>
+                                    <th>订单状态</th>
+                                    <th>订单创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="o : ${list}">
+                                    <td th:text="${o.id}"></td>
+                                    <td th:text="${o.house.hname}"></td>
+                                    <td th:text="${o.user.uname}"></td>
+                                    <td th:text="${o.ordersDetails.price}"></td>
+                                    <td th:text="${o.status}==1?'待付款':'未付款'">
+
+                                    </td>
+                                    <td th:text="${o.createtime}"></td>
+                                    <!--                    <td th:text="${o.orders_orderScore} == 0?0:${o.orders_orderScore} "></td>-->
+                                    <!--                    <td width="150px;" th:if="${o.orders_status} == 0">-->
+                                    <!--                        <button type="button" class="layui-btn" >-->
+                                    <!--                            <a th:href="'/alipay?order_id='+${o.orders_id}+'&vadio_id='+${o.vadio_id}+'&totalMoney='+${o.orders_money}">付款</a>-->
+                                    <!--                        </button>-->
+
+                                    <!--                        <button type="button" class="layui-btn">-->
+                                    <!--                            <a th:href="'/delOrders?orders_id='+${o.orders_id}">删除</a>-->
+                                    <!--                        </button>-->
+                                    <!--                    </td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-tab-item">
+                            <table class="layui-table" border="1">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="200">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>订单编号</th>
+                                    <th>房屋名称</th>
+                                    <th>购买用户</th>
+                                    <th>订单总价</th>
+                                    <th>订单状态</th>
+                                    <th>订单创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="o : ${list}">
+                                    <td th:text="${o.id}"></td>
+                                    <td th:text="${o.house.hname}"></td>
+                                    <td th:text="${o.user.uname}"></td>
+                                    <td th:text="${o.ordersDetails.price}"></td>
+                                    <td th:text="${o.status}==1?'待付款':'未付款'">
+
+                                    </td>
+                                    <td th:text="${o.createtime}"></td>
+                                    <!--                    <td th:text="${o.orders_orderScore} == 0?0:${o.orders_orderScore} "></td>-->
+                                    <!--                    <td width="150px;" th:if="${o.orders_status} == 0">-->
+                                    <!--                        <button type="button" class="layui-btn" >-->
+                                    <!--                            <a th:href="'/alipay?order_id='+${o.orders_id}+'&vadio_id='+${o.vadio_id}+'&totalMoney='+${o.orders_money}">付款</a>-->
+                                    <!--                        </button>-->
+
+                                    <!--                        <button type="button" class="layui-btn">-->
+                                    <!--                            <a th:href="'/delOrders?orders_id='+${o.orders_id}">删除</a>-->
+                                    <!--                        </button>-->
+                                    <!--                    </td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
         </div>
+    </div>
     </div>
 </section>
 
