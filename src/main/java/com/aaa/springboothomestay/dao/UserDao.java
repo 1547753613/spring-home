@@ -2,6 +2,7 @@ package com.aaa.springboothomestay.dao;
 
 import com.aaa.springboothomestay.entity.User;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -40,7 +41,7 @@ public interface UserDao  {
      * @param pass
      * @return
      */
-    Integer UpdatePwd(String pass);
+    Integer UpdatePwd(@Param("pass") String pass);
 
 
 
