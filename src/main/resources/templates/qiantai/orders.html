@@ -34,14 +34,7 @@
             <ul>
                 <li class="active2"><a href="/muniao/findUser">个人资料</a></li>
                 <li ><a href="/muniao/findCollect">我的收藏</a></li>
-                <li >
-                    <a href="/muniao/toList">
-                        我的订单
-                    </a>
-                </li>
-                <!--                <li th:if="${session.user.is_teacher} == 0"><a href="/teacher/listTeacher">讲师申请</a></li>-->
-                <!--                <li th:if="${session.user.is_teacher} == 1"><a href="/muke/getVadio2">上传课程</a></li>-->
-                <!--                <li th:if="${session.user.is_teacher} == 1"><a href="/muke/listvadio">上传视频</a></li>-->
+                <li ><a href="/muniao/toList">我的订单</a></li>
             </ul>
         </div>
         <div class="right" >
@@ -50,52 +43,86 @@
                     <h1>我的订单</h1>
                 </div>
             </div>
-            <table class="layui-table" border="1">
-                <colgroup>
-                    <col width="150">
-                    <col width="200">
-                    <col>
-                </colgroup>
-                <thead>
-                <tr>
-                    <th>订单编号</th>
-                    <th>房屋名称</th>
-                    <th>购买用户</th>
-                    <th>订单总价</th>
-                    <th>订单状态</th>
-                    <th>订单创建时间</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="o : ${list}">
-                    <td th:text="${o.id}"></td>
-                    <td th:text="${o.house.hname}"></td>
-                    <td th:text="${o.user.uname}"></td>
-                    <td th:text="${o.ordersDetails.price}"></td>
-                    <td th:text="${o.status}==1?'待付款':'未付款'">
-
-                    </td>
-                    <td th:text="${o.createtime}"></td>
-                    <!--                    <td th:text="${o.orders_orderScore} == 0?0:${o.orders_orderScore} "></td>-->
-                    <!--                    <td width="150px;" th:if="${o.orders_status} == 0">-->
-                    <!--                        <button type="button" class="layui-btn" >-->
-                    <!--                            <a th:href="'/alipay?order_id='+${o.orders_id}+'&vadio_id='+${o.vadio_id}+'&totalMoney='+${o.orders_money}">付款</a>-->
-                    <!--                        </button>-->
-
-                    <!--                        <button type="button" class="layui-btn">-->
-                    <!--                            <a th:href="'/delOrders?orders_id='+${o.orders_id}">删除</a>-->
-                    <!--                        </button>-->
-                    <!--                    </td>-->
-                </tr>
-                </tbody>
-            </table>
+            <div>
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this"><a href="javascript:getOrders(0)">查看全部订单</a></li>
+                        <li><a href="javascript:getOrders(1)">待付款</a></li>
+                        <li><a href="javascript:getOrders(2)">待入住</a></li>
+                        <li><a href="javascript:getOrders(3)">待退房</a></li>
+                        <li><a href="javascript:getOrders(4)">已完成</a></li>
+                        <li><a href="javascript:getOrders(5)">已关闭</a></li>
+                        <li><a href="javascript:getOrders(6)">待处理</a></li>
+                        <li><a href="javascript:getOrders(7)">已处理</a></li>
+                    </ul>
+                    <div class="layui-tab-content" style="height: 100px;">
+                        <div class="layui-tab-item layui-show"></div>
+                        <div class="layui-tab-item">
+                            <table class="layui-table" border="1" id="a">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="200">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>订单编号</th>
+                                    <th>房屋名称</th>
+                                    <th>购买用户</th>
+                                    <th>订单总价</th>
+                                    <th>订单状态</th>
+                                    <th>订单创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="o : ${list}">
+                                    <td th:text="${o.id}"></td>
+                                    <td th:text="${o.house.hname}"></td>
+                                    <td th:text="${o.user.uname}"></td>
+                                    <td th:text="${o.ordersDetails.price}"></td>
+                                    <td th:text="${o.status}==1?'待付款':(o.status==2?'待入住':(o.status==3?'待退房':(o.status==4?'已完成':(o.status==5?'已关闭':(o.status==6?'待处理':(o.status==7?'已处理':''))))))"></td>
+                                    <td th:text="${o.createtime}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                </div>
         </div>
+    </div>
     </div>
 </section>
 
 <script>
-
+    function getOrders(i) {
+            $.ajax({
+                url:'/muniao/toOrder',
+                type:'get',
+                data:{
+                    status:i
+                },
+                success:function (data) {
+                    $("#a").find("tbody").html("")
+                    var html="";
+                    $.each(data,function (index,item) {
+                        let status=item.status==1?'待付款':(item.status==2?'待入住':(item.status==3?'待退房':(item.status==4?'已完成':(item.status==5?'已关闭':(item.status==6?'待处理':(item.status==7?'已处理':''))))));
+                        html+="<tr><td>"+item.id+"</td>\n" +
+                            "                                    <td>"+ item.house.hname+"</td>\n" +
+                            "                                    <td>"+ item.user.uname+"</td>\n" +
+                            "                                    <td>"+ item.ordersDetails.price+"</td>\n" +
+                            "                                    <td>"+ status+"</td>\n" +
+                            "                                    <td>"+ item.createtime+"</td>\n" +
+                            "</tr>"
+                    })
+                    $("#a").find("tbody").append(html)
+                    //${"#list"}.val(data)
+                    console.log(data)
+                 //   alert(data)
+                }
+            })
+    }
 </script>
 </body>
 </html>

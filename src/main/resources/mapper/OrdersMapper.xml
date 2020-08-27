@@ -25,16 +25,47 @@
                     <result property="price" column="price"></result>
                 </collection>
     </resultMap>
-    <select id="findAllOrders" resultMap="xx">
-            select o.*,h.*,u.*,d.*
+
+    <sql id="que">
+        select o.*,h.*,u.*,d.*
             from orders o
             join house h
             on h.id = o.id
             join user u
-            on u.uid = o.id
+            on u.uid = o.uid
             join orders_details d
             on d.id = o.id
-            where u.uid = #{uid}
+           </sql>
 
+    <select id="findAllOrders" resultMap="xx">
+        <include refid="que"></include>
+        <where>
+            u.uid = #{uid}
+            <if test="status==0">
+
+            </if>
+            <if test="status==1">
+                and status=1
+            </if>
+            <if test="status==2">
+                and status=2
+            </if>
+            <if test="status==3">
+                and status=3
+            </if>
+            <if test="status==4">
+                and status=4
+            </if>
+            <if test="status==5">
+                and status=5
+            </if>
+            <if test="status==6">
+                and status=6
+            </if>
+            <if test="status==7">
+                and status=7
+            </if>
+        </where>
     </select>
+
 </mapper>
