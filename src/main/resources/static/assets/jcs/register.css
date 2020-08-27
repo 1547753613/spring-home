@@ -1,0 +1,230 @@
+html,body,div,p,a,h1,h2,h3,h4,h5,h6,ul,li,span{padding:0;margin:0;color:#4e4e4e;font-size:14px;font-family:"寰蒋闆呴粦",X-LocaleSpecific,Ubuntu,Droid Sans,sans-serif}
+h1,h2,h3,h4,h5,h6{font-weight:500;line-height:1.1;}
+ul,li{list-style:none;}
+a{text-decoration:none;outline:none;}
+.clear:after{display:block;content:"";overflow:hidden;clear:both;}
+::-webkit-input-placeholder{color:#aaaaaa;}
+:-moz-placeholder{color:#aaaaaa;}
+::-moz-placeholder{color:#aaaaaa;}
+:-ms-input-placeholder{color:#aaaaaa;}
+/*message-update tab margin:涓婄嚎鐨勬椂鍊欒鍘绘帀*/
+.user-checkedBox{width:769px;height:auto;margin:20px auto 0;}
+.user-centerTab{width:100%;height:32px;border-bottom:2px solid #ff9180;}
+.user-centerTab li{float:left;display:inline;padding:0 30px;line-height:31px;border:1px solid #dadde4;border-bottom:none;background:#ffffff;font-size:14px;color:#000000;-webkit-border-radius:10px 10px 0 0;cursor:pointer;}
+.user-centerTab li.active{color:#ff9180;}
+/*content*/
+.user-centerContent{padding:18px 20px 40px;background:#ffffff;}
+.user-checkedTitle{height:40px;padding:8px 0 12px 68px;line-height:40px;background:url(/Content/fangdong/image/contentchecked_icon.png) no-repeat left top;font-size:16px;color:#555555;}
+.user-personMessage{padding-left:68px;margin-top:8px;}
+.user-personMessage li{height:30px;margin-bottom:20px;}
+.user-personMessage li:last-child{margin-bottom:0;}
+.user-personMessage li span{float:left;display:inline;line-height:30px;font-size:16px;color:#555555;}
+.user-personMessage li i{color:#ff9180;font-style:inherit;}
+.user-personMessage li input{float:left;display:inline;width:292px;height:28px;line-height:28px;padding:0 12px;margin-left:12px;border:1px solid #bfbfbf;font-size:15px;color:#888888;}
+
+/*message-completeDialog*/
+.message-completeDialog{position:fixed;left:0;top:0;bottom:0;width:100%;background:rgba(000,000,000,.3);z-index:99999;}
+.background-mask{width:100%;height:100%;filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#3F000000,endcolorstr=#3F000000);}
+/*瀹屽杽淇℃伅*/
+.write-messageBox{position:absolute;left:50%;top:80px;bottom:80px;width:540px;overflow-y:auto;overflow-x:hidden;padding:0 20px 1px;margin-left:-290px;background:#ffffff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-box-shadow:0 1px 20px rgba(000,000,000,.2);-moz-box-shadow:0 1px 20px rgba(000,000,000,.2);-o-box-shadow:0 1px 20px rgba(000,000,000,.2);box-shadow:0 1px 20px rgba(000,000,000,.2);}
+.write-messTitle{height:58px;border-bottom:1px solid #e6e6e6;}
+.write-messTitle h3{float:left;display:inline;height:58px;line-height:58px;padding-left:20px;font-size:17px;color:#4e4e4e;font-weight:bold;}
+.close-dialogRegister{float:right;display:inline;width:16px;height:16px;background:url(/Content/fangdong/image/register_dialogclose.png) no-repeat left top;margin:19px 20px 0 0;}
+.header-uploadBox{position:relative;padding:38px 0 28px;margin:0 38px;border-bottom:1px solid #e6e6e6;}
+.header-imageBox{float:left;display:inline;width:60px;height:60px;-webkit-border-radius:200%;-moz-border-radius:200%;border-radius:200%;border:2px solid #cccccc;overflow:hidden;}
+.header-imageBox img{display:block;width:100%;height:100%;vertical-align:top;}
+.header-uploadText{float:left;display:inline;margin-left:28px;}
+.header-uploadText span{display:block;}
+.img-uploadStatus{height:34px;line-height:34px;font-size:15px;color:#ff9180;}
+.img-uploadInfo{height:24px;line-height:24px;font-size:13px;color:#aaaaaa;}
+.upload-btn{position:absolute;right:-7px;top:38px;width:103px;height:64px;}
+.webuploader-pick{width:103px;height:64px;}
+.file-item{width:60px;height:60px;}
+.message-formBox{padding:35px 38px 65px;border-bottom:1px solid #e6e6e6;}
+.message-formInputBox{position:relative;height:40px;}
+.money-methodBank,.money-methodAlipay{display:none;}
+.form-inputSelect{float:left;display:inline;height:40px;line-height:40px;font-size:15px;color:#4e4e4e;}
+.message-formInputBox input{float:right;display:inline;width:308px;height:26px;padding:6px 20px;line-height:26px;border:1px solid #dddddd;font-size:15px;color:#4e4e4e;outline:none;}
+.message-formInputBox input.phcolor{color:#aaaaaa;}
+.message-formInputBox input.warn{border-color:#ff9180;}
+.message-submitBtn{display:block;width:358px;height:46px;margin:26px auto 20px;line-height:46px;text-align:center;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background:#ff9180;-webkit-box-shadow:0 4px 20px rgba(255,145,128,.5);-moz-box-shadow:0 4px 20px rgba(255,145,128,.5);-o-box-shadow:0 4px 20px rgba(255,145,128,.5);box-shadow:0 4px 20px rgba(255,145,128,.5);font-size:15px;color:#ffffff;}
+.owner-identityMessage,.owner-moneyMessage{margin-top:34px;}
+.owner-identityMessage h3,.owner-moneyMessage h3{position:relative;height:24px;line-height:24px;margin-bottom:20px;}
+.owner-identityMessage h3 span,.owner-moneyMessage h3 span{position:relative;z-index:2;font-size:15px;color:#4e4e4e;font-weight:bold;}
+.owner-identityMessage h3:before,.owner-moneyMessage h3:before{position:absolute;left:-2px;bottom:0;content:"";width:100px;height:8px;font-size:0;background:#eeeeee;}
+.owner-identityMessage .message-formInputBox,.owner-moneyMessage .message-formInputBox{margin-bottom:15px;}
+.message-formInputBox.margin-single{margin-bottom:0;}
+.form-moneySelect{position:relative;float:right;display:inline;width:308px;height:26px;padding:6px 20px;line-height:26px;border:1px solid #dddddd;font-size:15px;color:#aaaaaa;cursor:pointer;}
+.form-moneySelect:after{display:block;position:absolute;right:10px;top:17px;content:"";width:10px;height:5px;background:url(/Content/fangdong/image/select_downicon.png) no-repeat left top;}
+.money-methodList{display:none;position:absolute;right:0;top:39px;width:348px;height:auto;border:1px solid #dddddd;z-index:22}
+.money-methodList li{height:40px;line-height:40px;padding-left:20px;font-size:15px;color:#4e4e4e;background:#ffffff;cursor:pointer;}
+.money-methodList li.active{background:#00aaee;color:#ffffff;}
+/*娉ㄥ唽瀹屾垚*/
+.register-completeBox{position:absolute;left:50%;top:50%;width:360px;height:334px;margin:-192px 0 0 -210px;padding:50px 30px 0;background:#ffffff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-webkit-box-shadow:0 1px 20px rgba(000,000,000,.2);-moz-box-shadow:0 1px 20px rgba(000,000,000,.2);-o-box-shadow:0 1px 20px rgba(000,000,000,.2);box-shadow:0 1px 20px rgba(000,000,000,.2);display:none;}
+.register-dialogClose{display:block;position:absolute;right:16px;top:16px;width:16px;height:16px;background:url(/content/fangdong/image/register_dialogclose.png) no-repeat left top;}
+.register-completeFirst{height:50px;padding-bottom:20px;border-bottom:1px solid #eeeeee;}
+.register-completeFirst img{float:left;display:inline;width:50px;height:50px;margin-left:12px;}
+.register-completeFirst p{float:left;display:inline;width:200px;margin-left:20px;padding-top:4px;line-height:20px;font-size:15px;color:#4e4e4e;}
+.register-completeSecond{height:118px;padding:24px 0 28px 10px;border-bottom:1px solid #eeeeee;}
+.down-appImg{float:left;display:inline;width:118px;height:118px;margin-top:2px;}
+.down-textDescribe{float:left;display:inline;width:196px;margin-left:30px;}
+.register-completeSecond h4{height:24px;line-height:24px;font-size:15px;color:#4e4e4e;font-weight:bold;}
+.register-completeSecond p{margin-top:12px;line-height:20px;font-size:13px;color:#4e4e4e;}
+.down-appBtn{display:block;margin-top:8px;height:26px;line-height:26px;font-size:15px;color:#ff9180;}
+.go-publish-room{display:block;width:330px;height:46px;margin:20px auto 0;line-height:46px;text-align:center;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background:#ff9180;-webkit-box-shadow:0 4px 20px rgba(223,86,65,.2);-moz-box-shadow:0 4px 20px rgba(223,86,65,.2);-o-box-shadow:0 4px 20px rgba(223,86,65,.2);box-shadow:0 4px 20px rgba(223,86,65,.2);font-size:15px;color:#ffffff;}
+/*璇佷欢涓婁紶*/
+.message-formUl{
+	position: relative;
+	height: 88px;
+	margin-bottom: 15px;
+}
+.authenUl{
+	height: 100%;
+	padding: 0;margin: 0;
+}
+.authenUl>li{
+	width: 139px;
+	height: 88px;
+	margin-right: 12px;
+	float: left;
+	border-radius: 5px;
+	position: relative;
+}
+.authenUl>li>img{
+	width: 100%;
+	height: 100%;
+}
+.authenUl>li:last-child{
+   margin-right: 0;
+}
+/*鏇存崲鐓х墖*/
+.identity_text{
+	display: inline-block;
+	width: 100%;
+	height: 24px;
+	position: absolute;
+	left: 0;
+	bottom:0;
+	background: #fa8a79;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius:2px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: #ffffff;
+}
+.authenUl>li>input{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	top:0;
+	left: 0;
+	z-index: 300;
+}
+/*鐓х墖璁よ瘉鎻愮ず*/
+.certificate{
+	padding: 0px 20px 30px;
+    background: #ffffff;
+}
+.user-certificateTitle0 {
+    border-top: 1px solid #d2d2d2;
+    height: 40px;
+    padding: 8px 0 0px 68px;
+    line-height: 40px;
+    background: url(/Content/fangdong/image/audit.png) no-repeat left top;
+    font-size: 16px;
+    color: #555555;
+}
+.user-certificateTitle1 {
+    border-top: 1px solid #d2d2d2;
+    height: 40px;
+    padding: 8px 0 0px 68px;
+    line-height: 40px;
+    background: url(/Content/fangdong/image/verify.png) no-repeat left top;
+    font-size: 16px;
+    color: #555555;
+}
+.user-certificateTitle2 {
+    border-top: 1px solid #d2d2d2;
+    height: 40px;
+    padding: 8px 0 0px 68px;
+    line-height: 40px;
+    background: url(/Content/fangdong/image/nopass.png) no-repeat left top;
+    font-size: 16px;
+    color: #555555;
+}
+.user-certificateTitle10 {
+    border-top: 1px solid #d2d2d2;
+    height: 40px;
+    padding: 8px 0 0px 68px;
+    line-height: 40px;
+    background: url(/Content/fangdong/image/noverify.png) no-repeat left top;
+    font-size: 16px;
+    color: #555555;
+}
+.user-checkedp{
+	height:14px;padding:0px 0 12px 68px;line-height:14px;font-size:14px;color:#888888;
+}
+.certificateUl{
+	height: 132px;
+	padding: 0;
+	padding-left: 68px;
+	margin: 0;
+}
+.certificateUl>li{
+	width: 213px;
+	height: 132px;
+	margin-right: 11px;
+	float: left;
+	border-radius: 5px;
+	position: relative;
+}
+.certificateUl>li img{
+	width: 100%;
+	height: 100%;
+}
+.certificateUl>li:last-child{
+   margin-right: 0;
+}
+.certificateUl>li input{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	top:0;
+	left: 0;
+	z-index: 300;
+}
+.certificateBtn{
+	width: 120px;
+	height: 44px;
+	margin-top: 40px;
+	border-radius: 6px;
+	background: #ff9180;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	line-height: 44px;
+	margin-left: 68px;
+}
+#frontcard>.webuploader-pick,#reversecard>.webuploader-pick,#handcard>.webuploader-pick{
+	width: 100%;
+	height: 100%;
+}
+.frontMain,.reverseMain,.handMain{
+	width: 100%;
+	height: 100%;
+}
+    .frontMain div, .reverseMain div, .handMain div{
+        width: 100%;
+        height: 100%;
+    }
+    .frontMain img, .reverseMain img, .handMain img {
+        width: 100%;
+        height: 100%;
+    }
+    .frontMain > .webuploader-pick, .reverseMain > .webuploader-pick, .handMain > .webuploader-pick {
+        width: 100%;
+        height: 100%;
+    }

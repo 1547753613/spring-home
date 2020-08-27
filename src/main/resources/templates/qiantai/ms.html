@@ -1,0 +1,231 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit">
+<meta name="keywords" content=""/>
+<meta name="description" content="" />
+<link rel="shortcut icon" href="https://www.xiaozhu.com/favicon.ico?v=20190820" type="image/vnd.microsoft.icon">
+<link rel="icon" href="https://www.xiaozhu.com/favicon.ico?v=20190820" type="image/vnd.microsoft.icon">
+<title>发布您的房间</title>       
+ <link rel="stylesheet" type="text/css"  href="../../static/fangyuanassets/css/xzcss.css?css=base,header,footer,publishRoomV2,photoScroll,jquery-ui,nyroModal,mysite" />
+ 
+ 
+<!-- <link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e20200803/xzcss?css=base,header,footer,publishRoomV2,photoScroll,jquery-ui,nyroModal,mysite" />
+ -->    </head>
+    <body>
+            <div class="header height56">
+                <div class="top"></div>
+                 
+
+
+
+            <div class='h_top_box'>
+                <div class="h_step_box">
+                                        <ul class="clearfix">
+                        <li></li>                                                                                            </ul>
+                                        <div class="h_step_cur h_pos1">
+                                                <a href="https://www.xiaozhu.com/xzweb.php?op=Pub_Index&roomId=144649154296&step=1" class="h_step1_cur"><span></span></a>
+                                                <p>房源信息</p>
+                    </div>
+                    <div class="h_step h_pos2">
+                                                <span class="h_step2_cur"></span>
+                                                <p>房源描述</p>
+                    </div>
+                    <div class="h_step h_pos3">
+                                                <span class="h_step3"></span>
+                                                <p>配套设施</p>
+                    </div>
+                    <div class="h_step h_pos4">
+                                                <span class="h_step4"></span>
+                                                <p>真实照片</p>
+                    </div>
+                    <div class="h_step h_pos5">
+                                                <span class="h_step5"></span>
+                                                <p>价格规则</p>
+                    </div>
+                </div>
+            </div>
+                            <div class="h_wrap pb20 mt20">
+                                <h4 class="h_tit">房源描述</h4>
+                <div class="h_room_box">
+            <div class="h_room_ms clearfix" style="position: relative;">
+                <label style="width: 100%;">房源标题：<span style="margin-left: 15px;">精炼的介绍特点和优势，让房客在第一时间对你的房源感兴趣</span></label>
+                <div class="h_room_msg1 " style="margin-left:90px;">
+                    <div class="msg_tip" style='display:none'>
+                        <div class="msg_tip_arrow"></div>
+                        建议格式：地标＋出租类型＋房源形容词<br>例如：国贸双井10号线地铁阳光充沛的大床房整租<br>请不要使用旅馆、旅店、招待所、浴池、计时休息、英租、法租、租界等词汇<br><span>（不要发布联系方式，否则不能通过审核）</span>
+                    </div>
+                    <!--<p class="number_tip showCountVals" id="number_roomtitle">0/22</p>-->
+
+                    <input type="text" placeholder="请填写" class="room_input input_detail" id="roomtitle" name="roomtitle" maxlength='22' value="" onkeyup='changeFlag = true;' />
+                    <div class="number_tip_showCountVals_wrap"><span class="number_tip showCountVals" id="number_roomtitle"></span></div>
+                </div>
+                <p class="h_check_tip1 simsun" id='tip_roomtitle' style='display:none;left: 583px;top: 65px;'>不能少于5个汉字</p>
+            </div>
+            <div class="h_room_ms clearfix" style="position: relative;">
+                <label style="width: 100%;">个性描述：<span style="margin-left: 15px;">向房客介绍一下自己的兴趣爱好，告诉房客能体验到的不一样的特色或服务有哪些</span><br />（选填）</label>
+                <div class="h_room_msg1 h_room_msg12" style="margin-left:90px;">
+                    <div class="msg_tip" style='display:none'>
+                        <div class="msg_tip_arrow"></div>
+                        例如：你将结识一个热情、爱分享、爱读书、喜欢音乐和下厨的IT男生，希望与你一同感受胡同里的悠闲与自在。<br/>
+                        请不要使用旅馆、旅店、招待所、浴池、计时休息、英租、法租、租界等词汇<br/>
+                    </div>
+                    <p class="number_tip showCountVals" id="number_roomServiceIntro">0/2000</p>
+                    <textarea rows="6" autoHeight="true" placeholder="请填写" class="room_msg textarea_detail" id= "roomServiceIntro" name="roomServiceIntro"></textarea>
+                </div>
+                <p class="h_check_tip1 simsun new_tip_error" id='tip_roomServiceIntro' style='display:none'>请完善个性描述</p>
+            </div>
+            <div class="h_room_ms clearfix" style="position: relative;">
+                <label style="width: 100%;">内部情况：<span style="margin-left: 15px;">房屋内装修和装饰的风格，以及主要配套设施的介绍</span></label>
+                <div class="h_room_msg1 " style="margin-left:90px;">
+                    <div class="msg_tip" style='display:none'> 
+                        <div class="msg_tip_arrow"></div>
+                        例如：欧式田园小清新风格的装修，配备舒适的大床和床垫，相信您一定会舒舒服服的睡个好觉！除此之外卧室还有空调、衣柜、挂墙液晶电视、免费百兆wifi、以及独立的卫生间哦（24小时热水是妥妥的）！如果您想做饭，厨房免费提供给您，厨具调料齐备，快来大展厨艺吧！<br/>
+                        请不要使用旅馆、旅店、招待所、浴池、计时休息、英租、法租、租界等词汇<br/>
+                    </div>
+                        <p class="number_tip showCountVals" id="number_roomRoominnerIntro">0/2000</p>
+                        <textarea rows="6" autoHeight="true" placeholder="请填写" class="room_msg textarea_detail" id= "roomRoominnerIntro"  name="roomRoominnerIntro"></textarea>
+                </div>
+                <p class="h_check_tip1 simsun new_tip_error" id='tip_roomRoominnerIntro' style='display:none'>不能少于20个汉字</p>
+            </div>
+            <div class="h_room_ms clearfix" style="position: relative;">
+                <label style="width: 100%;">交通情况：<span style="margin-left: 15px;">房源所处位置，以及周边交通情况的描述</span><br />（选填）</label>
+                <div class="h_room_msg1 h_room_msg12" style="margin-left:90px;">
+                    <div class="msg_tip" style='display:none'> 
+                        <div class="msg_tip_arrow"></div>
+                        例如：位于安定门外大街，从安定门地铁站A口5分钟即到。楼下还有27路、119路等多条公交线路，十分方便。<br/>
+                        请不要使用旅馆、旅店、招待所、浴池、计时休息、英租、法租、租界等词汇<br/>
+                    </div>
+                        <p class="number_tip showCountVals" id="number_roomLocationIntro">0/2000</p>
+                        <textarea rows="6" autoHeight="true" placeholder="请填写" class="room_msg textarea_detail" id= "roomLocationIntro" name="roomLocationIntro"></textarea>
+                </div>
+                <p class="h_check_tip1 simsun new_tip_error" id='tip_roomLocationIntro' style='display:none;top:49%;'></p>
+            </div>
+            <div class="h_room_ms clearfix" style="position: relative;">
+                <label style="width: 100%;">周边情况：<span style="margin-left: 15px;">房源所在楼宇和小区的基本情况，以及周边商超、景点、银行、医院等配套设施等情况</span><br />（选填）</label>
+                <div class="h_room_msg1 h_room_msg12" style="margin-left:90px;">
+                    <div class="msg_tip" style='display:none'> 
+                        <div class="msg_tip_arrow"></div>
+                        例如：楼宇内安装有进口大品牌电梯，楼道干净整洁。同时小区内绿树环抱、清新怡人，在这里您不用担心大都市的吵闹，安静的只有风吹树叶声。物业管理安全有序，24小时保安巡视，行人出入需刷门禁卡，让您住的安全放心。小区周边设施齐全，餐饮设施有肯德基、永和大王、老上海城隍庙小吃等，金融机构有建设银行、中国银行等，医疗服务有解放军总医院。<br/>
+                        请不要使用旅馆、旅店、招待所、浴池、计时休息、英租、法租、租界等词汇<br/>
+                    </div>
+                    <p class="number_tip showCountVals" id="number_roomAroundIntro">0/2000</p>
+                    <textarea rows="6" autoHeight="true" placeholder="请填写" class="room_msg textarea_detail" id= "roomAroundIntro" name="roomAroundIntro"></textarea>
+                </div>
+                <p class="h_check_tip1 simsun new_tip_error" id='tip_roomAroundIntro' style='display:none;top: 49%;'></p>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="" id="room_type">
+    <input type="hidden" value="公寓|旅馆|旅店|招待所|浴池|计时休息|英租界|法租界|法租|英租|租界|饭店|宾馆|酒店|客栈|洗浴|酒店式公寓|住宿|习近平|李克强|栗战书|汪洋|王沪宁|赵乐际|韩正|丁薛祥|王晨|刘鹤|许其亮|孙春兰|李希|李强|李鸿忠|杨洁篪|杨晓渡|张又侠|陈希|陈全国|陈敏尔|胡春华|郭声琨|黄坤明|蔡奇|尤权|史上最低价|不会再便宜|第一品牌|中国第一|全网第一|销量第一|排名第一|世界领先|绝无仅有|最受欢迎|独一无二|全国第一|习大大|国家级|最奢侈|最便宜|最流行|最时尚|最符合|最舒适|极佳|终极|至极|完美|鼎级|独家|独创|首选|顶级|最具|最爱|最赚|最优|最先|最后|最新|唯一|NO.1|TOP.1|江泽民|平近习|xjp|习太子|习明泽|老习|温家宝|温加宝|温x|温jia宝|温宝宝|温加饱|温加保|张培莉|温云松|温如春|温jb|胡温|胡x|胡jt|胡boss|胡总|胡王八|hujintao|胡jintao|胡j涛|胡惊涛|胡景涛|胡紧掏|湖紧掏|胡紧套|锦涛|hjt|胡派|胡主席|刘永清|胡海峰|胡海清|民泽江|江胡|江哥|江主席|江书记|江浙闽|江沢民|江浙民|择民|则民|茳泽民|zemin|ze民|老江|老j|江core|江x|江派|江zm|jzm|江戏子|江蛤蟆|江某某|江贼|江猪|江氏集团|江绵恒|江绵康|王冶坪|江泽慧|邓小平|平小邓|xiao平|邓xp|邓晓平|邓朴方|邓榕|邓质方|毛泽东|猫泽东|猫则东|猫贼洞|毛zd|毛zx|z东|ze东|泽d|zedong|毛太祖|毛相|主席画像|改革历程|朱镕基|朱容基|朱镕鸡|朱容鸡|朱云来|李鹏|李peng|里鹏|李月月鸟|李小鹏|李小琳|华主席|华国|国锋|国峰|锋同志|白春礼|薄熙来|薄一波|蔡赴朝|蔡武|曹刚川|常万全|陈炳德|陈德铭|陈建国|陈良宇|陈绍基|陈同海|陈至立|戴秉国|丁一平|董建华|杜德印|杜世成|傅锐|郭伯雄|郭金龙|贺国强|耀邦|华建敏|黄华华|黄丽满|黄兴国|回良玉|贾庆林|贾廷安|靖志远|李长春|李春城|李建国|李岚清|李沛瑶|李荣融|李瑞环|李铁映|李先念|李学举|李源潮|栗智|梁光烈|廖锡龙|林树森|林炎志|林左鸣|令计划|柳斌杰|刘奇葆|刘少奇|刘延东|刘云山|刘志军|龙新民|路甬祥|罗箭|吕祖善|马飚|马恺|孟建柱|欧广源|强卫|沈跃跃|宋平顺|粟戎生|苏树林|孙家正|铁凝|屠光绍|王东明|汪东兴|王鸿举|王乐泉|王洛林|王岐山|王胜俊|王太华|王学军|王兆国|王振华|吴邦国|吴定富|吴官正|无官正|吴胜利|吴仪|奚国华|习仲勋|徐才厚|徐绍史|叶剑英|由喜贵|于幼军|俞正声|袁纯清|曾培炎|曾庆红|曾宪梓|曾荫权|张德江|张定发|张高丽|张立昌|张荣坤|张志国|赵洪祝|紫阳|周生贤|周永康|朱海仑|中南海|大陆当局|中国当局|北京当局|共产党|党产共|共贪党|阿共|产党共|公产党|工产党|共c党|共x党|共铲|供产|共惨|供铲党|供铲谠|供铲裆|共残党|共残主义|共产主义的幽灵|拱铲|老共|中共|中珙|中gong|gc党|贡挡|gong党|g产|狗产蛋|共残裆|恶党|邪党|共产专制|共产王朝|裆中央|土共|土g|共狗|g匪|共匪|仇共|政府|症腐|政腐|政付|正府|政俯|政f|zhengfu|政zhi|挡中央|档中央|中央领导|中国zf|中央zf|国wu院|中华帝国|gong和|大陆官方|北京政权|胡锦涛|贺子珍|李德生|姚依林|李干成|黄镇|刘瑞龙|黄敬|薄熙|周小川|周建南|徐明|法轮功|李洪志|新疆骚乱|最|金守儿|陈其美|陈式纯|丁麟章|江竹筠|江姐|董存瑞|黄继光|李大钊|孔庆三|卢崇军|杨靖宇|张贯一|魏其虎|王孝和|王德三|赵祚传|夏明翰|利汝光|云九霄|苟晓超|郑文道|茅丽瑛|张甲洲|孟杰民|钟效培|江上青|唐克威|崔曙光|李寿龄|朱毓淦|张文彬|李世超|牟光仪|丁振军|马振华|沈东平|张敬文|童长荣|金方昌|柯棣华|任光|邹韬奋|袁国平|官楚印|叶辅平|吴焜|顾士多|项英|周子昆|郑行福|鲁雨亭|罗忠毅|廖海涛|巫恒通|沈国栋|吴其芳|李汉卿|杨学诚|朱立文|彭雪枫|杨木贵|彭雄|田守尧|刘老庄连八十二烈士|罗化成|吴师孟|胡发坚|郭猛|郁达夫|程仲一|邓振询|马尔克·尼古拉耶维奇·马尔琴科夫|格里戈里·阿里莫维奇·库里申科|辛锐|李竹如|陈明|陈若克|范筑先|窦来庚|理琪|宫川英男|黄魂|林伯熙|黄振亚|孙永勤|威廉·瑞德|张元豹|邱东平|孙铭武|高志航|阎海文|乐以琴|王璞|罗伯特·肖特|顾永田|贾力更|李林|林心平|诺尔曼·白求恩|杨大章|高捷成|李松霄|解蕴山|王平陆|李贞干|白文冠|萨师俊|朱士勤|谢升标|周卓然|卢广伟|刘桂五|张诚德|萧山令|周复|陈中柱|唐聚伍|武士敏|朱炎晖|钟毅|姚中英|王竣|陈文杞|王甲本|王禹九|邓佐虞|柴意新|吴继光|彭士量|吴克仁|许国璋|邓玉琢|张琦|罗策群|谢彩轩|余子武|陈钟书|陈飞龙|李兰池|王剑岳|陈德馨|范荩|朱鸿勋|王锡山|方叔洪|周元|陈绍堂|冯安邦|王铭章|赵渭滨|朱家麟|李家钰|肖孝泽|王凤山|姜玉贞|梁鉴堂|张自忠|吕旃蒙|阚维雍|黄永淮|陈安宝|佟麟阁|赵登禹|李伯蛟|马威龙|黄启东|饶国华|滕久寿|赵锡章|姚子青|蔡炳炎|陈济桓|吕公良|刑清忠|王祯祥|孙明瑾|赖传湘|郝梦龄|郑廷珍|谢晋元|谢晋元等八百壮士|高致嵩|黄梅兴|朱赤|易安华|夏国璋|秦霖|庞汉桢|刘震东|戴安澜|官惠民|唐淮源|寸性奇|郑作民|燕鼎九|姚显微|周礼平|刘三春|赵一曼|李红光|邓铁梅|汪雅臣|刘曙华|陈荣久|李学福|夏云杰|张中华|李延平|王光宇|许亨植|姜墨林|赵尚志|冷云|冷云等八名女战士|李学忠|王德泰|魏拯民|陈翰章|曹亚范|宋铁岩|王仁斋|吉鸿昌|汉斯·希伯|谢翰文|孙开楚|曾仁文|郭国言|马应元|刘子超|马耀南|陈宝风|张友清|刘海涛|曹世范|鲁宝琪|洪振海|孙伯龙|张洪仪|马立训|孟昭煜|谢家庆|王溥|雷烨|高小安|周建屏|韩增丰|狼牙山五壮士|陈文彬|韩明柱|夏云超|孙春林|陆升勋|任常伦|马石山十勇士|王克山|于寄吾|张仁槐|王远音|孔庆同|常德善|王先臣|杨小根|干云清|卜荣久|王少奇|才山|白乙化|石嘉植|肖永智|王泊生|易良品|赵义京|孙毅民|李荣|杨宏明|李忠|桂干生|郭好礼|徐秋|朱程|马本斋|闻允志|黄骅|杨靖远|杜子孚|石景芳|李永安|董毓华|洪麟阁|陈宇寰|节振国|杨裕民|刘连科|包森|左权|范子侠|马定夫|徐宝珊|陈子斌|董天知|王根英|邓永耀|苏精诚|丁思林|叶成焕|吴隆煮|赵崇德|胡一新|魏大光|郭征|王立人|林铎|杨忠|何万祥|陈锦绣|郭陆顺|马晓云|符竹庭|何云|马兴周|成庆龙|关耀洲|李玉|张竞渡|黄毓全|韩家麟|王兆兰|王润波|田霖|白子峰|初向辰|孙铭宸|李春润|武止戈|金伯阳|胡泽民|徐达三|裴治云|朱云光|朱守一|张文偕|张锡武|景振卿|朴翰宗|李光林|李松波|杨太和|何忠国|张玉珩|苗可秀|苏剑飞|韩浩|王学尧|史忠恒|李秋岳|李敏焕|金剑啸|孟泾清|曹国安|梁锡福|傅显明|万全策|马玉田|王天祥|王凤阁|王以哲|左子元|石焕然|卢仪殴|丘之纪|司徒非|朱诚|朱芝荣|华品章|全正喜|刘启文|刘国用|刘眉生|刘家麒|刘粹刚|安顺花|纪儒林|李天柱|李友梅|李东光|李绍嘉|李海青|李维藩|李福林|杨杰|沈崇诲|张本禹|张树桢|张倬甫|陈宜胜|陈锡纯|周建华|周树东|庞泰峰|郝贵林|秦庆武|高鹏振|唐惠洽|尼古拉·尼基福罗维奇·涅日丹诺夫|黄纪福|曹炳|尉迟凤岗|韩宪元|谢振平|蓝运东|雷震|路景荣|解固基|雍济时|蔡如柏|于文彬|马德山|马骥德|王麟|王崇实|王毓峰|王德林|毛岱钧|田耘|吕汝爽|吕晓韬|吕基淳|朱仰兴|刘北海|刘礼年|刘阳生|刘湛恩|关化新|江惟仁|阮务德|纪鸿儒|远静沧|严家训|李必蕃|李桂丹|李润民|杨二|杨怀|杨俊恒|杨炼煊|杨镇华|吴玉光|吴汝鎏|吴景才|何畏|何信|邹绍孟|汪成钧|张传福|张廷玉|张连科|张宗兰|张郁光|张相武|张耕野|张镜远|陈怀民|陈纯一|陈蕴瑜|武伦佩|范廷兰|范树民|郁仁治|拉赫曼诺夫|易式谷|罗芳珪|金正国|金连城|金道松|周平|赵庆吉|赵振威|胡凤林|胡文臣|钟芳峻|姜克智|洪涛|宣侠父|姚第鸿|夏次叔|徐光海|徐荣奎|徐积璋|黄莺|梅一平|常有钧|鹿省三|商香阁|梁雷|梁佐勋|扈先梅|彭璋|温健公|雷忠|魏长魁|魏震亚|于祯|马庆华|马秉忠|马霄鹏|王赤|王文彬|王自衡|王作栋|王克仁|田珍|白君实|朱毅先|乔桂净|刘廷仲|刘震英|齐殿选|许佩坚|李文彬|李苍江|李剑卜|李曦晨|杨铁成|邱铁生|邵一之|陈一华|陈龙飞|陈伯衡|武汉卿|范郁文|林英灿|周龙凤|侯国忠|姚新一|赵伊坪|荆维德|钟蛟蟠|高敬亭|郭企之|萧国生|龚选登|董少白|董秋农|雷炎|于克恭|马玉仁|王丰庆|王友德|王伟民|王汝起|王邦秀|韦灿|尹国赤|孔昭同|卢启明|史钦琛|冯治纲|朱启杰|朱爱周|刘洪雄|刘景胜|苏晓风|李复|李大光|李佐民|李和辉|李绍桥|邱积成|邹志辉|宋子良|张炯|张敬|张乃东|张兰生|张咨明|张镇华|陈琴|陈荻|陈文甫|周文富|郝玉明|柳万熙|袁聘之|徐世奎|高禹民|凌则之|黄天贵|黄玉清|阎锡九|彭德大|舒汉璧|鲁贲|熊德成|魏春波|马文良|王苏|王志|王志成|王者兰|王贤光|王儒钦|方强|尹子魁|艾亚春|左克|石作衡|冯丕让|司璧瑾|朱凡|朱长清|朱宝琛|朱廉贻|任迈|刘涛|刘萍|刘世焱|刘幼林|刘仲羽|刘克信|刘保罗|刘锡彤|许晴|许维新|杜伯华|李培根|李联奎|李翰卿|杨威|杨生|杨常安|吴匡五|辛俊卿|宋澄|张铎|张忠喜|张裕生|张雅韵|陈群|陈钦文|陈新一|陈震寰|雨晴|郁永言|金崇印|周乐生|周叔屏|郑行郯|赵镈|赵伯华|胡光|段生|姚振山|夏瑞香|钱远镜|高凤英|郭铁坚|凌云|黄红|黄才胜|黄全德|黄志强|黄重厚|曹克人|曹德辉|崔健吾|梁希贤|梁学岸|蒋志英|韩仁和|韩朝新|焦守健|熊桐柏|德勒格尔|于一心|于慎德|马功臣|马玉堂|王锐|王凤麟|王兴汉|王卓云|王炳三|王晋亭|石光|史子谦|冯旭臣|刘正|刘云彪|刘开绪|刘齐滨|杨希盛|刘治国|刘诗松|刘诚光|刘德明|孙承光|齐南峰|许冠英|李力|李子英|李侍曾|杨柳新|杨静斋|肖伟成|吴涛|吴浪渡|吴紫阳|余海清|邸玉栋|汪乃荣|沈爽|沈蔚|宋培文|迟健民|张浩|张庆澍|张建亭|张峻峰|张策平|张寰旭|张衡宇|陈元龙|陈国权|陈德仁|邵瑞麟|林江|罗伯特·桑德尔|岳一峰|周启邦|赵观民|赵振亚|胡九春|胡义宾|柳树人|袁心纯|袁福崇|耿玉华|夏德元|晏盛明|徐克强|徐靖远|郭寿征|凌则民|海凤阁|陶净非|黄君玨|萧辉锡|崔兰仙|韩国钧|程绍芬|赖国清|褚雅青|蔡良|潘维周|薛佑之|魏金三|马函三|王珊|王波|王文|王光|王石钧|王立业|王纯一|王育荣|宁玉庭|田时风|弗兰克·席尔|朴吉松|朱大山|刘同方|刘志超|刘桂云|刘耀梅|江春炎|严昌荣|杜邦宪|李汉英|李亚峰|李光宇|李成华|李竹林|李枚青|李铁民|杨世立|杨承德|吴明|余志远|邹嘉甫|宋乐三|宋耀南|张少舫|张同生|张袖石|张惠民|张智忠|陈涉藩|陈耀元|罗华明|周志开|周凯东|侯登山|胡畏|袁复荣|袁鸿化|耿玉辉|夏庆贤|夏祖盛|徐竞|徐尚武|徐维中|高道光|陶绍唐|桑玉山|黄德兴|曹云|曹介|彭泰农|韩子衡|傅国光|童世明|曾海庭|魏凤璋|魏明伦|马玉如|马吟南|马登云|王澄|王宇震|王克寇|王家让|王道平|今野博|史蔚馥|毕学法|吕光|刘万里|李颐|李日新|李平东|李恒泉|李箸前|杨尚武|吴云|吴展|吴剑学|张化南|张寿昌|陈发鸿|陈廷禹|林谋盛|松野觉|易凤翔|罗会廉|罗裕庭|季安|周文彬|赵乃禾|赵驭欧|赵自新|胡乃超|钟若潮|姚铁民|袁益州|晋耀臣|柴世荣|徐翼|殷逸|高农斧|高桥|郭义鸿|郭满福|黄友|曹一川|康俊仁|覃子斌|焦占宝|曾锦云|谢骙|鲍志椿|谭志诚|颜竹林|穆岳|王舟平|文立正|卢嘉温|宁德青|吕怀忠|齐学启|阮朝兴|李少清|李纯斋|李锦堂|邹凤山|沈标|张智法|陈焕|武克鲁|罗化民|周斌|郑维发|高永祥|郭光裕|黄闻|萧刚|萧俊岭|曹向经|赖勤|裴香斋|嘎丽娜·瓦西里耶夫娜·杜别耶娃|薛惠民|邱少云|刘胡兰|香港悲哀|香港辛酸|香港心酸|香港哀伤|香港懊丧|香港沮丧|香港悲痛|香港难过|香港颓废|香港颓丧|香港悲伤|香港哀悼|香港哀痛|香港哀思|香港沉痛|香港悲戚|香港酸楚|香港愁闷|爱液|按摩棒|拔出来|爆草|包二奶|暴干|暴奸|暴乳|爆乳|暴淫|被操|被插|被干|逼奸|仓井空|插暴|操逼|操黑|操烂|肏你|肏死|操死|操我|厕奴|插比|插b|插逼|插进|插你|插我|插阴|潮吹|潮喷|成人电影|成人论坛|成人色情|成人网站|成人文学|成人小说|艳情小说|成人游戏|吃精|抽插|春药|大波|大力抽送|大乳|荡妇|荡女|盗撮|发浪|放尿|肥逼|粉穴|风月大陆|干死你|干穴|肛交|肛门|龟头|裹本|国产av|好嫩|豪乳|黑逼|后庭|后穴|虎骑|换妻俱乐部|黄片|几吧|鸡吧|鸡巴|鸡奸|妓女|奸情|叫床|脚交|精液|就去日|巨屌|菊花洞|菊门|巨奶|巨乳|菊穴|开苞|口爆|口活|口交|口射|口淫|裤袜|狂操|狂插|浪逼|浪妇|浪叫|浪女|狼友|聊性|凌辱|漏乳|露b|乱交|乱伦|轮暴|轮操|轮奸|裸陪|买春|美逼|美少妇|美乳|美腿|美穴|美幼|秘唇|迷奸|密穴|蜜穴|蜜液|摸奶|摸胸|母奸|奈美|奶子|男奴|内射|嫩逼|嫩女|嫩穴|捏弄|女优|炮友|砲友|喷精|屁眼|前凸后翘|强jian|强暴|强奸处女|情趣用品|情色|拳交|全裸|群交|人妻|人兽|日逼|日烂|肉棒|肉逼|肉唇|肉洞|肉缝|肉棍|肉茎|肉具|揉乳|肉穴|肉欲|乳爆|乳房|乳沟|乳交|乳头|骚逼|骚比|骚女|骚水|骚穴|色逼|色界|色猫|色盟|色情网站|色区|色色|色诱|色欲|色b|少年阿宾|射爽|射颜|食精|释欲|兽奸|兽交|手淫|兽欲|熟妇|熟母|熟女|爽片|双臀|死逼|丝袜|丝诱|松岛枫|酥痒|汤加丽|套弄|体奸|体位|舔脚|舔阴|调教|偷欢|推油|脱内裤|文做|舞女|无修正|吸精|夏川纯|相奸|小逼|校鸡|小穴|小xue|性感妖娆|性感诱惑|性虎|性饥渴|性技巧|性交|性奴|性虐|性息|性欲|胸推|穴口|穴图|亚情|颜射|阳具|杨思敏|要射了|夜勤病栋|一本道|一夜欢|一夜情|一ye情|阴部|淫虫|阴唇|淫荡|阴道|淫电影|阴阜|淫妇|淫河|阴核|阴户|淫贱|淫叫|淫教师|阴茎|阴精|淫浪|淫媚|淫糜|淫魔|淫母|淫女|淫虐|淫妻|淫情|淫色|淫声浪语|淫兽学园|淫书|淫术炼金士|淫水|淫娃|淫威|淫亵|淫样|淫液|淫照|阴b|应召|幼交|欲火|欲女|玉乳|玉穴|援交|原味内衣|援助交际|招鸡|招妓|抓胸|自慰|作爱|a片|fuck|gay片|g点|h动画|h动漫|失身粉|淫荡自慰器|习包子|包子习|习bao子|习包zi|习歪脖|共惨党|共can党|毛老头|毛爷爷|习|习主席|习特勒|领袖|长舌妇|习二|习总|习XX|庆丰帝|qn包庆丰|包子帝|包子|习大|习大帝|今上|刁特勒|刁|刁子|禁评|jingping|xijinping|jinpingxi|宽衣亮剑帝|习帝|习狗|维尼熊|维尼习|维尼|宽衣帝|书名帝|大送帝|大宋帝|茅台帝|梦帝|刁德一|刁援外|半羽|大撒币|不换肩|二胖|狗不理|啥是B呀|梦夫|活腊肉|小学博士|不忘初中|肄业|左手礼|大学问梁家河|席奥塞斯库|刁泽西|刁梦思|猪头|萨格尔王|彭丽媛|彭歌星|彭妈妈|彭将军|小强|王小红|一尊|赵家|支那|赵克志|孟宏伟|习贱痞|四中全会|四中|李家宝" data-tip="请不要使用旅馆、旅店、招待所、浴池、计时休息、英租、法租、租界等词汇" id="sensitiveWordsReg">
+    <div class="w_960 pb20 clearfix">
+        <a class="keep_btn" href="javascript:;" id="roomDetailSave">保存并继续</a>
+    </div>                        <div class="o_mask" id='mask'  style="display:none;"></div>
+        <div class="o_warp" id="dialog"  style="display:none;border:none;"></div>   
+        <input type="hidden" value="" id="houseId"/>
+        <input type="hidden" value="144649154296" id="roomId"/>
+        <input type="hidden" value="" id="userRole">
+        <input type="hidden" value="2" id="step">
+        <input type="hidden" value="Pub_IndexV2Step2" id="action">
+        <input type="hidden" value="" id="commercialLandlord">
+            <input type="hidden" value="" id="luId">
+
+        <div class='h_body'>
+            <div class="foot_v2">
+        <ul class="foot_ul">
+        <li><a class="guide" href="https://www.xiaozhu.com/xzweb.php?op=Help_UserGuide&type=tenant" target="_blank">房客指南</a></li>
+        <li><a class="guide icon_fk" href="https://www.xiaozhu.com/xzweb.php?op=Help_UserGuide&type=landlord" target="_blank">房东指南</a></li>
+        <li>
+            <span class="guide_T">关于我们</span>
+            <a href="https://www.xiaozhu.com/aboutus" target="_blank">关于小猪</a>
+            <a href="https://app.mokahr.com/apply/xiaozhu/4514" target="_blank">加入我们</a>
+            <a href="https://www.xiaozhu.com/contactus" target="_blank">联系我们</a>
+            <a href="https://open.xiaozhu.com" target="_blank">开放平台</a>
+        </li>
+        <li>
+            <span class="guide_T">网站帮助</span>
+            <a href="https://www.xiaozhu.com/help/index" target="_blank" >帮助中心</a>
+            <a href="https://www.xiaozhu.com/sitemap.html" target="_blank">网站地图</a>
+        </li>
+        <li class="width_280">
+            <span class="guide_T">网站协议</span><br/>
+            <a href="https://www.xiaozhu.com/help/service" target="_blank">服务协议</a>
+            <a href="https://www.xiaozhu.com/help/landlordRule" target="_blank">房东规则</a>
+            <a href="https://www.xiaozhu.com/help/tenantRule" target="_blank">房客规则</a>
+            <a href="https://www.xiaozhu.com/help/auditRule" target="_blank">房源上线标准</a>
+            <a href="https://www.xiaozhu.com/help/privacy" target="_blank">隐私保护</a>
+            <a href="https://www.xiaozhu.com/help/copyright" target="_blank">版权声明</a>
+            <a href="https://www.xiaozhu.com/help/disclaimer" target="_blank">免责声明</a>
+            <a href="https://www.xiaozhu.com/help/intellectualProperty" target="_blank">知识产权声明</a>
+            <a href="https://www.xiaozhu.com/help/commentRule" target="_blank">点评发布规则</a>
+            <a href="https://www.xiaozhu.com/help/japanReservationRule" target="_blank">日本标准住宅宿泊仲介业约款</a>
+        </li>
+        <li class="bigFont online_kf">
+            <span class=""   onclick='window.open("https://yiconnect.wezhuiyi.com/chat?t=Cks3pxv2eMBfA3BZvdOhS6Pa1am5fygsIHyQRXc0D7U&uid=144214155797&customer=%7B%22cID%22%3A%22144214155797%22%7D","_blank");' ><i></i>在线客服</span>
+            <p>客服电话  400 - 010 - 7890</p>
+            <p>客服邮箱  service@xiaozhu.com</p>
+        </li>
+            </ul>
+        <dl class="link_dl">
+        <dt>城市导航</dt>
+        <dd>
+            <a target="_blank" href="//bj.xiaozhu.com/">北京短租房</a>
+            <a target="_blank" href="//sh.xiaozhu.com/">上海短租房</a>
+            <a target="_blank" href="//nj.xiaozhu.com/">南京短租房</a>
+            <a target="_blank" href="//cd.xiaozhu.com/">成都短租房</a>
+            <a target="_blank" href="//gz.xiaozhu.com/">广州短租房</a>
+            <a target="_blank" href="//cq.xiaozhu.com/">重庆短租房</a>
+            <a target="_blank" href="//wh.xiaozhu.com/">武汉短租房</a>
+            <a target="_blank" href="//dl.xiaozhu.com/">大连短租房</a>
+            <a target="_blank" href="//sanya.xiaozhu.com/">三亚短租房</a>
+            <a target="_blank" href="//lijiang.xiaozhu.com/">丽江短租房</a>
+            <a target="_blank" href="//tj.xiaozhu.com/">天津短租房</a>
+            <a target="_blank" href="//xianggang.xiaozhu.com/">香港短租房</a>
+            <a target="_blank" href="//cs.xiaozhu.com/">长沙短租房</a>
+            <a target="_blank" href="//wx.xiaozhu.com/">无锡短租房</a>
+            <a target="_blank" href="//km.xiaozhu.com/">昆明短租房</a>
+            <a target="_blank" href="//jn.xiaozhu.com/">济南短租房</a>
+            <a target="_blank" href="//xm.xiaozhu.com/">厦门短租房</a>
+            <a target="_blank" href="//qd.xiaozhu.com/">青岛短租房</a>
+            <a target="_blank" href="//zz.xiaozhu.com/">郑州短租房</a>
+            <a target="_blank" href="//xa.xiaozhu.com/">西安短租房</a>
+            <a target="_blank" href="//hz.xiaozhu.com/">杭州短租房</a>
+            <a target="_blank" href="//sz.xiaozhu.com/">深圳短租房</a>
+            <a target="_blank" href="//sy.xiaozhu.com/">沈阳短租房</a>
+            <a target="_blank" href="//su.xiaozhu.com/">苏州短租房</a>
+        </dd>
+    </dl>
+    <dl class="link_dl">
+            </dl>
+                <div class="foot_btm">
+          <a class="record-jump" href="http://beian.miit.gov.cn" target="_blank"  rel="noopener norefferrer">京ICP备12035936号-1</a>
+          &nbsp;&nbsp;许可证号：京ICP证140510号 &nbsp;&nbsp; <a href="//www.anquan.org/s/www.xiaozhu.com" |="" name="mt8SMvYyRDI92b06nuDs8dPFapllCJYidqhM1WlOoGRZ9DWpbo" rel="nofollow" target="_blank">安全联盟</a> &nbsp;&nbsp; 北京快跑信息科技有限公司 &nbsp;&nbsp; <a href="https://www.xiaozhu.com/images/yingye.jpg" |="" name="yingyezhizhao" rel="nofollow" target="_blank">营业执照号 103613118</a> <span style="display:none">  &nbsp;&nbsp; 地址：北京市海淀区知春路56号   &nbsp;&nbsp;电话：010-62961978</span>
+    </div>
+    <div style="margin:0 auto;color:#bdc3c7;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020380" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/images/govRecord_icon.png"/><p style="display:inline-block;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#bdc3c7;">京公网安备 11010802020380号</p></a>
+        &nbsp;&nbsp; 违法和不良信息举报电话：4000107890转6  &nbsp;&nbsp; 举报邮箱：jubao@xiaozhu.com
+    </div>
+    <div style="margin-top: 20px">
+        <a target="cyxyv" href="https://v.yunaq.com/certificate?domain=www.xiaozhu.com&from=label&code=90030" style="margin-right: 10px"> <img src="https://aqyzmedia.yunaq.com/labels/label_sm_90030.png" style="height: 48px"></a>
+        <a id="_xinchacharenzheng_cert_vip_kexinweb" style="text-decoration:none;" target="_blank" href="https://xyt.xinchacha.com/pcinfo?sn=448825606222778368&certType=6"> <img src="https://xyt.xinchacha.com/img/icon/icon3.png" style="height: 48px" > </a>
+    </div>
+</div>
+
+<input type="hidden" name="actionName" id="actionName" value="Pub_IndexV2Step2"/>
+<input type="hidden" name="xz_srf_token" id="xz_srf_token" value="3b738b55ba04f497ba59319edc678dd8"/>
+
+<script type="text/javascript" src="//jci.xiaozhustatic3.com/e20200803/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e20200803/xzjs?k=Footer&httphost=www.xiaozhu.com"></script>
+<link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e20200803/xzcss?css=jquery.mCustomScrollbar,nyroModal,uploadify,shadepage" />
+<script type="text/javascript" src="//jci.xiaozhustatic1.com/e20200803/js/jquery/lazyload.js"></script>
+<script type="text/javascript" src="https://www.xiaozhu.com/e20200803/js/webimv4/application/xzim4.js?source=xiaozhu&dm=xiaozhu.com" id="webimSource"></script>
+
+        </div>
+        <script type="text/javascript" src="//jci.xiaozhustatic1.com/e20200803/xzjs?k=Pub_IndexV2Step2&httphost=www.xiaozhu.com"></script>
+</body>
+<!-- Google Tag Manager -->
+<!-- End Google Tag Manager -->
+</html>
