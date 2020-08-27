@@ -9,5 +9,5 @@ public interface HouseDao extends Mapper<House> {
 
 
 
-    List<House> findAllHouse();
+    List<House> findAllHouse(Integer id);
 }
