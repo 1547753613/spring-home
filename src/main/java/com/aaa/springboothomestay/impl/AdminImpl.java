@@ -1,5 +1,8 @@
 package com.aaa.springboothomestay.impl;
 
+import com.aaa.springboothomestay.code.Result;
+import com.aaa.springboothomestay.code.ResultCode;
+import com.aaa.springboothomestay.code.ResultUtil;
 import com.aaa.springboothomestay.dao.AdminDao;
 import com.aaa.springboothomestay.entity.Admins;
 import com.aaa.springboothomestay.entity.Menu;
@@ -11,6 +14,8 @@ import com.aaa.springboothomestay.impl.service.RoleService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -124,5 +129,27 @@ public class AdminImpl implements AdminService {
         admins.setIsenble(1);
         admins.setId(id);
         return adminDao.updateByPrimaryKeySelective(admins);
+    }
+
+    @Override
+    public Integer UpdateAdmin(Admins admins) {
+
+        return adminDao.updateByPrimaryKeySelective(admins);
+    }
+
+    /**
+     *
+     * @param admins 添加员工
+     * @return
+     */
+    @Override
+    public Result Adddmin(Admins admins) {
+        Result result = new Result();
+        admins.setApass(new BCryptPasswordEncoder().encode(admins.getApass()));
+        Integer insert = adminDao.insert(admins);
+        if (insert!=1){
+            return ResultUtil.success(ResultCode.SUCCESS,"员工添加成功");
+        }
+        return ResultUtil.error(ResultCode.ERROR, "员工添加失败");
     }
 }

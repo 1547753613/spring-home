@@ -9,6 +9,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class PersonController {
     AdminService adminService;
 
     @GetMapping("select")
-    public PageInfo<Admins> QeuryAdminsAll(Integer pageNum, Integer pageSize ){
+    public PageInfo<Admins> QeuryAdminsAll(Integer pageNum, Integer pageSize , HttpServletRequest request){
+     //   System.out.println(request.getHeader("token"));
         PageInfo<Admins> pageInfo = adminService.PageAdmin(pageNum, pageSize);
         return pageInfo;
     }
@@ -43,6 +45,11 @@ public class PersonController {
 
     }
 
+    /**
+     * 解锁员工
+     * @param id
+     * @return
+     */
     @PutMapping("enlock")
     public Result AdminEnLock(Integer id){
         Result result = new Result();
@@ -54,7 +61,23 @@ public class PersonController {
         return ResultUtil.error(ResultCode.ERROR, "解封失败");
 
     }
+    @PutMapping("update")
+    public Result Update(@RequestBody Admins admins){
+       // System.out.println(admins);
 
+        Integer integer = adminService.UpdateAdmin(admins);
+        if (integer==1){
+            return ResultUtil.success(ResultCode.SUCCESS,"修改成功");
+
+        }
+        return ResultUtil.error(ResultCode.ERROR,"修改失败");
+    }
+
+    @PostMapping("add")
+    public Result Add(@RequestBody Admins admins){
+        System.out.println(admins);
+        return null;
+    }
 
 
 }

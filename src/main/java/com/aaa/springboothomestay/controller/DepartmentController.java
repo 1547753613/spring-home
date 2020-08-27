@@ -45,6 +45,19 @@ public class DepartmentController {
     {
         return departmentService.queryDepartment();
     }
+    @PostMapping("query")
+    @ResponseBody
+    public List<Department>querynotnull(){
+        List<Department> departments = departmentService.queryDepartment();
+        for (Department department:departments){
+            List<Role> roles = roleService.SelectRoleAll(department.getDid());
+            System.out.println(roles);
+            if (roles.size()==0){
+                departments.remove(department);
+            }
+        }
+        return departments;
+    }
     @RequestMapping("likequery")
     @ResponseBody
     public int likequery(String name)

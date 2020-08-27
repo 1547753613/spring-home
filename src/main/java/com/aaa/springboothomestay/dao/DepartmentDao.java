@@ -2,6 +2,8 @@ package com.aaa.springboothomestay.dao;
 
 import com.aaa.springboothomestay.entity.Department;
 import org.springframework.stereotype.Component;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.common.MySqlMapper;
 
 import java.util.List;
 

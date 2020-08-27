@@ -5,8 +5,10 @@ import com.aaa.springboothomestay.code.Result;
 import com.aaa.springboothomestay.code.ResultCode;
 import com.aaa.springboothomestay.code.ResultUtil;
 import com.aaa.springboothomestay.entity.Admins;
+import com.aaa.springboothomestay.impl.service.AdminService;
 import com.aaa.springboothomestay.util.MultipartFileToFile;
 import com.aaa.springboothomestay.util.UUIDUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,6 +29,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("test")
 public class TestController {
+    @Autowired
+    AdminService adminService;
 
     @RequestMapping("/getAuth")
     @ResponseBody
@@ -36,6 +40,12 @@ public class TestController {
         return person;
     }
 
+    /**
+     * 上传图片
+     * @param file
+     * @return
+     * @throws Exception
+     */
     @PostMapping("upload")
     @ResponseBody
     public Result upload(MultipartFile file) throws Exception {
@@ -67,5 +77,22 @@ public class TestController {
 
         return ResultUtil.error(ResultCode.ERROR, "文件上传失败");
 
+    }
+
+    /**
+     * 查询账号是否存在
+     * @param aname
+     * @return
+     */
+    @GetMapping("findname")
+    @ResponseBody
+
+    public Integer FindName(String aname){
+        Admins admins = adminService.FindAdminName(aname);
+        if (null==admins){
+            return 0;
+
+        }
+        return 1;
     }
 }
