@@ -1,5 +1,6 @@
 package com.aaa.springboothomestay.impl.service;
 
+import com.aaa.springboothomestay.code.Result;
 import com.aaa.springboothomestay.entity.Admins;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Repository;
@@ -56,4 +57,18 @@ public interface AdminService {
      * @return
      */
     public Integer EnLockAdmin(Integer id);
+
+    /**
+     *
+     * @param admins 修改员工
+     * @return
+     */
+    public Integer UpdateAdmin(Admins admins);
+
+    /**
+     *
+     * @param admins 添加员工
+     * @return
+     */
+    public Result Adddmin(Admins admins);
 }
