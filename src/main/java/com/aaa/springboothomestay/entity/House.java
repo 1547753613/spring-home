@@ -2,11 +2,15 @@ package com.aaa.springboothomestay.entity;
 
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Data
 public class House {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;//	int 	主键id
     private String hname;//	varchar	房源名称
     private String simg;//	varchar	封面图
@@ -20,4 +24,12 @@ public class House {
     private String traffic;//	varchar	交通位置
     private int state;//	int 	状态
     private String rim;//	varchar	周边介绍
+    private List<HouseRequire> house_require;
+    private List<HouseRules> house_rules;
+    private List<HouseAddress> house_address;
+    private List<HouseOther> house_other;
+    private List<HouseMany> house_many;
+    private List<HouseSup>  house_sup;
+    private List<HouseBed> house_bed;
+    private List<Specifictype> specifictype;
 }

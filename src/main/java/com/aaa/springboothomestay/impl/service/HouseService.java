@@ -12,5 +12,5 @@ public interface HouseService {
     public int update(House house);
     public int delete(House house);
     public List<House> query();
-    public House querybyid(House house);
+    public List<House> querybyid(House house);
 }
