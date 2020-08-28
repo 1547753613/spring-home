@@ -95,4 +95,15 @@ public class TestController {
         }
         return 1;
     }
+
+    /**
+     * 校验身份证是否存在
+     * @param idcard
+     * @return
+     */
+    @GetMapping("checkIdcard")
+    @ResponseBody
+    public Boolean CheckIdcard(String idcard){
+        return adminService.CheckIdcard(idcard);
+    }
 }

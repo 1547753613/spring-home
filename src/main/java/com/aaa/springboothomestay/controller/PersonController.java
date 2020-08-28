@@ -75,9 +75,14 @@ public class PersonController {
 
     @PostMapping("add")
     public Result Add(@RequestBody Admins admins){
-        System.out.println(admins);
-        return null;
+        //System.out.println(admins);
+
+        return adminService.Adddmin(admins);
     }
 
+    public static void main(String[] args) {
+        String idcard="124567896321054125";
+        System.out.println(Integer.parseInt(idcard.substring(16,17))%2);
+    }
 
 }

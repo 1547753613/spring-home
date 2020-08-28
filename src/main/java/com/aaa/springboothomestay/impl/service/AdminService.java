@@ -68,7 +68,16 @@ public interface AdminService {
     /**
      *
      * @param admins 添加员工
+     *
      * @return
      */
     public Result Adddmin(Admins admins);
+
+
+    /**
+     * 查询账号是否存在
+     * @param idcard
+     * @return
+     */
+    public Boolean CheckIdcard(String idcard);
 }
