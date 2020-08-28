@@ -30,4 +30,11 @@ public class HouseOtherImpl implements HouseOtherService {
     public List<HouseOther> query() {
         return houseOtherDao.selectAll();
     }
+
+    public List<HouseOther> query(int id)
+    {
+        HouseOther houseOther = new HouseOther();
+        houseOther.setHid(id);
+        return houseOtherDao.select(houseOther);
+    }
 }

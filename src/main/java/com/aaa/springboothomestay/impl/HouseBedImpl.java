@@ -32,4 +32,11 @@ public class HouseBedImpl implements HouseBedService {
     public List<HouseBed> query() {
         return houseBedDao.selectAll();
     }
+
+    public List<HouseBed> byhidquery(int id)
+    {
+        HouseBed houseBed = new HouseBed();
+        houseBed.setHid(id);
+        return houseBedDao.select(houseBed);
+    }
 }

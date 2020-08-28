@@ -18,4 +18,5 @@ public class HouseAddress {
     private Integer card;//	int 	门牌号
     private String address;//	varchar	具体位置
     private String explains;// 	varchar	更多说明
+    private House house;
 }

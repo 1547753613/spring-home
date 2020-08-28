@@ -31,4 +31,10 @@ public class HouseManyImpl implements HouseManyService {
     public List<HouseMany> query() {
         return houseManyDao.selectAll();
     }
+    public HouseMany byhidquery(int id)
+    {
+        HouseMany houseMany = new HouseMany();
+        houseMany.setHid(id);
+        return houseManyDao.select(houseMany).get(0);
+    }
 }

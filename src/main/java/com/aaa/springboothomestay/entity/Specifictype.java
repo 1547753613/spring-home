@@ -11,5 +11,5 @@ public class Specifictype {
     private Integer sid;//	int 	主键id
     private String sname;//	varchar	房源具体类型
     private Integer id;//	int 	外键房源类型表
-    private Housetype housetype;
+    //private Housetype housetype;
 }
