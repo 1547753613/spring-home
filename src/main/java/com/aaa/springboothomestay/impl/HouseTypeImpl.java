@@ -41,4 +41,9 @@ public class HouseTypeImpl implements HouseTypeService {
         criteria.andEqualTo(housetype.getHname());
         return houseTypeDao.selectByExample(example);
     }
+
+    public Housetype bysidquery(int id)
+    {
+        return houseTypeDao.selectByPrimaryKey(id);
+    }
 }

@@ -30,4 +30,15 @@ public class SupportingImpl implements SupportingService {
     public List<Supporting> query() {
         return supportintDao.selectAll();
     }
+
+    /**
+     *
+     * @param id  房屋配套设施表
+     * @return
+     */
+    public Supporting byidquery(int id)
+    {
+        return supportintDao.selectByPrimaryKey(id);
+    }
+
 }

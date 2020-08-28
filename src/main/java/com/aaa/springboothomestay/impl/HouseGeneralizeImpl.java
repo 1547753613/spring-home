@@ -30,4 +30,10 @@ public class HouseGeneralizeImpl implements HouseGeneralizeService {
     public List<HouseGeneralize> query() {
         return houseGeneralizeDao.selectAll();
     }
+    public HouseGeneralize byhidquery(int id)
+    {
+        HouseGeneralize houseGeneralize = new HouseGeneralize();
+        houseGeneralize.setHid(id);
+        return (HouseGeneralize) houseGeneralizeDao.select(houseGeneralize).get(0);
+    }
 }

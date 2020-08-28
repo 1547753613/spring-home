@@ -30,4 +30,10 @@ public class HouseRulesImpl implements HouseRulesService {
     public List<HouseRules> query() {
         return houseRulesDao.selectAll();
     }
+    public HouseRules byhidquery(int id)
+    {
+        HouseRules houseRules = new HouseRules();
+        houseRules.setHid(id);
+        return houseRulesDao.select(houseRules).get(0);
+    }
 }

@@ -31,4 +31,10 @@ public class HouseSupImpl implements HouseSupService {
     public List<HouseSup> query() {
         return houseSupDao.selectAll();
     }
+    public HouseSup byhidquery(int id)
+    {
+        HouseSup houseSup1 = new HouseSup();
+        houseSup1.setHid(id);
+        return houseSupDao.select(houseSup1).get(0);
+    }
 }

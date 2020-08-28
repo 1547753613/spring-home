@@ -30,4 +30,11 @@ public class HouseRequireImpl implements HouseRequireService {
     public List<HouseRequire> query() {
         return houseRequireDao.selectAll();
     }
+
+    public HouseRequire byhidquery(int id)
+    {
+        HouseRequire houseRequire = new HouseRequire();
+        houseRequire.setHid(id);
+        return houseRequireDao.select(houseRequire).get(0);
+    }
 }
