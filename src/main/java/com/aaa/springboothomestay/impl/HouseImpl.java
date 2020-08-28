@@ -38,4 +38,17 @@ public class HouseImpl implements HouseService {
     public House querybyid(House house) {
         return houseDao.selectByPrimaryKey(house.getId());
     }
+
+    /**
+     *
+     * @param lid 房东id ,查询房东名下的房子
+     * @return
+     */
+    @Override
+    public List<House> QueryHouseLid(Integer lid) {
+        House house=new House();
+        house.setLid(lid);
+        List<House> houses = houseDao.select(house);
+        return houses;
+    }
 }
