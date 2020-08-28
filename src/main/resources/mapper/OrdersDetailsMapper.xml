@@ -5,7 +5,18 @@
 <mapper namespace="com.aaa.springboothomestay.dao.OrdersDetailsDao">
     <resultMap id="xx" type="com.aaa.springboothomestay.entity.OrdersDetails">
         <id property="id" column="id"></id>
+        <result property="checkdate" column="checkdate"></result>
+        <result property="leavedate" column="leavedate"></result>
+        <result property="day" column="day"></result>
+        <result property="housecount" column="housecount"></result>
+        <result property="checkcount" column="checkcount"></result>
+        <result property="checkname" column="checkname"></result>
+        <result property="phone" column="phone"></result>
         <result property="price" column="price"></result>
+        <result property="amount" column="amount"></result>
+        <result property="paytime" column="paytime"></result>
+        <result property="totime" column="totime"></result>
+        <result property="gotime" column="gotime"></result>
     </resultMap>
     <select id="findAllOdersDetails" resultMap="xx">
             select * from orders_details

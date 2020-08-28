@@ -1,5 +1,6 @@
 package com.aaa.springboothomestay.dao;
 
+import com.aaa.springboothomestay.entity.Orders;
 import com.aaa.springboothomestay.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -42,9 +43,6 @@ public interface UserDao  {
      * @return
      */
     Integer UpdatePwd(@Param("pass") String pass);
-
-
-
 
 
 }
