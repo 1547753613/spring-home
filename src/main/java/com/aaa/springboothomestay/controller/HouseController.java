@@ -46,8 +46,9 @@ public class HouseController {
     {
         //house.setId(1);
         System.out.println(house.getId()+"===================");
-        House hu  = houseimp.querybyid(house);
+        List<House> hu  = houseimp.querybyid(house);
         model.addAttribute("House",hu);
+        System.out.println(hu.size());
         return "/qiantai/xiangqing";
     }
 

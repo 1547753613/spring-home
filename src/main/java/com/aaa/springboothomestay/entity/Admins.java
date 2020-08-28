@@ -44,11 +44,11 @@ public class Admins implements UserDetails {
     @Column(name = "workState")
     private Integer workState;//	int	状态
     private Integer rid;//	int	外键角色表
-    private Integer isexpired;//	int	是否过期
-    private Integer islocked;//	int	是否上锁
+    private Integer isexpired=1;//	int	是否过期
+    private Integer islocked=1;//	int	是否上锁
     @Column(name = "isCreExpirEd")
-    private Integer isCreExpirEd;//	int	是否认证过期
-    private Integer isenble;//	int 	是否禁用
+    private Integer isCreExpirEd=1;//	int	是否认证过期
+    private Integer isenble=1;//	int 	是否禁用
 
     private Role role;//获取角色
 

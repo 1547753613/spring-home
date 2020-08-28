@@ -35,7 +35,7 @@ public class HouseImpl implements HouseService {
     }
 
     @Override
-    public House querybyid(House house) {
-        return houseDao.selectByPrimaryKey(house.getId());
+    public List<House> querybyid(House house) {
+        return houseDao.ByIdfindAll(house.getId());
     }
 }
