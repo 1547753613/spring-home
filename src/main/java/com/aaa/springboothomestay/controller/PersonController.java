@@ -57,7 +57,7 @@ public class PersonController {
         if (null!=integer){
             return ResultUtil.success(ResultCode.SUCCESS,"账户解封成功");
         }
-        System.out.println(id);
+        //System.out.println(id);
         return ResultUtil.error(ResultCode.ERROR, "解封失败");
 
     }

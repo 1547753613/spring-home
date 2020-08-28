@@ -27,6 +27,7 @@ public class MyAuthenticationFailureHandler implements AuthenticationFailureHand
         httpServletResponse.setContentType("application/json;charset=utf-8");
         PrintWriter out = httpServletResponse.getWriter();
         StringBuffer sb = new StringBuffer();
+        System.out.println(e);
         Result result = new Result();
         if (e instanceof UsernameNotFoundException || e instanceof BadCredentialsException) {
 

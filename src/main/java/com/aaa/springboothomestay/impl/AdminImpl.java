@@ -5,6 +5,7 @@ import com.aaa.springboothomestay.code.ResultCode;
 import com.aaa.springboothomestay.code.ResultUtil;
 import com.aaa.springboothomestay.dao.AdminDao;
 import com.aaa.springboothomestay.entity.Admins;
+import com.aaa.springboothomestay.entity.Landlord;
 import com.aaa.springboothomestay.entity.Menu;
 import com.aaa.springboothomestay.entity.MenuRole;
 import com.aaa.springboothomestay.impl.service.AdminService;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.sql.Date;
@@ -56,9 +58,11 @@ public class AdminImpl implements AdminService {
      */
     @Override
     public Admins FindAdminName(String name) {
-        Admins admins=new Admins();
-        admins.setAname(name);
-        List<Admins> list = adminDao.select(admins);
+
+        Example example=new Example(Admins.class);
+        Example.Criteria criteria=example.createCriteria();
+        criteria.andEqualTo("aname",name);
+        List<Admins> list = adminDao.selectByExample(example);
         if (list.size()==1){
             Admins admin = list.get(0);
             Set<MenuRole> menuRoles = menuRoleService.SelectMenuRid(admin.getRid());
@@ -148,7 +152,6 @@ public class AdminImpl implements AdminService {
      */
     @Override
     public Result Adddmin(Admins admins) {
-        Result result = new Result();
         admins.setApass(new BCryptPasswordEncoder().encode(admins.getApass()));
         admins.setGender(Integer.parseInt(admins.getIdcard().substring(16,17))%2);
         admins.setBeginDate(new Date(System.currentTimeMillis()));
@@ -161,6 +164,11 @@ public class AdminImpl implements AdminService {
         return ResultUtil.error(ResultCode.ERROR, "员工添加失败");
     }
 
+    /**
+     *
+     * @param idcard
+     * @return
+     */
     @Override
     public Boolean CheckIdcard(String idcard) {
         Admins admins=new Admins();

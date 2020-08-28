@@ -17,6 +17,7 @@ public class AdminConfig implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         Admins admins = adminService.FindAdminName(s);
+        System.out.println(admins);
         if (null==admins){
             throw new UsernameNotFoundException("用户名不存在");
 
