@@ -356,11 +356,12 @@
      <!--left content-->
      <div class="con_l">
          <div class="pho_info">
+             <span id="hid" th:text="${house.id}"></span>
              <h4>
-                 <em>西涌（西冲） 舒适宜居宽敞双床房近沙滩</em>
+                 <em th:text="${house.hname}"></em>
              </h4>
                         <!--这里               -->
-             <p title="广东省深圳市大鹏新区南澳西涌沙滩三号收费口鹤籔村">
+             <p th:text="${house}">
                  <em class="col_pink">
                      <!--可以做个城市连接-->
                     <a href="#">深圳</a>
@@ -1240,18 +1241,7 @@
  <script src="/assets/js/respond.js"></script>
  <![endif]-->
  <div class="mask" style="display:none;"></div>
-
-     <div>
-         <table>
-             <tr th:each="hou:${House}">
-                 <td th:text="${hou.id}"></td>
-                 <td th:text="${hou.hname}"></td>
-             </tr>
-             <tr>
-                 <td>dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</td>
-             </tr>
-         </table>
-     </div>
+ </div>
 </body>
 <!-- Google Tag Manager -->
 <!-- End Google Tag Manager --></html>

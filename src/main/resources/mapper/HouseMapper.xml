@@ -4,57 +4,15 @@
 
 <mapper namespace="com.aaa.springboothomestay.dao.HouseDao">
     <resultMap id="house" type="com.aaa.springboothomestay.entity.House" autoMapping="true">
-        <association property="house_require" fetchType="lazy" column="id" select="houserequirequery" autoMapping="true">
-        </association>
-        <association property="house_rules" fetchType="lazy" column="id" select="HouseRulesQuery" autoMapping="true">
-        </association>
-        <association property="house_address" fetchType="lazy" column="id" select="HouseAddressQuery" autoMapping="true">
-        </association>
-        <association property="house_other" fetchType="lazy" column="id" autoMapping="true"  select="HouseOtherQuery">
-        </association>
-        <association property="house_many" fetchType="lazy" column="id" select="HouseManyQuery" autoMapping="true">
-        </association>
-        <association property="house_sup" fetchType="lazy" column="id" autoMapping="true" select="HouseSupQuery">
-        </association>
-        <association property="house_bed" fetchType="lazy" autoMapping="true" column="id" select="HouseBedQuery">
-        </association>
-        <association property="specifictype" fetchType="lazy" autoMapping="true" column="sid" select="SpecificTypeQuery">
-        </association>
+        <id column="id" property="id" javaType="java.lang.Integer"></id>
     </resultMap>
-    <!--<sql id="HouseQueryAll">-->
-        <!--select * from house left join house_generalize on house.id = house_generalize.hid left join renttype on house.rid = renttype.rid left join specifictype on house.sid = specifictype.sid left join housetype on specifictype.id = housetype.id left join house_bed on house.id = house_bed.hid left join bedtype on house_bed.bid = bedtype.bid left join house_sup on house.id = house_sup.hid LEFT JOIN supporting on house_sup.sid = supporting.id left join house_many on house.id = house_many.hid LEFT JOIN house_other on house.id = house_other.hid LEFT JOIN othertypes on house_other.oid = othertypes.id left JOIN house_address on house.id = house_address.hid left join house_rules on house.id = house_rules.hid left join house_require on house.id  = house_require.hid-->
-    <!--</sql>-->
-    <!--<select id="houserequirequery" resultType="com.aaa.springboothomestay.entity.HouseRequire">-->
-        <!--select * from house_require where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="HouseRulesQuery" resultType="com.aaa.springboothomestay.entity.HouseRules">-->
-        <!--select * from house_rules where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="HouseAddressQuery" resultType="com.aaa.springboothomestay.entity.HouseAddress">-->
-        <!--select * from house_address where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="HouseOtherQuery" resultType="com.aaa.springboothomestay.entity.HouseOther">-->
-        <!--select * from house_other where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="HouseManyQuery" resultType="com.aaa.springboothomestay.entity.HouseMany">-->
-        <!--select * from house_many where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="HouseGeneralizeQuery" resultType="com.aaa.springboothomestay.entity.HouseGeneralize">-->
-        <!--select * from house_generalize where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="HouseSupQuery" resultType="com.aaa.springboothomestay.entity.HouseSup">-->
-        <!--select * from house_sup where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="HouseBedQuery" resultType="com.aaa.springboothomestay.entity.HouseBed">-->
-        <!--select * from house_bed where hid = #{id}-->
-    <!--</select>-->
-    <!--<select id="SpecificTypeQuery" resultType="com.aaa.springboothomestay.entity.Specifictype">-->
-        <!--select * from specifictype where sid = #{sid}-->
-    <!--</select>-->
+    <sql id="HouseQueryAll">
+        select * from house left join house_generalize on house.id = house_generalize.hid left join renttype on house.rid = renttype.rid left join specifictype on house.sid = specifictype.sid left join housetype on specifictype.id = housetype.id left join house_bed on house.id = house_bed.hid left join bedtype on house_bed.bid = bedtype.bid left join house_sup on house.id = house_sup.hid LEFT JOIN supporting on house_sup.sid = supporting.id left join house_many on house.id = house_many.hid LEFT JOIN house_other on house.id = house_other.hid LEFT JOIN othertypes on house_other.oid = othertypes.id left JOIN house_address on house.id = house_address.hid left join house_rules on house.id = house_rules.hid left join house_require on house.id  = house_require.hid
+    </sql>
     <select id="findAllHouse" resultMap="house">
             select * from house
     </select>
     <select id="ByIdfindAll" resultMap="house">
-        <include refid="HouseQueryAll"></include>where house.id = #{id}
-    </select>
+        select * from house where house.id = #{id}
+</select>
 </mapper>

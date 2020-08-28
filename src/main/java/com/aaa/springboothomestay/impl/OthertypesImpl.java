@@ -33,4 +33,8 @@ public class OthertypesImpl implements OthertypesService {
     public List<Othertypes> query() {
         return othertypesDao.selectAll();
     }
+    public Othertypes byidquery(int id)
+    {
+        return othertypesDao.selectByPrimaryKey(id);
+    }
 }
