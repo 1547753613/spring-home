@@ -1,5 +1,8 @@
 package com.aaa.springboothomestay.impl;
 
+import com.aaa.springboothomestay.code.Result;
+import com.aaa.springboothomestay.code.ResultCode;
+import com.aaa.springboothomestay.code.ResultUtil;
 import com.aaa.springboothomestay.dao.AdminDao;
 import com.aaa.springboothomestay.entity.Admins;
 import com.aaa.springboothomestay.entity.Menu;
@@ -11,9 +14,12 @@ import com.aaa.springboothomestay.impl.service.RoleService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -57,9 +63,12 @@ public class AdminImpl implements AdminService {
             Admins admin = list.get(0);
             Set<MenuRole> menuRoles = menuRoleService.SelectMenuRid(admin.getRid());
             List<Integer> lists=menuRoles.stream().map(MenuRoles->MenuRoles.getMid()).collect(Collectors.toList());
-            List<Menu> menus = menuService.SelectMenuId(lists);
+            if (lists.size()!=0){
+                List<Menu> menus = menuService.SelectMenuId(lists);
+                admin.setMenus(menus);
+
+            }
             admin.setRole(roleService.SelectRoleId(admin.getRid()));
-            admin.setMenus(menus);
 
             return admin;
         }
@@ -124,5 +133,40 @@ public class AdminImpl implements AdminService {
         admins.setIsenble(1);
         admins.setId(id);
         return adminDao.updateByPrimaryKeySelective(admins);
+    }
+
+    @Override
+    public Integer UpdateAdmin(Admins admins) {
+
+        return adminDao.updateByPrimaryKeySelective(admins);
+    }
+
+    /**
+     *
+     * @param admins 添加员工
+     * @return
+     */
+    @Override
+    public Result Adddmin(Admins admins) {
+        Result result = new Result();
+        admins.setApass(new BCryptPasswordEncoder().encode(admins.getApass()));
+        admins.setGender(Integer.parseInt(admins.getIdcard().substring(16,17))%2);
+        admins.setBeginDate(new Date(System.currentTimeMillis()));
+        admins.setWorkState(1);
+
+        Integer insert = adminDao.insert(admins);
+        if (insert==1){
+            return ResultUtil.success(ResultCode.SUCCESS,"员工添加成功");
+        }
+        return ResultUtil.error(ResultCode.ERROR, "员工添加失败");
+    }
+
+    @Override
+    public Boolean CheckIdcard(String idcard) {
+        Admins admins=new Admins();
+        admins.setIdcard(idcard);
+        List<Admins> select = adminDao.select(admins);
+
+        return select.size()==0;
     }
 }

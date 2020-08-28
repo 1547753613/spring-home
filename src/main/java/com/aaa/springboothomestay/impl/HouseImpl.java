@@ -34,10 +34,8 @@ public class HouseImpl implements HouseService {
         return houseDao.selectAll();
     }
 
-        @Override
-    public List<House> findAllHouse() {
-        return houseDao.findAllHouse();
+    @Override
+    public List<House> querybyid(House house) {
+        return houseDao.ByIdfindAll(house.getId());
     }
-
-
 }

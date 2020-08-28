@@ -12,6 +12,8 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.*;
+import java.sql.Date;
+
 
 @Data
 @Table(name = "admins")
@@ -31,23 +33,22 @@ public class Admins implements UserDetails {
     private String phone;//	varchar	手机号
     private String email;//	varchar	邮箱
 
-    @JsonFormat(pattern="yyyy-MM-dd ", timezone="GMT+8")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "beginDate")
     private Date beginDate;//	date	入职日期
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @JsonFormat(pattern="yyyy-MM-dd ", timezone="GMT+8")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "endDate")
     private Date endDate;//	date	离职日期
     @Column(name = "workState")
     private Integer workState;//	int	状态
     private Integer rid;//	int	外键角色表
-    private Integer isexpired;//	int	是否过期
-    private Integer islocked;//	int	是否上锁
+    private Integer isexpired=1;//	int	是否过期
+    private Integer islocked=1;//	int	是否上锁
     @Column(name = "isCreExpirEd")
-    private Integer isCreExpirEd;//	int	是否认证过期
-    private Integer isenble;//	int 	是否禁用
+    private Integer isCreExpirEd=1;//	int	是否认证过期
+    private Integer isenble=1;//	int 	是否禁用
 
     private Role role;//获取角色
 

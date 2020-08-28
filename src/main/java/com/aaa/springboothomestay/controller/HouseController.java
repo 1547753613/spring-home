@@ -3,6 +3,7 @@ package com.aaa.springboothomestay.controller;
 import com.aaa.springboothomestay.entity.House;
 import com.aaa.springboothomestay.impl.HouseImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping("House")
+@RequestMapping("muniao/House")
 @Controller
 public class HouseController {
     @Resource
@@ -40,4 +41,16 @@ public class HouseController {
     {
         return houseimp.query();
     }
+    @RequestMapping("querybyid")
+    public String queryById(Model model,House house)
+    {
+        //house.setId(1);
+        System.out.println(house.getId()+"===================");
+        List<House> hu  = houseimp.querybyid(house);
+        model.addAttribute("House",hu);
+        System.out.println(hu.size());
+        return "/qiantai/xiangqing";
+    }
+
+
 }

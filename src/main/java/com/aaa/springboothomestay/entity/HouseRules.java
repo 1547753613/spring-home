@@ -1,8 +1,5 @@
 package com.aaa.springboothomestay.entity;
-
-import com.sun.javafx.beans.IDProperty;
 import lombok.Data;
-
 import javax.persistence.Id;
 import java.util.Date;
 
