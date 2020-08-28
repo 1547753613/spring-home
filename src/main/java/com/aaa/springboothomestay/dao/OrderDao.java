@@ -7,5 +7,18 @@ import java.util.List;
 
 public interface OrderDao {
 
-    List<Orders> findAllOrders(@Param("uid")Integer uid,@Param("status")Integer status);
+//    List<Orders> findAllOrders(Integer uid);id
+
+    List<Orders> findAllOrders(@Param("uid") Integer uid,@Param("status")Integer status);
+
+
+
+    //订单详情
+    List<Orders>finById(Integer id);
+
+
+
+
+
+
 }

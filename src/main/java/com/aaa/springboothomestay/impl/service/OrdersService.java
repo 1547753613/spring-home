@@ -7,4 +7,9 @@ import java.util.List;
 
 public interface OrdersService {
     List<Orders> findAllOrders(Integer uid,Integer status);
+
+    List<Orders>finById(Integer id);
+
+
+
 }

@@ -19,4 +19,13 @@ public class OrdersImpl implements OrdersService {
     public List<Orders> findAllOrders(Integer uid,Integer status) {
         return orderDao.findAllOrders(uid,status);
     }
+
+    @Override
+    public List<Orders> finById(Integer id) {
+        return orderDao.finById(id);
+    }
+
+
+
+
 }

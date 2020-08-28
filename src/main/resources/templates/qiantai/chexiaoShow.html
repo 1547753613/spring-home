@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+    <title>个人信息</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/cityLayout.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/lq.datetimepick.css"/>
+    <script src="/assets/js/layui.all.js" type="text/javascript"></script>
+    <script src="/assets/js/layui.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<section>
+    <div class="wp">
+        <ul  class="crumbs">
+            <li><a href="/muniao/toIndex">首页</a>></li>
+            <li><a href="/muniao/findUser">个人中心</a>></li>
+            <li>我的订单</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <div class="wp list personal_list">
+        <div class="left">
+            <ul>
+                <li class="active2"><a href="/muniao/findUser">个人资料</a></li>
+                <li ><a href="/muniao/findCollect">我的收藏</a></li>
+                <li ><a href="/muniao/toList">我的订单</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="personal_des ">
+                <div class="head" style="border:1px solid #eaeaea;">
+                    <h1>申请撤销</h1>
+                </div>
+                <div class="inforcon">
+                    <form class="perinform" action="/teacher/add" method="post" id="jsEditUserForm" enctype="multipart/form-data">
+                        <ul class="right">
+                            <li>撤销原因：
+                                <input type="text" name="hname" maxlength="10">
+                                <i class="error-tips"></i>
+                            <li class="button heibtn">
+                                <input type="submit" id="jsEditUserBtn" value="保存">
+                            </li>
+                        </ul>
+                        <input type='hidden' name='csrfmiddlewaretoken' value='799Y6iPeEDNSGvrTu3noBrO4MBLv6enY'/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+</script>
+</body>
+</html>
