@@ -31,4 +31,9 @@ public class HouseAddressImpl implements HouseAddressService {
     public List<HouseAddress> query() {
         return houseAddressDao.selectAll();
     }
+
+    @Override
+    public List<HouseAddress> findByCity(String city) {
+        return houseAddressDao.findByCity(city);
+    }
 }

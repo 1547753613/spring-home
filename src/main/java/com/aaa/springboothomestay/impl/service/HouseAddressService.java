@@ -11,4 +11,5 @@ public interface HouseAddressService {
     int udpate(HouseAddress houseAddress);
     int delete(HouseAddress houseAddress);
     List<HouseAddress> query();
+    List<HouseAddress> findByCity(String city);
 }

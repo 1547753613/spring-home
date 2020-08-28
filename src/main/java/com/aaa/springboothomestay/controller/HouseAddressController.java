@@ -5,11 +5,13 @@ import com.aaa.springboothomestay.impl.HouseAddressImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @CrossOrigin
-@RequestMapping("HouseAddress")
+@RequestMapping("/muniao")
 @Controller
 public class HouseAddressController {
     @Resource
@@ -33,5 +35,11 @@ public class HouseAddressController {
     public String query()
     {
         return houseAddressImpl.query().toString();
+    }
+    @RequestMapping("/weizhimincheng")
+    @ResponseBody
+    public List<HouseAddress> findByCity(String city)
+    {
+        return houseAddressImpl.findByCity(city);
     }
 }
