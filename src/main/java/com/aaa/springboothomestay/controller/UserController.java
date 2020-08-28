@@ -214,6 +214,12 @@ public class UserController {
         return "/qiantai/tujia";
     }
 
-
+    //退出
+    @RequestMapping("/logout")
+    public String out(HttpServletRequest request)
+    {
+        request.getSession().removeAttribute("errand");
+        return "qiantai/denglu/index";
+    }
 
 }

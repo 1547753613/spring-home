@@ -1,8 +1,10 @@
 package com.aaa.springboothomestay.controller;
 
+import com.aaa.springboothomestay.entity.House;
 import com.aaa.springboothomestay.entity.HouseAddress;
 import com.aaa.springboothomestay.impl.HouseAddressImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,8 +40,12 @@ public class HouseAddressController {
     }
     @RequestMapping("/weizhimincheng")
     @ResponseBody
-    public List<HouseAddress> findByCity(String city)
+    public List<HouseAddress> findByCity(String city , Model model)
     {
-        return houseAddressImpl.findByCity(city);
+        List<HouseAddress> luo = houseAddressImpl.findByCity(city);
+        System.out.println(luo);
+
+        model.addAttribute("house",luo);
+        return luo;
     }
 }
