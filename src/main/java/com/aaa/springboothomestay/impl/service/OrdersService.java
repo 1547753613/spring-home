@@ -10,6 +10,9 @@ public interface OrdersService {
 
     List<Orders>finById(Integer id);
 
+    Integer updateChexiao(Orders orders);
 
+
+    Integer updatetuifang(Orders orders);
 
 }

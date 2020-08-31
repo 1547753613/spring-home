@@ -37,7 +37,19 @@
                 </collection>
     </resultMap>
 
+    <update id="updateChexiao">
+        update orders
+        set cdemo = #{cdemo},
+        status = 6
+        where id = #{id}
+    </update>
 
+    <update id="updatetuifang">
+        update orders
+        set cdemo = #{cdemo},
+        status = 3
+        where id = #{id}
+    </update>
 
 
     <select id="finById" resultMap="xx">

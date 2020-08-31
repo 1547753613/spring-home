@@ -3,6 +3,8 @@ package com.aaa.springboothomestay.impl.service;
 import com.aaa.springboothomestay.entity.House;
 
 import java.util.List;
+
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,4 +22,20 @@ public interface HouseService {
      * @return
      */
     public List<House> QueryHouseLid(Integer lid);
+
+    /**
+     *
+     * @param pageNum
+     * @param pageSize
+     * @param landname 分页查询房屋
+     * @return
+     */
+    public PageInfo<House> PageInfoHouse(Integer pageNum,Integer pageSize,String landname);
+
+    /**
+     *
+     * @param hid 房屋id,查询房屋
+     * @return
+     */
+    public House QueryHouseHid(Integer hid);
 }

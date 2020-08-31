@@ -40,14 +40,14 @@
         <div class="right">
             <div class="personal_des ">
                 <div class="head" style="border:1px solid #eaeaea;">
-                    <h1>申请撤销</h1>
+                    <h1>申请退房</h1>
                 </div>
                 <div class="inforcon">
-                    <form class="perinform" action="/muniao/chexiao" method="post" id="jsEditUserForm" enctype="multipart/form-data">
-                        <input type="hidden" name="id" id="id" th:value="${chexiao.id}" maxlength="10">
+                    <form class="perinform" action="/muniao/tuifang" method="post" id="jsEditUserForm" enctype="multipart/form-data">
+                        <input type="hidden" name="id" id="id" th:value="${tui.id}" maxlength="10">
                         <ul class="right">
-                            <li>撤销原因：
-                                <input type="text" name="cdemo" id="cdemo" th:value="${chexiao.cdemo}" maxlength="10">
+                            <li>退房原因：
+                                <input type="text" name="cdemo" id="cdemo" th:value="${tui.cdemo}">
                                 <i class="error-tips"></i>
                             <li class="button heibtn">
                                 <input type="submit" id="jsEditUserBtn" value="保存">

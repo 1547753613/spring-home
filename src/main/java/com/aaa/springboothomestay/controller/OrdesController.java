@@ -65,10 +65,63 @@ public class OrdesController {
     public String findById(Model model,Integer id){
         List<Orders> lists = ordersService.finById(id);
         model.addAttribute("lists",lists);
-        System.out.println("eeeeeeeee"+lists);
         return "/qiantai/orders-xq";
     }
 
+    /**
+     *跳转申请页面
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping("chexiaoShow")
+    public String chexiaoShow(Model model,Integer id){
+        List<Orders> chexiao = ordersService.finById(id);
+        model.addAttribute("chexiao",chexiao.get(0));
+        return "/qiantai/chexiaoShow";
+    }
 
 
+    /**
+     * 撤销订单
+     * @param map
+     * @return
+     */
+    @RequestMapping("chexiao")
+    public String chexiao(@RequestParam Map map){
+        Orders orders = new Orders();
+        orders.setId(map.get("id")+"");
+        orders.setCdemo((String) map.get("cdemo"));
+        ordersService.updateChexiao(orders);
+        return "redirect:toList";
+    }
+
+
+    /**
+     * 跳转申请页面
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping("tuifangShow")
+    public String tuifangShow(Model model,Integer id){
+        List<Orders> tuifang = ordersService.finById(id);
+        model.addAttribute("tui",tuifang.get(0));
+        return "/qiantai/tuifangShow";
+    }
+
+    /**
+     * 退房
+     * @param map
+     * @return
+     */
+    @RequestMapping("tuifang")
+    public String tuifang(@RequestParam Map map){
+
+        Orders orders = new Orders();
+        orders.setId(map.get("id")+"");
+        orders.setCdemo((String) map.get("cdemo"));
+        ordersService.updatetuifang(orders);
+        return "redirect:toList";
+    }
 }

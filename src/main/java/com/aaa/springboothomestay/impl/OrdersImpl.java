@@ -25,7 +25,15 @@ public class OrdersImpl implements OrdersService {
         return orderDao.finById(id);
     }
 
+    @Override
+    public Integer updateChexiao(Orders orders) {
+        return orderDao.updateChexiao(orders);
+    }
 
+    @Override
+    public Integer updatetuifang(Orders orders) {
+        return orderDao.updatetuifang(orders);
+    }
 
 
 }

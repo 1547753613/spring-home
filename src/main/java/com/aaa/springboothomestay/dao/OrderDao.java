@@ -17,8 +17,11 @@ public interface OrderDao {
     List<Orders>finById(Integer id);
 
 
+    //撤销订单
+    Integer updateChexiao(Orders orders);
 
-
+    //退房
+    Integer updatetuifang(Orders orders);
 
 
 }

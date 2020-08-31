@@ -61,8 +61,8 @@
                         <div class="layui-tab-item">
                             <table class="layui-table" id="a">
                                 <colgroup>
-                                    <col width="150">
-                                    <col height="200">
+                                    <col width="100">
+                                    <col height="100">
                                     <col>
                                 </colgroup>
                                 <thead>
@@ -119,8 +119,9 @@
                             "                                    <td>"+ item.ordersDetails.price+"</td>\n" +
                             "                                    <td>"+ status+"</td>\n" +
                             "                                    <td>"+ item.createtime+"</td>\n" +
-                            "                                    <td><a href='/muniao/chexiao'>撤销预定</a></td>" +
+                            "                                    <td><a href='/muniao/chexiaoShow?id="+item.id+"'>撤销预定</a></td>" +
                             "                                    <td><a href='/muniao/findById?id="+item.id+"'>订单详情</a></td>" +
+                            "                                    <td><a href='/muniao/tuifangShow?id="+item.id+"'>退房</a></td>" +
                             "</tr>"
                     })
                     $("#a").find("tbody").append(html)

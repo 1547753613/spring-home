@@ -119,7 +119,7 @@ public  class AliOSS {
 
 
     public static void main(String[] args) throws IOException {
-        String add = AliOSS.Add("QQ202008241427", "C:\\Users\\Administrator\\Desktop\\276026610c33874488ada904460fd9f9d72aa020.jpg");
+        String add = AliOSS.Add("4", "C:\\Users\\Administrator\\Desktop\\4.jpg");
         System.out.println(add);
         //System.out.println(AliOSS.remove("童话镇"));
         //System.out.println(AliOSS.install("童话镇"));
