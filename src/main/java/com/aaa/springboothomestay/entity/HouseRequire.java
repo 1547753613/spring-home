@@ -16,5 +16,7 @@ public class HouseRequire {
     private Integer hid;//	int 	房屋id
     private Integer rid;//	int 	房屋要求类型表
     private Integer state;//	int 	0为否1为是
-    //private RequireType requireTypes;
+
+
+    private Requiretype requiretype;//房屋要求类型
 }

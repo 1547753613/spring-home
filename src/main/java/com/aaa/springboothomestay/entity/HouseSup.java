@@ -16,5 +16,6 @@ public class HouseSup {
     private Integer hid;//	int 	外键房屋id
     private Integer sid;//	int 	外键配套设施表
     private Integer state;//	int 	状态(0代表不具备,1代表具备设施)
+
     private Supporting supporting;
 }

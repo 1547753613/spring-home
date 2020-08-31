@@ -1,8 +1,12 @@
 package com.aaa.springboothomestay.impl;
 
 import com.aaa.springboothomestay.dao.HouseDao;
+import com.aaa.springboothomestay.entity.Admins;
 import com.aaa.springboothomestay.entity.House;
 import com.aaa.springboothomestay.impl.service.HouseService;
+import com.aaa.springboothomestay.util.PageEntity;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -50,5 +54,30 @@ public class HouseImpl implements HouseService {
         house.setLid(lid);
         List<House> houses = houseDao.select(house);
         return houses;
+    }
+
+    @Override
+    public PageInfo<House> PageInfoHouse(Integer pageNum, Integer pageSize, String landname) {
+       if (null==landname){
+           landname="";
+       }
+        PageEntity pageEntity=new PageEntity(pageNum,pageSize);
+
+        PageHelper.startPage(pageEntity.getPageNum(),pageEntity.getPageSize());
+        List<House> houseLandName = houseDao.findHouseLandName(landname);
+        PageInfo<House> pageInfo= new PageInfo<House>(houseLandName);
+        System.out.println(pageInfo);
+        return pageInfo;
+    }
+
+    /**
+     *
+     * @param hid 房屋id,查询房屋
+     * @return
+     */
+    @Override
+    public House QueryHouseHid(Integer hid) {
+        House house = houseDao.findHouseHid(hid);
+        return house;
     }
 }

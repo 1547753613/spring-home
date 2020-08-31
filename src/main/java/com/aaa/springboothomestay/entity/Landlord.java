@@ -21,7 +21,7 @@ public class Landlord {
     private String nativePlave;//	varchar	籍贯
     private String city;//	varchar	市区
     private String address;//	varchar	详情地址
-    private String email;//	varchar	邮箱
+    private double email;//	varchar 账户余额
     private String account;//varchar	账户
     private Integer state;//	int	状态
     private String greeting;//	varchar	房东欢迎语

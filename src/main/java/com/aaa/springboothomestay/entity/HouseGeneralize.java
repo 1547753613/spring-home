@@ -3,6 +3,7 @@ package com.aaa.springboothomestay.entity;
 import lombok.Data;
 
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 public class HouseGeneralize {

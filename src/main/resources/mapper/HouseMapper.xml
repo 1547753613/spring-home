@@ -6,6 +6,82 @@
     <resultMap id="house" type="com.aaa.springboothomestay.entity.House" autoMapping="true">
         <id column="id" property="id" javaType="java.lang.Integer"></id>
     </resultMap>
+
+
+    <!--cth-->
+    <resultMap id="House" type="com.aaa.springboothomestay.entity.House" autoMapping="true">
+        <id column="id" property="id" javaType="java.lang.Integer"></id>
+        <association property="landlord" javaType="com.aaa.springboothomestay.entity.Landlord" autoMapping="true">
+            <id column="lid" property="lid"></id>
+        </association>
+        <association property="renttype" javaType="com.aaa.springboothomestay.entity.Renttype" autoMapping="true">
+            <id column="rid" property="rid"></id>
+        </association>
+        <association property="housetype" javaType="com.aaa.springboothomestay.entity.Housetype" autoMapping="true">
+            <id column="id" property="id"></id>
+            <result column="htname" property="hname"></result>
+            <result column="hticon" property="icon"></result>
+        </association>
+        <association property="houseGeneralize" javaType="com.aaa.springboothomestay.entity.HouseGeneralize" autoMapping="true">
+            <id property="id" column="hgid"></id>
+        </association>
+        <association property="houseAddress" javaType="com.aaa.springboothomestay.entity.HouseAddress" autoMapping="true">
+            <id column="hadid" property="id"></id>
+            <result column="hadcity" property="city"></result>
+            <result column="hadaddress" property="address"></result>
+        </association>
+        <association property="houseMany" javaType="com.aaa.springboothomestay.entity.HouseMany" autoMapping="true">
+            <id column="hmid" property="id"></id>
+        </association>
+
+
+
+        <association property="houseRules" javaType="com.aaa.springboothomestay.entity.HouseRules" autoMapping="true">
+            <id column="hrid" property="id"></id>
+            <association property="unsubscribe" javaType="com.aaa.springboothomestay.entity.Unsubscribe" autoMapping="true">
+                <id column="unid" property="id"></id>
+            </association>
+        </association>
+        <collection property="houseBeds" ofType="com.aaa.springboothomestay.entity.HouseBed" autoMapping="true">
+            <id property="id" column="hbid"></id>
+            <result property="bid" column="hbid"></result>
+            <association property="bedtype" javaType="com.aaa.springboothomestay.entity.Bedtype" autoMapping="true">
+                <id property="bid" column="bid"></id>
+            </association>
+        </collection>
+
+        <collection property="houseSups" ofType="com.aaa.springboothomestay.entity.HouseSup" autoMapping="true">
+            <id column="hsid" property="id"></id>
+            <result column="hssid" property="sid"></result>
+            <result column="hsstate" property="state"></result>
+            <association property="supporting" javaType="com.aaa.springboothomestay.entity.Supporting" autoMapping="true">
+                <id column="spid" property="id"></id>
+                <result column="spparentid" property="parentid"></result>
+                <result column="spincon" property="icon"></result>
+            </association>
+        </collection>
+
+
+
+        <collection property="houseOthers" ofType="com.aaa.springboothomestay.entity.HouseOther" autoMapping="true">
+            <id column="hoid" property="id"></id>
+            <result column="hocount" property="count"></result>
+            <association property="othertypes" javaType="com.aaa.springboothomestay.entity.Othertypes" autoMapping="true">
+            <id column="othid" property="id"></id>
+            </association>
+        </collection>
+
+         <collection property="houseRequires" ofType="com.aaa.springboothomestay.entity.HouseRequire" autoMapping="true">
+             <id column="hreid" property="id"></id>
+             <result column="hrerid" property="rid"></result>
+             <result column="hrestate" property="state"></result>
+             <association property="requiretype" javaType="com.aaa.springboothomestay.entity.Requiretype" autoMapping="true">
+                 <id column="reqid" property="id"></id>
+             </association>
+         </collection>
+
+    </resultMap>
+
     <sql id="HouseQueryAll">
         select * from house left join house_generalize on house.id = house_generalize.hid left join renttype on house.rid = renttype.rid left join specifictype on house.sid = specifictype.sid left join housetype on specifictype.id = housetype.id left join house_bed on house.id = house_bed.hid left join bedtype on house_bed.bid = bedtype.bid left join house_sup on house.id = house_sup.hid LEFT JOIN supporting on house_sup.sid = supporting.id left join house_many on house.id = house_many.hid LEFT JOIN house_other on house.id = house_other.hid LEFT JOIN othertypes on house_other.oid = othertypes.id left JOIN house_address on house.id = house_address.hid left join house_rules on house.id = house_rules.hid left join house_require on house.id  = house_require.hid
     </sql>
@@ -15,4 +91,51 @@
     <select id="ByIdfindAll" resultMap="house">
         select * from house where house.id = #{id}
 </select>
+
+    <!--cth-->
+    <select id="findHouseLandName" resultMap="House">
+        <bind name="_name" value="'%'+name+'%'"/>
+        select house.*,l.*,r.*,h.hname htname,h.icon hticon,h.commission,hg.area,hadd.city hadcity from house left join landlord l on l.lid=house.lid
+        left join renttype r on r.rid=house.rid
+        left join housetype h on  h.id=house.sid
+        LEFT JOIN house_generalize hg on hg.hid=house.id
+        LEFT JOIN house_address hadd on hadd.hid=house.id
+         where l.realname like #{_name}
+    </select>
+
+    <!--cth-->
+    <select id="findHouseHid" resultMap="House">
+      select
+            h.*,l.*,r.*,ht.id,ht.hname htname,ht.commission,ht.icon hticon,
+            hg.id hgid,hg.area,hg.rarea,hg.cohabit,hg.bedroom,hg.wc,hg.drawing,
+            hg.kitchen,hg.balcony,hg.count,hb.id hbid,hb.bid,hb.count hbcount,
+            bed.bname,bed.parentid,hs.id hsid,hs.sid hssid,hs.state hsstate,sp.id spid,
+            sp.sname,sp.parentid spparentid,sp.icon spicon,hm.id hmid,hm.workday,
+						hm.weekend,hm.Holidays,hm.hid,
+						ho.id hoid,ho.hid,ho.oid,
+						ho.count hocount,ho.many,oth.id othid,oth.oname,had.id hadid,had.city hadcity,
+						had.plot,had.card,had.address hadaddress,had.explains,hr.id hrid,hr.liblecount,
+						hr.days,hr.atcheck,hr.lastcheck,hr.rules,hr.uid,hr.checkout,un.id unid,
+						un.uname,un.uvarchar,un.uimage,hre.id hreid,hre.rid hrerid,hre.state hrestate,
+						req.id reqid,req.rname
+
+
+         from house h left join landlord l on l.lid=h.lid
+        left join renttype r on r.rid=h.rid
+        left join housetype ht on  ht.id=h.sid
+        left join house_generalize hg on hg.hid=h.id
+        left join house_bed hb on hb.hid=h.id
+        left join Bedtype bed on bed.bid=hb.bid
+        left join house_sup hs on hs.hid=h.id
+        left join supporting sp on sp.id=hs.sid
+				left join house_many hm on hm.hid=h.id
+				left join house_other ho on ho.hid=h.id
+				left join othertypes oth on oth.id=ho.oid
+				left join house_address had on had.hid=h.id
+				LEFT JOIN house_rules hr on hr.hid=h.id
+				LEFT JOIN unsubscribe un on un.id=hr.uid
+				LEFT JOIN house_require hre on hre.hid=h.id
+				LEFT JOIN requiretype req on req.id=hre.rid
+        where h.id=#{hid}
+    </select>
 </mapper>
