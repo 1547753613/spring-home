@@ -1,6 +1,5 @@
 package com.aaa.springboothomestay.controller;
 
-import com.aaa.springboothomestay.entity.House;
 import com.aaa.springboothomestay.entity.HouseAddress;
 import com.aaa.springboothomestay.impl.HouseAddressImpl;
 import org.springframework.stereotype.Controller;
@@ -47,5 +46,12 @@ public class HouseAddressController {
 
         model.addAttribute("house",luo);
         return luo;
+    }
+    @RequestMapping("/weizhi")
+    public String weizhifindAl(String city,Model m)
+    {
+        List<HouseAddress> weizhi = houseAddressImpl.findAll(city);
+        m.addAttribute("weizhi",weizhi);
+        return "/qiantai/tujia";
     }
 }

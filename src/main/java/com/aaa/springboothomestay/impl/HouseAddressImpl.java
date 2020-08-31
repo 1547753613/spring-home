@@ -37,6 +37,11 @@ public class HouseAddressImpl implements HouseAddressService {
         return houseAddressDao.findByCity(city);
     }
 
+    @Override
+    public List<HouseAddress> findAll(String city) {
+        return houseAddressDao.findAll(city);
+    }
+
     public HouseAddress byhidquery(int id)
     {
         HouseAddress houseAddress = new HouseAddress();
