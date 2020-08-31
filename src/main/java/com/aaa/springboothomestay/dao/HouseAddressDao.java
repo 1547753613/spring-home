@@ -9,4 +9,5 @@ import java.util.List;
 @org.apache.ibatis.annotations.Mapper
 public interface HouseAddressDao extends Mapper<HouseAddress> {
     List<HouseAddress> findByCity(String city);
+    List<HouseAddress> findAll(String city);
 }

@@ -12,4 +12,5 @@ public interface HouseAddressService {
     int delete(HouseAddress houseAddress);
     List<HouseAddress> query();
     List<HouseAddress> findByCity(String city);
+    List<HouseAddress> findAll(String city);
 }
