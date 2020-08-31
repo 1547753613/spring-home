@@ -6,8 +6,6 @@
     <resultMap id="house" type="com.aaa.springboothomestay.entity.House" autoMapping="true">
         <id column="id" property="id" javaType="java.lang.Integer"></id>
     </resultMap>
-
-
     <!--cth-->
     <resultMap id="House" type="com.aaa.springboothomestay.entity.House" autoMapping="true">
         <id column="id" property="id" javaType="java.lang.Integer"></id>
@@ -86,7 +84,7 @@
         select * from house left join house_generalize on house.id = house_generalize.hid left join renttype on house.rid = renttype.rid left join specifictype on house.sid = specifictype.sid left join housetype on specifictype.id = housetype.id left join house_bed on house.id = house_bed.hid left join bedtype on house_bed.bid = bedtype.bid left join house_sup on house.id = house_sup.hid LEFT JOIN supporting on house_sup.sid = supporting.id left join house_many on house.id = house_many.hid LEFT JOIN house_other on house.id = house_other.hid LEFT JOIN othertypes on house_other.oid = othertypes.id left JOIN house_address on house.id = house_address.hid left join house_rules on house.id = house_rules.hid left join house_require on house.id  = house_require.hid
     </sql>
     <select id="findAllHouse" resultMap="house">
-            select * from house
+            select * from house where state =1
     </select>
     <select id="ByIdfindAll" resultMap="house">
         select * from house where house.id = #{id}

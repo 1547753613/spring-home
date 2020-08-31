@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping("Landlord")
+@RequestMapping("muniao/Landlord")
 @Controller
 public class LandlordController {
     @Autowired
@@ -56,5 +56,10 @@ public class LandlordController {
     public Landlord querybyid(int id)
     {
         return landlordimp.querybyid(id);
+    }
+    @RequestMapping("tolandlord")
+    public String tolandlord()
+    {
+        return "/qiantai/MOveH";
     }
 }

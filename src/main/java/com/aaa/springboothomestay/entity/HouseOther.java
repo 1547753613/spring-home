@@ -17,6 +17,7 @@ public class HouseOther {
     private Integer oid;//	int 	其他费用类型表
     private Integer count;//	int 	数量
     private Double many;//	double	金额
+    //private Othertypes othertypes;
 
     private Othertypes othertypes;
 }

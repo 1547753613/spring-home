@@ -4,6 +4,7 @@ import com.aaa.springboothomestay.dao.SupportintDao;
 import com.aaa.springboothomestay.entity.Supporting;
 import com.aaa.springboothomestay.impl.service.SupportingService;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,7 +39,7 @@ public class SupportingImpl implements SupportingService {
      */
     public Supporting byidquery(int id)
     {
-        return supportintDao.selectByPrimaryKey(id);
+        return supportintDao.byidquery(id);
     }
 
 }
