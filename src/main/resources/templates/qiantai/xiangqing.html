@@ -361,13 +361,13 @@
                  <em th:text="${house.hname}"></em>
              </h4>
                         <!--这里               -->
-             <p th:text="${house}">
+             <p>
                  <em class="col_pink">
                      <!--可以做个城市连接-->
-                    <a href="#">深圳</a>
+                    <a th:text="${houseAddress.city}" href="#"></a>
                     &gt;
                  </em>
-                                  <span class="pr5">广东省深圳市大鹏新区南澳西涌沙滩三号收费口鹤籔村
+                                  <span th:text="${house.traffic}" class="pr5">广东省深圳市大鹏新区南澳西涌沙滩三号收费口鹤籔村
                                   </span>
                               </p>
              <div class="labels">
@@ -401,229 +401,16 @@
                          </div>
                      </div>
                      <div valign="middle" align="center">
-                         <div id="imgMouseCusor" style="background:url('/static/images/detail/null_bg.png')"></div>
-                         <img id="curBigImage" src="https://image.xiaozhustatic3.com/00,800,533/2,9,0,3,5096,1800,1200,25afc714.jpg" alt="" />
+                         <div id="imgMouseCusor" style="background:url(https://appmusics.oss-cn-beijing.aliyuncs.com/2ba5cbf1-32b5-4258-8bfd-eb1edd0cbf02)"></div>
+                         <img id="curBigImage" th:src="${house.simg}" alt="" />
 
                      </div>
                                       </div>
              </div>
              <div class="pho_show_r">
                  <div class="pho_show_small">
-                     <div class="pho_small_prev detail-image-prev"></div>
-                     <div class="pho_small_next detail-image-next"></div>
-                     <ul class="detail-thumb-nav">
-                         <!--这里-->
-                                                  <li>
-                             <div class="pho_layer"></div>
-                                                          <img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,63,5040,1800,1200,823129be.jpg"
-                                 data-intro="" data-imgrate="1.5"
-                                 data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,63,5040,1800,1200,823129be.jpg" data-width="800"  data-height="533" title="" />
-                         </li>
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,3,5096,1800,1200,25afc714.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,3,5096,1800,1200,25afc714.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,3,5094,1800,1200,950d826a.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,3,5094,1800,1200,950d826a.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,31,4920,1800,1200,29e3b81e.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,31,4920,1800,1200,29e3b81e.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,82,4950,1800,1200,896d3ef7.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,82,4950,1800,1200,896d3ef7.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,20,5050,1800,1200,781af707.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,20,5050,1800,1200,781af707.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,51,4925,1800,1200,83014647.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,51,4925,1800,1200,83014647.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,67,4952,1800,1200,272ed915.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,67,4952,1800,1200,272ed915.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,15,4843,1800,1200,67e33838.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,15,4843,1800,1200,67e33838.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,20,5049,1800,1200,4eaa277c.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,20,5049,1800,1200,4eaa277c.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,66,4936,1800,1200,f35f605d.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,66,4936,1800,1200,f35f605d.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,33,4966,1794,1200,78141d79.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.495"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,33,4966,1794,1200,78141d79.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,37,5046,1800,1200,3dc4cc50.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,37,5046,1800,1200,3dc4cc50.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,79,5013,1800,1200,4c9eb403.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,79,5013,1800,1200,4c9eb403.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,55,5068,1800,1200,423b0482.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,55,5068,1800,1200,423b0482.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,16,5069,1800,1200,821719cb.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,16,5069,1800,1200,821719cb.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,44,5049,1800,1200,0fc0d706.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,44,5049,1800,1200,0fc0d706.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,6,4897,1800,1200,9942319e.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,6,4897,1800,1200,9942319e.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,62,4895,1800,1200,765b29f7.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,62,4895,1800,1200,765b29f7.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,66,4937,1800,1200,0b1d9f22.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,66,4937,1800,1200,0b1d9f22.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,49,5066,1800,1200,b92d40b5.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,49,5066,1800,1200,b92d40b5.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,75,4986,1800,1200,b2a8463f.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,75,4986,1800,1200,b2a8463f.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,94,4945,1800,1200,02f3bf01.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,94,4945,1800,1200,02f3bf01.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,54,4879,1800,1200,ce5794c2.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,54,4879,1800,1200,ce5794c2.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,58,4859,1800,1200,c43eeacc.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,58,4859,1800,1200,c43eeacc.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,45,5023,1800,1200,d1db2513.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,45,5023,1800,1200,d1db2513.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,70,4993,1800,1200,613b8575.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,70,4993,1800,1200,613b8575.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,75,4988,1800,1200,7ae82d51.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,75,4988,1800,1200,7ae82d51.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,85,4867,1800,1200,1a4a87a1.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,85,4867,1800,1200,1a4a87a1.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,40,4914,1800,1200,19e3f9b2.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,40,4914,1800,1200,19e3f9b2.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,2,4982,1800,1200,0dd66120.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,2,4982,1800,1200,0dd66120.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,35,5043,1800,1200,9c59ee11.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,35,5043,1800,1200,9c59ee11.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic3.com/00,131,87/2,9,0,62,4899,1800,1200,1041e5f1.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic1.com/00,800,533/2,9,0,62,4899,1800,1200,1041e5f1.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic1.com/00,131,87/2,9,0,34,4924,1800,1200,15123c8e.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic2.com/00,800,533/2,9,0,34,4924,1800,1200,15123c8e.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                                  <!--<li>-->
-                             <!--<div class="pho_layer"></div>-->
-                                                          <!--<img data-src="https://image.xiaozhustatic2.com/00,131,87/2,9,0,18,5004,1800,1200,e1077e99.jpg"-->
-                                 <!--data-intro="" data-imgrate="1.5"-->
-                                 <!--data-bigimg="https://image.xiaozhustatic3.com/00,800,533/2,9,0,18,5004,1800,1200,e1077e99.jpg" data-width="800"  data-height="533" title="" />-->
-                         <!--</li>-->
-                                              </ul>
+                     <!--<div class="pho_small_prev detail-image-prev"></div>-->
+                     <!--<div class="pho_small_next detail-image-next"></div>-->
                  </div>
              </div>
          </div>
@@ -639,19 +426,20 @@
              <ul class="house_info clearfix" id="introduce">
                  <li class="border_none">
                      <h6 class="h_ico1">出租方式</h6>
-                     <p>房屋面积：房屋平方平米<br/>                         房屋户型：1室0厅1卫0厨0阳台</p>                 </li>
+                     <p>房屋面积：<span th:text="${housegeneralize.area}"></span>平方米(单套)<br/>                         房屋户型：<span th:text="${housegeneralize.bedroom}"></span>室<span th:text="${housegeneralize.drawing}"></span>厅<span th:text="${housegeneralize.wc}"></span>卫<span th:text="${housegeneralize.kitchen}"></span>厨<span th:text="${housegeneralize.balcony}"></span>阳台</p>                 </li>
                  <li>
-                     <h6 class="h_ico2">宜住?人</h6>
+                     <h6 class="h_ico2">宜住<span th:text="${houseRules.liblecount}"></span>人</h6>
                      <p>
-                                                     ?房客独享整套房屋
+                         <span th:text="${housegeneralize.cohabit}==0?'房客与房东同住':'房客独享整套房屋'"></span>
                                                   </p>
                  </li>
                  <li>
-                     <h6 class="h_ico3">共?张</h6>
+                     <h6 class="h_ico3">共<span th:text="${houseBedSize}"></span>种</h6>
                      <p>
-                                                                                                                             
-                         双人床：1.2m宽 × 2m长 ×2张<br />
-                                              </p>
+                         <span th:text="${bedType.bname}"></span> ×
+                         <span th:each="housebe:${houseBed}">
+                         <span th:text="${housebe.count}"></span>张<br />
+                               </span>               </p>
                  </li>
              </ul>
                           <div class="box_white clearfix detail_intro_item" hideheight="135" showheight="120" >
@@ -661,38 +449,13 @@
                  </div>
                  <div class="info_r">
                      <div class=" intro_item_content">
-                                                  <p>人活在世界上，<br />
-总要有一次用尽全力的奔跑，<br />
-有一次切断所有后路的努力，<br />
-也要有一次轰轰烈烈的爱情。<br />
-愿你有深夜的酒，<br />
-也有清晨的粥。<br />
-谢谢你找到我，<br />
-谢谢你留下来。</p>
+                         <span th:text="${house.feature}"></span>
                      </div>
                      <div class="open" style="display:none;">查看全部<span></span></div>
                      <div class="stop" style="display:none;">收起<span></span></div>
                  </div>
              </div>
-            
-                         <div class="box_gray clearfix detail_intro_item" hideheight="135" showheight="120" >
-                 <div class="info_l">
-                     <span class="info_ico2"></span>
-                     <p>内部情况</p>
-                 </div>
-                 <div class="info_r">
-                     <div class=" intro_item_content">
-                                                  <p>卧室底细：<br />
-所有房间均配备一客一洗床单被套，衣帽架，木质衣架，吹风筒，编织地垫，凉拖鞋以及独立洗手间；<br />
-活动厅：<br />
-四楼大厅为亲子家庭配备，是小盆友的玩乐天地； 三楼大厅可下象棋，五子棋，喝茶聊天，扑克麻将等；二楼大厅是健身达人专属，配跑步机，哑铃或适合一楼大厅有两个，分别为娱乐厅和休闲厅，娱乐厅有麻将桌，休闲厅有各类书籍，酒柜，自助咖啡机，55寸网络电视，吐槽粘贴区，休闲吊椅和一张3M长的多功能桌等等。<br />
-庭前院落<br />
-庭院为独立院落，有专门的围炉烧烤，也有绿藤架下的窃窃私语，更有傍晚时分你那娓娓动听的畅享室外KTV；除此之外，也有蝴蝶精心种植的各类花草。</p>
-                                              </div>
-                     <div class="open" style="display:none;">查看全部<span></span></div>
-                     <div class="stop" style="display:none;">收起<span></span></div>
-                 </div>
-             </div>
+
                                                                  <div class="box_white clearfix detail_intro_item" hideheight="135" showheight="120" >
                  <div class="info_l">
                      <span class="info_ico3"></span>
@@ -700,10 +463,8 @@
                  </div>
                  <div class="info_r">
                      <div class=" intro_item_content">
-                         <p>由大鹏或南澳皆有专线小巴，院落走到沙滩仅10分钟左右路程，天文台，看日出都是*佳位置</p>
+                         <span th:text="${house.traffic}"></span>
                      </div>
-                     <div class="open" style="display:none;">查看全部<span></span></div>
-                     <div class="stop" style="display:none;">收起<span></span></div>
                  </div>
              </div>
              
@@ -714,10 +475,8 @@
                  </div>
                  <div class="info_r">
                      <div class=" intro_item_content">
-                                                  <p>周边景点：深圳*长的沙滩海景，情人岛，天文台，三门岛等等。</p>
+                         <span th:text="${house.rim}"></span>
                                               </div>
-                     <div class="open" style="display:none;">查看全部<span></span></div>
-                     <div class="stop" style="display:none;">收起<span></span></div>
                  </div>
              </div>
                           
@@ -728,38 +487,10 @@
                  </div>
                  <div class="info_r">
                      <div class="intro_item_content">
-                         <ul class="pt_list clearfix">
-                                                                                                                          <li class="s_ico_shower">热水淋浴                                </li>
-                                                                                                                                                                                       <li class="s_ico_wirelessnetwork">无线网络                                </li>
-                                                                                                                                                                                       <li class="s_ico_aircondition">空调                                </li>
-                                                                                                                                                                                       <li class="s_ico_washer">洗衣机                                </li>
-                                                                                                                                                                                       <li class="s_ico_icebox">冰箱                                </li>
-                                                                                                                                                                                       <li class="s_ico_parkingspace">停车位                                </li>
-                                                                                                                                                                                       <li class="s_ico_slippers">拖鞋                                </li>
-                                                                                                                                                                                       <li class="s_ico_toiletpaper">手纸                                </li>
-                                                                                                                                                                                       <li class="s_ico_brush">牙具                                </li>
-                                                                                                                                                                                       <li class="s_ico_towel">毛巾                                </li>
-                                                                                                                                                                                       <li class="s_ico_toiletries">浴液 洗发水                                </li>
-                                                                                                                                                                                       <li class="s_ico_iscook">允许做饭                                </li>
-                                                                                                                                                                                       <li class="s_ico_meet">允许聚会                                </li>
-                                                                                                                                                                                       <li class="s_ico_no">电视</li>
-                                                                                                                                                                                       <li class="s_ico_no">电梯</li>
-                                                                                                                                                                                       <li class="s_ico_no">门禁系统</li>
-                                                                                                                                                                                       <li class="s_ico_no">饮水设备</li>
-                                                                                                                                                                                       <li class="s_ico_no">浴缸</li>
-                                                                                                                                                                                       <li class="s_ico_no">暖气</li>
-                                                                                                                                                                                       <li class="s_ico_no">有线网络</li>
-                                                                                                                                                                                       <li class="s_ico_no">香皂</li>
-                                                                                                                                                                                       <li class="s_ico_no">允许吸烟</li>
-                                                                                                                                                                                       <li class="s_ico_no">允许带宠物</li>
-                                                                                                                                                                                       <li class="s_ico_no">适宜婴幼儿</li>
-                                                                                                                                                                                       <li class="s_ico_no">适宜儿童<i title="为儿童提供保护安全、便于就寝的设施" style="display: inline-block;width:12px;height:12px;background:url(../images/icon_wenhaogrey.png) no-repeat; background-size: 100% 100%;margin-left: 5px;"></i></li>
-                                                                                                                                                                                       <li class="s_ico_no">适宜老人<i title="为老人提供方便进出和日常使用的设施" style="display: inline-block;width:12px;height:12px;background:url(../images/icon_wenhaogrey.png) no-repeat; background-size: 100% 100%;margin-left: 5px;"></i></li>
-                                                                                                                                                                                       <li class="s_ico_no">适宜残疾人<i title="为残疾人提供无障碍通行和活动的设施" style="display: inline-block;width:12px;height:12px;background:url(../images/icon_wenhaogrey.png) no-repeat; background-size: 100% 100%;margin-left: 5px;"></i></li>
-                                                                                                                   </ul>
+                         <ul class="pt_list clearfix" th:each="houseoth:${supportings}">
+                             <li th:text="${houseoth.sname}==null?'':${houseoth.sname}" class=""></li>
+                         </ul>
                      </div>
-                     <div class="open" style="display:none;">查看全部<span></span></div>
-                     <div class="stop" style="display:none;">收起<span></span></div>
                  </div>
              </div>
 
@@ -772,8 +503,8 @@
                      <div class="info_text_mid">
                                                                                                     
                                                                            <ul class="check_con clearfix">
-                             <li>卫生间：独立卫生间</li>
-                             <li>最少入住天数：1天</li>
+                             <li>卫生间：<span th:text="${housegeneralize.wctype}==0?'公共卫生间':'私人卫生间'"></span></li>
+                             <li>最少入住天数：<span th:text="${houseRules.days}"></span>天</li>
                              <li>最多入住天数：无限制</li>
                              <li>是否接待境外人士：接待</li>                             <!--<li>被单更换：每客一换</li>-->
                          </ul>
@@ -790,7 +521,7 @@
                      <tr>
                          <td>
                                                           <!--这里-->
-                             房源位置：广东省深圳市大鹏新区南澳西涌沙滩三号收费口鹤籔村
+    <span th:text="${houseAddress.city}"></span>
                                                       </td>
                      </tr>
                  </table>
@@ -800,9 +531,11 @@
          <div class="bg_box" id="rulesPart">
              <div class="clause_box">
                                   <h5>押金及其他费用</h5>
-                                  <p>押金：
-                                             
-                                                    ?元
+
+                                  <p>
+                                      <span th:each="houseot:${houseOther}">
+                                        <span th:text="${houseot.othertypes.oname}"></span>:<span th:text="${houseot.many}"></span>:
+                                    </span>
                                              
                                             <a href="https://www.xiaozhu.com/yunying/cashPledgeFree"><span class="zhima_deposit_noico">小猪担保免押 ></span></a>
                     
@@ -919,7 +652,7 @@
 
          <div class="bg_box" id="floatRightBox">
              <div class="day_top clearfix" id="pricePart">
-                 <div class="day_l">&#165;<span>198</span><em>起</em></div>
+                 <div class="day_l">&#165;<span th:text="${min}"></span><em>起</em></div>
                  <div class="day_r">每晚</div>
              </div>
 

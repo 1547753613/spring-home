@@ -38,4 +38,5 @@ public interface HouseService {
      * @return
      */
     public House QueryHouseHid(Integer hid);
+    public List<House> findAllHouse();
 }

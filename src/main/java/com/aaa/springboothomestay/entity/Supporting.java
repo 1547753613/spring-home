@@ -11,5 +11,4 @@ public class Supporting {
     private String sname;//	varchar	配套设施
     private Integer parentid;//	int 	父id
     private String icon;//	varchar	图标
-
 }

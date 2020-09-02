@@ -1,8 +1,10 @@
 package com.aaa.springboothomestay.controller;
 
 import com.aaa.springboothomestay.aliyun.ALiNote;
+import com.aaa.springboothomestay.entity.House;
 import com.aaa.springboothomestay.entity.ResResult;
 import com.aaa.springboothomestay.entity.User;
+import com.aaa.springboothomestay.impl.HouseImpl;
 import com.aaa.springboothomestay.impl.UserImpl;
 import com.alibaba.fastjson.JSONObject;
 import com.aliyun.oss.ClientException;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -31,8 +34,10 @@ public class UserController {
     /**
      * 罗元超登陆
      */
-    @Autowired
+    @Resource
     UserImpl userimpl;
+    @Resource
+    HouseImpl houseimp;
     @RequestMapping("/login")
     public String yuan()
     {
@@ -45,6 +50,9 @@ public class UserController {
         if(user == null || !pass.equals(user.getPass())) {
             return "qiantai/denglu/index";
         }
+        List<House> houses = houseimp.query();
+        System.out.println(houses);
+        model.addAttribute("houses",houses);
         model.addAttribute("user",user);
         session.setAttribute("user",user);
         return "/qiantai/tujia";
@@ -210,7 +218,9 @@ public class UserController {
      */
 
     @RequestMapping("toIndex")
-    public String toIndex(){
+    public String toIndex(Model model){
+        List<House> houses = houseimp.findAllHouse();
+        model.addAttribute("houses",houses);
         return "/qiantai/tujia";
     }
 

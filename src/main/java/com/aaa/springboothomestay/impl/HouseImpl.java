@@ -57,6 +57,11 @@ public class HouseImpl implements HouseService {
     }
 
     @Override
+    public List<House> findAllHouse() {
+        return houseDao.findAllHouse();
+    }
+
+    @Override
     public PageInfo<House> PageInfoHouse(Integer pageNum, Integer pageSize, String landname) {
        if (null==landname){
            landname="";

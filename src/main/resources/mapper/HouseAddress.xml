@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.aaa.springboothomestay.dao.HouseAddressDao">
+    <resultMap id="weizhi" type="com.aaa.springboothomestay.entity.HouseAddress">
+        <id property="id" column="id"></id>
+        <result property="hid" column="hid"></result>
+        <result property="city" column="city"></result>
+        <result property="plot" column="plot"></result>
+        <result property="card" column="card"></result>
+        <result property="address" column="address"></result>
+        <result property="explains" column="explains"></result>
+        <association property="house" javaType="com.aaa.springboothomestay.entity.House">
+            <id property="id" column="id"></id>
+            <result property="hname" column="hname"></result>
+            <result property="simg" column="simg"></result>
+            <result property="himg" column="himg"></result>
+            <result property="lid" column="lid"></result>
+            <result property="rid" column="rid"></result>
+            <result property="sid" column="sid"></result>
+            <result property="feature" column="feature"></result>
+            <result property="xcoord" column="xcoord"></result>
+            <result property="ycoord" column="ycoord"></result>
+            <result property="traffic" column="traffic"></result>
+            <result property="state" column="state"></result>
+            <result property="rim" column="rim"></result>
+        </association>
+    </resultMap>
+    <select id="findByCity" resultMap="weizhi">
+            select * from house_address ha
+             left join house h on ha.hid = h.id
+             where ha.city = #{city}
+    </select>
+    <select id="findAll" resultMap="weizhi">
+        select * from house_address ha
+             left join house h on ha.hid = h.id
+              where ha.city like '%${value}%'
+    </select>
+</mapper>

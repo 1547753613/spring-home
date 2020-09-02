@@ -69,7 +69,7 @@ public class HouseController {
         return houseimp.query();
     }
     @RequestMapping("querybyid")
-    public String queryById(Model model,House house)
+    public String queryById(Model model,House house) throws Exception
     {
         House hu  = houseimp.querybyid(house).get(0);
         int hid = hu.getId();
@@ -77,34 +77,54 @@ public class HouseController {
         HouseRules houseRules = houseRulesimp.byhidquery(hid);
         HouseAddress houseAddress = houseAddressimp.byhidquery(hid);
         List<HouseOther> houseOther = houseOtherimp.query(hid);
-        List<Othertypes> othertypes = new ArrayList<Othertypes>();
         for (int i = 0;i<houseOther.size();i++)
         {
-            othertypes.add(othertypesimp.byidquery(houseOther.get(i).getOid()));
+            houseOther.get(i).setOthertypes(othertypesimp.byidquery(houseOther.get(i).getOid()));
         }
         HouseMany houseMany = houseManyimp.byhidquery(hid);
-        HouseSup houseSup = houseSupimp.byhidquery(hid);
+        List<HouseSup> houseSup = houseSupimp.byhidquery(hid);
+        List<Supporting> supportings = new ArrayList<Supporting>();
+        for (int i = 0;i<houseSup.size();i++)
+        {
+            int a = houseSup.get(i).getSid();
+            Supporting supporting =  supportingimp.byidquery(a);
+            if(supporting!=null)
+            {
+                supportings.add(supporting);
+            }
+            houseSup.get(i).setSupporting(supporting);
+//            System.out.println(houseSup.get(i).getSupporting());
+        }
         List<HouseBed> houseBed = houseBedimp.byhidquery(hid);
         Bedtype bedType = bedTypeimp.bybidquery(hid);
         HouseGeneralize houseGeneralize = houseGeneralizeimp.byhidquery(hid);
-        Housetype housetype = houseTypeimp.bysidquery(house.getSid());
-        Supporting supporting = supportingimp.byidquery(houseSup.getSid());
-        System.out.println(houseRequire.getRid());
+        Housetype housetype = houseTypeimp.bysidquery(hu.getSid());
+//        System.out.println(houseRequire.getRid());
         List<Requiretype> requireType = requireTypeimp.byhidquery(houseRequire.getRid());
         model.addAttribute("house",hu);
         model.addAttribute("requireType",requireType);
         model.addAttribute("houseRequire",houseRequire);
         model.addAttribute("houseRules",houseRules);
+        Double x = houseMany.getHolidays();
+        Double y = houseMany.getWeekend();
+        Double z = houseMany.getWorkday();
+        Double min = ((x < y) ? x : y)<z?((x < y) ? x : y):z;
+        model.addAttribute("min",min);
         model.addAttribute("houseAddress",houseAddress);
         model.addAttribute("houseOther",houseOther);
-        model.addAttribute("othertypes",othertypes);
         model.addAttribute("houseMany",houseMany);
         model.addAttribute("houseSup",houseSup);
         model.addAttribute("houseBed",houseBed);
         model.addAttribute("bedType",bedType);
         model.addAttribute("housegeneralize",houseGeneralize);
-        model.addAttribute("supporting",supporting);
+        model.addAttribute("houseBedSize",houseBed.size());
+        model.addAttribute("supportings",supportings);
         return "/qiantai/xiangqing";
+    }
+    @RequestMapping("fdlogin")
+    public String tofd()
+    {
+        return "/qiantai/MoveHouse";
     }
 
 
