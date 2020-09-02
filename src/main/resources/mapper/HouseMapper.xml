@@ -43,6 +43,7 @@
         <collection property="houseBeds" ofType="com.aaa.springboothomestay.entity.HouseBed" autoMapping="true">
             <id property="id" column="hbid"></id>
             <result property="bid" column="hbid"></result>
+            <result property="count" column="hbcount"></result>
             <association property="bedtype" javaType="com.aaa.springboothomestay.entity.Bedtype" autoMapping="true">
                 <id property="bid" column="bid"></id>
             </association>
@@ -106,7 +107,7 @@
       select
             h.*,l.*,r.*,ht.id,ht.hname htname,ht.commission,ht.icon hticon,
             hg.id hgid,hg.area,hg.rarea,hg.cohabit,hg.bedroom,hg.wc,hg.drawing,
-            hg.kitchen,hg.balcony,hg.count,hb.id hbid,hb.bid,hb.count hbcount,
+            hg.kitchen,hg.balcony,hg.wctype,hg.count,hb.id hbid,hb.bid,hb.count hbcount,
             bed.bname,bed.parentid,hs.id hsid,hs.sid hssid,hs.state hsstate,sp.id spid,
             sp.sname,sp.parentid spparentid,sp.icon spicon,hm.id hmid,hm.workday,
 						hm.weekend,hm.Holidays,hm.hid,

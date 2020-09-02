@@ -5,9 +5,12 @@ import com.aaa.springboothomestay.code.Result;
 import com.aaa.springboothomestay.code.ResultCode;
 import com.aaa.springboothomestay.code.ResultUtil;
 import com.aaa.springboothomestay.entity.Admins;
+import com.aaa.springboothomestay.entity.User;
 import com.aaa.springboothomestay.impl.service.AdminService;
+import com.aaa.springboothomestay.impl.service.UsersService;
 import com.aaa.springboothomestay.util.MultipartFileToFile;
 import com.aaa.springboothomestay.util.UUIDUtils;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostAuthorize;
@@ -21,14 +24,20 @@ import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin
 @Controller
 @RequestMapping("test")
 public class TestController {
+
+    @Autowired
+    UsersService usersService;
+
     @Autowired
     AdminService adminService;
 
@@ -105,5 +114,22 @@ public class TestController {
     @ResponseBody
     public Boolean CheckIdcard(String idcard){
         return adminService.CheckIdcard(idcard);
+    }
+
+    @GetMapping("userAll")
+    @ResponseBody
+    public PageInfo<User> SelectUserAll(Integer pageNum, Integer pageSize, String realname){
+        return usersService.SelectUserAll(pageNum, pageSize, realname);
+    }
+
+    @GetMapping("/invalidateSession")
+    @ResponseBody
+    public Integer invalidateSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if(session != null) {
+            request.getSession().invalidate();
+        }
+        //System.out.println(session);
+        return 1;
     }
 }
