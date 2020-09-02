@@ -18,7 +18,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e20200803/xzcss?css=global,page,suggest,jquery-ui,calendar,rz,newdetailpage,zhima_icon_span,shareinvite,sc" />
  -->
 <link rel="stylesheet" type="text/css" href="/assets/css/xzcss1.css?css=global,page,suggest,jquery-ui,calendar,rz,newdetailpage,zhima_icon_span,shareinvite,sc" />
-
+    <link rel="stylesheet" href="/assets/layui.css" media="all">
 </head>
 <body>
 <!--header-->
@@ -401,9 +401,17 @@
                          </div>
                      </div>
                      <div valign="middle" align="center">
-                         <div id="imgMouseCusor" style="background:url(https://appmusics.oss-cn-beijing.aliyuncs.com/2ba5cbf1-32b5-4258-8bfd-eb1edd0cbf02)"></div>
-                         <img id="curBigImage" th:src="${house.simg}" alt="" />
-
+                         <!--<div id="imgMouseCusor" style="background:url(https://appmusics.oss-cn-beijing.aliyuncs.com/2ba5cbf1-32b5-4258-8bfd-eb1edd0cbf02)"></div>-->
+                         <!--<img id="curBigImage" th:src="${house.simg}" alt="" />-->
+                         <div class="layui-carousel" id="test1">
+                             <div carousel-item>
+                                 <div>条目1</div>
+                                 <div>条目2</div>
+                                 <div>条目3</div>
+                                 <div>条目4</div>
+                                 <div>条目5</div>
+                             </div>
+                         </div>
                      </div>
                                       </div>
              </div>

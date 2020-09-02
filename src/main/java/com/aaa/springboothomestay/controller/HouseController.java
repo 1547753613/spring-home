@@ -17,6 +17,8 @@ import java.util.List;
 @Controller
 public class HouseController {
     @Resource
+    RentTypeImpl rentTypeimp;
+    @Resource
     HouseImpl houseimp;
     @Resource
     RequireTypeImpl requireTypeimp;
@@ -126,6 +128,13 @@ public class HouseController {
     {
         return "/qiantai/MoveHouse";
     }
-
-
+    @RequestMapping("toinsert")
+    public String toindex(Model md)
+    {
+        List<Renttype> query = rentTypeimp.query();
+        md.addAttribute("renttype",query);
+        List<Housetype> query1 = houseTypeimp.query();
+        md.addAttribute("housetype",query1);
+        return "/qiantai/index";
+    }
 }

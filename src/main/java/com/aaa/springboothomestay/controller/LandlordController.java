@@ -1,40 +1,39 @@
 package com.aaa.springboothomestay.controller;
 
+import com.aaa.springboothomestay.code.Result;
 import com.aaa.springboothomestay.entity.Landlord;
 import com.aaa.springboothomestay.impl.LandlordImpl;
+import com.aaa.springboothomestay.util.IdentityCardOCR;
+import com.aaa.springboothomestay.util.MultipartFileToFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResultUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
+import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RequestMapping("muniao/Landlord")
 @Controller
 public class LandlordController {
-    @Autowired
+    @Resource
     LandlordImpl landlordimp;
+    @Resource
+    TestController testController;
     @RequestMapping("insert")
     @ResponseBody
     public int insert(Landlord landlord)
     {
-//        landlord.setAccount("15503953309");
-//        landlord.setAddress("中心花园路北300米");
-//        landlord.setCity("文峰区");
-//        landlord.setEmail("1352572800@qq.com");
-//        landlord.setGreeting("本人热情好客，安阳也是古都，欢迎各位来参观旅游");
-//        landlord.setHead("C:\\Users\\Administrator\\Desktop\\图集\\IMG20200820211721.jpg");
-//        landlord.setIdcard("411123200105302018");
-//        landlord.setIdcardimg("C:\\Users\\Administrator\\Desktop\\图集\\IMG20200820211721.jpg");
-//        landlord.setLid(null);
-//        landlord.setNativeplave("河南省安阳市文峰区");
-//        landlord.setNickname("柳岩我爱你");
-//        landlord.setPhone("15503953309");
-//        landlord.setState(1);
-//        landlord.setPass("dapengdapeng");
-//        landlord.setRealname("大鹏");
+        System.out.println(landlord+"=====================");
+        landlord.setEmail(0);
+        landlord.setState(1);
         return landlordimp.add(landlord);
     }
     @RequestMapping("query")
@@ -61,5 +60,22 @@ public class LandlordController {
     public String tolandlord()
     {
         return "/qiantai/MOveH";
+    }
+    @RequestMapping("uploadcardimg")
+    @ResponseBody
+    public Map<String,Object> cardcheck(MultipartFile file) throws Exception {
+        File file1 = MultipartFileToFile.multipartFileToFile(file);
+        IdentityCardOCR identityCardOCR = new IdentityCardOCR();
+        Result result = testController.upload(file);
+        Map<String,Object> map = identityCardOCR.discern(file1.getAbsolutePath());
+        map.put("imgpath",result);
+        return map;
+    }
+    @RequestMapping("headimg")
+    @ResponseBody
+    public Map<String,Object> headimg(MultipartFile file) throws Exception {
+        Result result = testController.upload(file);
+        Map<String,Object> map = (Map<String, Object>) result.getData();
+        return map;
     }
 }
