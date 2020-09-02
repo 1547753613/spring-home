@@ -66,7 +66,6 @@ public class HouseImpl implements HouseService {
         PageHelper.startPage(pageEntity.getPageNum(),pageEntity.getPageSize());
         List<House> houseLandName = houseDao.findHouseLandName(landname);
         PageInfo<House> pageInfo= new PageInfo<House>(houseLandName);
-        System.out.println(pageInfo);
         return pageInfo;
     }
 

@@ -63,17 +63,15 @@ public class SeucrityConfig extends WebSecurityConfigurerAdapter {
     public SessionRegistry sessionRegistry() {
         return new SessionRegistryImpl();
     }
+
     @Bean
     LoginFilter loginFilter() throws Exception {
         LoginFilter loginFilter=new LoginFilter();
         loginFilter.setAuthenticationSuccessHandler(myAuthenticationSuccessHandler);
         loginFilter.setAuthenticationFailureHandler(myAuthenticationFailureHandler);
-
-
         loginFilter.setAuthenticationManager(authenticationManagerBean());
         loginFilter.setFilterProcessesUrl("/my");
         ConcurrentSessionControlAuthenticationStrategy sessionStrategy = new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry());
-       // sessionStrategy.setMaximumSessions(1);
         loginFilter.setSessionAuthenticationStrategy(sessionStrategy);
 
         return loginFilter;
@@ -134,10 +132,10 @@ public class SeucrityConfig extends WebSecurityConfigurerAdapter {
                .authorizeRequests()
                // 验证跨域请求
 
-               //.and()
-               //.sessionManagement()
-              // .maximumSessions(1)
-               //.sessionRegistry(sessionRegistry())
+               /*.and()
+               .sessionManagement()
+               .maximumSessions(1)
+               .sessionRegistry(sessionRegistry())*/
                 ;
 
        http.logout()

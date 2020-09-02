@@ -28,7 +28,6 @@ public class RabcConfig {
             List<String>urls=menus.stream().map(Menu->Menu.getUrl()).collect(Collectors.toList());
 
             if (urls.contains(uri)){
-               // System.out.println("true");
                 return true;
             }
 
