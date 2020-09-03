@@ -102,9 +102,8 @@
          where l.realname like #{_name}
     </select>
 
-    <!--cth-->
-    <select id="findHouseHid" resultMap="House">
-      select
+    <sql id="houseSQL" >
+          select
             h.*,l.*,r.*,ht.id,ht.hname htname,ht.commission,ht.icon hticon,
             hg.id hgid,hg.area,hg.rarea,hg.cohabit,hg.bedroom,hg.wc,hg.drawing,
             hg.kitchen,hg.balcony,hg.wctype,hg.count,hb.id hbid,hb.bid,hb.count hbcount,
@@ -135,6 +134,24 @@
 				LEFT JOIN unsubscribe un on un.id=hr.uid
 				LEFT JOIN house_require hre on hre.hid=h.id
 				LEFT JOIN requiretype req on req.id=hre.rid
+    </sql>
+
+    <!--cth-->
+    <select id="findHouseHid" resultMap="House">
+     <include refid="houseSQL"></include>
         where h.id=#{hid}
+    </select>
+
+    <!--cth-->
+    <select id="QueryHouseCity" resultMap="House">
+        <bind name="_city" value="city+'%'"/>
+
+        select
+        h.*,l.*,r.*,hmany.*
+        from house h left join landlord l on l.lid=h.lid
+        left join renttype r on r.rid=h.rid
+        left JOIN house_many hmany on hmany.hid=h.id
+
+				where l.nativePlave like #{_city}
     </select>
 </mapper>
