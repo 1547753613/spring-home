@@ -75,7 +75,7 @@ public class HouseController {
     {
         House hu  = houseimp.querybyid(house).get(0);
         int hid = hu.getId();
-        HouseRequire houseRequire = houseRequireimp.byhidquery(hid);
+        List<HouseRequire> houseRequire = houseRequireimp.byhidquery(hid);
         HouseRules houseRules = houseRulesimp.byhidquery(hid);
         HouseAddress houseAddress = houseAddressimp.byhidquery(hid);
         List<HouseOther> houseOther = houseOtherimp.query(hid);
@@ -98,11 +98,18 @@ public class HouseController {
 //            System.out.println(houseSup.get(i).getSupporting());
         }
         List<HouseBed> houseBed = houseBedimp.byhidquery(hid);
-        Bedtype bedType = bedTypeimp.bybidquery(hid);
+        List<Bedtype> bedType = bedTypeimp.bybidquery(hid);
         HouseGeneralize houseGeneralize = houseGeneralizeimp.byhidquery(hid);
         Housetype housetype = houseTypeimp.bysidquery(hu.getSid());
 //        System.out.println(houseRequire.getRid());
-        List<Requiretype> requireType = requireTypeimp.byhidquery(houseRequire.getRid());
+        List<Requiretype> requireType = new ArrayList<Requiretype>();
+        for (int i = 0;i<houseRequire.size();i++) {
+           Requiretype requiretype = requireTypeimp.byidquery(houseRequire.get(i).getRid());
+           if(requireType!=null)
+           {
+               requireType.add(requiretype);
+           }
+        }
         model.addAttribute("house",hu);
         model.addAttribute("requireType",requireType);
         model.addAttribute("houseRequire",houseRequire);

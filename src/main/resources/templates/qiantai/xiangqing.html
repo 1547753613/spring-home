@@ -436,7 +436,9 @@
                 <li>
                     <h6 class="h_ico3">共<span th:text="${houseBedSize}"></span>种</h6>
                     <p>
-                        <span th:text="${bedType.bname}"></span> ×
+                        <span th:each="bed:${bedType}">
+                            <span th:text="${bed.bname}"></span>
+                        </span> ×
                         <span th:each="housebe:${houseBed}">
                          <span th:text="${housebe.count}"></span>张<br />
                                </span>               </p>

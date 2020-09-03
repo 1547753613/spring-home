@@ -31,10 +31,10 @@ public class HouseRequireImpl implements HouseRequireService {
         return houseRequireDao.selectAll();
     }
 
-    public HouseRequire byhidquery(int id)
+    public List<HouseRequire> byhidquery(int id)
     {
         HouseRequire houseRequire = new HouseRequire();
         houseRequire.setHid(id);
-        return houseRequireDao.select(houseRequire).get(0);
+        return houseRequireDao.select(houseRequire);
     }
 }

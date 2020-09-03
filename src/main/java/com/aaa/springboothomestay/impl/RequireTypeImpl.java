@@ -18,4 +18,9 @@ public class RequireTypeImpl implements RequireTypeService {
         requireType.setId(id);
         return requireTypeDao.select(requireType);
     }
+    @Override
+    public Requiretype byidquery(int id)
+    {
+        return requireTypeDao.selectByPrimaryKey(id);
+    }
 }
