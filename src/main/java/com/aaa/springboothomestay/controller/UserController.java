@@ -51,7 +51,7 @@ public class UserController {
             return "qiantai/denglu/index";
         }
         List<House> houses = houseimp.query();
-        System.out.println(houses);
+       // System.out.println(houses);
         model.addAttribute("houses",houses);
         model.addAttribute("user",user);
         session.setAttribute("user",user);

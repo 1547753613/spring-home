@@ -18,4 +18,6 @@ public interface HouseDao extends Mapper<House> {
 
     House findHouseHid(@Param("hid") Integer hid);
 
+    List<House> QueryHouseCity(@Param("city") String city);
+
 }
