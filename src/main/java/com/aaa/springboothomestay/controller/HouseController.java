@@ -50,6 +50,8 @@ public class HouseController {
     @ResponseBody
     public int insert(House house)
     {
+        house.setLid(1);
+        house.setState(0);
         return houseimp.insert(house);
     }
     @RequestMapping("update")
@@ -138,6 +140,9 @@ public class HouseController {
     @RequestMapping("toinsert")
     public String toindex(Model md)
     {
+        List<Supporting> supportings = supportingimp.query();
+        List<Bedtype> bedtype = bedTypeimp.query();
+        md.addAttribute("bedtype",bedtype);
         List<Renttype> query = rentTypeimp.query();
         md.addAttribute("renttype",query);
         List<Housetype> query1 = houseTypeimp.query();

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -9,49 +8,36 @@
     <link href="../assets/css/layui.css" rel="stylesheet" type="text/css">
     <script src="../assets/js/layui.all.js" type="text/javascript"></script>
     <script src="../assets/jcs/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
   </head>
     <body>
-        <div style="width: 800px; margin: 0 auto;">
-            <form class="layui-form" action="">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">输入框</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
+        <div style="width: 800px; margin: 0 auto;margin-top: 50px;" class="layui-form">
                 <div class="layui-upload" style="margin-left: 30px;">
-                    <button type="button" class="layui-btn" id="head">上传房源图片</button>
+                    <button type="button" class="layui-btn" id="simg">上传房源封面图</button>
                     <div class="layui-upload-list">
-                        <img class="layui-upload-img" name="idcardimg" style="height: 200px;width: 340px" id="headimg">
+                        <img class="layui-upload-img" id="simgimg" name="simg" style="height: 200px;width: 360px">
                         <p id="headtext"></p>
                     </div>
                 </div>
                 <div class="layui-upload">
-                    <button type="button" class="layui-btn" id="test2">多图片上传</button>
-                    <button type="button" class="layui-btn" id="himg">清空图片</button>
-                    <script>
-                        $("#himg").on("click",function(){
-                            $("#demo2").html("");
-                        })
-                        $("#himg2").on("click",function(){
-                            $(".layui-upload-img").each(function(){
-                                var a = $(this).attr("src");
-                            })
-                        })
-                    </script>
+                    <button type="button" class="layui-btn" id="himg">请上传房源详细图</button>
+                    <button type="button" class="layui-btn" id="isnull">清空图片</button>
                     <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                         预览图：
                         <div class="layui-upload-list" id="demo2"></div>
+                        <div class="layui-form-mid layui-word-aux" id="imagespath"></div>
                     </blockquote>
                 </div>
                 <script>
                     layui.use('upload', function(){
+                        var i = 0
                         var $ = layui.jquery
-                            ,upload = layui.upload;
+                            ,upload = layui.upload,
+                            layer = layui.layer;
 
                         //普通图片上传
                         var uploadInst = upload.render({
-                            elem: '#head'
+                            elem: '#simg'
                             ,url: 'muniao/Landlord/headimg'//改成您自己的上传接口
                             ,before: function(obj){
                                 //预读本地文件示例，不支持ie8
@@ -64,8 +50,7 @@
                                 if(res.code > 0){
                                     return layer.msg('上传失败');
                                 }
-                                var path = res.head;
-                                $('#headimg').attr('src', path);
+                                $("#simgimg").attr("src",(res.head));
                             }
                             ,error: function(){
                                 //演示失败状态，并实现重传
@@ -76,14 +61,14 @@
                                 });
                             }
                         });
+
                         upload.render({
-                            elem: '#test2'
-                            , url: '' //改成您自己的上传接口
+                            elem: '#himg'
+                            , url: 'muniao/Landlord/headimg' //改成您自己的上传接口
                             , multiple: true
                             , before: function (obj) {
                                 //预读本地文件示例，不支持ie8
                                 obj.preview(function (index, file, result) {
-                                    $('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img" style="height: 200px;width: 340px;border:3px solid #0d774a; margin: 5px;5px;">')
                                 });
                             }
                             , done: function (res) {
@@ -91,55 +76,108 @@
                                 if(res.code > 0){
                                     return layer.msg('上传失败');
                                 }
-                                console.info("上传成功了")
+                                    $('#demo2').append('<img src="'+ res.head +'" class="layui-upload-img" style="height: 200px;width: 340px;border:3px solid #0d774a; margin: 5px;5px;">')
+                                    var a = $("#imagespath").attr("val");
+                                if(a==undefined)
+                                {
+                                    $("#imagespath").attr("val",res.head);
+                                }else {
+                                    $("#imagespath").attr("val",a+(";"+res.head));
+                                }
                             }
                         });
                     });
+                    $("#isnull").on("click",function(){
+                        $("#demo2").html("");
+                        $("#imagespath").html("");
+                    })
+                    $("#himg2").on("click",function(){
+                        $(".layui-upload-img").each(function(){
+                            var a = $(this).attr("src");
+                        })
+                    })
                 </script>
                 <div class="layui-form-item">
                     <label class="layui-form-label">房源名称</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="password" required lay-verify="required" placeholder="请输入房源名称" autocomplete="off" class="layui-input">
+                        <input type="text" name="hname" required lay-verify="required" placeholder="请输入房源名称" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">请为您的房源填写名称</div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">请介绍您的房源特色</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="password" required lay-verify="required" placeholder="请填写您的房源特色" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">有助于帮您的房源做宣传</div>
-                </div>
-                <div class="layui-form-item">
                     <label class="layui-form-label">交通位置</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="password" required lay-verify="required" placeholder="请填写您出租的房屋的具体位置" autocomplete="off" class="layui-input">
+                        <input type="text" name="traffic" readonly required lay-verify="required" placeholder="请填写您出租的房屋的具体位置" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">交通位置</div>
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">文本框</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                <div class="layui-form-item" style="height: 600px;">
+
+                    <div style="width:730px;margin:auto;">
+                        <label class="layui-form-label">请输入房屋的位置</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="address" id="searchname" required lay-verify="required" placeholder="请填写您出租的房屋的位置" autocomplete="off" class="layui-input">
+                        </div>
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline">
+                            <span name="xcorrd" id="x">东经:</span><span id="y" name="ycoord">北纬:</span>
+                        </div>
+                        <input type="button" class="layui-btn" onclick="searchByStationName();" value="查询"/>
+                        <div id="container"
+                             style="position: absolute;
+                margin-top:30px;
+                width: 730px;
+                height: 590px;
+                border: 1px solid gray;
+                overflow:hidden;">
+                        </div>
                     </div>
-                    <div class="layui-form-mid layui-word-aux">辅助文字</div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">文本框</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">辅助文字</div>
-                </div>
+<script type="text/javascript">
+    var map = new BMap.Map("container");
+    map.centerAndZoom("郑州", 12);
+    map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+    map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+    map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+    map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+    map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
+
+    var localSearch = new BMap.LocalSearch(map);
+    localSearch.enableAutoViewport(); //允许自动调节窗体大小
+    function searchByStationName() {
+        map.clearOverlays();//清空原来的标注
+        var keyword = $("#searchname").val();
+        console.info(keyword)
+        localSearch.setSearchCompleteCallback(function (searchResult) {
+            var poi = searchResult.getPoi(0);
+            $("#x").html("东经"+poi.point.lng);
+            $("#x").attr("val",poi.point.lng);
+            $("#y").html("北纬"+poi.point.lat);
+            $("#y").attr("val",poi.point.lat);
+            map.centerAndZoom(poi.point, 13);
+            var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+            map.addOverlay(marker);
+            console.info(poi);
+            var content = poi.title + "<br/><br/>地址：" + poi.address + "<br/>所属城市：" + poi.city;
+            $("input[name='traffic']").val(poi.address);
+            var hname = $("input[name='hname']").val(poi.title);
+            var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + content + "</p>");
+            marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+            // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+        });
+        localSearch.search(keyword);
+    }
+    </script>
+
+    </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">文本框</label>
 
                 </div>
                 <div class="layui-form-item" style="width: 380px;">
-                    <label class="layui-form-label">选择框</label>
+                    <label class="layui-form-label">请选择出租类型</label>
                     <div class="layui-input-block">
-                        <select name="city" lay-verify="required">
-                            <option value="0" select="select">请选择</option>
+                        <select name="rid" lay-verify="required">
                             <span th:each="rent:${renttype}">
                                 <option th:value="${rent.rid}"><span th:text="${rent.tname}"></span></option>
                             </span>
@@ -147,23 +185,114 @@
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 380px;">
-                    <label class="layui-form-label">选择框</label>
-                    <div class="layui-input-block">
-                        <select name="city" lay-verify="required">
-                            <option value="0" select="select">请选择</option>
+                    <label class="layui-form-label">请选择房屋类型</label>
+                    <div class="layui-input-block" id="cnm">
+                        <select name="sid" lay-verify="required">
                             <span th:each="housetyp:${housetype}">
                                 <option th:value="${housetyp.id}"><span th:text="${housetyp.hname}"></span></option>
                             </span>
                         </select>
                     </div>
+                    <button id="add">点击加一行</button>
+                    <script>
+                        $("#add").on("click",function(){
+                            $("#cnm").append('<select name="sid" lay-verify="required">\n' +
+                                '                            <span th:each="housetyp:${housetype}">\n' +
+                                '                                <option th:value="${housetyp.id}"><span th:text="${housetyp.hname}"></span></option>\n' +
+                                '                            </span>\n' +
+                                '                        </select>');
+
+                        })
+
+                    </script>
                 </div>
+                <div class="layui-form-item" style="width: 700px;">
+                    <label class="layui-form-label">请介绍您的房源特色:</label>
+                    <div class="layui-input-inline" style="width: 700px;">
+                        <textarea name="feature" placeholder="请输入内容" class="layui-textarea"></textarea>                    </div>
+                    <div class="layui-form-mid layui-word-aux">有助于帮您的房源做宣传</div>
+                </div>
+                <div class="layui-form-item" style="width: 700px;">
+                    <label class="layui-form-label">请介绍您要出租的房屋的周围环境:</label>
+                    <div class="layui-input-inline" style="width: 700px;">
+                        <textarea name="rim" placeholder="请输入内容" class="layui-textarea"></textarea>                    </div>
+                    <div class="layui-form-mid layui-word-aux">有助于帮您的房源做宣传</div>
+                </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证手机</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">卫生间类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="wctype" value="0" title="公共卫生间" checked="">
+                        <input type="radio" name="wctype" value="1" title="独立卫生间">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证邮箱</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
-            </form>
         </div>
         <script>
             //Demo
@@ -172,8 +301,22 @@
                 form.render();
                 //监听提交
                 form.on('submit(formDemo)', function(data){
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
+                    var hname = $("input[name='hname']").val();
+                    var simg = $("#simgimg").attr("src");
+                    var himg = $("#imagespath").attr("val");
+                    var rid = $("select[name='rid'] option:selected").val();
+                    var sid = $("select[name='sid'] option:selected").val();
+                    var feature = $("textarea[name='feature']").val();
+                    var xcoord =  $("#x").attr("val");
+                    var ycoord = $("#y").attr("val");
+                    var traffic = $("input[name='traffic']").val();
+                    var rim = $("textarea[name='rim']").val();
+                    console.info(""+hname+""+simg+""+himg+""+rid+""+sid+""+feature+""+xcoord+""+ycoord+""+traffic+""+rim)
+                    // $.post("muniao/House/insert",{'hname':hname,'simg':simg,'himg':himg,'rid':rid,
+                    // 'sid':sid,'feature':feature,'xcoord':xcoord,'ycoord':ycoord,'traffic':traffic,'rim':rim
+                    // },function(da){
+                    //     layer.msg(JSON.stringify(da.field));
+                    // })
                 });
             });
         </script>

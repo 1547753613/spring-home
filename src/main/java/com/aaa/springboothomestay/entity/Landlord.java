@@ -3,12 +3,15 @@ package com.aaa.springboothomestay.entity;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.List;
 
 @Data
 public class Landlord {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer lid;//	int 	主键编号
     private String nickname;//	varchar	昵称
     private String realname;//	varchar	真实姓名
