@@ -5,9 +5,9 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <base href="/">
+    <script src="../assets/jcs/jquery-1.10.2.min.js" type="text/javascript"></script>
     <link href="../assets/css/layui.css" rel="stylesheet" type="text/css">
     <script src="../assets/js/layui.all.js" type="text/javascript"></script>
-    <script src="../assets/jcs/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
   </head>
     <body>
@@ -158,7 +158,7 @@
             var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
             map.addOverlay(marker);
             console.info(poi);
-            var content = poi.title + "<br/><br/>地址：" + poi.address + "<br/>所属城市：" + poi.city;
+            var content = poi.title + "<br/><br/><span value='"+poi.address+"' id='address'>地址：" + poi.address + "</span><br/><span id='city' value='"+poi.city+"'>所属城市：" + poi.city+"</span>";
             $("input[name='traffic']").val(poi.address);
             var hname = $("input[name='hname']").val(poi.title);
             var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + content + "</p>");
@@ -193,18 +193,6 @@
                             </span>
                         </select>
                     </div>
-                    <button id="add">点击加一行</button>
-                    <script>
-                        $("#add").on("click",function(){
-                            $("#cnm").append('<select name="sid" lay-verify="required">\n' +
-                                '                            <span th:each="housetyp:${housetype}">\n' +
-                                '                                <option th:value="${housetyp.id}"><span th:text="${housetyp.hname}"></span></option>\n' +
-                                '                            </span>\n' +
-                                '                        </select>');
-
-                        })
-
-                    </script>
                 </div>
                 <div class="layui-form-item" style="width: 700px;">
                     <label class="layui-form-label">请介绍您的房源特色:</label>
@@ -220,45 +208,46 @@
                 </div>
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证手机</label>
+                    <label class="layui-form-label">请输入房间的整套面积</label>
                     <div class="layui-input-inline">
-                        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                        <input type="tel" name="area" lay-verify="required|phone" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">卧室数量</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                        <input type="text" name="bedroom" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">卫生间数量</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                        <input type="text" name="wc" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">客厅数量</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                        <input type="text" name="drawimg" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">厨房数量</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                        <input type="text" name="kitchen" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">阳台数量</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                        <input type="text" name="balcony" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                    <label class="layui-form-label">是否与租客同住</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="cohabit" value="0" title="房东跟租客同住" checked="">
+                        <input type="radio" name="cohabit" value="1" title="房东不跟租客同住">
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -269,23 +258,96 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">房屋工作日价格</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                        <input type="text" name="workday" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">周末价格</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                        <input type="text" name="weekend" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
+                    <label class="layui-form-label">节假日价格</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="holidays" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">易住人数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="liblecount" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">最少入住天数</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="days" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">最早入住时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="atcheck" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">最晚入住时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="lastcheck" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">最晚退房时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="checkout" lay-verify="email" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">房屋要求</label>
                     <div class="layui-input-inline">
                         <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
                     </div>
                 </div>
+            </div>
+            <div class="layui-form-item" style="width: 700px;">
+                <span th:each="bed:${bedtype}" th:if="${bed.parentid>0}">
+                <label class="layui-form-label">请选择床型:</label>
+                <div class="layui-input-inline" style="width: 700px;" >
+                    <input type="checkbox" class="layui-form-checkbox" name="bedtype" th:value="${bed.bid}" th:title="${bed.bname}">
+                    <input type="text" name="bedcount" lay-verify="email" autocomplete="off" class="layui-input" style="width: 300px;">
+                </div>
+                    </span>
+            </div>
+            <div class="layui-form-item" style="width: 700px;">
+
+                <label class="layui-form-label">请选择配套设施:</label>
+                <span th:each="sup:${supportings}" th:if="${sup.parentid>0}">
+                <div class="layui-input-inline" style="width: 700px;" >
+                    <input type="checkbox" class="layui-form-checkbox" name="sup" th:value="${sup.id}" th:title="${sup.sname}">
+                </div>
+                    </span>
+            </div>
+            <div class="layui-form-item" style="width: 700px;">
+
+                <label class="layui-form-label">请选择其他收费类型:</label>
+                <span th:each="othertype:${othertypes}">
+                <div class="layui-input-inline" style="width: 700px;" >
+                    <input type="checkbox" class="layui-form-checkbox" name="othertype" th:value="${othertype.id}" th:title="${othertype.oname}">
+                    <input type="text" name="othercount" lay-verify="email" autocomplete="off" class="layui-input" style="width: 300px;">
+                </div>
+                    </span>
+            </div>
+            <div class="layui-form-item" style="width: 700px;">
+
+                <label class="layui-form-label">是否允许以下行为:</label>
+                <span th:each="require:${requiretype}">
+                <div class="layui-input-inline" style="width: 700px;" >
+                    <input type="checkbox" class="layui-form-checkbox" name="requiretype" th:value="${require.id}" th:title="${require.rname}">
+                </div>
+                    </span>
             </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
@@ -294,6 +356,28 @@
                     </div>
                 </div>
         </div>
+        <button id="check">点击</button>
+        <script>
+            $("#check").on("click",function(){
+                var cohabit = [];
+                var wctype = [];
+                var requiretype = [];
+                $("input[type=radio]:checked").each(function(){
+                    var name = $(this).attr("name");
+                    var value = $(this).attr("value");
+                    if(name=="cohabit")
+                    {
+                        cohabit.push(value);
+                    }else if (name="wctype")
+                    {
+                        wctype.push(value);
+                    }
+                });
+                console.info(wctype+"wctype"+cohabit+"cohabit")
+
+                console.info(a)
+            })
+        </script>
         <script>
             //Demo
             layui.use('form', function(){
@@ -301,6 +385,58 @@
                 form.render();
                 //监听提交
                 form.on('submit(formDemo)', function(data){
+                    var bedtype=[];
+                    var count = [];
+                    var sup = [];
+                    var othertype = [];
+                    var cohabit = [];
+                    var wctype = [];
+                    var requiretype = [];
+                    $("input[type=radio]:checked").each(function(){
+                        var name = $(this).attr("name");
+                        var value = $(this).attr("value");
+                        if(name=="cohabit")
+                        {
+                            cohabit.push(value);
+                        }else if (name="wctype")
+                        {
+                            wctype.push(value);
+                        }
+                    });
+                    var bedcount = [];
+                    $("input[name='bedcount']").each(function(){
+                        if($(this).val()=="")
+                        {
+                            return;
+                        }else {
+                            bedcount.push($(this).val())
+                        }
+                    })
+                    var othercount = [];
+                    $("input[name='othercount']").each(function(){
+                        if($(this).val()=="")
+                        {
+                            return;
+                        }else {
+                            a.push($(this).val())
+                        }
+                    })
+                    $("input[type=checkbox]:checked").each(function(){
+                        var name = $(this).attr("name");
+                        var value = $(this).attr("value");
+                        if(name=="bedtype")
+                        {
+                            bedtype.push(value)
+                        }else if (name=="sup") {
+                            sup.push(value)
+                        }else if(name=="othertype")
+                        {
+                            othertype.push(value)
+                        }else if(name=="requiretype")
+                        {
+                            requiretype.push(value)
+                        }
+                    })
                     var hname = $("input[name='hname']").val();
                     var simg = $("#simgimg").attr("src");
                     var himg = $("#imagespath").attr("val");
@@ -311,6 +447,28 @@
                     var ycoord = $("#y").attr("val");
                     var traffic = $("input[name='traffic']").val();
                     var rim = $("textarea[name='rim']").val();
+                    var area = $("input[name='area']").val();
+                    var bedroom = $("input[name='bedroom']").val();
+                    var wc = $("input[name='wc']").val();
+                    var drawimg = $("input[name='drawimg']").val();
+                    var kitchen = $("input[name='kitchen']").val();
+                    var balcony = $("input[name='balcony']").val();
+                    var workday = $("input[name='workday']").val();
+                    var weekend = $("input[name='weekend']").val();
+                    var holidays = $("input[name='holidays']").val();
+                    var city = $("#city").attr("value");
+                    var address = $("#address").attr("value");
+                    var liblecount = $("input[name='liblecount']").val();
+                    var days = $("input[name='days']").val();
+                    var atcheck = $("input[name='atcheck']").val();
+                    var lastcheck = $("input[name='lastcheck']").val();
+                    var checkout = $("input[name='checkout']").val();
+                    var map = {"house":{'hname':hname,'simg':simg,'himg':himg,'rid':rid,
+                         'sid':sid,'feature':feature,'xcoord':xcoord,'ycoord':ycoord,'traffic':traffic,'rim':rim},
+                        "housegeneralize":{"area":area,"cohabit":cohabit,"bedroom":bedroom,"wc":wc,"drawing":drawimg,"kitchen":kitchen,"balcony":balcony,"wctype":wctype},
+                         "housebed":{"count":count},"bids":bedtype,"sids":sup,
+                        "housemany":{"workday":workday,"weekday":weekend,"Holidays":holidays},
+                        "houseother":{""}}
                     console.info(""+hname+""+simg+""+himg+""+rid+""+sid+""+feature+""+xcoord+""+ycoord+""+traffic+""+rim)
                     // $.post("muniao/House/insert",{'hname':hname,'simg':simg,'himg':himg,'rid':rid,
                     // 'sid':sid,'feature':feature,'xcoord':xcoord,'ycoord':ycoord,'traffic':traffic,'rim':rim

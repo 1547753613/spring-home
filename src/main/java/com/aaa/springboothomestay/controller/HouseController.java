@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RequestMapping("muniao/House")
@@ -140,7 +141,12 @@ public class HouseController {
     @RequestMapping("toinsert")
     public String toindex(Model md)
     {
+        List<Requiretype> query2 = requireTypeimp.query();
+        md.addAttribute("requiretype",query2);
+        List<Othertypes> othertypes = othertypesimp.query();
+        md.addAttribute("othertypes",othertypes);
         List<Supporting> supportings = supportingimp.query();
+        md.addAttribute("supportings",supportings);
         List<Bedtype> bedtype = bedTypeimp.query();
         md.addAttribute("bedtype",bedtype);
         List<Renttype> query = rentTypeimp.query();
@@ -148,5 +154,12 @@ public class HouseController {
         List<Housetype> query1 = houseTypeimp.query();
         md.addAttribute("housetype",query1);
         return "/qiantai/index";
+    }
+    @RequestMapping("inser")
+    @ResponseBody
+    public int insert(Map<String,Object> map)
+    {
+        System.out.println(map);
+        return 1;
     }
 }
