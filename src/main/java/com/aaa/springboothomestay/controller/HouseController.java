@@ -2,6 +2,9 @@ package com.aaa.springboothomestay.controller;
 
 import com.aaa.springboothomestay.entity.*;
 import com.aaa.springboothomestay.impl.*;
+import com.aaa.springboothomestay.impl.service.OrderDetailsService;
+import com.aaa.springboothomestay.impl.service.OrdersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +20,10 @@ import java.util.Map;
 @RequestMapping("muniao/House")
 @Controller
 public class HouseController {
+    @Autowired
+    OrderDetailsService orderDetailsService;
+    @Autowired
+    OrdersService ordersService;
     @Resource
     RentTypeImpl rentTypeimp;
     @Resource
@@ -77,7 +84,7 @@ public class HouseController {
     public String queryById(Model model,House house) throws Exception
     {
         House hu  = houseimp.querybyid(house).get(0);
-        int hid = hu.getId();
+        Integer hid = hu.getId();
         List<HouseRequire> houseRequire = houseRequireimp.byhidquery(hid);
         HouseRules houseRules = houseRulesimp.byhidquery(hid);
         HouseAddress houseAddress = houseAddressimp.byhidquery(hid);
@@ -131,6 +138,15 @@ public class HouseController {
         model.addAttribute("housegeneralize",houseGeneralize);
         model.addAttribute("houseBedSize",houseBed.size());
         model.addAttribute("supportings",supportings);
+
+
+        Order order = ordersService.SelectOrderId(hid);
+        if (null!=order){
+            order.setOrdersDetails(orderDetailsService.SelectOrderOid(order.getId()));
+            model.addAttribute("order",order);
+           // System.out.println(order);
+        }
+
         return "/qiantai/xiangqing";
     }
     @RequestMapping("fdlogin")

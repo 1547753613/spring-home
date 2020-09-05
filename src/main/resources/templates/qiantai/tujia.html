@@ -8,23 +8,23 @@
 
     <title>仿途家酒店首页模板</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/layui.css">
-    <script src="/assets/js/layui.js" type="text/javascript"></script>
-    <script src="/assets/js/layui.all.js" type="text/javascript"></script>
-    <script src="/assets/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-    <!--   <link type="text/css" rel="stylesheet" href="/templates/application/views/default/previews/Templets_NO193/css/header.css" />-->
-
-    <!--    <link type="text/css" rel="stylesheet" href="/templates/application/views/default/previews/Templets_NO193/css/base.css" />-->
-
-    <!--    <link type="text/css" rel="stylesheet" href="/templates/application/views/default/previews/Templets_NO193/css/index.css" />-->
-
-    <!--    <link type="text/css" rel="stylesheet" href="/templates/application/views/default/previews/Templets_NO193/css/footer.css" />-->
-
+    <!--  <script src="/assets/js/layui.js" type="text/javascript"></script>
+      <script src="/assets/js/layui.all.js" type="text/javascript"></script>-->
+    <!--
+        <script src="/assets/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    -->
     <link type="text/css" rel="stylesheet" href="/assets/assetss/css/header.css" />
     <link type="text/css" rel="stylesheet" href="/assets/assetss/css/base.css" />
     <link type="text/css" rel="stylesheet" href="/assets/assetss/css/index.css" />
 
     <link type="text/css" rel="stylesheet" href="/assets/assetss/css/footer.css" />
     <link rel="stylesheet" href="/assets/css/cityselect.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/date/css/global.css"/>
+    <link rel="stylesheet" href="/assets/date/css/smoothness/jquery.ui.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/assets/date/css/css.css"/>
+
+
 
 
 
@@ -42,7 +42,9 @@
 <link type="text/css" href="/assets/assetss/css/view.css" rel="stylesheet" />
 
 <!-- <script type="text/javascript" src="/Public/Home/js/layer2.4/layer.js"></script> -->
+<!--
 <script type="text/javascript" src="/assets/assetss/js/layer.js"></script>
+-->
 
 
 <input type="hidden" value="2" name="type" id="type">
@@ -54,6 +56,7 @@
 <script type="text/javascript" src="/assets/assetss/js/base.js"></script>
 <script type="text/javascript" src="/assets/assetss/js/footer.js"></script>
 <script type="text/javascript" src="/assets/assetss/js/cookie_out_box.js"></script>
+
 
 <script>
     $(window).scroll(function(){
@@ -95,7 +98,7 @@
 
                 <li class="active"><a href="#">首页</a></li>
 
-                <li><a href="/muniao/findUser">个人中心</a></li>
+                                <li><a href="/muniao/findUser">个人中心</a></li>
 
                 <li><a href="#">度假旅游</a></li>
 
@@ -166,24 +169,27 @@
         <div class="search-box"  >
 
                 <span class="search-type" style="border: 0px solid black; top:-25px;">
-<!--                    <input type="text" class="dest-text" placeholder="目的地" /><i class="dest-ico"></i>-->
-                    <input type="text" class="dest-text" id="citySelect" placeholder="请输入目的地"><i class="dest-ico"></i>
+                    <input type="text" class="dest-text" id="citySelect" placeholder="请输入目的地" ><i class="dest-ico"></i>
                 </span>
+            <span class="sea-div" style="border: 0px solid black; top:-10px;"><input type="text" readonly  id="startDate" placeholder="入住"/>
+</span>
+            <span class=" sea-div" style="border: 0px solid black; top:-10px;"><input type="text" readonly  id="endDate" placeholder="退房"/>
 
-            <span class="search-type" style="border: 0px solid black; top:-25px;"><input type="date" id="ruzhurqi" class="date-text"  /><i class="date-ico"></i></span>
-            <span class="search-type" style="border: 0px solid black; top:-25px;"><input type="date" id="tuifang" class="date-text" /><i class="date-ico"></i></span>
-
-<!--            <span class="search-type"><input type="text" class="key-text" placeholder="关键词" /><i class="key-ico"></i></span>-->
+</span>
 
 
-            <button class="search-btn" style="border: 1px solid black; position:relative; top: -26px" id="shousuo">搜索</button>
+            <button class="search-btn" style="border: 1px solid black; position:relative; top: -10px" id="shousuo">搜索</button>
 
         </div>
 
     </div>
 
 </div>
-
+<script type="text/javascript" src="/assets/date/js/jquery.js"></script>
+<script type="text/javascript" src="/assets/date/js/jquery.ui.js"></script>
+<script type="text/javascript" src="/assets/date/js/moment.min.js"></script>
+<script type="text/javascript" src="/assets/date/js/hotel/hotel.search.js"></script>
+<script type="text/javascript" src="/assets/date/js/stay.js"></script>
 <script type="text/javascript" src="/assets/js/cityselect.js"></script>
 <script type="text/javascript">
     var test=new Vcity.CitySelector({input:'citySelect'});
@@ -295,7 +301,7 @@
 
                     <div class="hotel-next-block">
 
-                        <ul class="clearfix">
+                        <ul class="clearfix" id="houseUl">
 
 
 
@@ -326,6 +332,7 @@
 
                             </li>
 
+
                         </ul>
 
 
@@ -344,27 +351,7 @@
     </div>
 
 </div>
-
-
-
-
-
 <!-- 大家喜欢的 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="st-help">
 
     <div class="wm-1200">
@@ -561,44 +548,68 @@
 
 
 
-<!--	 <script type="text/javascript" src="/templates/application/views/default/previews/Templets_NO193/js/jquery.min.js"></script>-->
-<!--    <script type="text/javascript" src="/templates/application/views/default/previews/Templets_NO193/js/SuperSlide.min.js"></script>-->
 
 <script type="text/javascript" src="/assets/assetss/js/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/assetss/js/SuperSlide.js"></script>
 <script>
-    $("#shousuo").click(function(){
-            var city = $("#citySelect").val();
-            $.post("/muniao/weizhi",{city,city})
 
-        }
-    )
     function getOrders(i) {
         $.ajax({
-            url:'/muniao/weizhimincheng',
-            type:'post',
+            url:'/muniao/QueryHouseCity',
+            type:'get',
             data:{
                 city:i
             },
             success:function (data) {
-                $("#aaa").html("")
+                $("#houseUl").html("")
                 var html="";
+                var i=0;
                 $.each(data,function (index,item) {
-                    html+="<li>\n" +
-                        "                                <a class=\"pic\" href=\"#\" target=\"_blank\"><img src=\"/assets/assetss/image/01.jpg\" alt=\"标题\" width=\"374\" height=\"248\" /></a>\n" +
+
+                    // console.log(item)
+                    if (i==3){
+                        i=0;
+                    }
+
+                    html += "<li class=\"mr_"+i+"\">\n" +
+                        "                                <a class=\"pic\" href=\"/muniao/House/querybyid?id="+item.id+"\" target=\"_blank\"><img src=\""+item.simg+"\" alt=\"标题\" width=\"374\" height=\"248\" /></a>\n" +
                         "                                <div class=\"info\">\n" +
                         "\n" +
                         "                                    <p class=\"pt clearfix\">\n" +
-                        "                                        <a class=\"bt\" href=\"#\" target=\"_blank\">"+item.house.hname+"</a>\n" +
+                        "                                        <a class=\"bt\" href=\"/muniao/House/querybyid?id="+item.id+"\" target=\"_blank\">" + item.hname + "</a>\n" +
                         "                                        <img class=\"icon\" src=\"/assets/assetss/image/icon01.png\" />\n" +
                         "                                    </p>\n" +
                         "                                    <p class=\"pn clearfix\">\n" +
                         "                                        <span class=\"attr\"><em>四星级酒店</em>|<em>商务出行</em></span>\n" +
-                        "                                        <span class=\"pri\"><em>&yen;<b>1353</b></em>起</span>\n" +
+                        "                                        <span class=\"pri\"><em>&yen;<b>"+item.houseMany.holidays+"</b></em>起</span>\n" +
                         "\n" +
                         "                                    </p>\n" +
                         "                                </div>\n" +
-                        "                            </li>"
+                        "                            </li>";
+                    i++;
+                })
+                $("#houseUl").append(html)
+            }
+        })
+    }
+
+    $("#shousuo").click(function(){
+
+            var city = $("#citySelect").val();
+            let start = $("#startDate").val();
+            let end = $("#endDate").val();
+            var days=Math.abs(new Date(end).getTime()-new Date(start).getTime())/(1000 * 60 * 60 * 24);
+            if (city==''){
+                alert("请选择城市")
+
+            }else{
+                window.location.href="/muniao/QueryHouseCondition?city="+city+"&days="+days+"&startDate="+start+"&endDate="+end;
+            }
+
+            //$.post("/muniao/weizhi",{city,city})
+
+        }
+    )
 
 
     $(".hotel-slide-hd span").click(function() {
@@ -606,6 +617,10 @@
         $.post("/muniao/weizhimincheng", {city: city})
     })
     $(function() {
+
+
+
+        getOrders('河南');
         //得到当前时间
         var date_now = new Date();
         // date_now.set(date_now.getTime() + 24*60*60*1000)

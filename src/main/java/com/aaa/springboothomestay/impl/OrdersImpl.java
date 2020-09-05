@@ -91,6 +91,11 @@ public class OrdersImpl implements OrdersService {
     }
 
     @Override
+    public Order SelectOrderId(Integer id) {
+        return null;
+    }
+
+    @Override
     public Integer queren(Integer status) {
         return orderDao.queren(status);
     }
