@@ -20,7 +20,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    Integer UpdateLead(User user);
+    int UpdateLead(User user);
 
     /**
      * 修改用户个人信息

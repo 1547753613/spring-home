@@ -47,6 +47,11 @@ public class OrdersImpl implements OrdersService {
     }
 
     @Override
+    public List<Orders> findShow(Integer status) {
+        return orderDao.findShow(status);
+    }
+
+    @Override
     public Integer updateChexiao(Orders orders) {
         return orderDao.updateChexiao(orders);
     }
@@ -83,6 +88,11 @@ public class OrdersImpl implements OrdersService {
 
         return pageInfo;
 
+    }
+
+    @Override
+    public Integer queren(Integer status) {
+        return orderDao.queren(status);
     }
 
 

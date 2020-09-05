@@ -1,11 +1,10 @@
 package com.aaa.springboothomestay.dao;
 
-import com.aaa.springboothomestay.entity.Orders;
 import com.aaa.springboothomestay.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import tk.mybatis.mapper.common.Mapper;
+
 
 import java.util.List;
 
@@ -30,7 +29,7 @@ public interface UserDao  {
      * @param user
      * @return
      */
-    Integer UpdateLead(User user);
+    int UpdateLead(User user);
 
     /**
      * 修改用户个人信息

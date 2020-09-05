@@ -1,10 +1,5 @@
 package com.aaa.springboothomestay.impl.service;
-
-import com.aaa.springboothomestay.entity.Order;
 import com.aaa.springboothomestay.entity.Orders;
-import com.github.pagehelper.PageInfo;
-import org.apache.ibatis.annotations.Select;
-
 import java.util.List;
 
 public interface OrdersService {
@@ -12,10 +7,15 @@ public interface OrdersService {
 
     List<Orders>finById(Integer id);
 
+    List<Orders> findShow(Integer status);
+
     Integer updateChexiao(Orders orders);
 
 
     Integer updatetuifang(Orders orders);
+
+    Integer queren(Integer status);
+
 
     /**
      *

@@ -147,6 +147,6 @@ public class SeucrityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/**/**/*.css","/assets/assetss/image/**","/**/*.js","/**/*.css","/css/**", "/js/**","/**/*.jpg","/images/**", "/index.html","/qiantai/**", "/img/**", "/fonts/**", "/favicon.ico", "/verifyCode");
+        web.ignoring().antMatchers("/**/**/*.css","/assets/assetss/image/**","/**/*.js","/**/*.css","/css/**", "/js/**","/**/*.jpg","/**/*.png","/images/**", "/index.html","/qiantai/**", "/img/**", "/fonts/**", "/favicon.ico", "/verifyCode");
     }
 }

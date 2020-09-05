@@ -1,12 +1,10 @@
 package com.aaa.springboothomestay.controller;
-
 import com.aaa.springboothomestay.entity.Collect;
 import com.aaa.springboothomestay.entity.User;
 import com.aaa.springboothomestay.impl.service.User_CollectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;

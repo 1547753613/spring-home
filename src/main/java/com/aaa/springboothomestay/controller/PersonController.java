@@ -8,10 +8,8 @@ import com.aaa.springboothomestay.impl.service.AdminService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.util.List;
+
 
 @CrossOrigin
 @RestController

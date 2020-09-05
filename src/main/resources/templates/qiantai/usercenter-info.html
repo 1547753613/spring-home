@@ -59,7 +59,7 @@
                         <form class="clearfix" id="jsAvatarForm" enctype="multipart/form-data" autocomplete="off" method="post" action="/muniao/UpdateHead" target='frameFile'>
                             <label class="changearea" for="avatarUp">
                             <span id="avatardiv" class="pic">
-                                <img width="100" height="100" class="js-img-show" id="avatarShow" th:src="@{/Path/{filename}(filename=${userList.head})}"/>
+                                <img width="100" height="100" class="js-img-show" id="avatarShow" th:src="${userList.head}">
                             </span>
                                 <span class="fl upload-inp-box" style="margin-left:70px;">
                                 <span class="button btn-green btn-w100" id="jsAvatarBtn">修改头像</span>

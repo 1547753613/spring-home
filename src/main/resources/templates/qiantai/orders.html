@@ -61,9 +61,9 @@
                         <div class="layui-tab-item">
                             <table class="layui-table" id="a">
                                 <colgroup>
-                                    <col width="100">
-                                    <col height="100">
-                                    <col>
+                                <col width="100">
+                                <col height="100">
+                                <col>
                                 </colgroup>
                                 <thead>
                                 <tr>
@@ -84,10 +84,6 @@
                                     <td th:text="${o.ordersDetails.price}"></td>
                                     <td th:text="${o.status}==1?'待付款':(o.status==2?'待入住':(o.status==3?'待退房':(o.status==4?'已完成':(o.status==5?'已关闭':(o.status==6?'待处理':(o.status==7?'已处理':(o.status==0?'全部订单':'')))))))"></td>
                                     <td th:text="${o.createtime}">
-                                    <td>
-                                        <a href="#">撤销预定</a>
-                                        <a href="/muniao/findById?id=${o.id}">订单详情</a>
-                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -119,15 +115,14 @@
                             "                                    <td>"+ item.ordersDetails.price+"</td>\n" +
                             "                                    <td>"+ status+"</td>\n" +
                             "                                    <td>"+ item.createtime+"</td>\n" +
-                            "                                    <td><a href='/muniao/chexiaoShow?id="+item.id+"'>撤销预定</a></td>" +
-                            "                                    <td><a href='/muniao/findById?id="+item.id+"'>订单详情</a></td>" +
-                            "                                    <td><a href='/muniao/tuifangShow?id="+item.id+"'>退房</a></td>" +
+                            "                                    <td><a href='/muniao/chexiaoShow?status="+item.status+"'>撤销</a></td>" +
+                            "                                    <td><a href='/muniao/findById?id="+item.id+"'>详情</a></td>" +
+                            "                                    <td><a href='/muniao/tuifangShow?status="+item.status+"'>退房</a></td>" +
+                            "                                    <td><a href='/muniao/queren?status="+item.status+"'>确认</a></td>" +
                             "</tr>"
                     })
                     $("#a").find("tbody").append(html)
-                    //${"#list"}.val(data)
                     console.log(data)
-                 //   alert(data)
                 }
             })
     }

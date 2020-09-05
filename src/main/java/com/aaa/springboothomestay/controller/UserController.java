@@ -105,26 +105,20 @@ public class UserController {
     @RequestMapping("/findUser")
     public String findUser(Model model, HttpSession httpSession){
         if (httpSession.getAttribute("user")==null){
-           // System.out.println(1);
-
-            return "redirect:/login";
+            return "redirect:/muniao/login";
         }
-
-       User map = (User) httpSession.getAttribute("user");
+        User map = (User) httpSession.getAttribute("user");
         int uid = map.getUid();
-
         List<User> userList = userimpl.findByIdUser(uid);
-        System.out.println(userimpl.findByIdUser(uid));
         model.addAttribute("userList",userList.get(0));
         return "/qiantai/usercenter-info";
     }
-
     /**
      * 修改头像
      */
     @RequestMapping("/UpdateHead")
     @ResponseBody
-    public Object usersImageUpload(MultipartFile file, HttpSession session) {
+    public Object UpdateHead(MultipartFile file, HttpSession session) {
         JSONObject res = new JSONObject();
         JSONObject res1 = new JSONObject();
         //保存图片的路径
@@ -152,6 +146,7 @@ public class UserController {
                 user.setUid(uid);
                 user.setHead(dateFileName);
                 userimpl.UpdateLead(user);
+                System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+userimpl.UpdateLead(user));
                 //获取用户的session信息
                 res1.put("src", filePath);
                 res.put("data", res1);
@@ -168,7 +163,6 @@ public class UserController {
         }
         return res;
     }
-
     //显示修改页面
     @RequestMapping("/updateusershow")
     public String updateusershow(Model model, HttpSession session) {
@@ -178,8 +172,6 @@ public class UserController {
         model.addAttribute("userList",userList.get(0));
         return "/qiantai/userupdate";
     }
-
-
     //修改用户个人信息
     @RequestMapping("/updateUser")
     public String updateUser(@RequestParam Map map ,HttpSession session) {
@@ -192,10 +184,8 @@ public class UserController {
         users.setLearname((String) map.get("learname"));
         users.setPhone((String) map.get("phone"));
         int i = userimpl.UpdateUser(users);
-
         return "redirect:findUser";
     }
-
 
     //修改密码
     @RequestMapping("/updatepwd")
@@ -211,7 +201,6 @@ public class UserController {
         System.out.println(userimpl.UpdatePwd(pass));
         return "redirect:findUser";
     }
-
 
     /**
      * 跳转到首页
@@ -231,5 +220,4 @@ public class UserController {
         request.getSession().removeAttribute("errand");
         return "qiantai/denglu/index";
     }
-
 }

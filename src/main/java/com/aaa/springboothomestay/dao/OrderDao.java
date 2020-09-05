@@ -16,12 +16,17 @@ public interface OrderDao {
     //订单详情
     List<Orders>finById(Integer id);
 
+    //跳转撤销申请页面
+    List<Orders> findShow(Integer status);
 
     //撤销订单
     Integer updateChexiao(Orders orders);
 
     //退房
     Integer updatetuifang(Orders orders);
+
+    //确认
+    Integer queren(Integer status);
 
 
 }

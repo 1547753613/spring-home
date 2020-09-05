@@ -1,17 +1,12 @@
 package com.aaa.springboothomestay.controller;
-
-import com.aaa.springboothomestay.entity.House;
 import com.aaa.springboothomestay.entity.Orders;
-import com.aaa.springboothomestay.entity.OrdersDetails;
 import com.aaa.springboothomestay.entity.User;
-import com.aaa.springboothomestay.impl.service.HouseService;
 import com.aaa.springboothomestay.impl.service.OrdersService;
-import com.aaa.springboothomestay.impl.service.UserService;
-import org.apache.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,14 +18,6 @@ public class OrdesController {
     @Resource
     private OrdersService ordersService;
 
-//    @Resource
-//    private HouseService houseService;
-//
-//    @Resource
-//    private UserService userService;
-//
-//    @Resource
-//    private OrdersDetails ordersDetails;
 
     /**
      * 查询所有订单
@@ -42,7 +29,6 @@ public class OrdesController {
     public String toList(Model model, HttpSession httpSession,Integer status){
         User map = (User) httpSession.getAttribute("user");
         Integer uid = map.getUid();
-
         List<Orders> list = ordersService.findAllOrders(uid,status);
         model.addAttribute("list",list);
         return "/qiantai/orders";
@@ -52,9 +38,7 @@ public class OrdesController {
     public List<Orders> toOrder( HttpSession httpSession,Integer status){
         User map = (User) httpSession.getAttribute("user");
         Integer uid = map.getUid();
-
         List<Orders> list = ordersService.findAllOrders(uid,status);
-
         return list;
     }
 
@@ -71,16 +55,18 @@ public class OrdesController {
     /**
      *跳转申请页面
      * @param model
-     * @param id
+     * @param
      * @return
      */
     @RequestMapping("chexiaoShow")
-    public String chexiaoShow(Model model,Integer id){
-        List<Orders> chexiao = ordersService.finById(id);
+    public String chexiaoShow(Model model,Integer status){
+        List<Orders> chexiao = ordersService.findShow(status);
+        if (status==3 || status==4 || status==5 || status==6 || status==7){
+            return "redirect:toList";
+        }
         model.addAttribute("chexiao",chexiao.get(0));
         return "/qiantai/chexiaoShow";
     }
-
 
     /**
      * 撤销订单
@@ -96,16 +82,18 @@ public class OrdesController {
         return "redirect:toList";
     }
 
-
     /**
      * 跳转申请页面
      * @param model
-     * @param id
+     * @param
      * @return
      */
     @RequestMapping("tuifangShow")
-    public String tuifangShow(Model model,Integer id){
-        List<Orders> tuifang = ordersService.finById(id);
+    public String tuifangShow(Model model,Integer status){
+        List<Orders> tuifang = ordersService.findShow(status);
+        if (status==1 || status==3 || status==4 || status==5 || status==6 || status==7){
+            return "redirect:toList";
+        }
         model.addAttribute("tui",tuifang.get(0));
         return "/qiantai/tuifangShow";
     }
@@ -117,11 +105,25 @@ public class OrdesController {
      */
     @RequestMapping("tuifang")
     public String tuifang(@RequestParam Map map){
-
         Orders orders = new Orders();
         orders.setId(map.get("id")+"");
         orders.setCdemo((String) map.get("cdemo"));
         ordersService.updatetuifang(orders);
         return "redirect:toList";
+    }
+
+    /**
+     * 确认订单
+     * @param
+     * @return
+     */
+    @RequestMapping("queren")
+    public String queren(Integer status){
+        if (status==1 || status==2 || status==3 || status==4 || status==5 || status==6){
+            return "redirect:toList";
+        }else {
+            ordersService.queren(status);
+            return "redirect:toList";
+        }
     }
 }

@@ -28,7 +28,7 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public Integer UpdateLead(User user) {
+    public int UpdateLead(User user) {
         return userDao.UpdateLead(user);
     }
 

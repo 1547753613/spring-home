@@ -51,6 +51,11 @@
         where id = #{id}
     </update>
 
+    <update id="queren">
+        update orders
+        set status = 4
+        where id = #{id}
+    </update>
 
     <select id="finById" resultMap="xx">
         select o.*,h.*,u.*,d.*
@@ -62,6 +67,18 @@
             join orders_details d
             on d.id = o.id
             where o.id = #{id}
+    </select>
+
+    <select id="findShow" resultMap="xx">
+        select o.*,h.*,u.*,d.*
+            from orders o
+            join house h
+            on h.id = o.id
+            join user u
+            on u.uid = o.uid
+            join orders_details d
+            on d.id = o.id
+            where  o.status =#{status}
     </select>
 
     <sql id="que">
