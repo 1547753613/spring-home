@@ -26,4 +26,11 @@ public interface OrdersService {
      */
     public PageInfo<Order> SelectOrdersAll(Integer pageNum, Integer pageSize, Integer id);
 
+    /**
+     * 查寻房间订单
+     * @param id
+     * @return
+     */
+    public Order SelectOrderId(Integer id);
+
 }

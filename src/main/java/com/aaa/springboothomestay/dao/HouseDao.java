@@ -20,4 +20,6 @@ public interface HouseDao extends Mapper<House> {
 
     List<House> QueryHouseCity(@Param("city") String city);
 
+    List<House> QueryHouseCondition(@Param("city")String city,@Param("days") Integer days);
+
 }

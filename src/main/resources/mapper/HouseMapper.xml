@@ -154,4 +154,27 @@
 
 				where l.nativePlave like #{_city}
     </select>
+
+    <!--cth-->
+    <select id="QueryHouseCondition" resultMap="House">
+        select
+        h.*,l.*,r.*,hm.id hmid,hm.workday,
+        hm.weekend,hm.Holidays,hm.hid,
+        hr.id hrid,hr.liblecount,
+        hr.days,hr.atcheck,hr.lastcheck,hr.rules,hr.uid,hr.checkout,
+        had.id hadid,had.city hadcity,
+        had.plot,had.card,had.address hadaddress,had.explains
+        from house h
+        left join landlord l on l.lid=h.lid
+        left join renttype r on r.rid=h.rid
+        left join house_many hm on hm.hid=h.id
+        left JOIN house_rules hr on hr.hid=h.id
+        left join house_address had on had.hid=h.id
+		<where>
+		<trim suffixOverrides="and">
+            had.city=#{city} and days=#{days}
+        </trim>
+
+        </where>
+    </select>
 </mapper>
