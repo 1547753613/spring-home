@@ -2,16 +2,16 @@ package com.aaa.springboothomestay.controller;
 
 import com.aaa.springboothomestay.entity.*;
 import com.aaa.springboothomestay.impl.*;
+import com.alibaba.fastjson.JSONObject;
+import com.sun.corba.se.impl.orbutil.ObjectStreamClass_1_3_1;
+import org.omg.CORBA.ObjectHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 @CrossOrigin
 @RequestMapping("muniao/House")
@@ -47,6 +47,7 @@ public class HouseController {
     HouseTypeImpl houseTypeimp;
     @Resource
     SupportingImpl supportingimp;
+    public Map<String,Object> map;
     @RequestMapping("insert")
     @ResponseBody
     public int insert(House house)
@@ -157,9 +158,123 @@ public class HouseController {
     }
     @RequestMapping("inser")
     @ResponseBody
-    public int insert(Map<String,Object> map)
+    public Integer inser(@RequestBody HashMap<String,Object> map)
     {
         System.out.println(map);
+        String address =  (String) map.get("address");
+        String hname = (String) map.get("hname");
+        String simg = (String) map.get("simg");
+        String himg = (String) map.get("himg");
+        Integer rid = Integer.parseInt((String) map.get("rid"));
+        Integer sid = Integer.parseInt((String) map.get("sid"));
+        String feature = (String) map.get("feature");
+        Double xcoord = Double.valueOf((String)map.get("xcoord")) ;
+        Double ycoord = Double.valueOf((String) map.get("ycoord"));
+        String traffic = (String) map.get("traffic");
+        String rim = (String) map.get("rim");
+        House house = new House();
+        house.setHname(hname);
+        house.setHimg(himg);
+        house.setSimg(simg);
+        house.setRid(rid);
+        house.setSid(sid);
+        house.setFeature(feature);
+        house.setXcoord(xcoord);
+        house.setYcoord(ycoord);
+        house.setTraffic(traffic);
+        house.setRim(rim);
+        house.setLid(2);
+        house.setState(1);
+        houseimp.insert(house);
+        Integer hid = house.getId();
+
+        Double area = Double.valueOf((String) map.get("area"));
+        List<String> cohabit = (List<String>)map.get("cohabit");
+        Integer bedroom = Integer.parseInt((String) map.get("bedroom"));
+        Integer wc = Integer.parseInt((String) map.get("wc"));
+        Integer drawing = Integer.parseInt((String) map.get("drawing"));
+        Integer kitchen = Integer.parseInt((String) map.get("kitchen"));
+        Integer balcony = Integer.parseInt((String) map.get("balcony"));
+        List<String> wctypes = (List<String>)map.get("wctype");
+        Integer wctype = Integer.parseInt(wctypes.get(0));
+        Integer count = 1;
+        List<String> bids = (List<String>) map.get("bids");
+
+        for (String id:bids)
+        {
+            HouseBed houseBed = new HouseBed();
+            houseBed.setBid(Integer.parseInt(id));
+            houseBed.setHid(hid);
+            houseBedimp.insert(houseBed);
+        }
+        HouseGeneralize houseGeneralize = new HouseGeneralize();
+        houseGeneralize.setArea(area);
+        houseGeneralize.setCohabit(Integer.parseInt(cohabit.get(0)));
+        houseGeneralize.setBedroom(bedroom);
+        houseGeneralize.setWc(wc);
+        houseGeneralize.setDrawing(drawing);
+        houseGeneralize.setKitchen(kitchen);
+        houseGeneralize.setBalcony(balcony);
+        houseGeneralize.setWctype(wctype);
+        houseGeneralize.setCount(1);
+        houseGeneralize.setHid(hid);
+        houseGeneralizeimp.insert(houseGeneralize);
+        List<String> sids = (List<String>) map.get("sids");
+        for (String id:sids)
+        {
+            HouseSup houseSup = new HouseSup();
+            houseSup.setSid(Integer.parseInt(id));
+            houseSup.setHid(hid);
+            houseSupimp.insert(houseSup);
+        }
+
+
+        List<String> othercount = (List<String>) map.get("othercount");
+        List<String> othermany = (List<String>) map.get("othermany");
+        List<String> otherid = (List<String>) map.get("otherid");
+        for (int i = 0;i<othercount.size();i++)
+        {
+            HouseOther houseOther = new HouseOther();
+            houseOther.setCount(Integer.parseInt(othercount.get(i)));
+            houseOther.setOid(Integer.parseInt(otherid.get(i)));
+            houseOther.setMany(Double.valueOf(othermany.get(i)));
+            houseOther.setHid(hid);
+            houseOtherimp.add(houseOther);
+        }
+
+
+        Double workday = Double.valueOf((String) map.get("workday"));
+        Double weekday = Double.valueOf((String) map.get("weekday"));
+        Double holidays = Double.valueOf((String) map.get("Holidays"));
+        HouseMany houseMany = new HouseMany();
+        houseMany.setWeekend(weekday);
+        houseMany.setWorkday(workday);
+        houseMany.setHolidays(holidays);
+        houseMany.setHid(hid);
+        houseManyimp.insert(houseMany);
+
+        Integer liblecount = Integer.parseInt((String) map.get("liblecount"));
+        Integer days = Integer.parseInt((String) map.get("days"));
+        String atcheck = (String) map.get("atcheck");
+        String lastcheck = (String) map.get("lastcheck");
+        String checkout = (String) map.get("checkout");
+        HouseRules houseRules = new HouseRules();
+        houseRules.setLiblecount(liblecount);
+        houseRules.setDays(days);
+        houseRules.setAtcheck(atcheck);
+        houseRules.setLastcheck(lastcheck);
+        houseRules.setCheckout(checkout);
+        houseRules.setHid(hid);
+        houseRulesimp.insert(houseRules);
+        String city = (String) map.get("city");
+        HouseAddress houseAddress = new HouseAddress();
+        houseAddress.setCity(city);
+        houseAddress.setAddress(address);
+        houseAddress.setHid(hid);
+       houseAddress.setExplains("无");
+       houseAddress.setCard(0);
+       houseAddress.setPlot("");
+       houseAddressimp.insert(houseAddress);
         return 1;
     }
 }
