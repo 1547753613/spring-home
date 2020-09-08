@@ -1,5 +1,8 @@
 package com.aaa.springboothomestay.impl.service;
+import com.aaa.springboothomestay.entity.Order;
 import com.aaa.springboothomestay.entity.Orders;
+import com.github.pagehelper.PageInfo;
+
 import java.util.List;
 
 public interface OrdersService {
@@ -22,5 +25,12 @@ public interface OrdersService {
      * @return 分页查询查询所有订单
      */
     public PageInfo<Order> SelectOrdersAll(Integer pageNum, Integer pageSize, Integer id);
+
+    /**
+     * 查寻房间订单
+     * @param id
+     * @return
+     */
+    public Order SelectOrderId(Integer id);
 
 }

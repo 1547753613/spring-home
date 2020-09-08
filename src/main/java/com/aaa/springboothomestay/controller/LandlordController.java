@@ -76,7 +76,6 @@ public class LandlordController {
     public synchronized Map<String,Object> headimg(MultipartFile file) throws Exception {
         Result result = testController.upload(file);
         Map<String,Object> map = (Map<String, Object>) result.getData();
-        System.out.println(map);
         return map;
     }
 }
