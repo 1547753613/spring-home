@@ -2,9 +2,13 @@ package com.aaa.springboothomestay.impl.service;
 import com.aaa.springboothomestay.entity.Order;
 import com.aaa.springboothomestay.entity.Orders;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public interface OrdersService {
     List<Orders> findAllOrders(Integer uid,Integer status);
 
@@ -32,5 +36,12 @@ public interface OrdersService {
      * @return
      */
     public Order SelectOrderId(Integer id);
+
+    /**
+     *
+     * @param order 添加订单
+     * @return
+     */
+    public Integer AddOrders(Order order);
 
 }

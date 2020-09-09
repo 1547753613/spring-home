@@ -685,7 +685,7 @@
                             <div class="reserve_date">
                                 <div class="reserve_ico" id="detailCalendarIco"></div>
                                 <input type="text" class="date_input" oninput="dateChange()" id="startenddate" autocomplete="off" placeholder="入住日期 - 离开日期"  />
-                                <input th:if="${order!=null}"  type="hidden" name="enddate" id="enddate" th:value="${order.getOrdersDetails().getCheckdate()}" />
+                                <input th:if="${order!=null}"  type="hidden" name="enddate" id="enddate" th:value="${order.getOrdersDetails().getLeavedate()}" />
                                 <input th:if="${order!=null}" type="hidden" name="days" id="days" th:value="${order.getOrdersDetails().getDay()}">
 
 

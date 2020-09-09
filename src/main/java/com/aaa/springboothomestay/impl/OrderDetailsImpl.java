@@ -20,4 +20,10 @@ public class OrderDetailsImpl implements OrderDetailsService {
         OrdersDetails ordersDetails1 = orderDetailsDao.selectOne(ordersDetails);
         return ordersDetails1;
     }
+
+    @Override
+    public Integer AddOrdersDetails(OrdersDetails ordersDetails) {
+
+        return orderDetailsDao.insertSelective(ordersDetails);
+    }
 }

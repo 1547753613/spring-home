@@ -90,7 +90,18 @@ public class OrdersImpl implements OrdersService {
 
     @Override
     public Order SelectOrderId(Integer id) {
-        return null;
+        return ordersDao.SelectOrderId(id).size()!=0?ordersDao.SelectOrderId(id).get(0):null;
+    }
+
+    @Override
+    public Integer AddOrders(Order order) {
+        int i = ordersDao.insertSelective(order);
+        Integer integer=null;
+        if (i==1){
+            order.getOrdersDetails().setOid(order.getId());
+            integer = orderDetailsService.AddOrdersDetails(order.getOrdersDetails());
+        }
+        return integer;
     }
 
     @Override

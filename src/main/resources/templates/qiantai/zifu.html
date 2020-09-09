@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>订单支付-小乐民宿</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <script src="/assets/order/js/zufu.js"></script>
+
+    <link href="/assets/order/css/style.css?ver=20190301.002" rel="stylesheet" />
+    <style>
+        .order_num {
+            font-size: 12px;
+        }
+
+        .order_wait {
+            background: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .tj_ok_t i {
+            display: inline-block;
+            width: 40px;
+            height: 44px;
+            vertical-align: text-bottom;
+            margin-right: 20px;
+        }
+
+        .order_wait_c {
+            color: #CCCCCC;
+            margin-top: 40px;
+            border-top: 1px solid #EEEEEE;
+            border-bottom: 0;
+            padding-top: 20px;
+        }
+
+            .order_wait_c p {
+                font-size: 14px;
+                line-height: 34px;
+            }
+
+        .call_fd {
+            margin-left: 40px;
+        }
+
+            .call_fd i {
+                display: inline-block;
+                width: 20px;
+                height: 18px;
+                margin-right: 5px;
+                vertical-align: middle;
+            }
+
+        .fd_name span {
+            color: #69a9f8;
+        }
+
+        .f5_order {
+            background: #4b9bfd;
+            color: #FFFFFF;
+        }
+
+        .order_l {
+            background: #dddddd;
+            color: #AAAAAA;
+            margin-left: 20px;
+        }
+
+        .order_share a {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            margin-left: 10px;
+        }
+
+       
+
+        .on_line {
+            border: none;
+        }
+
+        .order_payborder {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .pay_choicelabel {
+            width: 126px;
+        }
+
+        .order_paybox {
+            width: 1132px;
+            margin: 0 auto 40px;
+        }
+
+        .order_paydetailbox {
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order_paydetail {
+            float: left;
+            color: #888;
+            margin-left: 20px;
+        }
+
+        .order_payfk {
+            float: left;
+            color: #666;
+        }
+
+        .order_paycontent {
+            width: 100%;
+        }
+
+        .order_paycontentleft {
+            width: 115px;
+            float: left;
+            color: #666;
+        }
+
+        .order_payzb {
+            width: 1017px;
+            margin-left: 115px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .order_paystyle {
+            width: 1017px;
+            margin-left: 115px;
+        }
+
+        .mL10 {
+            margin-left: 10px;
+        }
+
+        .tj_a {
+            margin-left: 20px;
+        }
+
+            .tj_a a {
+                display: inline;
+                color: #888;
+            }
+
+        .qr_pay {
+            float: left;
+            font-size: 18px;
+            color: #FFFFFF;
+            width: 172px;
+            height: 48px;
+            display: inline-block;
+            background: #59aefd;
+            text-align: center;
+            line-height: 48px;
+            border-radius: 3px;
+        }
+
+        .tj_ok_t {
+            font-size: 26px;
+            font-weight: normal;
+            padding-left: 40px;
+        }
+
+        .order_w_content {
+            width: 550px;
+            margin-left: 40px;
+            padding: 0;
+        }
+
+        .pay {
+            margin: 27px 0;
+            overflow: hidden;
+        }
+
+        .order_tj_bot {
+            margin-top: 20px;
+            width: 820px;
+        }
+
+        .order_gopay {
+            background: #ff9286;
+            color: #fff;
+            margin-left: 14px;
+            display: inline-block;
+            width: 89px;
+            height: 33px;
+            line-height: 33px;
+            text-align: center;
+            border-radius: 3px;
+        }
+
+        .shuaxin {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 4px;
+            margin-top: 2px;
+            float: left;
+        }
+
+        .order_class {
+            border-bottom: 1px solid #DDDDDD;
+            padding-bottom: 24px;
+        }
+
+        .order_class_title {
+            font-size: 20px;
+            color: #666;
+            line-height: 20px;
+            margin-bottom: 34px;
+            font-weight: normal;
+        }
+
+        .order_date {
+            width: 892px;
+        }
+
+            .order_date li {
+                width: 223px;
+                float: left;
+                position: relative;
+            }
+
+        .order_main {
+            width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .order_content {
+            width: 870px;
+            float: left;
+            padding-bottom: 100px;
+        }
+
+        .order_head {
+            height: 110px;
+            border-bottom: 1px solid #DDDDDD;
+        }
+
+        .order_head_left {
+            width: 140px;
+        }
+
+            .order_head_left h2 {
+                font-size: 26px;
+                color: #666666;
+                font-weight: normal;
+                margin-top: 20px;
+            }
+
+            .order_head_left p {
+                font-size: 12px;
+                line-height: 18px;
+                color: #afb4b9;
+            }
+
+        .clear {
+            zoom: 1;
+        }
+
+        .w_mT30 {
+            margin-top: 30px;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .pay_detai {
+            width: 240px;
+            margin-left: 20px;
+            text-align: right;
+            float: right;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clear:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .pay_detai {
+            width: 240px;
+            margin-left: 20px;
+            text-align: right;
+            float: right;
+        }
+
+        .pay_pirce {
+            font-size: 26px;
+        }
+
+        .pay_name {
+            font-size: 14px;
+        }
+
+        .see_or {
+            display: inline-block;
+            width: 60px;
+            height: 19px;
+            line-height: 19px;
+            text-align: center;
+            background: #d1d5d8;
+            color: #FFFFFF;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+
+        .pay_content {
+            width: 1158px;
+            padding: 0 20px;
+            background: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            margin-top: 50px;
+        }
+
+        .w_color {
+            color: #ff9286;
+        }
+
+        .on_line {
+            height: 40px;
+            padding: 12px 0;
+            line-height: 40px;
+            border-bottom: 1px solid #DDDDDD;
+        }
+
+        .on_pay_title, .wy_pay_title {
+            width: 100px;
+            min-height: 30px;
+            float: left;
+            font-size: 12px;
+        }
+
+            .on_pay_title span {
+                display: inline-block;
+                width: 66px;
+                height: 28px;
+                line-height: 28px;
+                font-size: 13px;
+                background: #55c7f5;
+                color: #FFFFFF;
+                border-radius: 3px;
+                text-align: center;
+            }
+
+            .wy_pay_title span {
+                display: inline-block;
+                width: 66px;
+                height: 28px;
+                line-height: 28px;
+                font-size: 13px;
+                background: #55c7f5;
+                color: #FFFFFF;
+                border-radius: 3px;
+                text-align: center;
+            }
+
+        .on_line {
+            border: none;
+        }
+
+        .on_line_choice input {
+            vertical-align: middle;
+        }
+
+        .on_line_choice label {
+            display: inline-block;
+            width: 160px;
+            padding-left: 20px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+            .on_line_choice label.zub {
+                width: 120px;
+            }
+
+            .on_line_choice label img {
+                vertical-align: top;
+            }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            var zubi = $("#zubihid").val();
+            var yhj = $("#yhjhid").val();
+            if (zubi != '0.00') {
+                $("#zubishow").show();
+            }
+            if (yhj != '0.00') {
+                $("#yhjishow").show();
+            }
+            $(".see_or").click(function () {
+                if ($(".order_infor_w").css("display") == "none") {
+                    $(".order_infor_w").show();
+                }
+                else {
+                    $(".order_infor_w").hide();
+                }
+                var hei = $(window).height() - 200;
+                if (hei < 200) hei = 200;
+                $(".order_infor").css({
+                    "height": hei,
+                    "margin-top": -($(window).height() - 200) / 2
+                });
+                $("body").css("overflow", "hidden");
+            });
+            $(".close_order").click(function () {
+                $(".order_infor_w").hide();
+                $("body").css("overflow", "visible");
+            });
+            var ajaxing002 = 0;
+            //重新选择支付类型
+            function onrechoose() {
+                var paytype = $("input[name='paytype']:checked").val();
+                var hb_fq_num = $("input[name='hb_fq_num']").val();
+                $(".alipay_hbDetail li.active").size();
+                $(".alipay_hbDetail").hide();
+                $(".jingdong_fqDetail").html("").hide();
+                if (paytype == "1001") {
+                    $(".alipay_hbDetail").show();
+                    $(".jingdong_fqDetail").html("").hide();
+                    if (hb_fq_num) {
+
+                    }
+                    else {
+                        $(".alipay_hbDetail li").removeClass("active");
+                        //默认选择第一种分期
+                        $(".alipay_hbDetail li").eq(0).addClass("active");
+                        $("input[name='hb_fq_num']").val($(".alipay_hbDetail li").eq(0).attr("splitnum"));
+                    }
+                }
+                else if (paytype == "1002") {
+                    var orderid = $("input[name='orderid']").val();
+                    $(".jingdong_fqDetail").html("").show();
+                    $(".alipay_hbDetail").hide()
+                    $(".alipay_hbDetail li").removeClass("active");
+                    $("input[name='hb_fq_num']").val("");
+                    if (ajaxing002 == 1) {
+                        return;
+                    }
+                    ajaxing002 = 1;
+                    $.ajax({
+                        type: "post",
+                        url: "/Home/QueryBaitiaoFq",
+                        data: { id: orderid },
+                        dataType: "json",
+                        success: function (d) {
+                            ajaxing002 = 0;
+                            var paytype = $("input[name='paytype']:checked").val();
+                            if (paytype == "1002") {
+                                if (d.code == 0) {
+                                    var html = "";
+                                    for (var i = 0; i < d.list.length; i++) {
+                                        html += '<li splitnum="' + d.list[i].hb_fq_num + '"><div class="hbDetail-mainTop"><span class="mainTop-left">' + d.list[i].hb_fq_num + '</span><div class="mainTop-right"><h6>分期价</h6><p class="hb-splitPrice">￥<span>' + d.list[i].hb_fq_fee + '</span> x ' + d.list[i].hb_fq_num + ' </p><p>' + d.list[i].hb_fq_staging_fee + '元/期</p></div></div><p class="order-totalPrice">' + d.list[i].hb_fq_total + '</p></li>';
+                                    }
+                                    $(".jingdong_fqDetail").html(html).show();
+                                    $(".jingdong_fqDetail .mainTop-left").eq(2).addClass("doubleNum");
+                                    $(".jingdong_fqDetail li").removeClass("active");
+                                    //默认选择第一种分期
+                                    $(".jingdong_fqDetail li").eq(0).addClass("active");
+                                }
+                                else {
+                                    alert(d.message || "获取分期失败，请再次尝试或检查网络");
+                                    $(".on_line_choice input[name='paytype']").eq(0).prop("checked", true);
+                                    $(".jingdong_fqDetail").html("").hide();
+                                }
+                            }
+                        },
+                        beforeSend: function () { $(".load-container").show(); },
+                        error: function (e) {
+                            ajaxing002 = 0;
+                            var paytype = $("input[name='paytype']:checked").val();
+                            if (paytype == "1002") {
+                                alert("获取分期失败，请再次尝试或检查网络");
+                                $(".on_line_choice input[name='paytype']").eq(0).prop("checked", true);
+                                $(".jingdong_fqDetail").html("").hide();
+                            }
+                        }
+                    });
+
+                    //if (hb_fq_num) {
+
+                    //}
+                    //else {
+                    //    $(".jingdong_fqDetail li").removeClass("active");
+                    //    //默认选择第一种分期
+                    //    $(".jingdong_fqDetail li").eq(0).addClass("active");
+                    //    $("input[name='hb_fq_num']").val($(".jingdong_fqDetail li").eq(0).attr("splitnum"));
+                    //}
+                }
+                else {
+                    $(".jingdong_fqDetail").hide()
+                    $(".jingdong_fqDetail li").removeClass("active");
+                    $(".alipay_hbDetail").hide()
+                    $(".alipay_hbDetail li").removeClass("active");
+                    $("input[name='hb_fq_num']").val("");
+                }
+                var hb_fq_num = $("input[name='hb_fq_num']").val();
+            }
+            $(".on_line_choice input[name='paytype'],.on_line_choice label").click(onrechoose);
+            $(".qr_pay").click(function () {
+                var paytype = $("input[name='paytype']:checked").val();
+                var hb_fq_num = $("input[name='hb_fq_num']").val();
+                if (paytype == "1001") {
+                    if (!hb_fq_num) {
+                        //alert("至少选择一直花呗分期方案！");
+                        return;
+                    }
+                }
+                if (paytype == "1002") {
+                    if (!hb_fq_num) {
+                        //alert("至少选择一直京东白条分期方案！");
+                        return;
+                    }
+                }
+                $('#orderpay_form').submit();
+            });
+            $(".alipay_hbDetail").on("click", "li", function () {
+                $(this).addClass("active").siblings().removeClass("active");
+                $("input[name=hb_fq_num]").val($(this).attr("splitnum") || "");
+            });
+            $(".jingdong_fqDetail").on("click", "li", function () {
+                $(this).addClass("active").siblings().removeClass("active");
+                $("input[name=hb_fq_num]").val($(this).attr("splitnum") || "");
+            });
+            onrechoose();
+            $(".alipay_hbDetail .mainTop-left").eq(2).addClass("doubleNum");
+        });
+
+        // if (S.Cookie("utmsource") == "chinesean") {//中岸广告：订单回传
+        //     try {
+        //         var orderId = '20200904172534565002';
+        //         var price = '218.00';
+        //         var termId = S.Cookie("utmterm") || '';//回传参数
+        //        // var feedUrl = "https://www.chinesean.com/affiliate/tracking3.do?pId=20922&tracking="+orderId+"&cpa=&cpl=&cps="+price+",CPS&txId="+termId;
+        //          document.write('<iframe style="display:none" src="'+feedUrl+'"></iframe>');
+        //     }
+        //    catch(err) { }
+        //}
+    </script>
+</head>
+<body>
+    <div id="order_content" class="order_main">
+        <input type="hidden" name="zubijilu" value="0.00" id="zubihid" />
+        <input type="hidden" name="yhjjl" value="0.00" id="yhjhid" />
+        <!---订单详情弹出层---->
+        <div class="order_infor_w" style="position: fixed; width: 100%; height: 100%; top: 0px; left: 0px; display: none">
+            <a class="close_order" href="javascript:;">
+                <img src="" style="width: 24px;">
+            </a>
+            <div class="order_bg"></div>
+            <div class="order_infor" style="height: 281px; margin-top: -140.5px;">
+                <div class="infor_content">
+                    <h2>万达广场SOHO舒适大床房</h2>
+                    <p class="order_id">订单编号：20200904172534565002</p>
+                    <div class="order_p_infor">
+                        <p>
+                            <span>人数：</span>
+                            1 人
+                        </p>
+                        <p>
+                            <span>房源数：</span>
+                            1 套&nbsp;&nbsp;2室1厅
+                        </p>
+                        <p><span>入住时间：</span>2020-09-05 至 2020-09-06 &nbsp;&nbsp;共1 晚</p>
+                    </div>
+                    <div class="order_p_infor">
+                        <p><span>预订人姓名：</span>Brome-MN167</p>
+                        <p><span>预订人电话：</span>15225779401</p>
+                    </div>
+                    <div class="infor_pirce">
+                        <h3>总房款：<span>￥218.00</span></h3>
+                        <ul class="clear">
+                            <li><span>入住时间</span></li>
+                            <li><span>数量</span></li>
+                            <li>
+                                <span>小计</span>
+                            </li>
+                        </ul>
+                        <div class="rent">
+
+                                <ul class="clear">
+                                    <li>
+                                        2020-09-05
+                                    </li>
+                                    <li>
+                                        <span>
+                                            1
+                                        </span>套
+                                    </li>
+                                    <li>
+                                        ￥<label>
+                                            218.00
+                                        </label>
+                                    </li>
+                                </ul>                        </div>
+                    </div>
+                    <div class="infor_pirce">
+                        <h3>保险：<span>￥0.00 </span></h3>   <ul class="bx clear">    <li>入住人姓名</li>    <li class="sf_id">身份证号</li>    <li>身份信息验证</li>    <li>住宿意外险</li>    <li>费用</li>   </ul>   <div class="tb_infor">
+                            <ul class="bx clear">
+                                        <li>黄鑫乐</li>
+                                        <li class="sf_id">412723199907212530</li>                                            <li>验证通过</li>
+                                        <li>投保成功</li>                                            <li>免费</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="infor_pirce" id="zubishow" style="display:none;">
+                        <h3>租币：<span>￥-0.00 </span></h3>
+                    </div>
+                    <div class="infor_pirce" id="yhjishow" style="display:none;">
+                        <h3>优惠劵：<span>￥-0.00 </span></h3>
+                    </div>
+                    <div class="infor_bottom">
+                        <p class="all_pirce">订单总额：<span class="w_color">￥218.00</span></p>
+                        <p class="l_pirce"><span class="w_mR30">预付订金：￥218.00</span><span>到店支付：￥0.00</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order_head w_mT30 clear" style="padding-top:10px;">
+            <div class="order_head_left fl" style="float:left;">
+                <h2 style="margin-bottom:0;">支付房款</h2>
+                <p>入住申请已提交<br>等待房客支付房东确认</p>
+            </div>
+            <div class="pay_detai">
+                <p class="pay_name w_fColora">精品一居室</p>
+                <p class="order_num w_color">20200904172534565002</p>
+                <p><a class="see_or" href="javascript:;">订单详情</a></p>
+            </div>
+            <div class="order_head_right fr">
+                <img src="">
+            </div>
+        </div>
+        <div class="order_wait">
+            <h2 class="tj_ok_t w_color"><i></i>提交成功！您可以选择继续支付或等待房东确认。</h2>
+            <div class="order_w_content">
+                <div class="order_wait_c">
+                    <p class="fd_name w_fColor8">
+                        房东：<span>万达广场SOHO舒适大床房</span>
+                        <a class="call_fd webim-chatbtn" href="#" data-id="73127" data-title="君澜" data-image="" title="在线联系房东" target="_self">
+                           <!-- <i></i>联系房东 -->
+                        </a>
+                    </p>
+                    <p class="fd_tishi w_fColor8">您可以选择继续支付，或等待房东确认订单，房东确认后我们会发短信通知您进行支付。</p>
+                </div>
+            </div>
+            <div style="border:0;" class="order_wait">
+                <div class="order_paybox">
+                    <div class="order_paydetailbox">
+                        <div class="order_payfk"><span class="f16">线上应付金额：</span><span class="f20 red payment_price">￥218.00</span></div>
+                        <div class="order_paydetail f12">人数:<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label> 人<span class="mL10">房源数:</span><label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label> 套&nbsp;<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label>室<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label>厅<span class="mL10">入住时间: </span><label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">2020/9/5</label> 至 <label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">2020/9/6</label>&nbsp;共 <label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label> 晚</div>
+                    </div>
+                    <form name="orderpay_form" id="orderpay_form" action="/Home/ToPay" target="_blank" method="post">
+                        <div style="display:none;">
+                            <input type=hidden name="orderid" value="1041141" />
+                            <input type=hidden name="order_num" value="20200904172534565002" />
+                            <input type=hidden name="hb_fq_num" value="" />
+                            <!--支付宝-->
+                            <!--微信支付-->
+                            <!--网银在线开始-->
+                        </div>
+                        <div class="order_paycontent">
+                            <div class="on_line">
+                                <div class="order_paycontentleft">
+                                    <span class="f16">选择支付方式：</span>
+                                </div>
+                                <div class="on_line_choice">
+                                    <input id="alipay" type="radio" name="paytype" value="1" checked="checked">
+                                    <label style="width:126px;" for="alipay"><img src="image/zfb2.jpg" alt="支付宝" title="支付宝"></label>
+                                                                                                  </div>
+                            </div>
+                            <!--花呗分期-->
+                           
+                            <!--京东白条分期-->
+                           
+                            <div class="pay">
+                                <div class="order_paycontentleft">&nbsp;</div>
+                                <a class="qr_pay" href="javascript:;">去支付</a>
+                                <div class="order_tj_bot clear" style="float:left;">
+                                    <div class="order_share bdsharebuttonbox fr">
+                                        <a class="bds_more" href="javascript:void(0)" data-cmd="more">&nbsp;</a>
+                                        
+                                    </div>
+                                    <div class="tj_a fl">
+                                        <a class="f5_order" style="background:none;" href="javascript:location.reload();"><i class="shuaxin"><img src="" style="width:18px; margin-right:4px"></i>刷新订单</a><a class="order_gopay" style="display:none;" href="/order_pay.asp?orderid=159566">去付款</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+		
+</script>
+
+    <!-- 20160224 add/chen -->
+
+<!-- 20160224 end -->
+<div style="display:none;">
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    </script>
+</div>
+</body>
+</html>
+
+
+    
+</body>
+</html>

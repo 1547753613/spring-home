@@ -146,6 +146,7 @@ public class HouseController {
         model.addAttribute("landlord",landlord);
 
         Order order = ordersService.SelectOrderId(hid);
+        System.out.println(order);
         if (null!=order){
             order.setOrdersDetails(orderDetailsService.SelectOrderOid(order.getId()));
             model.addAttribute("order",order);

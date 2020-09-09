@@ -8,11 +8,11 @@
 
     <title>仿途家酒店首页模板</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/layui.css">
-  <!--  <script src="/assets/js/layui.js" type="text/javascript"></script>
-    <script src="/assets/js/layui.all.js" type="text/javascript"></script>-->
-<!--
-    <script src="/assets/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
--->
+    <!--  <script src="/assets/js/layui.js" type="text/javascript"></script>
+      <script src="/assets/js/layui.all.js" type="text/javascript"></script>-->
+    <!--
+        <script src="/assets/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    -->
     <link type="text/css" rel="stylesheet" href="/assets/assetss/css/header.css" />
     <link type="text/css" rel="stylesheet" href="/assets/assetss/css/base.css" />
     <link type="text/css" rel="stylesheet" href="/assets/assetss/css/index.css" />
@@ -122,6 +122,7 @@
             <!--                <a href="#">注册</a>-->
 
             <a href="/muniao/login">登录</a>
+            <a href="/muniao/tologin">房东登录</a>
             <a href="/muniao/logout">退出登录</a>
 
 
@@ -172,7 +173,7 @@
                 <span class="search-type" style="border: 0px solid black; top:-25px;">
                     <input type="text" class="dest-text" id="citySelect" placeholder="请输入目的地" ><i class="dest-ico"></i>
                 </span>
-                <span class="sea-div" style="border: 0px solid black; top:-10px;"><input type="text" readonly  id="startDate" placeholder="入住"/>
+            <span class="sea-div" style="border: 0px solid black; top:-10px;"><input type="text" readonly  id="startDate" placeholder="入住"/>
 </span>
             <span class=" sea-div" style="border: 0px solid black; top:-10px;"><input type="text" readonly  id="endDate" placeholder="退房"/>
 
@@ -555,43 +556,43 @@
 <script>
 
     function getOrders(i) {
-          $.ajax({
-              url:'/muniao/QueryHouseCity',
-              type:'get',
-              data:{
-                  city:i
-              },
-              success:function (data) {
-                  $("#houseUl").html("")
-                  var html="";
-                  var i=0;
-                  $.each(data,function (index,item) {
+        $.ajax({
+            url:'/muniao/QueryHouseCity',
+            type:'get',
+            data:{
+                city:i
+            },
+            success:function (data) {
+                $("#houseUl").html("")
+                var html="";
+                var i=0;
+                $.each(data,function (index,item) {
 
-                  // console.log(item)
-                      if (i==3){
-                          i=0;
-                      }
+                    // console.log(item)
+                    if (i==3){
+                        i=0;
+                    }
 
-                      html += "<li class=\"mr_"+i+"\">\n" +
-                          "                                <a class=\"pic\" href=\"/muniao/House/querybyid?id="+item.id+"\" target=\"_blank\"><img src=\""+item.simg+"\" alt=\"标题\" width=\"374\" height=\"248\" /></a>\n" +
-                          "                                <div class=\"info\">\n" +
-                          "\n" +
-                          "                                    <p class=\"pt clearfix\">\n" +
-                          "                                        <a class=\"bt\" href=\"/muniao/House/querybyid?id="+item.id+"\" target=\"_blank\">" + item.hname + "</a>\n" +
-                          "                                        <img class=\"icon\" src=\"/assets/assetss/image/icon01.png\" />\n" +
-                          "                                    </p>\n" +
-                          "                                    <p class=\"pn clearfix\">\n" +
-                          "                                        <span class=\"attr\"><em>四星级酒店</em>|<em>商务出行</em></span>\n" +
-                          "                                        <span class=\"pri\"><em>&yen;<b>"+item.houseMany.holidays+"</b></em>起</span>\n" +
-                          "\n" +
-                          "                                    </p>\n" +
-                          "                                </div>\n" +
-                          "                            </li>";
-                      i++;
-                  })
-                  $("#houseUl").append(html)
-              }
-              })
+                    html += "<li class=\"mr_"+i+"\">\n" +
+                        "                                <a class=\"pic\" href=\"/muniao/House/querybyid?id="+item.id+"\" target=\"_blank\"><img src=\""+item.simg+"\" alt=\"标题\" width=\"374\" height=\"248\" /></a>\n" +
+                        "                                <div class=\"info\">\n" +
+                        "\n" +
+                        "                                    <p class=\"pt clearfix\">\n" +
+                        "                                        <a class=\"bt\" href=\"/muniao/House/querybyid?id="+item.id+"\" target=\"_blank\">" + item.hname + "</a>\n" +
+                        "                                        <img class=\"icon\" src=\"/assets/assetss/image/icon01.png\" />\n" +
+                        "                                    </p>\n" +
+                        "                                    <p class=\"pn clearfix\">\n" +
+                        "                                        <span class=\"attr\"><em>四星级酒店</em>|<em>商务出行</em></span>\n" +
+                        "                                        <span class=\"pri\"><em>&yen;<b>"+item.houseMany.holidays+"</b></em>起</span>\n" +
+                        "\n" +
+                        "                                    </p>\n" +
+                        "                                </div>\n" +
+                        "                            </li>";
+                    i++;
+                })
+                $("#houseUl").append(html)
+            }
+        })
     }
 
     $("#shousuo").click(function(){
@@ -613,111 +614,111 @@
     )
 
 
-                    $(".hotel-slide-hd span").click(function() {
-                        var city = $(this).html()
-                        $.post("/muniao/weizhimincheng", {city: city})
-                    })
-                    $(function() {
+    $(".hotel-slide-hd span").click(function() {
+        var city = $(this).html()
+        $.post("/muniao/weizhimincheng", {city: city})
+    })
+    $(function() {
 
 
 
-                        getOrders('河南');
-                        //得到当前时间
-                        var date_now = new Date();
-                        // date_now.set(date_now.getTime() + 24*60*60*1000)
+        getOrders('河南');
+        //得到当前时间
+        var date_now = new Date();
+        // date_now.set(date_now.getTime() + 24*60*60*1000)
 
-                        //得到当前年份
-                        var year = date_now.getFullYear();
-                        //得到当前月份
-                        //注：
-                        //  1：js中获取Date中的month时，会比当前月份少一个月，所以这里需要先加一
-                        //  2: 判断当前月份是否小于10，如果小于，那么就在月份的前面加一个 '0' ， 如果大于，就显示当前月份
-                        var month = date_now.getMonth() + 1 < 10 ? "0" + (date_now.getMonth() + 1) : (date_now.getMonth() + 1);
-                        //得到当前日子（多少号）
-                        var date = date_now.getDate() < 10 ? "0" + date_now.getDate() : date_now.getDate();
-                        //设置input标签的max属性
-                        var month1 = date_now.getMonth() + 2 < 10 ? "0" + (date_now.getMonth() + 1) : (date_now.getMonth() + 1);
-                        //设置input标签的max属性
-                        $("#tuifang").attr("min", year + "-" + month + "-" + (date+1))
-                    })
-
-
-                    $(function(){
-                        //首页焦点图
-
-                        $('.slide-wrap').slide({
-
-                            mainCell:".slide-bd ul",
-
-                            effect:"fold",
-
-                            interTime: 5000,
-
-                            delayTime: 1000,
-
-                            autoPlay:true
-
-                        });
+        //得到当前年份
+        var year = date_now.getFullYear();
+        //得到当前月份
+        //注：
+        //  1：js中获取Date中的month时，会比当前月份少一个月，所以这里需要先加一
+        //  2: 判断当前月份是否小于10，如果小于，那么就在月份的前面加一个 '0' ， 如果大于，就显示当前月份
+        var month = date_now.getMonth() + 1 < 10 ? "0" + (date_now.getMonth() + 1) : (date_now.getMonth() + 1);
+        //得到当前日子（多少号）
+        var date = date_now.getDate() < 10 ? "0" + date_now.getDate() : date_now.getDate();
+        //设置input标签的max属性
+        var month1 = date_now.getMonth() + 2 < 10 ? "0" + (date_now.getMonth() + 1) : (date_now.getMonth() + 1);
+        //设置input标签的max属性
+        $("#tuifang").attr("min", year + "-" + month + "-" + (date+1))
+    })
 
 
+    $(function(){
+        //首页焦点图
 
-                        //酒店目的地
+        $('.slide-wrap').slide({
 
-                        $(".hotel-slide-box").slide({
+            mainCell:".slide-bd ul",
 
-                            mainCell:".hotel-slide-bd",
+            effect:"fold",
 
-                            titCell:".hotel-slide-hd span",
+            interTime: 5000,
 
-                            effect:"fold",
+            delayTime: 1000,
 
-                            delayTime: 0,
+            autoPlay:true
 
-                            autoPlay:false
-
-                        });
+        });
 
 
 
-                        //酒店二级属性
+        //酒店目的地
 
-                        $(".hotel-slide-item").slide({
+        $(".hotel-slide-box").slide({
 
-                            mainCell:".hotel-next-block",
+            mainCell:".hotel-slide-bd",
 
-                            titCell:".hotel-next-tab span",
+            titCell:".hotel-slide-hd span",
 
-                            effect:"fold",
+            effect:"fold",
 
-                            delayTime: 0,
+            delayTime: 0,
 
-                            autoPlay:false
+            autoPlay:false
 
-                        });
-
-
-
-                        $(".article-slide-box").slide({
-
-                            mainCell:".article-slide-bd ul",
-
-                            effect:"leftLoop",
-
-                            interTime: 5000,
-
-                            delayTime: 400,
-
-                            vis: 2,
-
-                            scroll: 2,
-
-                            autoPage:true
-
-                        });
+        });
 
 
 
-                    });
+        //酒店二级属性
+
+        $(".hotel-slide-item").slide({
+
+            mainCell:".hotel-next-block",
+
+            titCell:".hotel-next-tab span",
+
+            effect:"fold",
+
+            delayTime: 0,
+
+            autoPlay:false
+
+        });
+
+
+
+        $(".article-slide-box").slide({
+
+            mainCell:".article-slide-bd ul",
+
+            effect:"leftLoop",
+
+            interTime: 5000,
+
+            delayTime: 400,
+
+            vis: 2,
+
+            scroll: 2,
+
+            autoPage:true
+
+        });
+
+
+
+    });
 
 </script>
 
