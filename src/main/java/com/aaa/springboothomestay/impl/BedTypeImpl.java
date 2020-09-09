@@ -32,10 +32,8 @@ public class BedTypeImpl implements BedTypeService {
     public List<Bedtype> query() {
         return bedTypeDao.selectAll();
     }
-    public List<Bedtype> bybidquery(int id)
+    public Bedtype bybidquery(int id)
     {
-        Bedtype bedtype = new Bedtype();
-        bedtype.setBid(id);
-        return bedTypeDao.select(bedtype);
+        return bedTypeDao.selectByPrimaryKey(id);
     }
 }

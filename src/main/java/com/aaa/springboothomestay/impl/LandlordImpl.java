@@ -119,4 +119,8 @@ public class LandlordImpl implements LandlordService {
 
         return ResultUtil.error(ResultCode.ERROR,"解封房东失败");
     }
+
+    public Landlord byidquery(int id) {
+        return  landlordDao.selectByPrimaryKey(id);
+    }
 }

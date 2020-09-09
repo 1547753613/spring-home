@@ -1,496 +1,685 @@
-<!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <base href="/">
     <script src="../assets/jcs/jquery-1.10.2.min.js" type="text/javascript"></script>
     <link href="../assets/css/layui.css" rel="stylesheet" type="text/css">
     <script src="../assets/js/layui.all.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
-  </head>
-    <body>
-        <div style="width: 800px; margin: 0 auto;margin-top: 50px;" class="layui-form">
-                <div class="layui-upload" style="margin-left: 30px;">
-                    <button type="button" class="layui-btn" id="simg">上传房源封面图</button>
-                    <div class="layui-upload-list">
-                        <img class="layui-upload-img" id="simgimg" name="simg" style="height: 200px;width: 360px">
-                        <p id="headtext"></p>
-                    </div>
-                </div>
-                <div class="layui-upload">
-                    <button type="button" class="layui-btn" id="himg">请上传房源详细图</button>
-                    <button type="button" class="layui-btn" id="isnull">清空图片</button>
-                    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
-                        预览图：
-                        <div class="layui-upload-list" id="demo2"></div>
-                        <div class="layui-form-mid layui-word-aux" id="imagespath"></div>
-                    </blockquote>
-                </div>
-                <script>
-                    layui.use('upload', function(){
-                        var i = 0
-                        var $ = layui.jquery
-                            ,upload = layui.upload,
-                            layer = layui.layer;
+    <style type="text/css">
+        .layui-form-label{
+            width: 150px;
+            text-align: right;
+        }
+        .layui-form-checkbox{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+    <body style="">
 
-                        //普通图片上传
-                        var uploadInst = upload.render({
-                            elem: '#simg'
-                            ,url: 'muniao/Landlord/headimg'//改成您自己的上传接口
-                            ,before: function(obj){
-                                //预读本地文件示例，不支持ie8
-                                obj.preview(function(index, file, result){
+    <ul class="layui-nav layui-bg-cyan" style="height: 80px;">
+        <li class="layui-nav-item"><a href="/muniao/toIndex">首页</a></li>
+    </ul>
+        <div style="width:900px; margin: 0 auto;margin-top: 20px;background-color: -moz-menuhovertext" class="layui-form">
 
-                                });
-                            }
-                            ,done: function(res){
-                                //如果上传失败
-                                if(res.code > 0){
-                                    return layer.msg('上传失败');
-                                }
-                                $("#simgimg").attr("src",(res.head));
-                            }
-                            ,error: function(){
-                                //演示失败状态，并实现重传
-                                var demoText = $('#headtext');
-                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                                demoText.find('.demo-reload').on('click', function(){
-                                    uploadInst.upload();
-                                });
-                            }
-                        });
 
-                        upload.render({
-                            elem: '#himg'
-                            , url: 'muniao/Landlord/headimg' //改成您自己的上传接口
-                            , multiple: true
-                            , before: function (obj) {
-                                //预读本地文件示例，不支持ie8
-                                obj.preview(function (index, file, result) {
-                                });
-                            }
-                            , done: function (res) {
-                                //上传完毕
-                                if(res.code > 0){
-                                    return layer.msg('上传失败');
-                                }
-                                    $('#demo2').append('<img src="'+ res.head +'" class="layui-upload-img" style="height: 200px;width: 340px;border:3px solid #0d774a; margin: 5px;5px;">')
-                                    var a = $("#imagespath").attr("val");
-                                if(a==undefined)
-                                {
-                                    $("#imagespath").attr("val",res.head);
-                                }else {
-                                    $("#imagespath").attr("val",a+(";"+res.head));
-                                }
-                            }
-                        });
-                    });
-                    $("#isnull").on("click",function(){
-                        $("#demo2").html("");
-                        $("#imagespath").html("");
-                    })
-                    $("#himg2").on("click",function(){
-                        $(".layui-upload-img").each(function(){
-                            var a = $(this).attr("src");
-                        })
-                    })
-                </script>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">房源名称</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="hname" required lay-verify="required" placeholder="请输入房源名称" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">请为您的房源填写名称</div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">交通位置</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="traffic" readonly required lay-verify="required" placeholder="请填写您出租的房屋的具体位置" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">交通位置</div>
-                </div>
-                <div class="layui-form-item" style="height: 600px;">
+            <div style="padding: 20px; background-color: #F2F2F2;width: 900px;">
+                <div class="layui-row layui-col-space15" style="width: 900px">
+                    <div class="layui-col-md6" style="width: 900px">
+                        <div class="layui-card" style="width: 900px">
+                            <!---标题---->
+                            <div class="layui-card-header" style="width: 900px">卡片面板</div>
+                            <div class="layui-card-body" style="width: 900px">
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend><span style="color: #1b9e2d;font-size: 25px;">房屋基本信息</span></legend>
+                                </fieldset>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">房源名称</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="hname" required lay-verify="required" placeholder="请输入房源名称" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请为您的房源填写名称</div>
+                                </div>
 
-                    <div style="width:730px;margin:auto;">
-                        <label class="layui-form-label">请输入房屋的位置</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="address" id="searchname" required lay-verify="required" placeholder="请填写您出租的房屋的位置" autocomplete="off" class="layui-input">
+                                <div class="layui-form-item" style="width: 380px;">
+                                    <label class="layui-form-label">请选择出租类型</label>
+                                    <div class="layui-input-block">
+                                        <select name="rid">
+                                            <span th:each="rent:${renttype}">
+                                                <option th:value="${rent.rid}" style="margin-top: 5px"><span th:text="${rent.tname}"></span></option>
+                                            </span>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="layui-form-item" style="width: 380px;">
+                                    <label class="layui-form-label">请选择房屋类型</label>
+
+                                    <div class="layui-input-block" id="cnm">
+
+                                        <select name="sid">
+                                            <span th:each="housetyp:${housetype}"><option th:value="${housetyp.id}" th:text="${housetyp.hname}"></option></span>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend><span style="color: #1b9e2d;font-size: 25px;">房屋详细信息</span></legend>
+                                </fieldset>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">请输入房间的整套面积</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="area"  class="layui-input" style="width: 200px;">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">卧室数量</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <select name="bedroom">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">卫生间数量</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <select name="wc">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">客厅数量</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <select name="drawimg">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                            </div>                                        </div>
+                                    </div>
+                                    <div class="layui-form-inline">
+                                        <label class="layui-form-label">厨房数量</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <select name="kitchen">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                            </div>                                        </div>
+                                    </div>
+                                    <div class="layui-from-inline">
+                                        <label class="layui-form-label">阳台数量</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <select name="balcony">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-inline">
+                                        <label class="layui-form-label">是否与租客同住</label>
+                                        <div class="layui-input-inline">
+                                            <input type="radio" name="cohabit" value="0" title="房东跟租客同住" checked="">
+
+
+                                            <input type="radio" name="cohabit" value="1" title="房东不跟租客同住">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-inline">
+                                        <label class="layui-form-label">卫生间类型</label>
+                                        <div class="layui-input-inline">
+                                            <input type="radio" name="wctype" value="0" title="公共卫生间" checked="">
+                                            <input type="radio" name="wctype" value="1" title="独立卫生间">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-inline">
+                                        <label class="layui-form-label">房屋工作日价格</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="workday" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">周末价格</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="weekend" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">节假日价格</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="holidays" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">易住人数</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <select name="liblecount" lay-filter="aihao">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">最少入住天数</label>
+                                        <div class="layui-input-inline">
+                                            <div class="layui-input-inline">
+                                                <select name="days">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                </select>
+                                            </div>                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">最早入住时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="atcheck" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">最晚入住时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="lastcheck" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">最晚退房时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="checkout" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">房屋要求</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="email" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item" style="width: 700px;">
+                                    <label class="layui-form-label">请介绍您的房源特色:</label>
+                                    <div class="layui-input-inline" style="width: 700px;">
+                                        <textarea name="feature" placeholder="请输入内容" class="layui-textarea"></textarea>                    </div>
+                                    <div class="layui-form-mid layui-word-aux">有助于帮您的房源做宣传</div>
+                                </div>
+                                <div class="layui-form-item" style="width: 700px;">
+                                    <label class="layui-form-label">您出租的屋的周围环境:</label>
+                                    <div class="layui-input-inline" style="width: 700px;">
+                                        <textarea name="rim" placeholder="请输入内容" class="layui-textarea"></textarea>                    </div>
+                                    <div class="layui-form-mid layui-word-aux">有助于帮您的房源做宣传</div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend><span style="color: #1b9e2d;font-size: 25px;">房屋配置信息</span></legend>
+                                </fieldset>
+
+                                <div class="layui-form-item" style="width: 700px; margin: 0 auto;">
+                                    <span th:each="bed:${bedtype}" th:if="${bed.parentid>0}">
+                                        <div class="layui-input-inline" style="width: 200px;" >
+                                            <input type="checkbox" class="layui-form-checkbox" name="bedtype" th:value="${bed.bid}" th:title="${bed.bname}">
+                                             <br/>数量:<select name="bedcount" th:data="${bed.bid}" style="width: 100px;text-align: center">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                              </select>
+
+                                        </div>
+                                            </span>
+                                </div>
+
+                                <div class="layui-form-item" style="width: 700px; background-color: rgba(41,41,30,0.03)">
+
+                                    <label class="layui-form-label">请选择配套设施:</label>
+
+                                    <div class="layui-input-inline" style="width: 700px;" >
+                                        <span th:each="sup:${supportings}" th:if="${sup.parentid>0}">
+                                        <input type="checkbox" class="layui-form-checkbox" name="sup" th:value="${sup.id}" th:title="${sup.sname}">
+                                        </span>
+                                    </div>
+
+                                </div>
+
+
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend><span style="color: #1b9e2d;font-size: 25px;">房屋收费信息</span></legend>
+                                </fieldset>
+
+
+                                <div class="layui-form-item" style="width: 700px;">
+                                    <span th:each="othertype:${othertypes}">
+                                    <div class="layui-input-inline" style="width: 200px;" >
+
+                                        <input type="checkbox" class="layui-form-inline" name="othertype" th:value="${othertype.id}" th:title="${othertype.oname}">
+                                         <select name="othercount" style="width: 100px;text-align: center">
+                                            <option th:data="${othertype.id}" th:text="${othertype.id}">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                        <br/>价格:<input type="text" name="othermany" th:data="${othertype.id}" autocomplete="off" class="layui-input" style="width: 170px;">
+
+                                    </div>
+                                    </span>
+                                </div>
+                                <!--<button onclick="aaaa()">点击</button>-->
+                                <script>
+                                    // var a;
+                                    // $("input :checkbox[name='othertype']").on("click",(function(){
+                                    //      a = $(this).val();
+                                    //     console.info("=========="+a)
+                                    // })
+
+                                    function aaaa(){
+                                        $("input :checkbox[name='othertype']").each(function(){
+                                            var c = $(this).attr("value")
+                                            console.info(c+"==================");
+                                        })
+                                    }
+                                </script>
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend><span style="color: #1b9e2d;font-size: 25px;">允许以下行为么?</span></legend>
+                                </fieldset>
+                                <div class="layui-form-item" style="width: 700px;">
+
+                                    <label class="layui-form-label">是否允许以下行为:</label>
+
+                                    <div class="layui-input-inline" style="width: 700px;" >
+                                        <span th:each="require:${requiretype}">
+                                        <input type="checkbox" class="layui-form-checkbox" name="requiretype" th:value="${require.id}" th:title="${require.rname}">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend><span style="color: #1b9e2d;font-size: 25px;">房屋位置信息</span></legend>
+                                </fieldset>
+
+
+
+
+
+
+
+
+
+                                <div class="layui-upload" style="margin-left: 30px;">
+                                    <button type="button" class="layui-btn" id="simg">上传房源封面图</button>
+                                    <div class="layui-upload-list">
+                                        <img class="layui-upload-img" id="simgimg" name="simg" style="height: 200px;width: 360px">
+                                        <p id="headtext"></p>
+                                    </div>
+                                </div>
+
+                                <div class="layui-upload">
+                                    <button type="button" class="layui-btn" id="himg">请上传房源详细图</button>
+                                    <button type="button" class="layui-btn" id="isnull">清空图片</button>
+                                    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                        预览图：
+                                        <div class="layui-upload-list" id="demo2"></div>
+                                        <div class="layui-form-mid layui-word-aux" id="imagespath"></div>
+                                    </blockquote>
+                                </div>
+
+
+                                <script>
+                                    layui.use('upload', function(){
+                                        var i = 0
+                                        var $ = layui.jquery
+                                            ,upload = layui.upload,
+                                            layer = layui.layer;
+
+                                        //普通图片上传
+                                        var uploadInst = upload.render({
+                                            elem: '#simg'
+                                            ,url: 'muniao/Landlord/headimg'//改成您自己的上传接口
+                                            ,before: function(obj){
+                                                //预读本地文件示例，不支持ie8
+                                                obj.preview(function(index, file, result){
+
+                                                });
+                                            }
+                                            ,done: function(res){
+                                                //如果上传失败
+                                                if(res.code > 0){
+                                                    return layer.msg('上传失败');
+                                                }
+                                                $("#simgimg").attr("src",(res.head));
+                                            }
+                                            ,error: function(){
+                                                //演示失败状态，并实现重传
+                                                var demoText = $('#headtext');
+                                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                                                demoText.find('.demo-reload').on('click', function(){
+                                                    uploadInst.upload();
+                                                });
+                                            }
+                                        });
+
+                                        upload.render({
+                                            elem: '#himg'
+                                            , url: 'muniao/Landlord/headimg' //改成您自己的上传接口
+                                            , multiple: true
+                                            , before: function (obj) {
+                                                //预读本地文件示例，不支持ie8
+                                                obj.preview(function (index, file, result) {
+                                                });
+                                            }
+                                            , done: function (res) {
+                                                //上传完毕
+                                                if(res.code > 0){
+                                                    return layer.msg('上传失败');
+                                                }
+                                                $('#demo2').append('<img src="'+ res.head +'" class="layui-upload-img" style="height: 200px;width: 340px;border:3px solid #0d774a; margin: 5px;5px;">')
+                                                var a = $("#imagespath").attr("val");
+                                                if(a==undefined)
+                                                {
+                                                    $("#imagespath").attr("val",res.head);
+                                                }else {
+                                                    $("#imagespath").attr("val",a+(";"+res.head));
+                                                }
+                                            }
+                                        });
+                                    });
+                                    $("#isnull").on("click",function(){
+                                        $("#demo2").html("");
+                                        $("#imagespath").html("");
+                                    })
+                                    $("#himg2").on("click",function(){
+                                        $(".layui-upload-img").each(function(){
+                                            var a = $(this).attr("src");
+                                        })
+                                    })
+                                </script>
+                                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                                    <legend><span style="color: #1b9e2d;font-size: 25px;">房间位置信息</span></legend>
+                                </fieldset>
+
+
+                                <div class="layui-form-item" style="height: 330px;">
+
+                                    <div style="width:730px;margin:auto;">
+                                        <label class="layui-form-label">请输入房屋的位置</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="address" id="searchname" required lay-verify="required" placeholder="请填写您出租的房屋的位置" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <label class="layui-form-label"></label>
+                                        <div class="layui-input-inline">
+                                            <span name="xcorrd" id="x">东经:</span><span id="y" name="ycoord">北纬:</span>
+                                        </div>
+                                        <input type="button" class="layui-btn" onclick="searchByStationName();" value="查询"/>
+                                        <div id="container"
+                                             style="position: absolute;
+                                            margin-top:30px;
+                                            width: 730px;
+                                            height: 280px;
+                                            border: 1px solid gray;
+                                            overflow:hidden;">
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+                                        var map = new BMap.Map("container");
+                                        map.centerAndZoom("郑州", 12);
+                                        map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+                                        map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+                                        map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+                                        map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+                                        map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
+
+                                        var localSearch = new BMap.LocalSearch(map);
+                                        localSearch.enableAutoViewport(); //允许自动调节窗体大小
+                                        function searchByStationName() {
+                                            map.clearOverlays();//清空原来的标注
+                                            var keyword = $("#searchname").val();
+                                            localSearch.setSearchCompleteCallback(function (searchResult) {
+                                                var poi = searchResult.getPoi(0);
+                                                $("#x").html("东经"+poi.point.lng);
+                                                $("#x").attr("val",poi.point.lng);
+                                                $("#y").html("北纬"+poi.point.lat);
+                                                $("#y").attr("val",poi.point.lat);
+                                                $("#x").attr("address",poi.address);
+                                                $("#x").attr("city",poi.city);
+                                                map.centerAndZoom(poi.point, 13);
+                                                var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+                                                map.addOverlay(marker);
+                                                console.info(poi);
+                                                var content = poi.title + "<br/><br/><span value='"+poi.address+"' id='address'>地址：" + poi.address + "</span><br/><span id='city' value='"+poi.city+"'>所属城市：" + poi.city+"</span>";
+                                                $("input[name='traffic']").val(poi.address);
+                                                var hname = $("input[name='hname']").val(poi.title);
+                                                var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + content + "</p>");
+                                                marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+                                                // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+                                            });
+                                            localSearch.search(keyword);
+                                        }
+                                    </script>
+
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"></label>
+
+                                </div>
+
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">交通位置</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="traffic" readonly required lay-verify="required" placeholder="请填写您出租的房屋的具体位置" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">交通位置</div>
+                                </div>
+
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+
+
+                                <button id="eee">测试
+                                </button>
+                                <script>
+                                        $("#eee").on("click",function(){
+                                            // console.info("=============="+$("#x").attr("city")+$("#x").attr("address"))
+
+                                            $("select[name='bedcount'] option:selected").each(function(){
+                                                var c = $(this).attr("value");
+                                                var d = $(this).attr("data");
+                                                console.info(d)
+                                            })
+                                        })
+                                    </script>
+                                <script>
+                                    //Demo
+                                    layui.use('form', function(){
+                                        var form = layui.form;
+                                        form.render();
+                                        //监听提交
+                                        form.on('submit(formDemo)', function(data){
+                                            var bedtype=[];
+                                            var count = [];
+                                            var sup = [];
+                                            var othertype = [];
+                                            var cohabit = [];
+                                            var wctype = [];
+                                            var requiretype = [];
+                                            $("input[type=radio]:checked").each(function(){
+                                                var name = $(this).attr("name");
+                                                var value = $(this).attr("value");
+                                                if(name=="cohabit")
+                                                {
+                                                    cohabit.push(value);
+                                                }else if (name="wctype")
+                                                {
+                                                    wctype.push(value);
+                                                }
+                                            });
+                                            var othercount = [];
+                                            $("select[name='othercount'] option:selected").each(function(){
+                                                if($(this).val()!="")
+                                                {
+                                                    othercount.push($(this).val())
+                                                }
+                                            })
+                                            var othermany = [];
+                                            $("input[name='othermany']").each(function(){
+                                                if($(this).val()!="")
+                                                {
+                                                    othermany.push($(this).val())
+                                                }
+                                            })
+                                            $("input[type=checkbox]:checked").each(function(){
+                                                var name = $(this).attr("name");
+                                                var value = $(this).attr("value");
+                                                if(name=="bedtype")
+                                                {
+                                                    bedtype.push(value);
+                                                    $("select[name='bedcount'] option:selected").each(function(){
+                                                        var c = $(this).attr("value");
+                                                        count.push(c);
+                                                    })
+                                                }else if (name=="sup") {
+                                                    sup.push(value)
+                                                }else if(name=="othertype")
+                                                {
+                                                    othertype.push(value)
+                                                }else if(name=="requiretype")
+                                                {
+                                                    requiretype.push(value)
+                                                }
+                                            })
+                                            var hname = $("input[name='hname']").val();
+                                            var simg = $("#simgimg").attr("src");
+                                            var himg = $("#imagespath").attr("val");
+                                            var rid = $("select[name='rid'] option:selected").val();
+                                            var sid = $("select[name='sid'] option:selected").val();
+                                            var feature = $("textarea[name='feature']").val();
+                                            var xcoord =  $("#x").attr("val");
+                                            var ycoord = $("#y").attr("val");
+                                            var traffic = $("input[name='traffic']").val();
+                                            var rim = $("textarea[name='rim']").val();
+                                            var area = $("input[name='area']").val();
+                                            var bedroom = $("select[name='bedroom'] option:selected").val();
+                                            var wc = $("select[name='wc'] option:selected").val();
+                                            var drawimg = $("select[name='drawimg'] option:selected").val();
+                                            var kitchen = $("select[name='kitchen'] option:selected").val();
+                                            var balcony = $("select[name='balcony'] option:selected").val();
+                                            var workday = $("input[name='workday']").val();
+                                            var weekend = $("input[name='weekend']").val();
+                                            var holidays = $("input[name='holidays']").val();
+                                            var city = $("#x").attr("city");
+                                            var address = $("#x").attr("address");
+                                            var liblecount = $("select[name='liblecount'] option:selected").val();
+                                            var days = $("select[name='days'] option:selected").val();
+                                            var atcheck = $("input[name='atcheck']").val();
+                                            var lastcheck = $("input[name='lastcheck']").val();
+                                            var checkout = $("input[name='checkout']").val();
+                                            var map = {"hname":hname,"simg":simg,"himg":himg,"rid":rid,
+                                                "sid":sid,"feature":feature,"xcoord":xcoord,"ycoord":ycoord,"traffic":traffic,"rim":rim,
+                                                "area":area,"cohabit":cohabit,"bedroom":bedroom,"wc":wc,"drawing":drawimg,"kitchen":kitchen,"balcony":balcony,"wctype":wctype,
+                                                "count":count,"bids":bedtype,"sids":sup,"othercount":othercount,"othermany":othermany,"otherid":othertype,
+                                                "workday":workday,"weekday":weekend,"Holidays":holidays,
+                                                "city":city,"address":address,
+                                                "liblecount":liblecount,"days":days,"atcheck":atcheck,"lastcheck":lastcheck,"checkout":checkout,
+                                                "rid":rid};
+                                            $.ajax({url:"muniao/House/inser",
+                                                contentType:"application/json",
+                                                type:"post",
+                                                data:JSON.stringify(map),
+                                                success:function(data){
+                                                    window.location.href="http://localhost:8080/muniao/toIndex";
+                                                }})
+                                            // console.info(""+hname+""+simg+""+himg+""+rid+""+sid+""+feature+""+xcoord+""+ycoord+""+traffic+""+rim)
+                                            // $.post("muniao/House/insert",{'hname':hname,'simg':simg,'himg':himg,'rid':rid,
+                                            // 'sid':sid,'feature':feature,'xcoord':xcoord,'ycoord':ycoord,'traffic':traffic,'rim':rim
+                                            // },function(da){
+                                            //     layer.msg(JSON.stringify(da.field));
+                                            // })
+                                        });
+                                    });
+                                </script>
+
+
+                            </div>
                         </div>
-                        <label class="layui-form-label"></label>
-                        <div class="layui-input-inline">
-                            <span name="xcorrd" id="x">东经:</span><span id="y" name="ycoord">北纬:</span>
-                        </div>
-                        <input type="button" class="layui-btn" onclick="searchByStationName();" value="查询"/>
-                        <div id="container"
-                             style="position: absolute;
-                margin-top:30px;
-                width: 730px;
-                height: 590px;
-                border: 1px solid gray;
-                overflow:hidden;">
-                        </div>
-                    </div>
-<script type="text/javascript">
-    var map = new BMap.Map("container");
-    map.centerAndZoom("郑州", 12);
-    map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
-    map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
-
-    map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
-    map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
-    map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
-
-    var localSearch = new BMap.LocalSearch(map);
-    localSearch.enableAutoViewport(); //允许自动调节窗体大小
-    function searchByStationName() {
-        map.clearOverlays();//清空原来的标注
-        var keyword = $("#searchname").val();
-        console.info(keyword)
-        localSearch.setSearchCompleteCallback(function (searchResult) {
-            var poi = searchResult.getPoi(0);
-            $("#x").html("东经"+poi.point.lng);
-            $("#x").attr("val",poi.point.lng);
-            $("#y").html("北纬"+poi.point.lat);
-            $("#y").attr("val",poi.point.lat);
-            map.centerAndZoom(poi.point, 13);
-            var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
-            map.addOverlay(marker);
-            console.info(poi);
-            var content = poi.title + "<br/><br/><span value='"+poi.address+"' id='address'>地址：" + poi.address + "</span><br/><span id='city' value='"+poi.city+"'>所属城市：" + poi.city+"</span>";
-            $("input[name='traffic']").val(poi.address);
-            var hname = $("input[name='hname']").val(poi.title);
-            var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + content + "</p>");
-            marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
-            // marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
-        });
-        localSearch.search(keyword);
-    }
-    </script>
-
-    </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">文本框</label>
-
-                </div>
-                <div class="layui-form-item" style="width: 380px;">
-                    <label class="layui-form-label">请选择出租类型</label>
-                    <div class="layui-input-block">
-                        <select name="rid" lay-verify="required">
-                            <span th:each="rent:${renttype}">
-                                <option th:value="${rent.rid}"><span th:text="${rent.tname}"></span></option>
-                            </span>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item" style="width: 380px;">
-                    <label class="layui-form-label">请选择房屋类型</label>
-                    <div class="layui-input-block" id="cnm">
-                        <select name="sid" lay-verify="required">
-                            <span th:each="housetyp:${housetype}">
-                                <option th:value="${housetyp.id}"><span th:text="${housetyp.hname}"></span></option>
-                            </span>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item" style="width: 700px;">
-                    <label class="layui-form-label">请介绍您的房源特色:</label>
-                    <div class="layui-input-inline" style="width: 700px;">
-                        <textarea name="feature" placeholder="请输入内容" class="layui-textarea"></textarea>                    </div>
-                    <div class="layui-form-mid layui-word-aux">有助于帮您的房源做宣传</div>
-                </div>
-                <div class="layui-form-item" style="width: 700px;">
-                    <label class="layui-form-label">请介绍您要出租的房屋的周围环境:</label>
-                    <div class="layui-input-inline" style="width: 700px;">
-                        <textarea name="rim" placeholder="请输入内容" class="layui-textarea"></textarea>                    </div>
-                    <div class="layui-form-mid layui-word-aux">有助于帮您的房源做宣传</div>
-                </div>
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">请输入房间的整套面积</label>
-                    <div class="layui-input-inline">
-                        <input type="tel" name="area"  autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">卧室数量</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="bedroom"  autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">卫生间数量</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="wc" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">客厅数量</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="drawimg" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">厨房数量</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="kitchen" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">阳台数量</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="balcony" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">是否与租客同住</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="cohabit" value="0" title="房东跟租客同住" checked="">
-                        <input type="radio" name="cohabit" value="1" title="房东不跟租客同住">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">卫生间类型</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="wctype" value="0" title="公共卫生间" checked="">
-                        <input type="radio" name="wctype" value="1" title="独立卫生间">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">房屋工作日价格</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="workday" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">周末价格</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="weekend" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">节假日价格</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="holidays" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">易住人数</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="liblecount" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">最少入住天数</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="days" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">最早入住时间</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="atcheck" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">最晚入住时间</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="lastcheck" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">最晚退房时间</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="checkout" lay-verify="required" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">房屋要求</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item" style="width: 700px;">
-                <span th:each="bed:${bedtype}" th:if="${bed.parentid>0}">
-                <label class="layui-form-label">请选择床型:</label>
-                <div class="layui-input-inline" style="width: 700px;" >
-                    <input type="checkbox" class="layui-form-checkbox" name="bedtype" th:value="${bed.bid}" th:title="${bed.bname}">
-                    <input type="text" name="bedcount" lay-verify="required" autocomplete="off" class="layui-input" style="width: 300px;">
-                </div>
-                    </span>
-            </div>
-            <div class="layui-form-item" style="width: 700px;">
 
-                <label class="layui-form-label">请选择配套设施:</label>
-                <span th:each="sup:${supportings}" th:if="${sup.parentid>0}">
-                <div class="layui-input-inline" style="width: 700px;" >
-                    <input type="checkbox" class="layui-form-checkbox" name="sup" th:value="${sup.id}" th:title="${sup.sname}">
-                </div>
-                    </span>
-            </div>
-            <div class="layui-form-item" style="width: 700px;">
-
-                <label class="layui-form-label">请选择其他收费类型:</label>
-                <span th:each="othertype:${othertypes}">
-                <div class="layui-input-inline" style="width: 700px;" >
-                    <input type="checkbox" class="layui-form-checkbox" name="othertype" th:value="${othertype.id}" th:title="${othertype.oname}">
-                    <br/>数量：<input type="text" name="othercount" lay-verify="required" autocomplete="off" class="layui-input" style="width: 300px;">
-                    价格:<input type="text" name="othermany" lay-verify="required" autocomplete="off" class="layui-input" style="width: 300px;">
-                </div>
-                    </span>
-            </div>
-            <div class="layui-form-item" style="width: 700px;">
-
-                <label class="layui-form-label">是否允许以下行为:</label>
-                <span th:each="require:${requiretype}">
-                <div class="layui-input-inline" style="width: 700px;" >
-                    <input type="checkbox" class="layui-form-checkbox" name="requiretype" th:value="${require.id}" th:title="${require.rname}">
-                </div>
-                    </span>
-            </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </div>
         </div>
-        <button id="check">点击</button>
-        <script>
-            $("#check").on("click",function(){
-                var cohabit = [];
-                var wctype = [];
-                var requiretype = [];
-                $("input[type=radio]:checked").each(function(){
-                    var name = $(this).attr("name");
-                    var value = $(this).attr("value");
-                    if(name=="cohabit")
-                    {
-                        cohabit.push(value);
-                    }else if (name="wctype")
-                    {
-                        wctype.push(value);
-                    }
-                });
-                console.info(wctype+"wctype"+cohabit+"cohabit")
-                var a = [];
-                $("input[name='bedcount']").each(function(){
-                    if($(this).val()=="")
-                    {
-                        return;
-                    }else {
-                        count.push($(this).val())
-                    }
-                })
-                console.info(a)
-            })
-        </script>
-        <script>
-            //Demo
-            layui.use('form', function(){
-                var form = layui.form;
-                form.render();
-                //监听提交
-                form.on('submit(formDemo)', function(data){
-                    var bedtype=[];
-                    var count = [];
-                    var sup = [];
-                    var othertype = [];
-                    var cohabit = [];
-                    var wctype = [];
-                    var requiretype = [];
-                    $("input[type=radio]:checked").each(function(){
-                        var name = $(this).attr("name");
-                        var value = $(this).attr("value");
-                        if(name=="cohabit")
-                        {
-                            cohabit.push(value);
-                        }else if (name="wctype")
-                        {
-                            wctype.push(value);
-                        }
-                    });
-                    var othercount = [];
-                    $("input[name='othercount']").each(function(){
-                        if($(this).val()!="")
-                        {
-                            othercount.push($(this).val())
-                        }
-                    })
-                    var othermany = [];
-                    $("input[name='othermany']").each(function(){
-                        if($(this).val()!="")
-                        {
-                            othermany.push($(this).val())
-                        }
-                    })
-                    $("input[type=checkbox]:checked").each(function(){
-                        var name = $(this).attr("name");
-                        var value = $(this).attr("value");
-                        if(name=="bedtype")
-                        {
-                            bedtype.push(value)
-                        }else if (name=="sup") {
-                            sup.push(value)
-                        }else if(name=="othertype")
-                        {
-                            othertype.push(value)
-                        }else if(name=="requiretype")
-                        {
-                            requiretype.push(value)
-                        }
-                    })
-                    var hname = $("input[name='hname']").val();
-                    var simg = $("#simgimg").attr("src");
-                    var himg = $("#imagespath").attr("val");
-                    var rid = $("select[name='rid'] option:selected").val();
-                    var sid = $("select[name='sid'] option:selected").val();
-                    var feature = $("textarea[name='feature']").val();
-                    var xcoord =  $("#x").attr("val");
-                    var ycoord = $("#y").attr("val");
-                    var traffic = $("input[name='traffic']").val();
-                    var rim = $("textarea[name='rim']").val();
-                    var area = $("input[name='area']").val();
-                    var bedroom = $("input[name='bedroom']").val();
-                    var wc = $("input[name='wc']").val();
-                    var drawimg = $("input[name='drawimg']").val();
-                    var kitchen = $("input[name='kitchen']").val();
-                    var balcony = $("input[name='balcony']").val();
-                    var workday = $("input[name='workday']").val();
-                    var weekend = $("input[name='weekend']").val();
-                    var holidays = $("input[name='holidays']").val();
-                    var city = $("#city").attr("value")
-                    var address = $("#address").attr("value")
-                    var liblecount = $("input[name='liblecount']").val();
-                    var days = $("input[name='days']").val();
-                    var atcheck = $("input[name='atcheck']").val();
-                    var lastcheck = $("input[name='lastcheck']").val();
-                    var checkout = $("input[name='checkout']").val();
-                    var map = {"hname":hname,"simg":simg,"himg":himg,"rid":rid,
-                         "sid":sid,"feature":feature,"xcoord":xcoord,"ycoord":ycoord,"traffic":traffic,"rim":rim,
-                        "area":area,"cohabit":cohabit,"bedroom":bedroom,"wc":wc,"drawing":drawimg,"kitchen":kitchen,"balcony":balcony,"wctype":wctype,
-                        "count":count,"bids":bedtype,"sids":sup,"othercount":othercount,"othermany":othermany,"otherid":othertype,
-                        "workday":workday,"weekday":weekend,"Holidays":holidays,
-                        "city":city,"address":address,
-                        "liblecount":liblecount,"days":days,"atcheck":atcheck,"lastcheck":lastcheck,"checkout":checkout,
-                        "rid":rid};
-                        $.ajax({url:"muniao/House/inser",
-                            contentType:"application/json",
-                            type:"post",
-                            data:JSON.stringify(map),
-                            success:function(data){
-                            console.info(data)
-                        }})
-                    // console.info(""+hname+""+simg+""+himg+""+rid+""+sid+""+feature+""+xcoord+""+ycoord+""+traffic+""+rim)
-                    // $.post("muniao/House/insert",{'hname':hname,'simg':simg,'himg':himg,'rid':rid,
-                    // 'sid':sid,'feature':feature,'xcoord':xcoord,'ycoord':ycoord,'traffic':traffic,'rim':rim
-                    // },function(da){
-                    //     layer.msg(JSON.stringify(da.field));
-                    // })
-                });
-            });
-        </script>
+
 </body>
 </html>

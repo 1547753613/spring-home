@@ -19,7 +19,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="//jci.xiaozhustatic1.com/e20200803/xzcss?css=global,page,suggest,jquery-ui,calendar,rz,newdetailpage,zhima_icon_span,shareinvite,sc" />
      -->
     <link rel="stylesheet" type="text/css" href="/assets/css/xzcss1.css?css=global,page,suggest,jquery-ui,calendar,rz,newdetailpage,zhima_icon_span,shareinvite,sc" />
-
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
 </head>
 <body>
 <!--header-->
@@ -37,7 +37,7 @@
     <div class="detail_head clearfix">
         <!--<a href="https://www.xiaozhu.com" class="xz_logo_detail">小猪</a><span class="slogan_v2 slogan_black"></span>-->
         <ul class="nav_R nav_commen">
-            <li><a rel="nofollow" title="" class="show-register-box" href="https://www.xiaozhu.com/register?next=https%3A%2F%2Fsz.xiaozhu.com%2Ffangzi%2F6257935516.html">首页</a></li>
+            <li><a rel="nofollow" title="" class="show-register-box" href="/muniao/toIndex">首页</a></li>
             <!--<li></li>-->
             <!--<li><a rel="nofollow" class="logindialog" href="https://www.xiaozhu.com/login?next=https%3A%2F%2Fsz.xiaozhu.com%2Ffangzi%2F6257935516.html"></a></li>-->
             <!--<li></li>-->
@@ -199,7 +199,7 @@
                 <a class="r_input" id="mobileInfoPerfeactBtn" href="#">确定</a>
                 <p class="tc mt_20">
             <span class="check_css3 agreeResBox">
-                <input type="checkbox"  class="input_check" id="check3">
+                <input type="checkbox"  class="input_check" id="">
                 <label for="check3"></label>
             </span> 我同意  <a href="https://www.xiaozhu.com/help/service" class="r-service-protocol" target="_blank">《服务协议》、</a><a href="https://www.xiaozhu.com/help/privacy" class="r-service-protocol" target="_blank">《隐私保护声明》</a></p>
             </div>
@@ -403,7 +403,7 @@
                     </div>
                     <div valign="middle" align="center">
                         <div id="imgMouseCusor" style="background:url(https://appmusics.oss-cn-beijing.aliyuncs.com/2ba5cbf1-32b5-4258-8bfd-eb1edd0cbf02)"></div>
-                        <img id="curBigImage" th:src="${house.simg}" alt="" />
+                        <img id="curBigImage" th:src="${house.simg}" alt=""  style="width: 800px;"/>
 
                     </div>
                 </div>
@@ -437,12 +437,12 @@
                 <li>
                     <h6 class="h_ico3">共<span th:text="${houseBedSize}"></span>种</h6>
                     <p>
-                        <span th:each="bed:${bedType}">
-                            <span th:text="${bed.bname}"></span>
-                        </span> ×
+
                         <span th:each="housebe:${houseBed}">
+                            <span th:text="${housebe.bedtype.bname}"></span>×
                          <span th:text="${housebe.count}"></span>张<br />
-                               </span>               </p>
+                        </span>
+                    </p>
                 </li>
             </ul>
             <div class="box_white clearfix detail_intro_item" hideheight="135" showheight="120" >
@@ -514,20 +514,6 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="xq_map" style="position:relative">
-            <div class="map_btm"></div><div class="xq_map" id="detailMap" style="height:500px"></div>
-            <div class="map_text">
-                <table>
-                    <tr>
-                        <td>
-                            <!--这里-->
-                            <span th:text="${houseAddress.city}"></span>
-                        </td>
-                    </tr>
-                </table>
             </div>
         </div>
 
@@ -718,39 +704,25 @@
 
                         </div>
                     </div>
-                    <div class="white_bg">
-                        <ul class="cal_box clearfix">
-                            <li class="end">今天<br />已租</li>
-                            <li>28<br/>¥328</li>
-                            <li>29<br/>¥378</li>
-                            <li>30<br/>¥268</li>
-                            <li>31<br/>¥268</li>
-                            <li class="line_none_r"><a id="showMoreCalendar" href="#">全部<br>日历</a> </li>
-                        </ul>
-                    </div>
                 </div>                              </div>
             <!--预定end-->
 
             <!--landlord info start-->
-
-            <div class="js_box clearfix">
+            <div class="js_box clearfix" style="height: 200px;" th:each="land:${landlord}">
                 <div class="member_pic">
                     <div class="member_ico1"></div>
-                    <a href="https://www.xiaozhu.com/fangdong/6257881815/" target="_blank">
-                        <img  src="https://image.xiaozhustatic1.com/21/s,5,rQ6K,414,414,2,44ece91c.jpg" alt="" />
+                    <a th:href="${land.head}" target="_blank">
+                        <img  th:src="${land.head}" alt="" />
                     </a>
                 </div>
+
                 <div class="w_240">
                     <h6>
-                        <a class="lorder_name" href="https://www.xiaozhu.com/fangdong/6257881815/" title="西涌蝴蝶家民宿" target="_blank">西涌蝴蝶家民宿</a>
-                        <span class="member_girl_ico"></span>
+                        <a class="lorder_name" th:href="${land.head}" th:text="${land.nickname}" target="_blank"><span th:text="${land.nickname}"></span></a>
                     </h6>
-                    <p class="col_green">
-                        <span class="pl10" title="">实名认证</span>
-                        <!---->
-                        <!--<span class="zm_ico zm_credit">711</span>-->
-                        <!---->
-                    </p>
+                    <div>
+                        <span th:text="${land.greeting}"></span>
+                    </div>
 
                     <div id="alipay-trust-box" class="zhima_layer add4" style="display: none">
                         <div class="zhima_box_top">
@@ -768,12 +740,10 @@
                             <p class="f12">可在全国范围享受免押金入住</p>
                             <a href="https://www.xiaozhu.com/xzweb.php?op=FangKe_UserInfo" target="_blank" class="look_score">查看我的芝麻分>></a>
                         </div>
-                    </div>                                      </div>
-                <div class="on_line col_pink">
-                    <span></span>
-                    <a class="btn_chat  show-register-box " href="#ongo" id="webim-chat-user" userid="6257881815" roomid="6257935516">在线聊天</a>
+                    </div>
                 </div>
             </div>
+
             <!--landlord info end-->
         </div>
 

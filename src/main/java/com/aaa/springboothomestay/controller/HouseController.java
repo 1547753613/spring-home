@@ -17,6 +17,8 @@ import java.util.*;
 @RequestMapping("muniao/House")
 @Controller
 public class HouseController {
+    @Resource
+    LandlordImpl landlordimp;
     @Autowired
     OrderDetailsService orderDetailsService;
     @Autowired
@@ -106,10 +108,15 @@ public class HouseController {
 //            System.out.println(houseSup.get(i).getSupporting());
         }
         List<HouseBed> houseBed = houseBedimp.byhidquery(hid);
-        List<Bedtype> bedType = bedTypeimp.bybidquery(hid);
+
+
+        for (int i = 0;i<houseBed.size();i++)
+        {
+            Bedtype bedtypes = bedTypeimp.bybidquery(houseBed.get(i).getBid());
+            houseBed.get(i).setBedtype(bedtypes);
+        }
         HouseGeneralize houseGeneralize = houseGeneralizeimp.byhidquery(hid);
         Housetype housetype = houseTypeimp.bysidquery(hu.getSid());
-//        System.out.println(houseRequire.getRid());
         List<Requiretype> requireType = new ArrayList<Requiretype>();
         for (int i = 0;i<houseRequire.size();i++) {
            Requiretype requiretype = requireTypeimp.byidquery(houseRequire.get(i).getRid());
@@ -118,6 +125,7 @@ public class HouseController {
                requireType.add(requiretype);
            }
         }
+        Landlord landlord = landlordimp.querybyid(hu.getLid());
         model.addAttribute("house",hu);
         model.addAttribute("requireType",requireType);
         model.addAttribute("houseRequire",houseRequire);
@@ -132,11 +140,10 @@ public class HouseController {
         model.addAttribute("houseMany",houseMany);
         model.addAttribute("houseSup",houseSup);
         model.addAttribute("houseBed",houseBed);
-        model.addAttribute("bedType",bedType);
         model.addAttribute("housegeneralize",houseGeneralize);
         model.addAttribute("houseBedSize",houseBed.size());
         model.addAttribute("supportings",supportings);
-
+        model.addAttribute("landlord",landlord);
 
         Order order = ordersService.SelectOrderId(hid);
         if (null!=order){
@@ -185,6 +192,7 @@ public class HouseController {
         Double ycoord = Double.valueOf((String) map.get("ycoord"));
         String traffic = (String) map.get("traffic");
         String rim = (String) map.get("rim");
+        List<String> count2 = (List<String>) map.get("count");
         House house = new House();
         house.setHname(hname);
         house.setHimg(himg);
@@ -213,11 +221,12 @@ public class HouseController {
         Integer count = 1;
         List<String> bids = (List<String>) map.get("bids");
 
-        for (String id:bids)
+        for (int i = 0;i<bids.size();i++)
         {
             HouseBed houseBed = new HouseBed();
-            houseBed.setBid(Integer.parseInt(id));
+            houseBed.setBid(Integer.parseInt(bids.get(i)));
             houseBed.setHid(hid);
+            houseBed.setCount(Integer.parseInt(count2.get(i)));
             houseBedimp.insert(houseBed);
         }
         HouseGeneralize houseGeneralize = new HouseGeneralize();
@@ -238,6 +247,8 @@ public class HouseController {
             HouseSup houseSup = new HouseSup();
             houseSup.setSid(Integer.parseInt(id));
             houseSup.setHid(hid);
+            houseSup.setState(1);
+
             houseSupimp.insert(houseSup);
         }
 
@@ -290,4 +301,5 @@ public class HouseController {
        houseAddressimp.insert(houseAddress);
         return 1;
     }
+
 }
