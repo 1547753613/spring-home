@@ -38,7 +38,7 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public Integer UpdatePwd(String pass) {
-        return userDao.UpdatePwd(pass);
+    public Integer UpdatePwd(User user) {
+        return userDao.UpdatePwd(user);
     }
 }
