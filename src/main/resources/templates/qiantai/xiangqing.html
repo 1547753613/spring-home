@@ -664,6 +664,12 @@
                         }
 
                         function DayYuding() {
+
+                            var uname=$("#uname").val();
+                            if (uname==''||uname==null){
+                                alert("请先登录");
+                                return;
+                            }
                             var  time=$("#startenddate").val();
                             if (''==time||$.trim($("#day_yuding").text())=='立即预订'){
                                 alert("请选择有效的预定时间")
@@ -700,6 +706,7 @@
                             <input type="hidden" id="end">
                             <input type="hidden" id="day">
                             <input type="hidden" id="many">
+                            <input type="hidden" id="uname" th:value="${session.user.getUname()}">
 
 
                         </div>

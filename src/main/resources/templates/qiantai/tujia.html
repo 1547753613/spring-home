@@ -100,7 +100,7 @@
 
                                 <li><a href="/muniao/findUser">个人中心</a></li>
 
-                <li th:if="${landid}!=null"><a href="muniao/House/toinsert"><发布房源></发布房源></a></li>
+                <li th:if="${session.landlord}"><a href="/muniao/House/toinsert">发布房源</a></li>
 
                 <li><a href="#">目的地</a></li>
 
@@ -117,6 +117,8 @@
 
         <div class="user-login-before">
             <span th:if="${session.user} != null"><img th:src="${session.user.head}" style="border-radius:40px;" height="40px" width="50px" ><span style="font-size: 10px; color: red;" th:text="${session.user.uname}"></span></span>
+            <a href="/muniao/login">登录</a>
+
             <a href="/muniao/tologin">房东登录</a>
             <a href="/muniao/logout">退出登录</a>
 
