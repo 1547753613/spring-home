@@ -110,7 +110,7 @@ public class UserController {
         User map = (User) httpSession.getAttribute("user");
         int uid = map.getUid();
         List<User> userList = userimpl.findByIdUser(uid);
-        model.addAttribute("userList",userList.get(0));
+            model.addAttribute("userList",userList.get(0));
         return "/qiantai/usercenter-info";
     }
     /**
@@ -126,16 +126,9 @@ public class UserController {
         if (!file.isEmpty()) {
             //文件的完整名称,如spring.jpeg
             String filename = file.getOriginalFilename();
-            //获取时间戳
-            String newDatetime = String.valueOf(System.currentTimeMillis());
-            //文件后缀,如.jpegxx
-            String suffix = filename.substring(filename.lastIndexOf("."));
-            // 生成文件新的名字
-            String newFileName = UUID.randomUUID() + "-" + newDatetime + suffix;
-
-            String dateFileName = newFileName ;
+            String filenewname= "/"+filename;
             //封装上传文件位置的全路径
-            File targetFile = new File(filePath, newFileName);
+            File targetFile = new File(filePath, filename);
             //把本地文件上传到封装上传文件位置的全路径
             try {
                 //保存图片
@@ -144,9 +137,8 @@ public class UserController {
                 file.transferTo(targetFile);
                 User user = new User();
                 user.setUid(uid);
-                user.setHead(dateFileName);
+                user.setHead(filenewname);
                 userimpl.UpdateLead(user);
-                System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+userimpl.UpdateLead(user));
                 //获取用户的session信息
                 res1.put("src", filePath);
                 res.put("data", res1);
@@ -189,7 +181,7 @@ public class UserController {
 
     //修改密码
     @RequestMapping("/updatepwd")
-    public String UpdatePwd(@RequestParam Map map ,HttpSession session,String pass) {
+    public String updatepwd(@RequestParam Map map ,HttpSession session) {
         User map1 = (User) session.getAttribute("user");
         int uid = map1.getUid();
         //创建用户对象
@@ -197,9 +189,8 @@ public class UserController {
         //获取需要修改的值并修改实体类的属性值
         users.setUid(uid);
         users.setPass((String) map.get("pass"));
-        int i = userimpl.UpdatePwd(pass);
-        System.out.println(userimpl.UpdatePwd(pass));
-        return "redirect:findUser";
+        userimpl.UpdatePwd(users);
+        return "redirect:login";
     }
 
     /**

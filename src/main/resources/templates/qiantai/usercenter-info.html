@@ -18,6 +18,67 @@
     <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="/assets/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
+<!--    <style type="text/css">-->
+<!--        .ttt-->
+<!--        {-->
+<!--            background-color:red;-->
+<!--        }-->
+<!--        .ttter-->
+<!--        {-->
+<!--            background-color:white;-->
+<!--        }-->
+<!--        div-->
+<!--        {-->
+<!--            color:red;-->
+<!--        }-->
+<!--    </style>-->
+
+
+<!--    <script type="text/javascript">-->
+<!--        function $(id)-->
+<!--        {-->
+<!--            return document.getElementById(id);-->
+<!--        }-->
+<!--        function yuanmima() {-->
+<!--            var checkyuanmima = $("ymmpass");-->
+<!--            if (checkyuanmima.value == "") {-->
+<!--                $("ymm").innerHTML = "原密码不能为空";-->
+<!--                $("ymmpass").className = "ttt";-->
+<!--                return false;-->
+<!--            }-->
+<!--            if (checkyuanmima.value.length < 2 || checkyuanmima.value.length > 10) {-->
+<!--                $("ymm").innerHTML = "原密码长度不合法";-->
+<!--                //当电话长度不合法时显示背景颜色-->
+<!--                checkyuanmima.className = "ttt";-->
+<!--                return false;-->
+<!--            }-->
+<!--            // // 1、不能有特殊字符和数字；-->
+<!--            // // 2、可以输入英文，可以有空格，可以输入英文名字中的点；-->
+<!--            // // 3、可以输入汉字；-->
+<!--            // // 4、中文英文不能同时出现；-->
+<!--            //-->
+<!--            var reg = /^([\u4e00-\u9fa5]{1,20}|[a-zA-Z\.\s]{1,20})$/;-->
+<!--            if (!reg.test(checkyuanmima.value)) {-->
+<!--                checkyuanmima.className = "ttt";-->
+<!--                $("ymm").innerHTML = "格式不正确";-->
+<!--                return false;-->
+<!--            }-->
+<!--            $("ymm").innerHTML = "";-->
+<!--            $("ymmpass").className = "ttter";-->
+<!--            return true;-->
+<!--        }-->
+<!--        function jiaoyan()-->
+<!--        {-->
+<!--            var isxingming = checkyuanmima();-->
+
+<!--            if (isxingming)-->
+<!--            {-->
+<!--                return true;-->
+<!--            }-->
+<!--            return false;-->
+<!--        }-->
+
+<!--    </script>-->
 </head>
 <body>
 
@@ -62,25 +123,24 @@
                                 <img width="100" height="100" class="js-img-show" id="avatarShow" th:src="${userList.head}">
                             </span>
                                 <span class="fl upload-inp-box" style="margin-left:70px;">
-                                <span class="button btn-green btn-w100" id="jsAvatarBtn">修改头像</span>
+                                <span class="button btn-green btn-w100" style="margin-left:70px;" id="jsAvatarBtn">修改头像</span>
                                 <input type="file" name="file" id="avatarUp" class="js-img-up"/>
                             </span>
                             </label>
                             <input type='hidden' name='csrfmiddlewaretoken' value='799Y6iPeEDNSGvrTu3noBrO4MBLv6enY' />
                         </form>
                         <div style="border-top:1px solid #eaeaea;margin-top:30px;">
-                            <a class="button btn-green btn-w100" id="jsUserResetPwd" style="margin:80px auto;width:100px;">修改密码</a>
+                            <a class="button btn-green btn-w100" id="jsUserResetPwd" style="margin:20px auto;width:100px;">修改密码</a>
                         </div>
                     </div>
                     <form method="post" action="/muniao/updateusershow" class="perinform" id="jsEditUserForm" autocomplete="off">
 
                         <ul class="right">
-                            <li>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：
+                            <li>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：
                                 <span th:text="${userList.uname}"></span>
                             </li>
-                            <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：
+                            <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：
                                 <span th:text="${userList.phone}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</span>
-<!--                                <a th:href="">提现</a>-->
                             </li>
                             </li>
                             <li>真 实 姓 名：
@@ -89,7 +149,7 @@
                             <li>身 份 证 号：
                                 <span th:text="${userList.idcard}"></span>
                             </li>
-                            <li>状&nbsp;&nbsp;&nbsp;&nbsp;态：
+                            <li>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：
                                 <span th:text="${userList.state}==1?'正常': '不正常'"></span>
                             </li>
                             <li class="button heibtn">
@@ -145,18 +205,19 @@
         <h1>修改密码</h1>
         <div class="close jsCloseDialog"><img src="/assets/images/dig_close.png"/></div>
         <div class="cont">
-            <form id="jsResetPwdForm" autocomplete="off" method="post" action="/muniao/updatepwd">
+            <form id="jsResetPwdForm" autocomplete="off" method="post" action="/muniao/updatepwd" onsubmit="return jiaoyan()">
                 <div class="box">
                     <span class="word2" >原&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input type="password" id="ypass" name="oldpass"  placeholder="6-20位非中文字符"/>
+                    <input type="password" id="ymmpass" name="ypass" class="txt" onfocus="this.className='ttt'" onblur="yuanmima()">
+                    <div id="ymm"></div>
                 </div>
                 <div class="box">
                     <span class="word2" >新&nbsp;&nbsp;密&nbsp;&nbsp;码</span>
-                    <input type="password" id="xpass" name="pass" placeholder="6-20位非中文字符"/>
+                    <input type="password" id="xmmpass" name="pass" placeholder="6-20位非中文字符"/>
                 </div>
                 <div class="box">
                     <span class="word2" >确定密码</span>
-                    <input type="password" id="qpass" name="newpass2" placeholder="6-20位非中文字符"/>
+                    <input type="password" id="qrpass" name="qpass" placeholder="6-20位非中文字符"/>
                 </div>
                 <div class="error btns" id="jsResetPwdTips"></div>
                 <div class="button">
@@ -164,86 +225,6 @@
                 </div>
                 <input type='hidden' name='csrfmiddlewaretoken' value='DaP7IUKm9FA9nELA9YUlYYWpyIDdCiIP' />
                 <input type='hidden' name='csrfmiddlewaretoken' value='799Y6iPeEDNSGvrTu3noBrO4MBLv6enY' />
-            </form>
-        </div>
-    </div>
-    <div class="dialogbox changeemai1 changephone" id="jsChangeEmailDialog">
-        <h1>修改邮箱</h1>
-        <div class="close jsCloseDialog"><img src="/assets/images/dig_close.png"/></div>
-        <p>请输入新的邮箱地址</p>
-        <form id="jsChangeEmailForm" autocomplete="off">
-            <div class="box">
-                <input class="fl change_email" name="email" id="jsChangeEmail" type="text" placeholder="输入重新绑定的邮箱地址">
-            </div>
-            <div class="box">
-                <input class="fl email_code" type="text" id="jsChangeEmailCode" name="code" placeholder="输入邮箱验证码">
-                <input class="getcode getting" type="button" id="jsChangeEmailCodeBtn" value="获取验证码">
-            </div>
-            <div class="error btns change_email_tips" id="jsChangeEmailTips" >请输入...</div>
-            <div class="button">
-                <input class="changeemai_btn" id="jsChangeEmailBtn" type="button" value="完成"/>
-            </div>
-            <input type='hidden' name='csrfmiddlewaretoken' value='DaP7IUKm9FA9nELA9YUlYYWpyIDdCiIP' />
-            <input type='hidden' name='csrfmiddlewaretoken' value='799Y6iPeEDNSGvrTu3noBrO4MBLv6enY' />
-        </form>
-    </div>
-
-    <div  class="noactivebox dialogbox" id="jsUnactiveForm" >
-        <h1>邮件验证提示</h1>
-        <div class="close jsCloseDialog"><img src="/assets/images/dig_close.png"/></div>
-        <div class="center">
-            <img src="/assets/images/send.png"/>
-            <p>我们已经向您的邮箱<span class="green" id="jsEmailToActive">12@13.com</span>发送了邮件，<br/>为保证您的账号安全，请及时验证邮箱</p>
-            <p class="a"><a class="btn" id="jsGoToEmail" target="_blank" href="http://mail.qq.com">去邮箱验证</a></p>
-            <p class="zy_success upmove"></p>
-            <p style="display: none;" class="sendE2">没收到，您可以查看您的垃圾邮件和被过滤邮件，也可以再次发送验证邮件（<span class="c5c">60s</span>）</p>
-            <p class="sendE">没收到，您可以查看您的垃圾邮件和被过滤邮件，<br/>也可以<span class="c5c green" id="jsSenEmailAgin" style="cursor: pointer;">再次发送验证邮件</span></p>
-        </div>
-    </div>
-    <div class="resetpassbox dialogbox" id="jsSetNewPwd">
-        <h1>重新设置密码</h1>
-        <div class="close jsCloseDialog"><img src="/assets/images/dig_close.png"/></div>
-        <p class="green">请输入新密码</p>
-        <form id="jsSetNewPwdForm">
-            <div class="box">
-                <span class="word2">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
-                <input type="password" name="password" id="jsResetPwd" placeholder="请输入新密码"/>
-            </div>
-            <div class="box">
-                <span class="word2">确&nbsp;认&nbsp;密&nbsp;码</span>
-                <input type="password" name="password2" id="jsResetPwd2" placeholder="请再次输入新密码"/>
-            </div>
-            <div class="box">
-                <span class="word2">验&nbsp;&nbsp;证&nbsp;&nbsp;码</span>
-                <input type="text" name="code" id="jsResetCode" placeholder="请输入手机验证码"/>
-            </div>
-            <div class="error btns" id="jsSetNewPwdTips"></div>
-            <div class="button">
-                <input type="hidden" name="mobile" id="jsInpResetMobil" />
-                <input id="jsSetNewPwdBtn" type="button" value="提交" />
-            </div>
-            <input type='hidden' name='csrfmiddlewaretoken' value='DaP7IUKm9FA9nELA9YUlYYWpyIDdCiIP' />
-        </form>
-    </div>
-    <div class="forgetbox dialogbox">
-        <h1>忘记密码</h1>
-        <div class="close jsCloseDialog"><img src="/assets/images/dig_close.png"/></div>
-        <div class="cont">
-            <form id="jsFindPwdForm" autocomplete="off">
-                <input type='hidden' name='csrfmiddlewaretoken' value='DaP7IUKm9FA9nELA9YUlYYWpyIDdCiIP' />
-                <div class="box">
-                    <span class="word2" >账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</span>
-                    <input type="text" id="account" name="account" placeholder="手机/邮箱"/>
-                </div>
-                <div class="box">
-                    <span class="word3">验证码</span>
-                    <input autocomplete="off" class="form-control-captcha find-password-captcha" id="find-password-captcha_1" name="captcha_f_1" placeholder="请输入验证码" type="text" /> <input class="form-control-captcha find-password-captcha" id="find-password-captcha_0" name="captcha_f_0" placeholder="请输入验证码" type="hidden" value="5f3c00e47fb1be12d2fd15b9a860711597721b3f" /> &nbsp;<img src="/captcha/image/5f3c00e47fb1be12d2fd15b9a860711597721b3f/" alt="captcha" class="captcha" />
-                </div>
-                <div class="error btns" id="jsForgetTips"></div><!--忘记密码错误-->
-                <div class="button">
-                    <input type="hidden" name="sms_type" value="1">
-                    <input id="jsFindPwdBtn" type="button" value="提交" />
-                </div>
             </form>
         </div>
     </div>
@@ -304,17 +285,6 @@
         });
     });
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
     var shareUrl = '',

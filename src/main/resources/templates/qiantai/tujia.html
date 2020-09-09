@@ -116,13 +116,9 @@
         </div>
 
         <div class="user-login-before">
-
-            <!--                <a href="#">注册</a>-->
-
-            <a href="/muniao/login">登录</a>
+            <span th:if="${session.user} != null"><img th:src="${session.user.head}" style="border-radius:40px;" height="40px" width="50px" ><span style="font-size: 10px; color: red;" th:text="${session.user.uname}"></span></span>
             <a href="/muniao/tologin">房东登录</a>
             <a href="/muniao/logout">退出登录</a>
-
 
         </div>
 

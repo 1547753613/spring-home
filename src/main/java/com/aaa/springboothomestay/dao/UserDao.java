@@ -38,10 +38,10 @@ public interface UserDao  {
 
     /**
      * 修改密码
-     * @param pass
+     * @param user
      * @return
      */
-    Integer UpdatePwd(@Param("pass") String pass);
+    Integer UpdatePwd(User user);
 
 
 }

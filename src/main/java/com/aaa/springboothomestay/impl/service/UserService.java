@@ -34,5 +34,5 @@ public interface UserService {
      * @param pass
      * @return
      */
-    Integer UpdatePwd(String pass);
+    Integer UpdatePwd(User user);
 }
