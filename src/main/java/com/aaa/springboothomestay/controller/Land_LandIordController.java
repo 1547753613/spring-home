@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 @RequestMapping("muniao")
@@ -21,12 +23,13 @@ public class Land_LandIordController {
 
     //房东登录
     @PostMapping("/todenglu")
-    public String login(String nickname, String pass, Model model){
+    public String login(String nickname, String pass, Model model, HttpSession session){
         Landlord landlord = land_landIordService.findLandIord(nickname,pass);
         if(landlord == null || !pass.equals(landlord.getPass())) {
             return "qiantai/denglu/index2";
         }
         model.addAttribute("landlord",landlord);
+        session.setAttribute("landlord",landlord);
         return "/qiantai/tujia";
     }
 }

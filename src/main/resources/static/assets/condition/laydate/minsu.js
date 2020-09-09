@@ -3,23 +3,34 @@ if (nowDate==null){
     nowDate=new Date();
 }
 if (null==days){
-    days=1;
-}
-
-for (var i=1;i<=days;i++){
-
-    nowDate.setDate(nowDate.getDate()+1)
-    var year = nowDate.getFullYear();
-
-    var month = nowDate.getMonth()+1;
-
-    var date = nowDate.getDate();
-    var da=[year,month,date].join('-')
-    end=[year,month,date+1].join('-')
-    obj[da]='有客'
+    days=0;
+}else {
+    days=Math.ceil( (nowDate.getTime()- new Date().getTime())/ (1000 * 60 * 60 * 24))
 
 }
+days=days<0?0:days;
+var d=new Date();
 
+    for (var i = 0; i <= days; i++) {
+        var year = d.getFullYear();
+
+        var month = d.getMonth() + 1;
+
+        var date = d.getDate();
+        var da = [year, month, date].join('-')
+        if (days!=0) {
+            end = [year, month, date + 1].join('-')
+
+            obj[da] = '有客'
+        }else {
+            end = [year, month, date ].join('-')
+
+        }
+        d.setDate(d.getDate() + 1)
+
+    }
+
+console.log(end)
 
 laydate.render({
     elem: '#startenddate',

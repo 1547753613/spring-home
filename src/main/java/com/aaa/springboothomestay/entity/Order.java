@@ -4,13 +4,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 @Data
 @Table(name = "orders")
 public class Order {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;//	varchar	主键
     private Integer hid;//	int	房屋表外键
@@ -27,5 +31,16 @@ public class Order {
     private House house;
     private User user;
     private OrdersDetails ordersDetails;
+
+    public static void main(String[] args) {
+        Date date=new Date(new java.util.Date().getTime());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String parse = dateFormat.format(date);
+        Date date1=new Date((date.getTime()+60000*15));
+        String parse1=dateFormat.format(date1);
+        System.out.println(parse);
+        System.out.println(parse1);
+
+    }
 
 }

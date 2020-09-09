@@ -111,15 +111,80 @@
     
 
 <script>
+    function checkpeople(val) {
+        $("#rentnumber").val(val);
+        $(".person_menu").hide();
+    }
     function showDiv(id) {
         if ($('#' + id).css('display') == 'none') $('#' + id).show(); else $('#' + id).hide();
     }
 
- 
+
+    function idcardTest(e) {
+        var idcard=e.target.value;
+        if (idcard.length==18){
+           // console.log(1)
+
+            var year=idcard.substr(6,4);
+            var month=idcard.substr(10,2);
+            var day=idcard.substr(12,2);
+            var sex=idcard.substr(16,1)%2==0?'女':'男'
+            var birth=year+'-'+month+'-'+day;
+            $('.birthday').text(birth);
+            $(".infor_gender").text(sex)
+        }else {
+            $('.birthday').text('-');
+            $(".infor_gender").text('-')
+        }
+    }
+    function submit() {
+        var name=$("[name='ordersDetails.checkname']").val();
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (name==''){
+            alert("真实姓名不能为空")
+            return false;
+        }
+        var idcard=$("[name='protect']").val();
+        var year=idcard.substr(6,4);
+
+        if (idcard==''){
+            alert("身份证号不能为空")
+            return false;
+        }
+        if (idcard.length!=18||!reg.test(idcard)){
+            alert("身份证号不规范")
+            return false;
+        }
+        if (2020-parseInt(idcard.substr(6,4))<18||2020-parseInt(idcard.substr(6,4))>120){
+            alert("年龄不规范")
+            return false;
+        }
+        return true;
+
+    }
+    function asubmit() {
+        if (submit()){
+            var form = document.getElementById('form1');
+//再次修改input内容
+
+            form.submit();
+
+        }
+    }
+
 </script>
 <div id="order_content" class="order_main">
-    <div class="order_content">
-        <div class="order_head w_mT30 clear">
+
+
+        <div class="order_content">
+            <form id="form1" action="/muniao/addOrders" method="post" onsubmit="return submit()">
+                <input type="hidden" th:value="${house.getId()}" name="hid">
+                <input type="hidden" th:value="${user.getUid()}" name="uid">
+                <input type="hidden" value="1" name="status">
+                <input type="hidden" th:value="${days}" name="ordersDetails.day">
+                <input type="hidden" name="ordersDetails.price" th:value="${room}*${days}">
+
+                <div class="order_head w_mT30 clear">
             <div class="order_head_left fl"><h2>订单申请</h2><p>提交入住申请<br>及相关信息</p></div>
             <div class="order_head_right fr"></div>
         </div>
@@ -129,30 +194,26 @@
                 <li>
                     <span>入住时间</span>
                     <div class="order_date_wrap">
-                        <div class="date_wrap">
-                            <a class="date_pre" href="javascript:void(0);"></a>
-                            <a class="date_next" href="javascript:void(0);"></a>
-                            <div class="month"><h3 class="date_title"></h3><ul class="week"><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul><ul class="day"></ul></div>
-                            <div class="month"><h3 class="date_title"></h3><ul class="week"><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul><ul class="day"></ul></div>
-                        </div>
-                        <input type="text" id="start_date" name="start_date_a" readonly th:value="${start}" >
+                        <input type="date" id="checkdate" name="ordersDetails.checkdate" readonly th:value="${start}" >
                     </div>
                 </li>
                 <li>
                     <span>退房时间</span>
-                    <div class="order_date_wrap"><input type="text" id="end_date" name="end_date_a" readonly value="2020-09-06"></div>
+                    <div class="order_date_wrap"><input type="date" id="leavedate" name="ordersDetails.leavedate" readonly th:value="${end}"></div>
                 </li>
 
                 <li>
                     <span>入住人数</span>
-                    <div class="order_date_wrap c_rentnumber"><input id="rentnumber" type="text" name="rentnumber_a" value="1人" readonly="readonly" onclick="$('.person_menu').show();"></div>
+                    <div class="order_date_wrap c_rentnumber">
+
+                        <input id="rentnumber" type="text" name="ordersDetails.checkcount" value="1" readonly="readonly" onclick="$('.person_menu').show();"></div>
                     <div class="person_menu">
-                                <a href="javascript:void(0);" data-num="1">1人</a>                                <a href="javascript:void(0);" data-num="2">2人</a>
+                        <a href="javascript:checkpeople(1);" data-num="1">1</a>
+                        <a href="javascript:checkpeople(2);" data-num="2">2</a>
                     </div>
                 </li>
             </ul>
         </div>
-        <form id="form1" action="" method="post">
             <!---入住人信息-->
             <div class="order_class w_mT28">
 
@@ -160,16 +221,19 @@
                     <ul>
                         <li class="check_infor_title clear">
                             <span class="name">真实姓名</span>
-                            <span class="person_id">身份证号码</span>
+                            <span>手机号</span>
+                            <span class="person_id" style="margin-left: 150px;">身份证号码</span>
                             <span class="gender">性别</span>
                             <span class="birth">出生日期</span>
                         </li>
                         <li class="add_infor clear" style="margin-top:5px;">
-                            <div class="fullname" style="border-radius:5px;"><input type="text" name="fullname" onkeyup="rp_background(this);" onpaste="rp_background(this);" maxlength="10" value=""></div>
-                            <div class="idcard" style="border-radius:5px;"><input type="text" name="idcard" maxlength="18" value=""></div>
+                            <div class="fullname" style="border-radius:5px;"><input type="text" name="ordersDetails.checkname"  maxlength="10" value=""></div>
+                            <div style="border-radius:5px;"><input type="text" name="ordersDetails.phone" maxlength="18" value="" th:maxlength="18"></div>
+                            <div class="idcard" style="border-radius:5px;"><input type="text" name="protect" maxlength="18" value="" onkeyup="idcardTest(event)"></div>
+
                             <div class="infor_gender" style="padding: 5px 0;">-</div>
                             <div class="birthday" style="padding: 5px 0;">-</div>
-                            <div class="delete" onclick="clear_tr(this)">清空</div>
+
                         </li>
                     </ul>
                     <div class="choice_often">
@@ -179,59 +243,36 @@
                 </div>
               
             </div>
-            <!---使用优惠--->
-            <div class="order_class w_mT28" id="bonus4use">
-                <div style="display:none;">
-                    <input type="hidden" name="RoomId" id="RoomId" value="69199">
-                    <input type="hidden" name="RentCount" id="RentCount" value="1">
-                    <input type="hidden" name="StartDate" id="StartDate" value="2020-09-05">
-                    <input type="hidden" name="EndDate" id="EndDate" value="2020-09-06">
-                    <input type="hidden" name="RentNumber" id="RentNumber" value="1">
-                    <input type="hidden" name="BonusId" id="BonusId" value="0">
-                    <input type="hidden" name="RentMoneyAccounts" id="RentMoneyAccounts" value="0">
-                    <input type="hidden" id="UserAllRentMoney" value="0.0000">
 
-                    <input type="hidden" name="Amount" id="Amount" value="218.00">
-                    <input type="hidden" name="TAmount" id="TAmount" value="218.00">
-                    <input type="hidden" name="BAmount" id="BAmount" value="218.00">
-                    <input type="hidden" name="Insurance" id="Insurance" value="0">
-                    <input type="hidden" name="Bonus" id="Bonus" value="0">
-                    <input type="hidden" name="BonusType" id="BonusType" value="-1">
-                    <input type="hidden" name="Title" id="Title" value="万达广场SOHO舒适大床房">
-                    <input type="hidden" name="WeekDiscount" id="WeekDiscount" value="96.00">
-                    <input type="hidden" name="MonthDiscount" id="MonthDiscount" value="90.00">
-                    <input type="hidden" name="PayProportion" id="PayProportion" value="3">
-                    <input type="hidden" name="from" id="from" value="">
-                </div>
-                <div class="remarks"><textarea cols="10" name="Message" maxlength="200" placeholder="请在这里告诉房东您的特殊需求或疑问。(200字以内)"></textarea></div>
-            </div>
-        </form>
+
+
         <div class="submit">
-            <a class="sub_order" id="sub_order1" onclick="submit()" href="javascript:void(0);">提交订单</a>
+            <a class="sub_order" id="sub_order1" onclick="asubmit()" href="javascript:void(0);">提交订单</a>
             <div class="payment" style="">
-                <span class="real-payment">实付款：￥<em id="em_bottom_needprice" class="needprice">218.00</em></span><br>
+                <span class="real-payment">实付款：￥<em id="em_bottom_needprice" class="needprice" th:text="${room}*${days}"></em></span><br>
                 <span class="pay-disicount">优惠金额：￥<em class="has_discount">0.00</em></span>
             </div>
             <p>当您提交订单时，表示您已经仔细阅读并同意<a class="jy_rule" href="javascript:void(0);">《退款规则》</a></p>
         </div>
+            </form>
     </div>
     <!----右侧--->
     <div id="order_r" class="order_right">
         <div class="order_r_top" style="background-color:#fff;">
             <div class="order_right_head">
-                <a class="contact webim-chatbtn" href="#chat@167112" data-id="144430" data-title="" data-image="http://assets.muniao.com/UploadFiles/root/room/69199/base/0919684862834b6eb852429411d066fa.jpg">&nbsp;<span style="display:none;"></span></a>
-                <div class="h_portrait"><img src=""></div>
-                <div class="order_right_pir"><span style="text-shadow: #000000 0px 2px 1px;">￥218.00/天</span></div>
-                <div class="booking_head_bg"><img style="border-radius:2px;" width="100%" height="100%" ></div>
+                <a class="contact webim-chatbtn" href="#chat@167112" data-id="144430" data-title="" data-image="">&nbsp;<span style="display:none;"></span></a>
+                <div class="h_portrait"><img th:src="${house.getLandlord().getHead()}"></div>
+                <div class="order_right_pir"><span style="text-shadow: #000000 0px 2px 1px;" th:text="'￥'+${house.getHouseMany().getHolidays()}+'/天'"></span></div>
+                <div class="booking_head_bg"><img style="border-radius:2px;" width="100%" height="100%" th:src="${house.getSimg()}"></div>
             </div>
             <div class="order_details">
-                <h3>万达广场SOHO舒适大床房</h3>
+                <h3 th:text="${house.getHname()}"></h3>
                 <p class="book_num"><em id="em_RentNumber">1</em>位房客<span>预订</span><em id="em_RentCount" class="room_num">1</em>套</p>
-                <p class="book_date"><em id="em_startdate" class="w_fColor8 start_date_span">2020-09-05</em><span>至</span>&nbsp;<em id="em_enddate" class="w_fColor8 w_mgR end_date_span">2020-09-06</em>共<em class="daynum">1</em>晚</p>
+                <p class="book_date"><em id="em_startdate" class="w_fColor8 start_date_span" th:text="${start}"></em><span>至</span>&nbsp;<em id="em_enddate" class="w_fColor8 w_mgR end_date_span" th:text="${end}"></em>共<em class="daynum" th:text="${days}"></em>晚</p>
             </div>
             <ul class="detail_list">
                         <li><span class="l_title">周折扣</span><em class="j_discount">预订满7天可享9.6折优惠</em></li>                        <li><span class="l_title">月折扣</span><em class="j_discount">预订满30天可享9.0折优惠</em></li>
-                <li><span class="order_all w_bookingmx fr" onclick="$('#div_orderdetail').show();">订单明细</span><span class="l_title">房款总额：</span><em class="totalprice">￥218.00</em> <!--(<em class="j_discount">无折扣</em>)--></li>
+                <li><span class="order_all w_bookingmx fr" >订单明细</span><span class="l_title">房款总额：</span><em class="totalprice" th:text="'￥'+${room}*${days}"></em> <!--(<em class="j_discount">无折扣</em>)--></li>
 
                 <li id="baoxianli"><span class="l_title">保险总额：</span><span id="sp_baoxian" class="w_color l_money" style="color:#fd3300;">+￥0.00（<font style="color:#52a7ff;">赠送</font>）</span></li>
                 <li id="li_zubi" style="display:none;"><span class="l_title">租币抵扣：</span><em class="l_money" style="color:#52a7ff;">-￥0.00</em></li>
@@ -239,43 +280,9 @@
                 <li id="li_youhui" style="display:none;"><span class="l_title">优惠券：</span><span class="l_money" style="color:#52a7ff;">-￥0.00</span></li>
             </ul>
             <div class="detail_sub_order">
-                <a class="sub_bot" id="sub_order2" onclick="submit()" href="javascript:void(0);">提交订单</a>
-                <i></i><span style="float:left;">实付款：￥</span><em id="em_needprice" class="needprice" style="color:#fff;font-weight:bolder;">218.00</em>
+                <a class="sub_bot" id="sub_order2" onclick="asubmit()" href="javascript:void(0);">提交订单</a>
+                <i></i><span style="float:left;">实付款：￥</span><em id="em_needprice" class="needprice" style="color:#fff;font-weight:bolder;" th:text="${room}*${days}"></em>
             </div>
-        </div>
-        <div class="book_bz" style="border:0;">
-            <ul id="w_listbzul" class="w_listbzul f14" style="margin-left: 110px;border-top:0;">
-                <li>
-                    <span>房源100%人工审核</span>
-                    <div class="w_listbztip f12" style="display: none;">
-                        1) 我们的每一个房东，每一间房间都是由木鸟员工线上人工审核。<br>
-                        2）我们每一个房东都经过身份验证系统进行真实身份验证。
-                    </div>
-                </li>
-                <li>
-                    <span>付款到木鸟 资金有保障</span>
-                    <div class="w_listbztip f12" style="display: none;">
-                        1）在木鸟民宿任何平台预定的房间，房款都是有木鸟民宿代为保管，当您入住结束后房款才会转给房东。<br>
-                        2）假如您在入住过程中遇到任何不满意，木鸟民宿将全力帮您解决问题。
-                    </div>
-                </li>
-                <li>
-                    <span>保障入住人身安全</span>
-                    <div class="w_listbztip f12" style="display: none;">
-                        1）木鸟民宿上线以来服务了数千万房客，我们做了大量工作来保障您的交易和入住安全。<br>
-                        2）您在木鸟民宿pc端、app产生的订单我们将免费赠送您一份保险，保障您在入住过程中的人身安全。入住人数较多时，建议您自行为其购买住宿意外险。
-                    </div>
-                </li>
-                <li>
-                    <span>地主之谊出行无忧</span>
-                    <div class="w_listbztip f12" style="display: none;">
-                        我们的房东大都是不折不扣的当地人，他们愿为远道而来的您尽一尽地主之谊。<br>
-                        1）房东会告诉您当地哪里是最好玩的，让您能够真正的体验到旅行社所不能给的当地旅游景点及自然景观。<br>
-                        2）房东会告诉您去哪里吃能吃到当地的特色美食，哪怕是胡同里的一个小摊位，他还会告诉您哪里的美食价格合理不会被宰，有他拒绝宰客。<br>
-                        3）房东会告诉您出行的最佳路线，不走冤枉路，不打黑车，用最优的线路游最美的风景。
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
 </div>
@@ -334,21 +341,7 @@
         margin: 30px 30px;
     }
 </style>
-<div id="div_dialog">
-    <div style="text-align:center;">
-        <div id="div_close" title="关闭"><label onclick="$('#div_dialog').hide();">×</label></div>
-        <div style="font-size:16px;font-weight:bolder;padding-bottom:10px;">添加入住人</div>
-        <div style="padding:10px;">
-            <label style="font-size:13px;">真实姓名：</label>
-            <input type="text" id="txt_truename" class="dialog_input" value="" onkeyup="rp_background(this);" onpaste="rp_background(this);" />
-        </div>
-        <div style="padding:10px;">
-            <label style="font-size:13px;">身份证号：</label>
-            <input type="text" id="txt_idcard" class="dialog_input" value="" />
-        </div>
-        <a class="userinfo_tijiao1" onclick="adduserperson();" style="margin-top:20px;">确定</a>
-    </div>
-</div>
+
 <!--弹出框end-->
     <div class="s_mn_footerbox" id="s_mn_footerbox">
     <div class="s_mn_footer_center">

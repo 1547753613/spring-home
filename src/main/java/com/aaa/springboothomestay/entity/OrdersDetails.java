@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+import java.sql.Date;
 
 @Data
 @Table(name = "orders_details")
@@ -15,13 +15,13 @@ public class OrdersDetails {
     @Id
     private Integer id;//	int	主键
     private Integer oid;//	varchar	订单表外键
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @Column
+   // @DateTimeFormat(pattern="yyyy/MM/dd")
+   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+   @Column
     private Date checkdate;//	date	入住时间
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @Column
+   // @DateTimeFormat(pattern="yyyy/MM/dd")
+   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+   @Column
     private Date leavedate;//	date	离开时间
     private Integer day;//	int	天数
     private  Integer housecount;//	int	房屋套数

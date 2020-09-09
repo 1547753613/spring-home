@@ -664,6 +664,12 @@
                         }
 
                         function DayYuding() {
+
+                            var uname=$("#uname").val();
+                            if (uname==''||uname==null){
+                                alert("请先登录");
+                                return;
+                            }
                             var  time=$("#startenddate").val();
                             if (''==time||$.trim($("#day_yuding").text())=='立即预订'){
                                 alert("请选择有效的预定时间")
@@ -685,7 +691,7 @@
                             <div class="reserve_date">
                                 <div class="reserve_ico" id="detailCalendarIco"></div>
                                 <input type="text" class="date_input" oninput="dateChange()" id="startenddate" autocomplete="off" placeholder="入住日期 - 离开日期"  />
-                                <input th:if="${order!=null}"  type="hidden" name="enddate" id="enddate" th:value="${order.getOrdersDetails().getCheckdate()}" />
+                                <input th:if="${order!=null}"  type="hidden" name="enddate" id="enddate" th:value="${order.getOrdersDetails().getLeavedate()}" />
                                 <input th:if="${order!=null}" type="hidden" name="days" id="days" th:value="${order.getOrdersDetails().getDay()}">
 
 
@@ -700,6 +706,7 @@
                             <input type="hidden" id="end">
                             <input type="hidden" id="day">
                             <input type="hidden" id="many">
+                            <input type="hidden" id="uname" th:value="${session.user.getUname()}">
 
 
                         </div>
