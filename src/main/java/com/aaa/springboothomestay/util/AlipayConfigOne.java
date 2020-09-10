@@ -21,10 +21,10 @@ public class AlipayConfigOne {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkVdFulM0WPzcKVYp23+omfp9hMQ2PuWwOKLa0P6VGBzy2uSGwcbWnI75BhETpoh1KACyTFOc10fyvmxyJPIpbY89Sj0XVUdEDG1g1AwoctkqLjaw6EIZyAVrBqRGJKCPa27QUSjUxX13KXV5UUo+CKjLbnoVP8iuqPoTAi1Yp1rR4U/CZkd6ey6cpfLT81WIwvxOxfvqKEK2zme8BFzhBYZuR1KbH+VF965IXU01TvdM6Nw9LmMRdwGO4CX719RuZVkjyf8OAIU8y/Y2ao9WIDOhllM9qL57Dxz5xkOPc5cTiWdCB2rssJmOFVhstcFY7ybDkD6iv8PLiFM/GanGswIDAQAB";
 
     // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://localhost:8080/muniao/test/notify_url.view";
+    public static String notify_url = "http://localhost:8080/muniao/Landlord/notify_url.view";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://localhost:8080/muniao/test/return_url.view";
+    public static String return_url = "http://localhost:8080/muniao/Landlord/return_url.view";
 
     // 签名方式
     public static String sign_type = "RSA2";
