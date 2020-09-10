@@ -109,5 +109,11 @@ public class OrdersImpl implements OrdersService {
         return orderDao.queren(status);
     }
 
-
+    public List<Orders> bylidquery(Integer lid,Integer status)
+    {
+        return orderDao.bylidquery(lid,status);
+    }
+    public int updatebyoid(Integer oid,Integer status){
+        return orderDao.updatebyoid(oid,status);
+    }
 }

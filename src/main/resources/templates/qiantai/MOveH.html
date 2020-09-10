@@ -7,6 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <base href="/">
+    <link type="text/css" href="/assets/assetss/css/view.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="/assets/assetss/css/header.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/assetss/css/base.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/assetss/css/index.css" />
+    <link type="text/css" rel="stylesheet" href="/assets/assetss/css/footer.css" />
     <link href="../assets/css/layui.css" rel="stylesheet" type="text/css">
     <script src="../assets/js/layui.js" type="text/javascript"></script>
     <script src="../assets/js/layui.all.js" type="text/javascript"></script>
@@ -19,13 +24,51 @@
 </head>
 
 <body style=" background-color: #CCCCCC">
-<ul class="layui-nav layui-bg-cyan" style="height: 80px;">
-    <li class="layui-nav-item"><a href="/muniao/toIndex">首页</a></li>
-</ul>
-<div style="width: 800px;margin: 0 auto; background-color: #fffff7" class="layui-form">
+<div class="header">
+
+    <div class="wm-1200">
+
+
+        <div class="st-nav">
+
+            <ul class="clearfix">
+
+                <li class="active"><a href="#">首页</a></li>
+
+                <li><a href="/muniao/findUser">个人中心</a></li>
+
+                <li th:if="${session.landlord} != null"><a href="/muniao/House/toinsert">发布房源</a></li>
+                <li><a th:if="${session.landlord==null}" href="/muniao/Landlord/tolandlord">成为房东</a></li>
+            </ul>
+
+        </div>
+
+        <div class="user-login-before">
+            <span th:if="${session.user} != null"><img th:src="${session.user.head}" style="border-radius:40px;" height="40px" width="50px" ><span style="font-size: 10px; color: red;" th:text="${session.user.uname}"></span></span>
+            <a th:if="${session.user==null}" href="/muniao/login">登录</a>
+
+            <a th:if="${session.landlord==null}" href="/muniao/tologin">房东登录</a>
+            <a th:if="${session.landlord!=null}" href="#">查看客户订单</a>
+            <a href="/muniao/logout">退出登录</a>
+
+
+        </div>
+
+        <div class="user-login-after hide">
+
+            <a class="name" href="#"></a>
+
+            <a class="out" href="#">退出</a>
+
+        </div>
+
+    </div>
+
+</div>
+<div style="width: 800px;margin: 0 auto; background-color: #fffff7;border-radius: 20px;" class="layui-form">
     <div>
 
-        <div class="layui-upload" style="margin-left: 30px;margin-top: 10px">
+        <div class="layui-upload" style="margin-left: 30px;">
             <div class="layui-upload-list">
 
 

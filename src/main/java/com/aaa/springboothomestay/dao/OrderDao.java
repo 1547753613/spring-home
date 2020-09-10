@@ -28,8 +28,8 @@ public interface OrderDao {
     //确认
     Integer queren(Integer status);
 
-
-
+    List<Orders> bylidquery(@Param("lid") Integer lid,@Param("status") Integer status);
+    Integer updatebyoid(@Param("oid")Integer oid,@Param("status")Integer status);
 
 
 }
