@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -582,7 +582,7 @@
                         <p><span>预订人电话：</span>15225779401</p>
                     </div>
                     <div class="infor_pirce">
-                        <h3>总房款：<span>￥218.00</span></h3>
+                        <h3>总房款：<span id="money">￥218.00</span></h3>
                         <ul class="clear">
                             <li><span>入住时间</span></li>
                             <li><span>数量</span></li>
@@ -689,10 +689,11 @@
                            
                             <div class="pay">
                                 <div class="order_paycontentleft">&nbsp;</div>
-                                <a class="qr_pay" href="javascript:;">去支付</a>
+                                <!--这里-----获取的是价格跟订单编号----oid-订单详情编号----od-订单编号----------------->
+                                <a class="qr_pay" th:href="'/muniao/test/zftest?money='+10+'&oid='+31+'&od='+31">去支付</a>
                                 <div class="order_tj_bot clear" style="float:left;">
                                     <div class="order_share bdsharebuttonbox fr">
-                                        <a class="bds_more" href="javascript:void(0)" data-cmd="more">&nbsp;</a>
+                                        <a class="bds_more" href="#" data-cmd="more">&nbsp;</a>
                                         
                                     </div>
                                     <div class="tj_a fl">
@@ -707,7 +708,6 @@
         </div>
     </div>
     <script type="text/javascript">
-		
 </script>
 
     <!-- 20160224 add/chen -->

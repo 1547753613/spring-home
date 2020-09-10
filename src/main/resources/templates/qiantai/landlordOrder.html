@@ -27,7 +27,7 @@
 
                     <ul class="clearfix">
 
-                        <li class="active"><a href="#">首页</a></li>
+                        <li class="active"><a href="/muniao/toIndex">首页</a></li>
 
                         <li><a href="/muniao/findUser">个人中心</a></li>
 
@@ -95,7 +95,7 @@
                             <td th:text="${o.ordersDetails.price}"></td>
                             <td th:text="${o.status}==1?'待付款':(${o.status}==2?'待入住':(${o.status}==3?'待退房':(${o.status}==4?'已完成':(${o.status}==5?'已关闭':(${o.status}==6?'待处理':(${o.status}==7?'已处理':(${o.status}==0?'全部订单':'')))))))"></td>
                             <td th:text="${o.createtime}"></td>
-                            <td th:if="${o.status<3}"><a  th:href="'/muniao/updatebyoid?status=3&oid='+${o.id}+'&lid='+${o.house.lid}+''">确认订单</a></td>
+                            <td th:if="${o.status==2}"><a  th:href="'/muniao/updatebyoid?status=3&oid='+${o.id}+'&lid='+${o.house.lid}+''">确认订单</a></td>
                             <span th:value="${o.house.lid}" id="lid" hidden></span>
                         </tr>
                         </tbody>

@@ -75,10 +75,6 @@
                     <td th:text="${o.ordersDetails.day}"></td>
                 </tr>
                 <tr th:each="o : ${lists}">
-                    <th>房屋套数</th>
-                    <td th:text="${o.ordersDetails.housecount}"></td>
-                </tr>
-                <tr th:each="o : ${lists}">
                     <th>入住人数</th>
                     <td th:text="${o.ordersDetails.checkcount}"></td>
                 </tr>
@@ -109,6 +105,10 @@
                 <tr th:each="o : ${lists}">
                     <th>实际离开时间</th>
                     <td th:text="${o.ordersDetails.gotime}"></td>
+                </tr>
+                <tr th:each="o : ${lists}">
+                    <th>验证码</th>
+                    <td th:text="${o.ordersDetails.housecount}"></td>
                 </tr>
                 <tr>
                     <td></td>

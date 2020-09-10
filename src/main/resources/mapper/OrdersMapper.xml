@@ -69,7 +69,7 @@
             on d.id = o.id
             where o.id = #{id}
     </select>
-
+    <sql id="xbquery">select * from orders left join house on house.id = orders.hid left join orders_details on orders.id = orders_details.oid left JOIN `user` on `user`.uid = orders.uid</sql>
     <select id="findShow" resultMap="xx">
         select o.*,h.*,u.*,d.*
             from orders o
@@ -124,9 +124,9 @@
         </where>
     </select>
     <select id="bylidquery" resultMap="xx">
-        <include refid="que"></include>
+        <include refid="xbquery"></include>
         <where>
-            h.lid = #{lid}
+            house.lid = #{lid}
             <if test="status==0">
                 and 1=1
             </if>
@@ -152,7 +152,7 @@
                 and status=7
             </if>
         </where>
-        order by createtime  desc
+        ORDER BY orders_details.paytime DESC
     </select>
     <update id="updatebyoid">
         update orders set status=#{status} where id = #{oid}
