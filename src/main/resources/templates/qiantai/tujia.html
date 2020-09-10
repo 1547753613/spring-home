@@ -96,37 +96,30 @@
 
             <ul class="clearfix">
 
-                <li class="active"><a href="#">首页</a></li>
+                <li class="active"><a href="/muniao/toIndex">首页</a></li>
 
-                                <li><a href="/muniao/findUser">个人中心</a></li>
+                <li><a href="/muniao/findUser">个人中心</a></li>
 
-                <li th:if="${session.landlord}"><a href="/muniao/House/toinsert">发布房源</a></li>
-
-                <li><a href="#">目的地</a></li>
-
-                <li><a href="#">酒店预订</a></li>
-
-                <li><a href="/muniao/Landlord/tolandlord">成为房东</a></li>
-                <li><a href="#">团购</a></li>
-
-                <li><a href="#">发布</a></li>
-
+                <li th:if="${session.landlord} != null"><a href="/muniao/House/toinsert">发布房源</a></li>
+                <li><a th:if="${session.landlord==null}" href="/muniao/Landlord/tolandlord">成为房东</a></li>
             </ul>
 
         </div>
 
         <div class="user-login-before">
             <span th:if="${session.user} != null"><img th:src="${session.user.head}" style="border-radius:40px;" height="40px" width="50px" ><span style="font-size: 10px; color: red;" th:text="${session.user.uname}"></span></span>
-            <a href="/muniao/login">登录</a>
+            <a th:if="${session.user==null}" href="/muniao/login">登录</a>
 
-            <a href="/muniao/tologin">房东登录</a>
+            <a th:if="${session.landlord==null}" href="/muniao/tologin">房东登录</a>
+            <a th:if="${session.landlord!=null}" th:href="'/muniao/landorder?lid='+${session.landlord.lid}">查看客户订单</a>
             <a href="/muniao/logout">退出登录</a>
+
 
         </div>
 
         <div class="user-login-after hide">
 
-            <a class="name" href="#"><img class="hg" src="/assets/assetss/image/01.jpg" />吹啊吹啊我的骄傲放纵</a>
+            <a class="name" href="#"></a>
 
             <a class="out" href="#">退出</a>
 
@@ -135,7 +128,6 @@
     </div>
 
 </div>
-
 <!-- 公用头部 -->
 
 

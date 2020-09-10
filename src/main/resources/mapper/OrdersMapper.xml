@@ -15,6 +15,7 @@
         <collection property="house" javaType="com.aaa.springboothomestay.entity.House">
             <id property="id" column="id"></id>
             <result property="hname" column="hname"></result>
+            <result property="lid" column="lid"></result>
         </collection>
         <collection property="user" javaType="com.aaa.springboothomestay.entity.User">
             <id property="uid" column="uid"></id>
@@ -68,7 +69,7 @@
             on d.id = o.id
             where o.id = #{id}
     </select>
-
+    <sql id="xbquery">select * from orders left join house on house.id = orders.hid left join orders_details on orders.id = orders_details.oid left JOIN `user` on `user`.uid = orders.uid</sql>
     <select id="findShow" resultMap="xx">
         select o.*,h.*,u.*,d.*
             from orders o
@@ -122,5 +123,38 @@
             </if>
         </where>
     </select>
-
+    <select id="bylidquery" resultMap="xx">
+        <include refid="xbquery"></include>
+        <where>
+            house.lid = #{lid}
+            <if test="status==0">
+                and 1=1
+            </if>
+            <if test="status==1">
+                and status=1
+            </if>
+            <if test="status==2">
+                and status=2
+            </if>
+            <if test="status==3">
+                and status=3
+            </if>
+            <if test="status==4">
+                and status=4
+            </if>
+            <if test="status==5">
+                and status=5
+            </if>
+            <if test="status==6">
+                and status=6
+            </if>
+            <if test="status==7">
+                and status=7
+            </if>
+        </where>
+        ORDER BY orders_details.paytime DESC
+    </select>
+    <update id="updatebyoid">
+        update orders set status=#{status} where id = #{oid}
+    </update>
 </mapper>

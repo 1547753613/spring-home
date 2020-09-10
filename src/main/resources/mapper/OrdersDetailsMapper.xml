@@ -21,4 +21,7 @@
     <select id="findAllOdersDetails" resultMap="xx">
             select * from orders_details
     </select>
+    <update id="updatebyoid">
+            update orders_details set housecount = #{check},amount = #{money},paytime = #{dat} where id = #{oid}
+    </update>
 </mapper>

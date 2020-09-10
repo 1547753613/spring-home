@@ -4,13 +4,20 @@ import com.aaa.springboothomestay.aliyun.AliOSS;
 import com.aaa.springboothomestay.code.Result;
 import com.aaa.springboothomestay.code.ResultCode;
 import com.aaa.springboothomestay.code.ResultUtil;
+import com.aaa.springboothomestay.dao.OrdersDetailsDao;
 import com.aaa.springboothomestay.entity.Admins;
 import com.aaa.springboothomestay.entity.User;
+import com.aaa.springboothomestay.impl.OrdersImpl;
 import com.aaa.springboothomestay.impl.service.AdminService;
 import com.aaa.springboothomestay.impl.service.OrdersService;
 import com.aaa.springboothomestay.impl.service.UsersService;
+import com.aaa.springboothomestay.util.AlipayConfigOne;
 import com.aaa.springboothomestay.util.MultipartFileToFile;
 import com.aaa.springboothomestay.util.UUIDUtils;
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -21,15 +28,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 @CrossOrigin
 @Controller
@@ -146,4 +155,4 @@ public class TestController {
         //System.out.println(session);
         return 1;
     }
-}
+    }

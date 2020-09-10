@@ -24,7 +24,7 @@ public class OrdersDetails {
    @Column
     private Date leavedate;//	date	离开时间
     private Integer day;//	int	天数
-    private  Integer housecount;//	int	房屋套数
+    private  String housecount;//	int	房屋套数
     private Integer checkcount;//	int	入住人数
     private String checkname;//	varchar	入住人
     private String phone;//	varchar	手机号

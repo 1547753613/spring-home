@@ -1,9 +1,11 @@
 package com.aaa.springboothomestay.controller;
 import com.aaa.springboothomestay.entity.Orders;
 import com.aaa.springboothomestay.entity.User;
+import com.aaa.springboothomestay.impl.OrdersImpl;
 import com.aaa.springboothomestay.impl.service.OrdersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +19,8 @@ import java.util.Map;
 public class OrdesController {
     @Resource
     private OrdersService ordersService;
-
+    @Resource
+    OrdersImpl  ordersimpl;
 
     /**
      * 查询所有订单
@@ -125,5 +128,44 @@ public class OrdesController {
             ordersService.queren(status);
             return "redirect:toList";
         }
+    }
+
+    @RequestMapping("querenbylid")
+    public String querenbylid(Integer status){
+        if (status==1 || status==2 || status==3 || status==4 || status==5 || status==6){
+            return "redirect:toList";
+        }else {
+            ordersService.queren(status);
+            return "redirect:toList";
+        }
+    }
+
+    @RequestMapping("landorder")
+    public String tolorder(Integer lid,Integer status,Model md)
+    {
+        if(status==null)
+        {
+            status = 0;
+        }
+        List<Orders> bylidquery = ordersimpl.bylidquery(lid,status);
+        md.addAttribute("list",bylidquery);
+        md.addAttribute("lid",lid);
+        return "/qiantai/landlordOrder";
+    }
+    @RequestMapping("landlordorder")
+    @ResponseBody
+    public List<Orders> bylid(Integer lid,Integer status)
+    {
+        return ordersimpl.bylidquery(lid,status);
+    }
+    @RequestMapping("updatebyoid")
+    public String updatebyoid(Integer status,Integer oid,Integer lid,Model md)
+    {
+        System.out.println(oid+""+status);
+        int i = ordersimpl.updatebyoid(oid,status);
+        status = 0;
+        List<Orders> bylidquery = ordersimpl.bylidquery(lid,status);
+        md.addAttribute("list",bylidquery);
+        return "/qiantai/landlordOrder";
     }
 }

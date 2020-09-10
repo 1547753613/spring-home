@@ -209,6 +209,7 @@ public class UserController {
     public String out(HttpServletRequest request)
     {
         request.getSession().removeAttribute("errand");
+        request.getSession().removeAttribute("landlord");
         return "qiantai/denglu/index";
     }
 }

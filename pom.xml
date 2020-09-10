@@ -124,6 +124,15 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>4.10.70.ALL</version>
+        </dependency>
+
+
         <!--转对象json-->
         <dependency>
             <groupId>com.alibaba</groupId>
