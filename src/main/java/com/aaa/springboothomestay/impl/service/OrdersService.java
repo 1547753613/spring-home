@@ -44,4 +44,10 @@ public interface OrdersService {
      */
     public Integer AddOrders(Order order);
 
+    /**
+     *
+     * @return 订单量
+     */
+    public Integer SelectOrdersCount(String date);
+
 }

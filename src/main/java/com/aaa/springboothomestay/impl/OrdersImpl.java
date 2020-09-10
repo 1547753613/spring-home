@@ -105,6 +105,18 @@ public class OrdersImpl implements OrdersService {
     }
 
     @Override
+    public Integer SelectOrdersCount(String date) {
+        int i=0;
+        if (null==date){
+             i = ordersDao.selectCount(null);
+
+        }else if("month".equals(date)){
+
+        }
+        return i;
+    }
+
+    @Override
     public Integer queren(Integer status) {
         return orderDao.queren(status);
     }

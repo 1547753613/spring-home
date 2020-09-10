@@ -7,6 +7,7 @@ import com.aaa.springboothomestay.code.ResultUtil;
 import com.aaa.springboothomestay.entity.Admins;
 import com.aaa.springboothomestay.entity.User;
 import com.aaa.springboothomestay.impl.service.AdminService;
+import com.aaa.springboothomestay.impl.service.OrdersService;
 import com.aaa.springboothomestay.impl.service.UsersService;
 import com.aaa.springboothomestay.util.MultipartFileToFile;
 import com.aaa.springboothomestay.util.UUIDUtils;
@@ -32,8 +33,10 @@ import java.util.Map;
 
 @CrossOrigin
 @Controller
-@RequestMapping("test")
+@RequestMapping("/test")
 public class TestController {
+    @Autowired
+    OrdersService ordersService;
 
     @Autowired
     UsersService usersService;
@@ -41,6 +44,17 @@ public class TestController {
     @Autowired
     AdminService adminService;
 
+    @GetMapping("SelectOrdersCount")
+    @ResponseBody
+    public Integer SelectOrdersCount(String date){
+        return  ordersService.SelectOrdersCount(date);
+    }
+
+    /**
+     * 查看当前认证对象
+     * @param authentication
+     * @return
+     */
     @RequestMapping("/getAuth")
     @ResponseBody
     public Admins getUser4(Authentication authentication){
