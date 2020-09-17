@@ -21,5 +21,15 @@ public interface HouseDao extends Mapper<House> {
     List<House> QueryHouseCity(@Param("city") String city);
 
     List<House> QueryHouseCondition(@Param("city")String city,@Param("days") Integer days);
+    /**
+     * 模糊插叙
+     * @param days 天数
+     * @param min
+     * @param max
+     * @param htid
+     * @param reqid
+     * @return
+     */
+    public List<House>FuzzySearchHouse(@Param("days") Integer days,@Param("min") Integer min,@Param("max")Integer max,@Param("htid")Integer htid,@Param("reqid")int[] reqid,@Param("size")Integer size);
 
 }

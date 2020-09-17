@@ -582,7 +582,7 @@
                         <p><span>预订人电话：</span>15225779401</p>
                     </div>
                     <div class="infor_pirce">
-                        <h3>总房款：<span id="money">￥218.00</span></h3>
+                        <h3>总房款：<span id="money" th:text="'￥'+${orders.getOrdersDetails().getPrice()}"></span></h3>
                         <ul class="clear">
                             <li><span>入住时间</span></li>
                             <li><span>数量</span></li>
@@ -661,10 +661,10 @@
             <div style="border:0;" class="order_wait">
                 <div class="order_paybox">
                     <div class="order_paydetailbox">
-                        <div class="order_payfk"><span class="f16">线上应付金额：</span><span class="f20 red payment_price">￥218.00</span></div>
-                        <div class="order_paydetail f12">人数:<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label> 人<span class="mL10">房源数:</span><label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label> 套&nbsp;<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label>室<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label>厅<span class="mL10">入住时间: </span><label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">2020/9/5</label> 至 <label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">2020/9/6</label>&nbsp;共 <label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label> 晚</div>
+                        <div class="order_payfk"><span class="f16">线上应付金额：</span><span class="f20 red payment_price" th:text="'￥'+${orders.getOrdersDetails().getPrice()}"></span></div>
+                        <div class="order_paydetail f12">人数:<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;" th:text="${orders.getOrdersDetails().getCheckcount()}"></label> 人<span class="mL10">房源数:</span><label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label> 套&nbsp;<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label>室<label style="color:#ff6c5c;font-weight:bolder;font-size:16px;">1</label>厅<span class="mL10">入住时间: </span><label style="color:#ff6c5c;font-weight:bolder;font-size:16px;" th:text="${orders.getOrdersDetails().getCheckdate()}"></label> 至 <label style="color:#ff6c5c;font-weight:bolder;font-size:16px;" th:text="${orders.getOrdersDetails().getLeavedate()}"></label>&nbsp;共 <label style="color:#ff6c5c;font-weight:bolder;font-size:16px;" th:text="${orders.getOrdersDetails().getDay()}"></label> 晚</div>
                     </div>
-                    <form name="orderpay_form" id="orderpay_form" action="/Home/ToPay" target="_blank" method="post">
+                    <form name="orderpay_form" id="orderpay_form" action="/Home/ToPay" target="_blank" method="post" onsubmit="return false;">
                         <div style="display:none;">
                             <input type=hidden name="orderid" value="1041141" />
                             <input type=hidden name="order_num" value="20200904172534565002" />
@@ -690,7 +690,7 @@
                             <div class="pay">
                                 <div class="order_paycontentleft">&nbsp;</div>
                                 <!--这里-----获取的是价格跟订单编号----oid-订单详情编号----od-订单编号----------------->
-                                <a class="qr_pay" th:href="'/muniao/Landlord/zftest?money='+10+'&oid='+31+'&od='+31">去支付</a>
+                                <a class="qr_pay" th:href="'/muniao/Landlord/zftest?money='+${orders.getOrdersDetails().getPrice()}+'&oid='+${orders.getId()}+'&od='+${orders.getId()}">去支付</a>
                                 <div class="order_tj_bot clear" style="float:left;">
                                     <div class="order_share bdsharebuttonbox fr">
                                         <a class="bds_more" href="#" data-cmd="more">&nbsp;</a>

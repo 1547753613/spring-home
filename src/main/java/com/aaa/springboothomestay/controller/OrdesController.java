@@ -33,6 +33,7 @@ public class OrdesController {
         User map = (User) httpSession.getAttribute("user");
         Integer uid = map.getUid();
         List<Orders> list = ordersService.findAllOrders(uid,status);
+        System.out.println(list);
         model.addAttribute("list",list);
         return "/qiantai/orders";
     }
@@ -52,6 +53,7 @@ public class OrdesController {
     public String findById(Model model,Integer id){
         List<Orders> lists = ordersService.finById(id);
         model.addAttribute("lists",lists);
+        System.out.println(lists);
         return "/qiantai/orders-xq";
     }
 

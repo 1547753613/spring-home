@@ -110,7 +110,8 @@ public class LandlordController {
         //String total_amount =String.valueOf(Math.floor(Math.random() * 1000+1));
         String check = out_trade_no.substring(0,5);
         orderDetailsDao.updatebyoid(oid,money,new Date(),check);
-        ordersimp.updatebyoid(od,2);
+        ordersimp.updatebyoid(od,3);
+        System.out.println(od);
         String total_amount =String.valueOf(money);
         //订单名称，必填
         String subject = "途家民宿住宿订单";

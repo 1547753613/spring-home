@@ -62,7 +62,7 @@
         select o.*,h.*,u.*,d.*
             from orders o
             join house h
-            on h.id = o.id
+            on h.id = o.hid
             join user u
             on u.uid = o.uid
             join orders_details d
@@ -74,19 +74,19 @@
         select o.*,h.*,u.*,d.*
             from orders o
             join house h
-            on h.id = o.id
+            on h.id = o.hid
             join user u
             on u.uid = o.uid
             join orders_details d
             on d.id = o.id
-            where  o.status =#{status}
+            where  o.status =#{status} order by o.id desc
     </select>
 
     <sql id="que">
         select o.*,h.*,u.*,d.*
             from orders o
             join house h
-            on h.id = o.id
+            on h.id = o.hid
             join user u
             on u.uid = o.uid
             join orders_details d
@@ -121,7 +121,9 @@
             <if test="status==7">
                 and status=7
             </if>
+
         </where>
+        order by o.id desc
     </select>
     <select id="bylidquery" resultMap="xx">
         <include refid="xbquery"></include>
@@ -152,9 +154,21 @@
                 and status=7
             </if>
         </where>
-        ORDER BY orders_details.paytime DESC
+        ORDER BY orders.id DESC
     </select>
     <update id="updatebyoid">
         update orders set status=#{status} where id = #{oid}
     </update>
+
+    <select id="SelectOrdersCount" resultType="integer">
+        <if test='date=="count"'>
+            select count(*) from orders;
+        </if>
+        <if test='date=="month"'>
+            select count(*) from orders where MONTH(createtime)=month(now())
+        </if>
+        <if test='date=="day"'>
+            select count(*) from orders where day(createtime)=(day(now())-1)
+        </if>
+    </select>
 </mapper>

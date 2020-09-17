@@ -99,7 +99,8 @@ public class OrdersImpl implements OrdersService {
         Integer integer=null;
         if (i==1){
             order.getOrdersDetails().setOid(order.getId());
-            integer = orderDetailsService.AddOrdersDetails(order.getOrdersDetails());
+            orderDetailsService.AddOrdersDetails(order.getOrdersDetails());
+            integer=order.getId();
         }
         return integer;
     }

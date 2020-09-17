@@ -179,7 +179,7 @@ public class HouseController {
     }
     @RequestMapping("inser")
     @ResponseBody
-    public Integer inser(@RequestBody HashMap<String,Object> map)
+    public Integer inser(@RequestBody HashMap<String,Object> map,HttpSession session)
     {
         System.out.println(map);
         String address =  (String) map.get("address");
@@ -205,7 +205,8 @@ public class HouseController {
         house.setYcoord(ycoord);
         house.setTraffic(traffic);
         house.setRim(rim);
-        house.setLid(2);
+        Landlord landlord = (Landlord)session.getAttribute("landlord");
+        house.setLid(landlord.getLid());
         house.setState(1);
         houseimp.insert(house);
         Integer hid = house.getId();
@@ -257,7 +258,7 @@ public class HouseController {
         List<String> othercount = (List<String>) map.get("othercount");
         List<String> othermany = (List<String>) map.get("othermany");
         List<String> otherid = (List<String>) map.get("otherid");
-        for (int i = 0;i<othercount.size();i++)
+        for (int i = 0;i<othermany.size();i++)
         {
             HouseOther houseOther = new HouseOther();
             houseOther.setCount(Integer.parseInt(othercount.get(i)));

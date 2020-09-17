@@ -31,5 +31,7 @@ public interface OrderDao {
     List<Orders> bylidquery(@Param("lid") Integer lid,@Param("status") Integer status);
     Integer updatebyoid(@Param("oid")Integer oid,@Param("status")Integer status);
 
+    Integer SelectOrdersCount(@Param("date")String date);
+
 
 }

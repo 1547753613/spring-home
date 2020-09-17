@@ -116,7 +116,7 @@ public class SeucrityConfig extends WebSecurityConfigurerAdapter {
                //设置请求路径
                .authorizeRequests()
                //表示该请求任何人都可以访问
-               .antMatchers("/","/**.html","/static/**","/**.ico","/**.js","/**.svg","/createImageCode","/muniao/**","/**.jpg")
+               .antMatchers("/","/**.html","/static/**","/**.ico","/**.js","/**.svg","/createImageCode","/muniao/**","/**.jpg","/Home/**")
                .permitAll()
 
                //表示其他任意请求都要验证

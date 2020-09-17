@@ -9,4 +9,7 @@ import java.util.List;
 public interface RequireTypeService {
     public List<Requiretype> byhidquery(int id);
     public Requiretype byidquery(int id);
+
+    public List<Requiretype> SelectRequiretypeAll();
 }
+

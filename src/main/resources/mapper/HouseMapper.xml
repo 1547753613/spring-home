@@ -66,18 +66,18 @@
             <id column="hoid" property="id"></id>
             <result column="hocount" property="count"></result>
             <association property="othertypes" javaType="com.aaa.springboothomestay.entity.Othertypes" autoMapping="true">
-            <id column="othid" property="id"></id>
+                <id column="othid" property="id"></id>
             </association>
         </collection>
 
-         <collection property="houseRequires" ofType="com.aaa.springboothomestay.entity.HouseRequire" autoMapping="true">
-             <id column="hreid" property="id"></id>
-             <result column="hrerid" property="rid"></result>
-             <result column="hrestate" property="state"></result>
-             <association property="requiretype" javaType="com.aaa.springboothomestay.entity.Requiretype" autoMapping="true">
-                 <id column="reqid" property="id"></id>
-             </association>
-         </collection>
+        <collection property="houseRequires" ofType="com.aaa.springboothomestay.entity.HouseRequire" autoMapping="true">
+            <id column="hreid" property="id"></id>
+            <result column="hrerid" property="rid"></result>
+            <result column="hrestate" property="state"></result>
+            <association property="requiretype" javaType="com.aaa.springboothomestay.entity.Requiretype" autoMapping="true">
+                <id column="reqid" property="id"></id>
+            </association>
+        </collection>
 
     </resultMap>
 
@@ -99,7 +99,7 @@
         left join housetype h on  h.id=house.sid
         LEFT JOIN house_generalize hg on hg.hid=house.id
         LEFT JOIN house_address hadd on hadd.hid=house.id
-         where l.realname like #{_name}
+        where l.realname like #{_name}
     </select>
 
     <sql id="houseSQL" >
@@ -138,7 +138,7 @@
 
     <!--cth-->
     <select id="findHouseHid" resultMap="House">
-     <include refid="houseSQL"></include>
+        <include refid="houseSQL"></include>
         where h.id=#{hid}
     </select>
 
@@ -152,7 +152,7 @@
         left join renttype r on r.rid=h.rid
         left JOIN house_many hmany on hmany.hid=h.id
 
-				where l.nativePlave like #{_city}
+        where l.nativePlave like #{_city}
     </select>
 
     <!--cth-->
@@ -170,11 +170,36 @@
         left join house_many hm on hm.hid=h.id
         left JOIN house_rules hr on hr.hid=h.id
         left join house_address had on had.hid=h.id
-		<where>
-		<trim suffixOverrides="and">
-            had.city=#{city} and days=#{days}
-        </trim>
+        <where>
+            <trim suffixOverrides="and">
+                had.city=#{city} and days=#{days}
+            </trim>
 
+        </where>
+    </select>
+    <!--cth-->
+    <select id="FuzzySearchHouse" resultMap="House">
+        <include refid="houseSQL"></include>
+        <where>
+            <if test="days!=null">
+                hr.days=#{days} and
+            </if>
+            <if test="min!=null&amp;&amp;max!=null">
+                hm.Holidays BETWEEN #{min} and #{max} and
+            </if>
+            <if test="htid!=0">
+                ht.id=#{htid} and
+            </if>
+
+            <if test="reqid!=null">
+                h.id in (select hid FROM house_require WHERE  state=1 and
+                <foreach collection="reqid" item="i"  separator="or" open="(" close=")">
+                    rid=#{i}
+                </foreach>
+                GROUP BY hid HAVING count(*)=#{size})
+                and
+            </if>
+            1=1
         </where>
     </select>
 </mapper>

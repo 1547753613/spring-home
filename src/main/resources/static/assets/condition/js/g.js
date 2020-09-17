@@ -17,6 +17,17 @@ $('#txtKeyword').blur(function(){
 });
 
 $(function(){
+
+    $("input[name='housetype']").click(function () {
+       var housetype=$(this).attr('data');
+       if (housetype!='所有'){
+           $("#housetype").text(housetype);
+       }else {
+           $("#housetype").text('所有类型');
+
+       }
+
+    })
     
     // 鑰佷唬鐮侊紝鏆備笉鐭ラ亾鍝噷鐢�
     $(".SelectContent").click(function(){$(".Selecttext").show();$("#MddBox").hide();});
@@ -40,15 +51,7 @@ $(function(){
         });
     });
 
-    /*
-    try{
-        // broswer support vue
-        Object.prototype.__defineSetter__;
-        setCookie('useVue', '1');
-    }catch(e){
-        setCookie('useVue', '0');
-    }
-    */
+
 
     //搜索按钮
     $("#btn").click(function(){
@@ -99,172 +102,115 @@ function submitLocation() {
 }
 
 function submitFrom (){
-    
-    var url = "/search/";
+
+    var reqid=new Array();//服务集合
+    $(".service-select .ischecked").each(function (item) {
+        reqid.push(parseInt($(this).attr("data")))
+    })
     var city=$.trim($("#txtCity").val());//市区
-    alert(city)
     var startDate=$.trim($("#checkin").val())//入住日期
-    alert(startDate)
     var endDate=$.trim($("#checkout").val())//离开日期
-    alert(endDate)
+    var days = Math.abs( new Date(startDate).getTime()- new Date(endDate).getTime())/ (1000 * 60 * 60 * 24)
+    var min = $.trim($("#price-range-min").val());//价格筛选最小
+    var max = $.trim($("#price-range-max").val());//价格筛选最大
+    var htid=$("input[name='housetype']:checked").val();//房源类型
 
-    var minPrice = $.trim($("#price-range-min").val());//价格筛选最小
-    var maxPrice = $.trim($("#price-range-max").val());//价格筛选最大
-    alert(minPrice)
-    alert(maxPrice)
+    /*console.log(city)
+    console.log(days)
+    console.log(minPrice)
+    console.log(maxPrice)
+    console.log(housetype)
+    console.log(requireTypes)*/
+    $.ajax({
+        url:'/muniao/fuzzySearch',
+        type:'get',
+        traditional:true,
+        data:{
+            days,
+            min,
+            max,
+            htid,
+            reqid
 
-    var guestNum = $("#guestNum").val();
-    alert(guestNum)
+        },
+        success:function(data){
+            if (data!=null){
+                $("#search-result-ul").html("");
+                var html="";
+                $(".homeNum").text(data.length)
+                $.each(data,function (i,item) {
+                    //console.log(item.renttype)
+                    html+="                            <li>\n" +
+                        "                                <div class=\"item clearfix homestay_marker\" data-id=\"511626\">\n" +
+                        "                                    <div class=\"home_stay clearfix\">\n" +
+                        "                                        <div class=\"div_home_photo\">\n" +
+                        "                                            <a href='/muniao/House/querybyid?id="+item.id+"'  style=\"color: #000000;font-size: 18px; \" target=\"_blank\" title='"+item.hname+"'  >\n" +
+                        "                                                <img alt='"+item.hname+"' src='"+item.simg+"' /></a>\n" +
+                        "                                        </div>\n" +
+                        "                                        <div class=\"div_album\">\n" +
+                        "                                            <a href='/muniao/House/querybyid?id="+item.id+"'  target=\"_blank\" title='"+item.hname+"'>\n" +
+                        "                                                <img class=\"photo_album\" src='"+item.landlord.head+"'  title='"+item.landlord.nickname+"'   /></a>\n" +
+                        "                                        </div>\n" +
+                        "\n" +
+                        "\n" +
+                        "                                        <a id=\"c_511626\" class=\"be-favorite collect_icon\" href=\"javascript:void(0);\"  title=\"点击收藏这家民宿\"></a>\n" +
+                        "                                    </div> <!-- end home_stay -->\n" +
+                        "\n" +
+                        "                                    <div class=\"clearfix room_list\">\n" +
+                        "                                        <h2 class=\"user_title clearfix\">\n" +
+                        "                                            <a class=\"title-link\" href='/muniao/House/querybyid?id="+item.id+"'  target=\"_blank\" title='"+item.hname+"'  >"+item.hname+"</a>\n" +
+                        "\n" +
+                        "                                            &nbsp;<a class=\"title-mark\" target=\"_blank\"><em title=\"速订\" class=\"S_icon\"></em></a>\n" +
+                        "                                        </h2>\n" +
+                        "\n" +
+                        "                                        <div class=\"min-price-info\" align=\"right\" >\n" +
+                        "                                            <div class=\"min-price-text\" >￥<p class=\"price-text\" >"+item.houseMany.holidays+"</p>起</div>\n" +
+                        "                                        </div>\n" +
+                        "                                        <div class=\"disc-price-info\" align=\"right\" >\n" +
+                        "                                            <p class=\"disc-price-text\" id=\"p_original_price\">\n" +
+                        "                                            </p>\n" +
+                        "                                        </div>\n" +
+                        "\n" +
+                        "                                        <div class=\"user_address\" data-id=\"511626\">\n" +
+                        "                                            <span>"+item.houseAddress.city+"</span>   <span>"+item.houseAddress.address+"</span>\n" +
+                        "                                        </div>\n" +
+                        "\n" +
+                        "\n" +
+                        "                                        <div class=\"user_more\" style=\"margin-top: 5px;\">\n" +
+                        "                                            <a href=\"javascript:void(0)\" target=\"_blank\">\n" +
+                        "                                                <span style=\"color: white\">暂无点评</span>\n" +
+                        "                                            </a>\n" +
+                        "\n" +
+                        "                                        </div>\n" +
+                        "\n" +
+                        "                                        <div class=\"user_service\">\n" +
+                        "                                <span class=\"fw-baoche fw-icon\">\n" +
+                        "                                <div class=\"questionMain\">\n" +
+                        "                                    <b >"+item.renttype.tname+"</b>\n" +
+                        "                                    <b style=\"margin-left: 40px;\">最早入住时间:</b><span>"+item.houseRules.atcheck+"</span>\n" +
+                        "\n" +
+                        "                                    <b style=\"margin-left: 40px;\">最晚入住时间:</b><span>"+item.houseRules.lastcheck+"</span>\n" +
+                        "\n" +
+                        "                                 </div>\n" +
+                        "                                 </span>\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "                                        </div> <!-- end user service -->\n" +
+                        "\n" +
+                        "                                        <input type=\"hidden\" value=\"0\" class=\"list_input\" id=\"list_more_input_511626\">\n" +
+                        "\n" +
+                        "                                    </div> <!-- end room_list -->\n" +
+                        "                                </div>\n" +
+                        "                            </li>\n"
+                })
+                $("#search-result-ul").html(html);
 
-    var keyword = $.trim($("#txtKeyword").val());
-    var filter = new Array();
-    var getFilter = new Array();
-    var asyncData = new Object();
-
-    var sightid = $.trim( $("#txtSightid").val());
-    var city = $.trim($("#txtCity").val());
-    var cityid = $.trim($("#txtCityid").val());
-
-    var sortId = $(".sort-id").val();
-    var page = $(".pageNum").val();
-
-    var checkin = $.trim($("#checkin").val());
-    var checkout = $.trim($("#checkout").val());
-    
-    asyncData['url_path'] = "";
-    if(keyword != '' && keyword != undefined && keyword != search_placeholder){
-        url += keyword;
-        asyncData['url_path'] += keyword;
-    }
-    
-    if(guestNum > 0) {
-        filter.push("g"+guestNum);
-    }
-    if(sightid>0){
-        filter.push("i"+sightid);
-    }else if(cityid>100) {
-        filter.push("c"+cityid);
-    }
-    if(minPrice > 0) {
-        filter.push("n" + minPrice);
-    }
-    if(maxPrice > 0) {
-        filter.push("x" + maxPrice);
-    }
-    if(sortId > 0 && sortId != undefined) {
-        filter.push("o" + sortId);
-    }
-    if(page > 0 && page != undefined) {
-        filter.push("p" + page);
-    }
-    $(".other-filter").each(function(k,e){
-        if($(e).hasClass("ischecked")) {
-            var type = $(this).data("type");
-            filter.push( type + "1" );
-        }
-    });
-
-    /*if(filter.length > 0) {
-        url += "/" + filter.join("-");
-        asyncData['url_path'] += "/" + filter.join("-");
-    }
-
-    if(checkin!=checkin_str && Date.parse(checkin)){
-        getFilter.push("checkin="+checkin);
-        asyncData["checkin"] = checkin;
-    }
-    if(checkout!=checkout_str && Date.parse(checkout)){
-        getFilter.push("checkout="+checkout);
-        asyncData["checkout"] = checkout;
-    }
-
-    $("input.service-choice:checked").each(function(k,e){
-        if(e.name != undefined && e.name != ''){
-            getFilter.push( "service["+ e.name + "]=1" );
-            asyncData["service["+ e.name + "]"] = 1 ;
-        }
-    });
-
-    $("input.sold-choice:checked").each(function (k, e) {
-        if(e.name != undefined && e.name != ''){
-            getFilter.push( "sold_mode["+ e.name + "]="+ e.value );
-            asyncData["sold_mode["+ e.name + "]"] = e.value;
-        }
-    });
-
-
-    if(document.getElementById("isChineseLandlord").checked){
-        getFilter.push( "isChineseLandlord =1" );
-        asyncData["isChineseLandlord"] = 1 ;
-    }
-
-    if(getFilter.length > 0) {
-        url += "?" + getFilter.join("&");
-    }
-
-    $('.sight').on('click',function (ev) {
-        ev=ev.target;
-        mylat=$(ev).attr('data-lat');
-        mylng=$(ev).attr('data-lng');
-    });
-
-
-    //console.log(url);
-    if($("#search-result-list").length > 0){
-        asyncData['type'] = 'list';
-        var width = $("#search-result-list").width();
-        var height = $("#search-result-list").height();
-        var overflow = $("<div></div>").addClass("search-overflow").css({"height":height+"px","width":width+"px"});
-        $("#search-result-list").append(overflow);
-        $.get (
-            "/v2/ajax",
-            asyncData,
-            function(response){
-                if(response != ''){
-                    $("#search-result-list").html(response);
-                    var homeNum = $("input.homeNum").val();
-                    var roomNum = $("input.roomNum").val();
-                    $("span.homeNum").text(homeNum);
-                    $("span.roomNum").text(roomNum);
-                    var title = $("#txtCity").val();
-                    window.history.pushState("", title, url);
-                    document.title = title + page_title;
-
-                    if ($.inArray(dest_id, [11, 16]) >= 0) {
-                        for (i = 0; i < markers.length; i++) {
-                            markers[i].setMap(null);
-                        }
-                        markers.length=0;
-                        $(".detail-info").parent().remove();
-                        if(homestay_arr.length > 0) {
-                            if(typeof map == 'undefined') {
-                                mapInitialize();
-                            }
-                            map.setCenter(new google.maps.LatLng(homestay_arr[0].position[1], homestay_arr[0].position[0]), 40);
-                            setMakers(map, iconArr, markers, 0,homestay_arr,homestay_min_price_arr,mylat,mylng);
-                            setVeiwPort(map, markers);
-                        }
-                    }
-                    else {
-                        try{ // reload 楂樺痉鐨刴arker
-                            marker_arr = [];
-                            map.clearMap();
-                            generate_marker();
-                        }catch(e) {
-                            //console.log(e);
-                        }
-                    }
-                }else{
-                    location.href = url;
-                }
             }
-        );
-    } else{
-        location.href = url;
-    }
-    var action = "search_subimt";
-    var content = city+"|"+checkin+"|"+checkout+"|"+keyword;*/
- //   log_behavior(action,content);
+        }
+    })
 }
 
 function log_behavior(action,content){
@@ -319,7 +265,7 @@ $( function() {
     $(document).on("click", ".poi-item", function(){
         choice_sight(this);
         $(".pageNum").val(0);
-        $("#btn").click();
+       //$("#btn").click();
     });
 
     $(document).on("click","#loc_unlimited", function() {
@@ -342,7 +288,7 @@ $( function() {
         $(this).addClass("current");
 
         $(".pageNum").val(0);
-        $("#btn").click();
+      //  $("#btn").click();
     });
 
     // price
@@ -431,7 +377,7 @@ $( function() {
             }
         }
         $(".pageNum").val(0);
-        $("#btn").click();
+       // $("#btn").click();
 
     });
 
@@ -447,7 +393,7 @@ $( function() {
         }
 
         $(".pageNum").val(0);
-        $("#btn").click();
+     //   $("#btn").click();
     });
 } );
 
@@ -546,7 +492,7 @@ function render_poi(list, current) {
 /* search City js */
 $(function(){
 
-    $("#txtCity").focus(function(){
+/*    $("#txtCity").focus(function(){
     
         var srt = $(document).scrollTop();
         var wh = $(window).height();
@@ -561,7 +507,7 @@ $(function(){
         if($.trim($(this).val())==""){
             $(this).val("");
         }
-    });
+    });*/
 
     $(".destination").hover(function () {
         $(".destination").removeClass("current-destination");
@@ -605,7 +551,7 @@ $(function(){
         }
 
         $(".pageNum").val(0);
-        $("#btn").click();
+      //  $("#btn").click();
     
     });
     
@@ -1486,7 +1432,7 @@ $(document).ready(function() {
         $(this).addClass("list_sort");
 
         $(".pageNum").val(0);
-        $("#btn").click();
+     //   $("#btn").click();
 
     });
 
@@ -1511,7 +1457,7 @@ $(document).ready(function() {
         $("input.pageNum").val(id);
         $('body, html').animate({scrollTop:$('#searchList').position().top}, 'slow');
 
-        $("#btn").click();
+      //  $("#btn").click();
     });
 
 });
@@ -1520,7 +1466,7 @@ function collect(v, hid, no) {
     var type = v;
     var uid = '';
     if (uid == '') {
-        alert('璇锋偍鐧诲綍');
+        //alert('璇锋偍鐧诲綍');
         return false;
     }
     var sss = hid;

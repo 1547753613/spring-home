@@ -23,6 +23,12 @@ public class RequireTypeImpl implements RequireTypeService {
     {
         return requireTypeDao.selectByPrimaryKey(id);
     }
+
+    @Override
+    public List<Requiretype> SelectRequiretypeAll() {
+        return requireTypeDao.selectAll();
+    }
+
     public List<Requiretype> query(){
         return requireTypeDao.selectAll();
     }

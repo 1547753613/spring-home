@@ -4,6 +4,8 @@ import com.aaa.springboothomestay.aliyun.AliOSS;
 import com.aaa.springboothomestay.code.Result;
 import com.aaa.springboothomestay.code.ResultCode;
 import com.aaa.springboothomestay.code.ResultUtil;
+import com.aaa.springboothomestay.dao.OrderDao;
+import com.aaa.springboothomestay.dao.OrdersDao;
 import com.aaa.springboothomestay.dao.OrdersDetailsDao;
 import com.aaa.springboothomestay.entity.Admins;
 import com.aaa.springboothomestay.entity.User;
@@ -53,11 +55,8 @@ public class TestController {
     @Autowired
     AdminService adminService;
 
-    @GetMapping("SelectOrdersCount")
-    @ResponseBody
-    public Integer SelectOrdersCount(String date){
-        return  ordersService.SelectOrdersCount(date);
-    }
+   @Resource
+   OrderDao orderDao;
 
     /**
      * 查看当前认证对象
@@ -155,4 +154,12 @@ public class TestController {
         //System.out.println(session);
         return 1;
     }
+
+    @GetMapping("/SelectOrdersCount")
+    @ResponseBody
+    public Integer SelectOrdersCount(String date){
+        Integer integer = orderDao.SelectOrdersCount(date);
+        return integer;
+    }
+
     }
